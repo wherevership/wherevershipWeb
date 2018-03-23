@@ -76,37 +76,37 @@ span.tip {
 		<select  required class="selectpicker form-control" data-show-subtext="true" data-live-search="true" id="c"  name="c" onChange="quote.CollAddrChange(this)" txt_c_state>
 		<option value="" readonly>State</option>
 		
-		<option value="JHR" >Johor</option>
+		<option value="jhr" >Johor</option>
 		
-		<option value="KDH" >Kedah</option>
+		<option value="kdh" >Kedah</option>
 		
-		<option value="KTN" >Kelantan</option>
+		<option value="ktn" >Kelantan</option>
 		
-		<option value="MLK" >Melaka</option>
+		<option value="mlk" >Melaka</option>
 		
-		<option value="NSN" >Negeri Sembilan</option>
+		<option value="nsn" >Negeri Sembilan</option>
 		
-		<option value="PHG" >Pahang</option>
+		<option value="phg" >Pahang</option>
 		
-		<option value="PRK" >Perak</option>
+		<option value="pkr" >Perak</option>
 		
-		<option value="PLS" >Perlis</option>
+		<option value="pls" >Perlis</option>
 		
-		<option value="PNG" >Pulau Pinang</option>
+		<option value="png" >Pulau Pinang</option>
 		
-		<option value="SGR" >Selangor</option>
+		<option value="sgr" >Selangor</option>
 		
-		<option value="TRG" >Terengganu</option>
-		
-		<option value="KUL" >Kuala Lumpur</option>
-		
-		<option value="PJY" >Putra Jaya</option>
-		
-		<option value="SRW" >Sarawak</option>
-		
-		<option value="SBH" >Sabah</option>
-		
-		<option value="LBH" >Labuan</option>
+		<option value="trg" >Terengganu</option>
+			
+		<option value="kul" >Kuala Lumpur</option>
+			
+		<option value="pjy" >Putra Jaya</option>
+			
+		<option value="srw" >Sarawak</option>
+			
+		<option value="sbh" >Sabah</option>
+			
+		<option value="lbn" >Labuan</option>
 		
 		</select>
 	</div>

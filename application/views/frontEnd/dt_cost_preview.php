@@ -27,6 +27,7 @@
 			<div class="form-group">
               <label for="frm"><span class="glyphicon glyphicon-info-sign"></span> From</label>
               <p class="form-control" id="frm" name="fromCountry"><?=$fromState?></p>
+			  <p><?=$frState?></p>
             </div>
 			<div class="form-group">
               <label for="to"><span class="glyphicon glyphicon-info-sign"></span> To</label>

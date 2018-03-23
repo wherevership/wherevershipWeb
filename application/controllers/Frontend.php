@@ -68,6 +68,35 @@ class Frontend extends CI_Controller {
 			$this->load->view("frontEnd/footer");
 		}
 		
+	public function faq() {
+			$this->data['title'] = "FAQ";
+			$this->load->view("frontEnd/header", $this->data);
+			$this->load->view("frontEnd/faq");
+			$this->load->view("frontEnd/footer");
+	}
+	
+	public function prohibitedItemList() {
+			$this->data['title'] = "Prohibited Item List";
+			$this->load->view("frontEnd/header", $this->data);
+			$this->load->view("frontEnd/prohibitedItemList");
+			$this->load->view("frontEnd/footer");
+	}
+	
+	public function tos() {
+			$this->data['title'] = "Term And Condition";
+			$this->load->view("frontEnd/header", $this->data);
+			$this->load->view("frontEnd/tos");
+			$this->load->view("frontEnd/footer");
+	}
+	
+	public function privacyPolicy() {
+			$this->data['title'] = "Privacy Policy";
+			$this->load->view("frontEnd/header", $this->data);
+			$this->load->view("frontEnd/privacyPolicy");
+			$this->load->view("frontEnd/footer");
+	}
+	
+		
 }
 
 ?>

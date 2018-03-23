@@ -26,11 +26,14 @@
 			$this->data['title'] = "Cost Preview For Domestic Courier";
 			$this->data['frState'] = $this->input->post("c", true);
 			$this->data['tState'] = $this->input->post("d", true);
+			
+			$this->data['fromState'] = $this->state_name($this->data['frState']);
+			
+			
 			$weight = $this->input->post("w", true);
 			$height = $this->input->post("h", true);
 			$width = $this->input->post("wi", true);
 			$length = $this->input->post("l", true);
-			$this->data['fromState'] = $this->state_name($this->data['frState']);
 			$this->data['toState'] = $this->state_name($this->data['tState']);
 			$this->data['weight_f'] = $this->compareWeight($weight, $height, $width, $length);
 			$this->data['v_weight'] = ($length * $width * $height) / 5000;
@@ -47,7 +50,7 @@
 			
 		function state_name($state) {
 			if ($state == "jhr") {
-				return "Johor";
+				return "Johor" ;
 		    }
 		    else if ($state == "mlk") {
 				return "Melaka";
