@@ -78,6 +78,10 @@ $route['signUp'] = 'Frontend/signUp';
 $route['userLogin'] = 'Frontend/userLogin';
 $route['volumetricCalcualator'] = 'Frontend/volumetricCalcualator';
 $route['refund_policy'] = 'Frontend/refundPolicy';
+$route['faq'] = 'Frontend/faq';
+$route['prohibited_item_list'] = 'Frontend/prohibitedItemList';
+$route['term_and_condition'] = 'Frontend/tos';
+$route['privacy_policy'] = 'Frontend/privacyPolicy';
 $route['cost_preview'] = 'Cost_preview_manage/costPreview';
 $route['dtc_cost_preview'] = 'Cost_preview_manage/dtcCostPreview';
 

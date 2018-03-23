@@ -1,27 +1,20 @@
 <footer id="masterFooter" class="page-footer">
 	<div class="container">
 		<div class="footer-inner">
-			<div class="col-xs-6 col-sm-4 col-md-4 col-lg-2 footer-link-height">
+			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-2 footer-link-height">
 				<ul class="links">
 				<li class="title-link">Overview</li>
 				<li><a href="<?=base_url('aboutUs')?>">About Us</a></li>
 				<li><a href="#">Blog</a></li>
-			    <li><a href="#">FAQ</a></li>
+			    <li><a href="<?=base_url('faq')?>">FAQ</a></li>
 				<li><a href="<?=base_url('contactUs')?>">Contact Us</a></li>
-				<li><a href="#">Prohibited Item List</a></li>
-				<li><a href="#">Terms & Conditions</a></li>
-				<li><a href="#">Privacy Policy</a></li>
+				<li><a href="<?=base_url('prohibited_item_list')?>">Prohibited Item List</a></li>
+				<li><a href="<?=base_url('term_and_condition')?>">Terms & Conditions</a></li>
+				<li><a href="<?=base_url('privacy_policy')?>">Privacy Policy</a></li>
 				</ul>
 			</div>
-			<div class="col-xs-6 col-sm-4 col-md-4 col-lg-2 footer-link-height">
-				<ul class="links">
-				<li class="title-link">Quick Guide</li>
-				<li><a href="<?=base_url('signUp')?>">Sign Up An Account</a></li>
-				<li><a href="#">Place An Order</a></li>
-				<li><a href="#">Utilise Address Book</a></li>
-				</ul>
-			</div>
-			<div class="col-xs-6 col-sm-4 col-md-4 col-lg-2 footer-link-height">
+			
+			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-3 footer-link-height">
 				<ul class="links">
 				<li class="title-link">My Account</li>
 				<li><a href="<?=base_url('userLogin')?>">Log In</a></li>
@@ -33,7 +26,7 @@
 				<li><a href="#">Referral/Affiliate</a></li>
 				</ul>
 			</div>
-			<div class="col-xs-6 col-sm-4 col-md-4 col-lg-2 footer-link-height">
+			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-3 footer-link-height">
 				<ul class="links">
 				<li class="title-link">Tools</li>
 				<li><a href="#">Send A Parcel</a></li>
@@ -45,7 +38,7 @@
 		          
 				</ul>
 			</div>
-			<div class="col-xs-12 col-sm-6 col-md-4 footer-link-height social-links">
+			<div class="col-xs-12 col-sm-12 col-md-12 footer-link-height social-links">
 				<ul class="links" style="padding-bottom: 5px;">
 					<li class="title-link">Follow Us</li>
 					<li style="float: left; margin-right: 10px;"><a href="#" target="_blank"><i class="fab fa-facebook-f" style="text-align: center"></i></a></li>
@@ -57,7 +50,7 @@
 				<hr style="margin: 15px 0px;border-color: #5d5d5d;">
 				<ul class="links">
 					<li class="title-link" style="padding-top: 10px;">Register</li>
-					<form action="./?ac=SignupExternal" method="post">
+					<form action="<?=base_url('signUp')?>" method="post">
 						<div class="col-sm-9 col-xs-7" style="padding: 0px;">
 							<input class="form-control" type="text" placeholder="Email" name="email"  value="">
 						</div>
