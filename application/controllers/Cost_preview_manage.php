@@ -104,7 +104,7 @@
 			if ($weight > $volumetricWeight) {
 				return $weight; 
 			} else {
-				return $volumetricWeight;
+				return float($volumetricWeight);
 			}
 		}
 	}

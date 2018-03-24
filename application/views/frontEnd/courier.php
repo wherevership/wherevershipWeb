@@ -246,443 +246,443 @@ span.tip {
 		<select required class="selectpicker form-control" data-show-subtext="true" data-live-search="true" id="d" name="d" onChange="quote.CollAddrChange(this)" txt_id_state>
 			 <option value="" readonly>Country</option>
  			 <o
-    			<option value="AL-INT" >Albania</option>
+    			<option value="AL" >Albania</option>
    			
-    			<option value="DZ-INT" >Algeria</option>
+    			<option value="DZ" >Algeria</option>
    			
-    			<option value="AS-INT" >American Samoa</option>
+    			<option value="AS" >American Samoa</option>
    			
-    			<option value="AD-INT" >Andorra</option>
+    			<option value="AD" >Andorra</option>
    			
-    			<option value="AO-INT" >Angola</option>
+    			<option value="AO" >Angola</option>
    			
-    			<option value="AI-INT" >Anguilla</option>
+    			<option value="AI" >Anguilla</option>
    			
-    			<option value="AG-INT" >Antigua</option>
+    			<option value="AG" >Antigua</option>
    			
-    			<option value="AR-INT" >Argentina</option>
+    			<option value="AR" >Argentina</option>
    			
-    			<option value="AM-INT" >Armenia</option>
+    			<option value="AM" >Armenia</option>
    			
-    			<option value="AW-INT" >Aruba</option>
+    			<option value="AW" >Aruba</option>
    			
-    			<option value="AU-INT" >Australia</option>
+    			<option value="AU" >Australia</option>
    			
-    			<option value="AT-INT" >Austria</option>
+    			<option value="AT" >Austria</option>
    			
-    			<option value="AZ-INT" >Azerbaijan</option>
+    			<option value="AZ" >Azerbaijan</option>
    			
-    			<option value="BS-INT" >Bahamas</option>
+    			<option value="BS" >Bahamas</option>
    			
-    			<option value="BH-INT" >Bahrain</option>
+    			<option value="BH" >Bahrain</option>
    			
-    			<option value="BD-INT" >Bangladesh</option>
+    			<option value="BD" >Bangladesh</option>
    			
-    			<option value="BB-INT" >Barbados</option>
+    			<option value="BB" >Barbados</option>
    			
-    			<option value="BY-INT" >Belarus</option>
+    			<option value="BY" >Belarus</option>
    			
-    			<option value="BE-INT" >Belgium</option>
+    			<option value="BE" >Belgium</option>
    			
-    			<option value="BZ-INT" >Belize</option>
+    			<option value="BZ" >Belize</option>
    			
-    			<option value="BJ-INT" >Benin</option>
+    			<option value="BJ" >Benin</option>
    			
-    			<option value="BM-INT" >Bermuda</option>
+    			<option value="BM" >Bermuda</option>
    			
-    			<option value="BT-INT" >Bhutan</option>
+    			<option value="BT" >Bhutan</option>
    			
-    			<option value="BO-INT" >Bolivia</option>
+    			<option value="BO" >Bolivia</option>
    			
-    			<option value="BQ-INT" >Bonaire</option>
+    			<option value="BQ" >Bonaire</option>
    			
-    			<option value="BA-INT" >Bosnia And Herzegovina</option>
+    			<option value="BA" >Bosnia And Herzegovina</option>
    			
-    			<option value="BW-INT" >Botswana</option>
+    			<option value="BW" >Botswana</option>
    			
-    			<option value="BR-INT" >Brazil</option>
+    			<option value="BR" >Brazil</option>
    			
-    			<option value="BN-INT" >Brunei Darussalam</option>
+    			<option value="BN" >Brunei Darussalam</option>
    			
-    			<option value="BG-INT" >Bulgaria</option>
+    			<option value="BG" >Bulgaria</option>
    			
-    			<option value="BF-INT" >Burkina Faso</option>
+    			<option value="BF" >Burkina Faso</option>
    			
-    			<option value="KH-INT" >Cambodia</option>
+    			<option value="KH" >Cambodia</option>
    			
-    			<option value="CM-INT" >Cameroon</option>
+    			<option value="CM" >Cameroon</option>
    			
-    			<option value="CA-INT" >Canada</option>
+    			<option value="CA" >Canada</option>
    			
-    			<option value="IC-INT" >Canary Islands, The</option>
+    			<option value="IC" >Canary Islands, The</option>
    			
-    			<option value="CV-INT" >Cape Verde</option>
+    			<option value="CV" >Cape Verde</option>
    			
-    			<option value="KY-INT" >Cayman Islands</option>
+    			<option value="KY" >Cayman Islands</option>
    			
-    			<option value="TD-INT" >Chad</option>
+    			<option value="TD" >Chad</option>
    			
-    			<option value="CL-INT" >Chile</option>
+    			<option value="CL" >Chile</option>
    			
-    			<option value="CN1-INT" >China I</option>
+    			<option value="CN1" >China I</option>
    			
-    			<option value="CN2-INT" >China Ii</option>
+    			<option value="CN2" >China Ii</option>
    			
-    			<option value="CN-INT" >China</option>
+    			<option value="CN" >China</option>
    			
-    			<option value="CO-INT" >Colombia</option>
+    			<option value="CO" >Colombia</option>
    			
-    			<option value="KM-INT" >Comoros</option>
+    			<option value="KM" >Comoros</option>
    			
-    			<option value="CG-INT" >Congo</option>
+    			<option value="CG" >Congo</option>
    			
-    			<option value="CK-INT" >Cook Islands</option>
+    			<option value="CK" >Cook Islands</option>
    			
-    			<option value="CR-INT" >Costa Rica</option>
+    			<option value="CR" >Costa Rica</option>
    			
-    			<option value="CI-INT" >Cote D'ivoire</option>
+    			<option value="CI" >Cote D'ivoire</option>
    			
-    			<option value="HR-INT" >Croatia</option>
+    			<option value="HR" >Croatia</option>
    			
-    			<option value="CU-INT" >Cuba</option>
+    			<option value="CU" >Cuba</option>
    			
-    			<option value="CW-INT" >Curacao</option>
+    			<option value="CW" >Curacao</option>
    			
-    			<option value="CY-INT" >Cyprus</option>
+    			<option value="CY" >Cyprus</option>
    			
-    			<option value="CZ-INT" >Czech Republic</option>
+    			<option value="CZ" >Czech Republic</option>
    			
-    			<option value="DK-INT" >Denmark</option>
+    			<option value="DK" >Denmark</option>
    			
-    			<option value="DJ-INT" >Djibouti</option>
+    			<option value="DJ" >Djibouti</option>
    			
-    			<option value="DM-INT" >Dominica</option>
+    			<option value="DM" >Dominica</option>
    			
-    			<option value="DO-INT" >Dominican Republic</option>
+    			<option value="DO" >Dominican Republic</option>
    			
-    			<option value="TP-INT" >East Timor</option>
+    			<option value="TP" >East Timor</option>
    			
-    			<option value="EC-INT" >Ecuador</option>
+    			<option value="EC" >Ecuador</option>
    			
-    			<option value="EG-INT" >Egypt</option>
+    			<option value="EG" >Egypt</option>
    			
-    			<option value="SV-INT" >El Salvador</option>
+    			<option value="SV" >El Salvador</option>
    			
-    			<option value="GQ-INT" >Equatorial Guinea</option>
+    			<option value="GQ" >Equatorial Guinea</option>
    			
-    			<option value="EE-INT" >Estonia</option>
+    			<option value="EE" >Estonia</option>
    			
-    			<option value="ET-INT" >Ethiopia</option>
+    			<option value="ET" >Ethiopia</option>
    			
-    			<option value="FK-INT" >Falkland Islands (malvinas)</option>
+    			<option value="FK" >Falkland Islands (malvinas)</option>
    			
-    			<option value="FO-INT" >Faroe Islands</option>
+    			<option value="FO" >Faroe Islands</option>
    			
-    			<option value="FJ-INT" >Fiji</option>
+    			<option value="FJ" >Fiji</option>
    			
-    			<option value="FI-INT" >Finland</option>
+    			<option value="FI" >Finland</option>
    			
-    			<option value="FR-INT" >France</option>
+    			<option value="FR" >France</option>
    			
-    			<option value="GF-INT" >French Guiana</option>
+    			<option value="GF" >French Guiana</option>
    			
-    			<option value="GA-INT" >Gabon</option>
+    			<option value="GA" >Gabon</option>
    			
-    			<option value="GM-INT" >Gambia</option>
+    			<option value="GM" >Gambia</option>
    			
-    			<option value="GE-INT" >Georgia</option>
+    			<option value="GE" >Georgia</option>
    			
-    			<option value="DE-INT" >Germany</option>
+    			<option value="DE" >Germany</option>
    			
-    			<option value="GH-INT" >Ghana</option>
+    			<option value="GH" >Ghana</option>
    			
-    			<option value="GI-INT" >Gibraltar</option>
+    			<option value="GI" >Gibraltar</option>
    			
-    			<option value="GR-INT" >Greece</option>
+    			<option value="GR" >Greece</option>
    			
-    			<option value="GL-INT" >Greenland</option>
+    			<option value="GL" >Greenland</option>
    			
-    			<option value="GD-INT" >Grenada</option>
+    			<option value="GD" >Grenada</option>
    			
-    			<option value="GP-INT" >Guadeloupe</option>
+    			<option value="GP" >Guadeloupe</option>
    			
-    			<option value="GU-INT" >Guam</option>
+    			<option value="GU" >Guam</option>
    			
-    			<option value="GT-INT" >Guatemala</option>
+    			<option value="GT" >Guatemala</option>
    			
-    			<option value="GG-INT" >Guernsey</option>
+    			<option value="GG" >Guernsey</option>
    			
-    			<option value="GN-INT" >Guinea Republic</option>
+    			<option value="GN" >Guinea Republic</option>
    			
-    			<option value="GW-INT" >Guinea Bissau</option>
+    			<option value="GW" >Guinea Bissau</option>
    			
-    			<option value="GY-INT" >Guyana</option>
+    			<option value="GY" >Guyana</option>
    			
-    			<option value="HT-INT" >Haiti</option>
+    			<option value="HT" >Haiti</option>
    			
-    			<option value="HN-INT" >Honduras</option>
+    			<option value="HN" >Honduras</option>
    			
-    			<option value="HK-INT" >Hong Kong</option>
+    			<option value="HK" >Hong Kong</option>
    			
-    			<option value="HU-INT" >Hungary</option>
+    			<option value="HU" >Hungary</option>
    			
-    			<option value="IS-INT" >Iceland</option>
+    			<option value="IS" >Iceland</option>
    			
-    			<option value="IN-INT" >India</option>
+    			<option value="IN" >India</option>
    			
-    			<option value="ID-INT" >Indonesia</option>
+    			<option value="ID" >Indonesia</option>
    			
-    			<option value="IE-INT" >Ireland</option>
+    			<option value="IE" >Ireland</option>
    			
-    			<option value="IL-INT" >Israel</option>
+    			<option value="IL" >Israel</option>
    			
-    			<option value="IT-INT" >Italy</option>
+    			<option value="IT" >Italy</option>
    			
-    			<option value="JM-INT" >Jamaica</option>
+    			<option value="JM" >Jamaica</option>
    			
-    			<option value="JP-INT" >Japan</option>
+    			<option value="JP" >Japan</option>
    			
-    			<option value="JE-INT" >Jersey</option>
+    			<option value="JE" >Jersey</option>
    			
-    			<option value="JO-INT" >Jordan</option>
+    			<option value="JO" >Jordan</option>
    			
-    			<option value="KZ-INT" >Kazakhstan</option>
+    			<option value="KZ" >Kazakhstan</option>
    			
-    			<option value="KE-INT" >Kenya</option>
+    			<option value="KE" >Kenya</option>
    			
-    			<option value="KI-INT" >Kiribati</option>
+    			<option value="KI" >Kiribati</option>
    			
-    			<option value="KR-INT" >South Korea</option>
+    			<option value="KR" >South Korea</option>
    			
-    			<option value="XK-INT" >Kosovo</option>
+    			<option value="XK" >Kosovo</option>
    			
-    			<option value="KW-INT" >Kuwait</option>
+    			<option value="KW" >Kuwait</option>
    			
-    			<option value="KG-INT" >Kyrgyzstan</option>
+    			<option value="KG" >Kyrgyzstan</option>
    			
-    			<option value="LA-INT" >Lao People's Democratic Republic</option>
+    			<option value="LA" >Lao People's Democratic Republic</option>
    			
-    			<option value="LV-INT" >Latvia</option>
+    			<option value="LV" >Latvia</option>
    			
-    			<option value="LB-INT" >Lebanon</option>
+    			<option value="LB" >Lebanon</option>
    			
-    			<option value="LS-INT" >Lesotho</option>
+    			<option value="LS" >Lesotho</option>
    			
-    			<option value="LR-INT" >Liberia</option>
+    			<option value="LR" >Liberia</option>
    			
-    			<option value="LI-INT" >Liechtenstein</option>
+    			<option value="LI" >Liechtenstein</option>
    			
-    			<option value="LT-INT" >Lithuania</option>
+    			<option value="LT" >Lithuania</option>
    			
-    			<option value="LU-INT" >Luxembourg</option>
+    			<option value="LU" >Luxembourg</option>
    			
-    			<option value="MO-INT" >Macau</option>
+    			<option value="MO" >Macau</option>
    			
-    			<option value="MK-INT" >Macedonia, The Former Yugoslav Republic Of</option>
+    			<option value="MK" >Macedonia, The Former Yugoslav Republic Of</option>
    			
-    			<option value="MG-INT" >Madagascar</option>
+    			<option value="MG" >Madagascar</option>
    			
-    			<option value="MW-INT" >Malawi</option>
+    			<option value="MW" >Malawi</option>
    			
-    			<option value="MV-INT" >Maldives</option>
+    			<option value="MV" >Maldives</option>
    			
-    			<option value="MT-INT" >Malta</option>
+    			<option value="MT" >Malta</option>
    			
-    			<option value="MH-INT" >Marshall Islands</option>
+    			<option value="MH" >Marshall Islands</option>
    			
-    			<option value="MQ-INT" >Martinique</option>
+    			<option value="MQ" >Martinique</option>
    			
-    			<option value="MR-INT" >Mauritania</option>
+    			<option value="MR" >Mauritania</option>
    			
-    			<option value="MU-INT" >Mauritius</option>
+    			<option value="MU" >Mauritius</option>
    			
-    			<option value="YT-INT" >Mayotte</option>
+    			<option value="YT" >Mayotte</option>
    			
-    			<option value="MX-INT" >Mexico</option>
+    			<option value="MX" >Mexico</option>
    			
-    			<option value="FM-INT" >Micronesia, Federated States Of</option>
+    			<option value="FM" >Micronesia, Federated States Of</option>
    			
-    			<option value="MD-INT" >Moldova, Republic Of</option>
+    			<option value="MD" >Moldova, Republic Of</option>
    			
-    			<option value="MC-INT" >Monaco</option>
+    			<option value="MC" >Monaco</option>
    			
-    			<option value="MN-INT" >Mongolia</option>
+    			<option value="MN" >Mongolia</option>
    			
-    			<option value="ME-INT" >Montenegro</option>
+    			<option value="ME" >Montenegro</option>
    			
-    			<option value="MS-INT" >Montserrat</option>
+    			<option value="MS" >Montserrat</option>
    			
-    			<option value="MA-INT" >Morocco</option>
+    			<option value="MA" >Morocco</option>
    			
-    			<option value="MZ-INT" >Mozambique</option>
+    			<option value="MZ" >Mozambique</option>
    			
-    			<option value="MM-INT" >Myanmar</option>
+    			<option value="MM" >Myanmar</option>
    			
-    			<option value="NA-INT" >Namibia</option>
+    			<option value="NA" >Namibia</option>
    			
-    			<option value="NR-INT" >Nauru</option>
+    			<option value="NR" >Nauru</option>
    			
-    			<option value="NP-INT" >Nepal</option>
+    			<option value="NP" >Nepal</option>
    			
-    			<option value="NL-INT" >Netherlands</option>
+    			<option value="NL" >Netherlands</option>
    			
-    			<option value="AN-INT" >Netherlands Antilles</option>
+    			<option value="AN" >Netherlands Antilles</option>
    			
-    			<option value="XN-INT" >Nevis</option>
+    			<option value="XN" >Nevis</option>
    			
-    			<option value="NC-INT" >New Caledonia</option>
+    			<option value="NC" >New Caledonia</option>
    			
-    			<option value="NZ-INT" >New Zealand</option>
+    			<option value="NZ" >New Zealand</option>
    			
-    			<option value="NI-INT" >Nicaragua</option>
+    			<option value="NI" >Nicaragua</option>
    			
-    			<option value="NG-INT" >Nigeria</option>
+    			<option value="NG" >Nigeria</option>
    			
-    			<option value="NU-INT" >Niue</option>
+    			<option value="NU" >Niue</option>
    			
-    			<option value="NO-INT" >Norway</option>
+    			<option value="NO" >Norway</option>
    			
-    			<option value="OM-INT" >Oman</option>
+    			<option value="OM" >Oman</option>
    			
-    			<option value="PK-INT" >Pakistan</option>
+    			<option value="PK" >Pakistan</option>
    			
-    			<option value="PW-INT" >Palau</option>
+    			<option value="PW" >Palau</option>
    			
-    			<option value="PA-INT" >Panama</option>
+    			<option value="PA" >Panama</option>
    			
-    			<option value="PG-INT" >Papua New Guinea</option>
+    			<option value="PG" >Papua New Guinea</option>
    			
-    			<option value="PY-INT" >Paraguay</option>
+    			<option value="PY" >Paraguay</option>
    			
-    			<option value="PE-INT" >Peru</option>
+    			<option value="PE" >Peru</option>
    			
-    			<option value="PH-INT" >Philippines</option>
+    			<option value="PH" >Philippines</option>
    			
-    			<option value="PL-INT" >Poland</option>
+    			<option value="PL" >Poland</option>
    			
-    			<option value="PT-INT" >Portugal</option>
+    			<option value="PT" >Portugal</option>
    			
-    			<option value="PR-INT" >Puerto Rico</option>
+    			<option value="PR" >Puerto Rico</option>
    			
-    			<option value="QA-INT" >Qatar</option>
+    			<option value="QA" >Qatar</option>
    			
-    			<option value="RE-INT" >Reunion</option>
+    			<option value="RE" >Reunion</option>
    			
-    			<option value="RO-INT" >Romania</option>
+    			<option value="RO" >Romania</option>
    			
-    			<option value="RU-INT" >Russian Federation</option>
+    			<option value="RU" >Russian Federation</option>
    			
-    			<option value="RW-INT" >Rwanda</option>
+    			<option value="RW" >Rwanda</option>
    			
-    			<option value="MP-INT" >Saipan</option>
+    			<option value="MP" >Saipan</option>
    			
-    			<option value="WS-INT" >Samoa</option>
+    			<option value="WS" >Samoa</option>
    			
-    			<option value="SM-INT" >San Marino</option>
+    			<option value="SM" >San Marino</option>
    			
-    			<option value="ST-INT" >Sao Tome And Principe</option>
+    			<option value="ST" >Sao Tome And Principe</option>
    			
-    			<option value="SA-INT" >Saudi Arabia</option>
+    			<option value="SA" >Saudi Arabia</option>
    			
-    			<option value="SN-INT" >Senegal</option>
+    			<option value="SN" >Senegal</option>
    			
-    			<option value="RS-INT" >Serbia</option>
+    			<option value="RS" >Serbia</option>
    			
-    			<option value="SC-INT" >Seychelles</option>
+    			<option value="SC" >Seychelles</option>
    			
-    			<option value="SL-INT" >Sierra Leone</option>
+    			<option value="SL" >Sierra Leone</option>
    			
     			<option value="SG" >Singapore</option>
    			
-    			<option value="SK-INT" >Slovakia</option>
+    			<option value="SK" >Slovakia</option>
    			
-    			<option value="SI-INT" >Slovenia</option>
+    			<option value="SI" >Slovenia</option>
    			
-    			<option value="SB-INT" >Solomon Islands</option>
+    			<option value="SB" >Solomon Islands</option>
    			
-    			<option value="XS-INT" >Somaliland (north Somalia)</option>
+    			<option value="XS" >Somaliland (north Somalia)</option>
    			
-    			<option value="ZA-INT" >South Africa</option>
+    			<option value="ZA" >South Africa</option>
    			
-    			<option value="ES-INT" >Spain</option>
+    			<option value="ES" >Spain</option>
    			
-    			<option value="LK-INT" >Sri Lanka</option>
+    			<option value="LK" >Sri Lanka</option>
    			
-    			<option value="BL-INT" >St. Barthelemy</option>
+    			<option value="BL" >St. Barthelemy</option>
    			
-    			<option value="XE-INT" >St. Eustatius</option>
+    			<option value="XE" >St. Eustatius</option>
    			
-    			<option value="KN-INT" >St. Kitts</option>
+    			<option value="KN" >St. Kitts</option>
    			
-    			<option value="LC-INT" >St. Lucia</option>
+    			<option value="LC" >St. Lucia</option>
    			
-    			<option value="XM-INT" >St. Maarten</option>
+    			<option value="XM" >St. Maarten</option>
    			
-    			<option value="VC-INT" >St. Vincent</option>
+    			<option value="VC" >St. Vincent</option>
    			
-    			<option value="SR-INT" >Suriname</option>
+    			<option value="SR" >Suriname</option>
    			
-    			<option value="SZ-INT" >Swaziland</option>
+    			<option value="SZ" >Swaziland</option>
    			
-    			<option value="SE-INT" >Sweden</option>
+    			<option value="SE" >Sweden</option>
    			
-    			<option value="CH-INT" >Switzerland</option>
+    			<option value="CH" >Switzerland</option>
    			
-    			<option value="PF-INT" >Tahiti</option>
+    			<option value="PF" >Tahiti</option>
    			
-    			<option value="TW-INT" >Taiwan</option>
+    			<option value="TW-" >Taiwan</option>
    			
-    			<option value="TJ-INT" >Tajikistan</option>
+    			<option value="TJ" >Tajikistan</option>
    			
-    			<option value="TZ-INT" >Tanzania</option>
+    			<option value="TZ" >Tanzania</option>
    			
-    			<option value="TH-INT" >Thailand</option>
+    			<option value="TH" >Thailand</option>
    			
-    			<option value="TG-INT" >Togo</option>
+    			<option value="TG" >Togo</option>
    			
-    			<option value="TO-INT" >Tonga</option>
+    			<option value="TO" >Tonga</option>
    			
-    			<option value="TT-INT" >Trinidad And Tobago</option>
+    			<option value="TT" >Trinidad And Tobago</option>
    			
-    			<option value="TN-INT" >Tunisia</option>
+    			<option value="TN" >Tunisia</option>
    			
-    			<option value="TR-INT" >Turkey</option>
+    			<option value="TR" >Turkey</option>
    			
-    			<option value="TM-INT" >Turkmenistan</option>
+    			<option value="TM" >Turkmenistan</option>
    			
-    			<option value="TC-INT" >Turks And Caicos Islands</option>
+    			<option value="TC" >Turks And Caicos Islands</option>
    			
-    			<option value="TV-INT" >Tuvalu</option>
+    			<option value="TV" >Tuvalu</option>
    			
-    			<option value="UG-INT" >Uganda</option>
+    			<option value="UG" >Uganda</option>
    			
-    			<option value="UA-INT" >Ukraine</option>
+    			<option value="UA" >Ukraine</option>
    			
-    			<option value="AE-INT" >United Arab Emirates</option>
+    			<option value="AE" >United Arab Emirates</option>
    			
-    			<option value="GB-INT" >United Kingdom</option>
+    			<option value="GB" >United Kingdom</option>
    			
-    			<option value="US-INT" >United States</option>
+    			<option value="US" >United States</option>
    			
-    			<option value="UM-INT" >United States Minor Outlying Islands</option>
+    			<option value="UM" >United States Minor Outlying Islands</option>
    			
-    			<option value="UY-INT" >Uruguay</option>
+    			<option value="UY" >Uruguay</option>
    			
-    			<option value="UZ-INT" >Uzbekistan</option>
+    			<option value="UZ" >Uzbekistan</option>
    			
-    			<option value="VU-INT" >Vanuatu</option>
+    			<option value="VU" >Vanuatu</option>
    			
-    			<option value="VE-INT" >Venezuela</option>
+    			<option value="VE" >Venezuela</option>
    			
-    			<option value="VN-INT" >Vietnam</option>
+    			<option value="VN" >Vietnam</option>
    			
-    			<option value="VG-INT" >Virgin Islands, British</option>
+    			<option value="VG" >Virgin Islands, British</option>
    			
-    			<option value="VI-INT" >Virgin Islands, U.s.</option>
+    			<option value="VI" >Virgin Islands, U.s.</option>
    			
-    			<option value="ZM-INT" >Zambia</option>
+    			<option value="ZM" >Zambia</option>
    			
-    			<option value="ZW-INT" >Zimbabwe</option>
+    			<option value="ZW" >Zimbabwe</option>
    			
   			</optgroup>
 		</select>
