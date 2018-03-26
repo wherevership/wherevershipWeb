@@ -64,7 +64,15 @@
 		</div>
 	<div class="container">
 		<form method="POST" action="<?=base_url('dtc_product_detail')?>" class="form-horizontal">
-			<div class="row">	
+			<div class="row">
+				<input type="hidden" name="weight" value="<?=$weight?>"/>
+				<input type="hidden" name="width" value="<?=$width?>"/>
+				<input type="hidden" name="length" value="<?=$length?>"/>
+				<input type="hidden" name="v_weight" value="<?=$v_weight?>"/>
+				<input type="hidden" name="cost" value="<?=$cost?>"/>
+				<input type="hidden" name="fromState" value="<?=$fromState?>"/>
+				<input type="hidden" name="toState" value="<?=$toState?>"/>
+				
 				<input type="hidden" name="shipper_account_number" value=""/>
 				<input type="hidden" name="shipper_account_name" value=""/>
 				<input type="hidden" name="shipper_company_name" value=""/>

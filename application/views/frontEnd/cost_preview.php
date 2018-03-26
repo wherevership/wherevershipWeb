@@ -2,45 +2,71 @@
 	
 	<div id="masterContent" >
 		<div class="container">
-        <div class="row">
-          <form method="POST" action="<?=base_url('int_shipper')?>" class="form-horizontal">
-            <div class="form-group">
-              <label for="wt"><span class="glyphicon glyphicon-info-sign"></span> Weight(kg)</label>
-              <p class="form-control" id="wt" name="weight"><?=$weight?></p>
-            </div>
-			<div class="form-group">
-              <label for="wt"><span class="glyphicon glyphicon-info-sign"></span> Volumetic Weight(kg)</label>
-              <p class="form-control" id="wt" name="weight"><?=$weight?></p>
-            </div>
-			<div class="form-group">
-              <label for="wt"><span class="glyphicon glyphicon-info-sign"></span> Length(cm)</label>
-              <p class="form-control" id="wt" name="weight"><?=$length?></p>
-            </div>
-			<div class="form-group">
-              <label for="wt"><span class="glyphicon glyphicon-info-sign"></span> width(cm)</label>
-              <p class="form-control" id="wt" name="weight"><?=$width?></p>
-            </div>
-			<div class="form-group">
-              <label for="wt"><span class="glyphicon glyphicon-info-sign"></span> height(cm)</label>
-              <p class="form-control" id="wt" name="weight"><?=$height?></p>
-            </div>
-			
-			<div class="form-group">
-              <label for="frm"><span class="glyphicon glyphicon-info-sign"></span> From</label>
-              <p class="form-control" id="frm" name="fromCountry"><?=$fromState?></p>
-            </div>
-			<div class="form-group">
-              <label for="to"><span class="glyphicon glyphicon-info-sign"></span> To</label>
-              <p class="form-control" id="to" name="toCountry"><?=$toCountry?></p>
-            </div>
-			<div class="form-group">
-              <label for="wt"><span class="glyphicon glyphicon-info-sign"></span> Cost(RM)</label>
-              <h3 class="form-control" id="wt" name="cost">123</h3>
-            </div>
-			<div class="form-group">
-				<button type="submit" class="btn btn-success btn-block">Continue >></button>
-			</div>
-          </form>
-        </div>
+			<form method="POST" action="<?=base_url('int_shipper')?>" class="form-horizontal">
+				<div class="row">
+					<h1>Cost Info</h1>
+						<div class="col-xs-12 col-md-6" style="padding: 10px 30px;">
+							<h2>Product Dimension</h2>
+								<div class="form-group">
+									<label for="wt"><span class="glyphicon glyphicon-info-sign"></span> Weight(kg)</label>
+									<input type="hidden" id="wt" name="weight" value="<?=$weight?>" />
+									<p class="form-control"><?=$weight?></p>
+								</div>
+								<div class="form-group">
+									<label for="l"><span class="glyphicon glyphicon-info-sign"></span> Length(cm)</label>
+									<input type="hidden" id="l" name="length" value="<?=$length?>" />
+									<p class="form-control"><?=$length?></p>
+								</div>
+								<div class="form-group">
+									<label for="w"><span class="glyphicon glyphicon-info-sign"></span> width(cm)</label>
+									<input type="hidden" id="w" name="width" value="<?=$width?>" />
+									<p class="form-control"><?=$width?></p>
+								</div>
+								<div class="form-group">
+									<label for="h"><span class="glyphicon glyphicon-info-sign"></span> height(cm)</label>
+									<input type="hidden" id="h" name="height" value="<?=$height?>" />
+									<p class="form-control"><?=$height?></p>
+								</div>
+								<div class="form-group">
+									<label for="vw"><span class="glyphicon glyphicon-info-sign"></span> Volumetic Weight(kg)</label>
+									<input type="hidden" id="vw" name="v_weight" value="<?=$v_weight?>"/>
+									<p class="form-control"><?=$v_weight?></p>
+								</div>
+							</div>
+							<div class="col-xs-12 col-md-6" style="padding: 10px 30px;">
+								<h2>Addresss</h2>
+								<div class="form-group">
+									<label for="frm"><span class="glyphicon glyphicon-info-sign"></span> From</label>
+									<input type="hidden"  id="frm" name="fromCountry" value="<?=$fromState?>"/>
+									<p class="form-control"><?=$fromState?></p>
+								</div>
+								<div class="form-group">
+									<label for="to"><span class="glyphicon glyphicon-info-sign"></span> To</label>
+									<input type="hidden" id="to" name="toCountry" value="<?=$toCountry?>" />
+									<p class="form-control"><?=$toCountry?></p>
+								</div>
+								<h2>Cost</h2>
+								<div class="form-group">
+									<label for="cost"><span class="glyphicon glyphicon-info-sign"></span> Cost(RM)</label>
+									<input type="hidden" class="form-control" id="cost" name="cost" value="123" />
+									<p class="form-control">123</p>
+								</div>
+							</div>
+						</div>
+								<div class="row">
+						<div class="form-group">
+					<div class="col-md-6">
+						<a type="button" class="form-control btn" href="javascript:history.go(-1)">Cancel</a>
+					</div>
+				
+					<div class="col-md-6">
+						<input type="submit" value="Continue >>" id="next" class="form-control btn btn-success"/>
+					
+					</div>
+					   </div>
+					   </div>
+					</div>
+				</form>
+     
 		</div>
 	</div>

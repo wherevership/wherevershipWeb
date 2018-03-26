@@ -38,7 +38,7 @@
 		          
 				</ul>
 			</div>
-			<div class="col-xs-12 col-sm-12 col-md-12 footer-link-height social-links">
+			<div class="col-xs-12 col-sm-6 col-md-4 footer-link-height social-links">
 				<ul class="links" style="padding-bottom: 5px;">
 					<li class="title-link">Follow Us</li>
 					<li style="float: left; margin-right: 10px;"><a href="#" target="_blank"><i class="fab fa-facebook-f" style="text-align: center"></i></a></li>

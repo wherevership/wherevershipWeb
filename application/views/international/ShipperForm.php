@@ -1,6 +1,7 @@
 	<div id="sticky-anchor"></div>
 		<div class="container top1">
 			<div class="row">
+			
 				<div class="container-fluid">
 					<div class="col-lg-6 col-md-4 col-sm-6 logo-wrapper">
 						<a href="<?=base_url('')?>" class="logo-wrapper">
@@ -64,15 +65,21 @@
 			<h1 class="title">From (Shipper)</h1>
 		</div>
 		<div class="container">
-		<p><?=$weight?></p>
 		<form method="POST" action="<?=base_url('int_receiver')?>" class="form-horizontal">
+			<input type="hidden" name="weight" value="<?=$weight?>"/>
+				<input type="hidden" name="width" value="<?=$width?>"/>
+				<input type="hidden" name="length" value="<?=$length?>"/>
+				<input type="hidden" name="v_weight" value="<?=$v_weight?>"/>
+				<input type="hidden" name="cost" value="<?=$cost?>"/>
+				<input type="hidden" name="fromState" value="<?=$fromState?>"/>
+				<input type="hidden" name="toCountry" value="<?=$toCountry?>"/>
 			<div class="row">
 				<div class="col-md-6">
 					<div class="form-group">
 						<label class="col-sm-4">Acc Number: </label>
 							<div class="col-sm-8">
 								<div class="has-feedback">
-									<input type="text" name="shipper_account_number" id="shipper_account_number" class="form-control" title="please enter shipper's account number!"value="<?=$weight?>"/>
+									<input type="text" name="shipper_account_number" id="shipper_account_number" class="form-control" title="please enter shipper's account number!"/>
 								</div>
 							</div>
 					</div>

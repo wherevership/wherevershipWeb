@@ -263,7 +263,8 @@
     <ul class="nav navbar-nav site-nav-group">
       <li class="site-nav-item"> <a href="<?=base_url()?>"><span>Home</span> <span class="side-menu-box"><i class="fas fa-home"></i></span></a> </li>
       <li class="site-nav-item"> <a href="<?=base_url('aboutUs')?>"><span>About Us</span> <span class="side-menu-box"><i class="fas fa-info-circle"></i></span></a> </li>
-      <li class="site-nav-item"> <a href="<?=base_url('courier')?>"><span>Send A Parcel</span> <span class="side-menu-box"><i class="fas fa-truck"></i></span></a> </li>
+      <li class="site-nav-item"> <a href="<?=base_url('courier')?>"><span>Courier</span> <span class="side-menu-box"><i class="fas fa-truck"></i></span></a> </li>
+	  <li class="site-nav-item"> <a href="<?=base_url('truck')?>"><span>Truck</span> <span class="side-menu-box"><i class="fas fa-truck"></i></span></a> </li>
       
     </ul>
     
@@ -291,27 +292,19 @@ function sticky_relocate() {
     var window_top = $(window).scrollTop();
     var div_top = $('#sticky-anchor').offset().top;
 	var div_top_mobile = $('#sticky-anchor-mobile').offset().top;
+	
+    if (window_top > div_top || window_top > div_top_mobile) {
+        $('#sticky').addClass('stick');
+		$('#sticky').addClass('animated fadeInDownBig');
+		$('div#sticky.navbar-header.visible-xs').addClass('stick');
+		$('div#sticky.navbar-header.visible-xs').addClass('animated fadeInDownBig');
+    } else {
+        $('#sticky').removeClass('stick');
+		$('#sticky').removeClass('animated fadeInDownBig');
+		$('div#sticky.navbar-header.visible-xs').removeClass('stick');
+		$('div#sticky.navbar-header.visible-xs').removeClass('animated fadeInDownBig');
+    }
 	 
 }
-
-$(function () {
-	$(window).scroll(sticky_relocate);
-    sticky_relocate();
-	$(window).on('resize', function() {
-		if($(window).width() > 767){
-			document.getElementById("MasterMobileMenu").style.display = "none";
-			document.getElementById("masterContent").style.display = "";
-			document.getElementById("masterFooter").style.display = "";
-		}
-	});
-	
-	$(window).focus(function() {
-		if($(window).width() > 767){
-			document.getElementById("MasterMobileMenu").style.display = "none";
-			document.getElementById("masterContent").style.display = "";
-			document.getElementById("masterFooter").style.display = "";
-		}
-	});
-});
 </script> 
 
