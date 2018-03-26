@@ -67,6 +67,13 @@
 		<div class="container">
 		<form method="POST" action="<?=base_url('dtc_receiver')?>" class="form-horizontal">
 				<div class="row">
+				<input type="hidden" name="weight" value="<?=$weight?>"/>
+				<input type="hidden" name="width" value="<?=$width?>"/>
+				<input type="hidden" name="length" value="<?=$length?>"/>
+				<input type="hidden" name="v_weight" value="<?=$v_weight?>"/>
+				<input type="hidden" name="cost" value="<?=$cost?>"/>
+				<input type="hidden" name="fromState" value="<?=$fromState?>"/>
+				<input type="hidden" name="toState" value="<?=$toState?>"/>
 				<div class="col-md-6">
 					<div class="form-group">
 						<label class="col-sm-4">Acc Number: </label>

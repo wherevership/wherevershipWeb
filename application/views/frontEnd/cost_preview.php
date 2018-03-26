@@ -9,39 +9,47 @@
 							<h2>Product Dimension</h2>
 								<div class="form-group">
 									<label for="wt"><span class="glyphicon glyphicon-info-sign"></span> Weight(kg)</label>
-									<input type="text" class="form-control" id="wt" name="weight" value="<?=$weight?>" disabled />
+									<input type="hidden" id="wt" name="weight" value="<?=$weight?>" />
+									<p class="form-control"><?=$weight?></p>
 								</div>
 								<div class="form-group">
 									<label for="l"><span class="glyphicon glyphicon-info-sign"></span> Length(cm)</label>
-									<input type="text" class="form-control" id="l" name="length" value="<?=$length?>" disabled />
+									<input type="hidden" id="l" name="length" value="<?=$length?>" />
+									<p class="form-control"><?=$length?></p>
 								</div>
 								<div class="form-group">
 									<label for="w"><span class="glyphicon glyphicon-info-sign"></span> width(cm)</label>
-									<input type="text" class="form-control" id="w" name="width" value="<?=$width?>" disabled />
+									<input type="hidden" id="w" name="width" value="<?=$width?>" />
+									<p class="form-control"><?=$width?></p>
 								</div>
 								<div class="form-group">
 									<label for="h"><span class="glyphicon glyphicon-info-sign"></span> height(cm)</label>
-									<input type="text" class="form-control" id="h" name="height" value="<?=$height?>" disabled />
+									<input type="hidden" id="h" name="height" value="<?=$height?>" />
+									<p class="form-control"><?=$height?></p>
 								</div>
 								<div class="form-group">
 									<label for="vw"><span class="glyphicon glyphicon-info-sign"></span> Volumetic Weight(kg)</label>
-									<input type="text" class="form-control" id="vw" name="v_weight" value="<?=$v_weight?>" disabled />
+									<input type="hidden" id="vw" name="v_weight" value="<?=$v_weight?>"/>
+									<p class="form-control"><?=$v_weight?></p>
 								</div>
 							</div>
 							<div class="col-xs-12 col-md-6" style="padding: 10px 30px;">
 								<h2>Addresss</h2>
 								<div class="form-group">
 									<label for="frm"><span class="glyphicon glyphicon-info-sign"></span> From</label>
-									<input type="text" class="form-control" id="frm" name="fromCountry" value="<?=$fromState?>" disabled />
+									<input type="hidden"  id="frm" name="fromCountry" value="<?=$fromState?>"/>
+									<p class="form-control"><?=$fromState?></p>
 								</div>
 								<div class="form-group">
 									<label for="to"><span class="glyphicon glyphicon-info-sign"></span> To</label>
-									<input type="text" class="form-control" id="to" name="toCountry" value="<?=$toCountry?>" disabled />
+									<input type="hidden" id="to" name="toCountry" value="<?=$toCountry?>" />
+									<p class="form-control"><?=$toCountry?></p>
 								</div>
 								<h2>Cost</h2>
 								<div class="form-group">
 									<label for="cost"><span class="glyphicon glyphicon-info-sign"></span> Cost(RM)</label>
-									<input type="text" class="form-control" id="cost" name="cost" value="123" disabled />
+									<input type="hidden" class="form-control" id="cost" name="cost" value="123" />
+									<p class="form-control">123</p>
 								</div>
 							</div>
 						</div>
