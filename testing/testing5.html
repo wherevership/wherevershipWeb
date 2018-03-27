@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>WHEREVERSHIP | Delivery Made Easy</title>
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/bootstrap-select.min.css" rel="stylesheet">
+		<link href="css/style.css" rel="stylesheet">
+		
+		<script type="text/javascript" src="js/jquery-1.12.1.min.js"></script>
+		<script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+		
+	</head>
+	
+	<body>
+		<p id="title">123456</p>
+		<a id="testingLink">test link</a>
+		<p id="lastName"></p>
+		<p id="firstName"></p>
+		
+		<script>
+			var testingBtn = document.getElementById("testingLink");
+		    var config = {
+				apiKey: "AIzaSyDxGSdMgiJjzgO0fIZGoB6lKCh4QxQ4l_0",
+				authDomain: "wherevership-7eafa.firebaseapp.com",
+				databaseURL: "https://wherevership-7eafa.firebaseio.com",
+				projectId: "wherevership-7eafa",
+				storageBucket: "wherevership-7eafa.appspot.com",
+				messagingSenderId: "952318944133"
+			};
+			firebase.initializeApp(config);  
+			firebase.auth().onAuthStateChanged( firebaseUser => {
+				if(firebaseUser) {
+					console.log(firebaseUser.uid);
+					console.log(firebaseUser.email);
+					$("#title").text(firebaseUser.email);
+					const database2 = firebase.database().ref('User').child(firebaseUser.uid);
+					database2.on('value', snap => {
+						
+						$("#lastName").text(snap.val().LastName);
+						$("#firstName").text(snap.val().firstName);
+						console.log(snap.val());
+						
+							
+					});
+					
+				
+				} else {
+					$("#title").text('not logged in');
+					console.log('not logged in');
+				}
+			
+			});
+			
+			testingBtn.addEventListener('click', function(){
+				window.location.href = "testing6.html";
+			
+			
+			});
+			
+			
+		
+		</script>
+	
+	</body>
+	
+	
+</html>

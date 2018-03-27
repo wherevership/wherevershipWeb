@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>WHEREVERSHIP | Delivery Made Easy</title>
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/bootstrap-select.min.css" rel="stylesheet">
+		<link href="css/style.css" rel="stylesheet">
+		
+		<script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+		
+		<style>
+			body {
+				background-color: #f1f1f1;
+			}
+		
+			#login {
+				width: 320px;
+				padding: 8% 0 0;
+				margin: auto;
+			}
+			
+			.login form {
+				margin-top: 20px;
+				margin-left: 0;
+				padding: 26px 24px 46px;
+				background: #fff;
+				box-shadow: 0 1px 3px rgba(0,0,0,.13);
+			}
+			
+			.login form,.login h1 a {
+				overflow: hidden;
+				font-weight: 400;
+			}
+			
+			.login * {
+				display: block;
+				margin-top: 0cm;
+			}
+			
+			.login h1{
+				text-align: center;
+			}
+			
+			.login h1 a {
+				background-image: url(http://wherevership.com/assets2/image/logo.png);
+				background-size: 140px;
+				background-position: center top;
+				background-repeat: no-repeat;
+				height: 140px;
+				font-size: 20px;
+				display: block
+				
+				
+			}
+			
+			.login form .input, .login input[type=text] {
+				background: #fbfbfb;
+			}
+			
+			.login form .input, .login input[type=text] {
+				border: 1px solid #ddd;
+				box-shadow: inset 0 1px 2px rgba(0,0,0,.07);
+				font-size: 24px;
+				width: 100%;
+				padding: 3px;
+				margin: 2px 6px 16px 0;
+			}
+			
+			.login .btn-primary {
+				float: right;
+			}
+			
+			.login input[type=text]:hover, .login input[type=password]:hover{
+				background: #f1f1f1;
+			}
+		</style>
+	
+	</head>
+	<body>
+		<div class="login">
+			<div id="login">
+				<h1>
+					<a  href="http://wherevership.com/" title="Powerd by Wherevership" tabindex="-1">
+						
+					</a>
+				</h1>
+				<form name="loginform" id="loginform" action="javascript:login();" method="post">
+					<p>
+						<label for="user_login">
+							Username or Email Address
+							<br>
+							<input type="text" name="log" id="user_login" class="input" value size="20">
+						</label>
+					</p>
+					
+					<p>
+						<label for="user_pass">
+							Password
+							<br>
+							<input type="password" name="user_Pass" id="user_pass" class="input" value size="20">
+						</label>
+					</p>
+					
+					</p>
+						<input type="submit" name="submit" id="submit" class="btn btn-primary button-large" value="Log In">
+					</p>
+				</form>
+			</div>
+		</div>
+		
+		<script>
+			// Initialize Firebase
+			var config = {
+				apiKey: "AIzaSyDxGSdMgiJjzgO0fIZGoB6lKCh4QxQ4l_0",
+				authDomain: "wherevership-7eafa.firebaseapp.com",
+				databaseURL: "https://wherevership-7eafa.firebaseio.com",
+				projectId: "wherevership-7eafa",
+				storageBucket: "wherevership-7eafa.appspot.com",
+				messagingSenderId: "952318944133"
+			};
+			firebase.initializeApp(config);
+			
+		
+
+			function login() {
+				const username = document.getElementById('user_login').value;
+				const password = document.getElementById('user_pass').value;
+				const auth = firebase.auth();
+				
+				auth.signInWithEmailAndPassword(username,password).then(function(firebaseUser) {
+					const database2 = firebase.database().ref('User').child(firebaseUser.uid);
+					
+					database2.on('value', snap => {
+						if (snap.val().Role == 'Admin') {
+							window.location.href = "testing5.html";
+						}
+						else {
+							
+							firebase.auth().signOut().then(function() {
+				
+								alert('You are permis to access')
+							}).catch(function(error) {
+									console.log(error);
+				
+							});
+						
+						}
+							
+					});
+				
+				})
+				.catch(function(error) {
+				   alert(error.message);
+				
+				});
+				
+				
+				
+			
+			}
+			
+			
+	
+		</script>
+	
+	</body>
+	
+</html>

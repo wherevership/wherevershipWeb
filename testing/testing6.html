@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>WHEREVERSHIP | Delivery Made Easy</title>
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/bootstrap-select.min.css" rel="stylesheet">
+		<link href="css/style.css" rel="stylesheet">
+		
+		
+		<script type="text/javascript" src="js/jquery-1.12.1.min.js"></script>
+		<script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+		
+	</head>
+	
+	<body>
+		<p>I am testing6.html</p>
+		
+		<a id="logOut">LogOut</a>
+		
+		<div class="container">
+            
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Last Name</th>
+						<th>First Name</th>
+						<th>Role</th>
+						<th>Contact</th>
+					</tr>
+				</thead>
+			<tbody id="testingData">
+			
+			</tbody>
+		</table>
+		<button id="change">Change</button>
+		<pre></pre>
+		</div>
+		
+		
+		
+		<script>
+			var logoutBtn = document.getElementById("logOut");
+			var changeBtn = document.getElementById("change");
+			
+			var config = {
+				apiKey: "AIzaSyDxGSdMgiJjzgO0fIZGoB6lKCh4QxQ4l_0",
+				authDomain: "wherevership-7eafa.firebaseapp.com",
+				databaseURL: "https://wherevership-7eafa.firebaseio.com",
+				projectId: "wherevership-7eafa",
+				storageBucket: "wherevership-7eafa.appspot.com",
+				messagingSenderId: "952318944133"
+			};
+			firebase.initializeApp(config);
+		
+			var userId;
+			firebase.auth().onAuthStateChanged( firebaseUser => {
+				if(firebaseUser) {
+					userId = firebaseUser.uid;
+					console.log(firebaseUser.uid);
+					
+					console.log(firebaseUser.email);
+					const database2 = firebase.database().ref('User');
+					database2.on('value', snap => {
+						$("#testingData").empty();
+						var object1 = snap.val();
+						console.log(object1);
+						var keys = Object.keys(object1);
+						console.log(keys);
+				     
+						if (keys.length == 0) {
+							var tr = $("<tr>").html('<td>no data aliable</td>');
+							$("#testingData").append(tr);
+						} else {
+						
+							for (var i=0; i<keys.length; i++) {
+							var k= keys[i];
+								console.log(k);
+								console.log(object1[k].LastName);
+								
+								if (object1[k].Role == "Admin") {
+
+								var tr = $("<tr>").html('<td>'+object1[k].LastName+'</td><td>'+object1[k].firstName+'</td><td>'+object1[k].Role+'</td><td>'+object1[k].contact+'</td>');
+								$("#testingData").append(tr);
+							
+								}
+							
+				
+							}
+						
+						
+						}
+						
+				});
+					
+				
+				} else {
+					console.log('not logged in');
+				}
+			
+			});
+			
+			
+			$("<pre>").text(userId);
+			
+			logoutBtn.addEventListener('click', function(){
+				
+				firebase.auth().signOut().then(function() {
+				
+					window.location.href = "testing2.html";
+				}).catch(function(error) {
+				   console.log(error);
+				
+				});
+				
+			});
+			
+			changeBtn.addEventListener('click', function() {
+				
+				const database2 = firebase.database().ref('User');
+					$("#testingData").empty();
+					database2.on('value', snap => {
+						var object1 = snap.val();
+						console.log(object1);
+						var keys = Object.keys(object1);
+						console.log(keys);
+				     
+						if (keys.length == 0) {
+							var tr = $("<tr>").html('<td>no data aliable</td>');
+							$("#testingData").append(tr);
+						}else {
+							
+							for (var i=0; i<keys.length; i++) {
+								var k= keys[i];
+									console.log(k);
+									console.log(object1[k].LastName);
+								
+									var tr = $("<tr>").html('<td><a>'+object1[k].LastName+'</a></td><td>'+object1[k].firstName+'</td><td>'+object1[k].Role+'</td><td>'+object1[k].contact+'</td>');
+									$("#testingData").append(tr);
+									$("<pre>").text(userId);
+							
+							
+				
+						}
+					}
+				});
+			});
+			
+		
+		</script>
+	
+	</body>
+	
+	
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>WHEREVERSHIP | Delivery Made Easy</title>
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/bootstrap-select.min.css" rel="stylesheet">
+		<link href="css/style.css" rel="stylesheet">
+		
+		
+		<script type="text/javascript" src="js/jquery-1.12.1.min.js"></script>
+		<script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+		
+	</head>
+	
+	<body>
+		
+	<div class="container">
+  <h2>Modal Login Example</h2>
+  <!-- Trigger the modal with a button -->
+  <button type="button" class="btn btn-default btn-lg" id="myBtn">Cost Info</button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header" style="padding:35px 50px;">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4><span class="glyphicon glyphicon-info-sign"></span> Cost Info</h4>
+        </div>
+        <div class="modal-body" style="padding:40px 50px;">
+          <form role="form">
+            <div class="form-group">
+              <label for="wt"><span class="glyphicon glyphicon-info-sign"></span> Weight(kg)</label>
+              <p class="form-control" id="wt">123</p>
+            </div>
+			<div class="form-group">
+              <label for="frm"><span class="glyphicon glyphicon-info-sign"></span> From</label>
+              <p class="form-control" id="frm">Malaysia</p>
+            </div>
+			<div class="form-group">
+              <label for="to"><span class="glyphicon glyphicon-info-sign"></span> To</label>
+              <p class="form-control" id="to">Malaysia</p>
+            </div>
+			<div class="form-group">
+              <label for="wt"><span class="glyphicon glyphicon-info-sign"></span> Cost(RM)</label>
+              <p class="form-control" id="wt">123</p>
+            </div>
+				<button type="submit" class="btn btn-success btn-block">Continue >></button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+         
+        </div>
+      </div>
+      
+    </div>
+  </div> 
+</div>
+ 
+<script>
+$(document).ready(function(){
+    $("#myBtn").click(function(){
+        $("#myModal").modal();
+    });
+});
+</script>
+
+	
+	
+	
+	
+	
+	
+	
+	</body>
+	
+</html>

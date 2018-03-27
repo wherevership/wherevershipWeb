@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>WHEREVERSHIP | Delivery Made Easy</title>
+		
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/bootstrap-select.min.css" rel="stylesheet">
+		<link href="css/style.css" rel="stylesheet">
+		
+		<script type="text/javascript" src="js/jquery-1.12.1.min.js"></script>
+		<script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap.js"></script>
+		
+		<script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+		
+		
+	</head>
+	<body>
+	    <h2>Testing Dispaly Data Using 0n</h2>
+		<pre id="display"> </pre>
+		<h2>Testing Call child Data Using 0n</h2>
+		<pre id="display1"> </pre>
+		<h2>Testing Dispaly All Data Using 0nce</h2>
+		<pre id="display2"> </pre>
+		<h2>Testing Dispaly Data Using On and limitToLast</h2>
+		<pre id="display3"> </pre>
+		<h2>Testing Dispaly Data Using On and limitToLast (orderBYValue)</h2>
+		<pre id="display3a"> </pre>
+		<h2>Testing Dispaly Data Using On and limiitToFirst</h2>
+		<pre id="display4"> </pre>
+		<h2>Testing Dispaly Data Using On and endAT</h2>
+		<pre id="display5"> </pre>
+		<h2>Testing Dispaly Data Using On and startAT</h2>
+		<pre id="display6"> </pre>
+		<h2>Testing Dispaly URL</h2>
+		<pre id="display7"> </pre>
+		
+		
+		<div class="container">
+            <h2>Testing Table</h2>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Weight(Kg)</th>
+						<th>Distance(KM)</th>
+						<th>Cost(RM)</th>
+						<th></th>
+					</tr>
+				</thead>
+			<tbody id="testingData">
+			
+			</tbody>
+  </table>
+</div>
+		
+		<script>
+			// Initialize Firebase
+			var config = {
+				apiKey: "AIzaSyDxGSdMgiJjzgO0fIZGoB6lKCh4QxQ4l_0",
+				authDomain: "wherevership-7eafa.firebaseapp.com",
+				databaseURL: "https://wherevership-7eafa.firebaseio.com",
+				projectId: "wherevership-7eafa",
+				storageBucket: "wherevership-7eafa.appspot.com",
+				messagingSenderId: "952318944133"
+			};
+			firebase.initializeApp(config);
+			
+			const preDisplay = document.getElementById('display');
+			const preDisplay1 = document.getElementById('display1');
+			const preDisplay2 = document.getElementById('display2');
+			const preDisplay3 = document.getElementById('display3');
+			const preDisplay3a = document.getElementById('display3a');
+			const preDisplay4 = document.getElementById('display4');
+			const preDisplay5 = document.getElementById('display5');
+			const preDisplay6 = document.getElementById('display6');
+			const preDisplay7 = document.getElementById('display7');
+			
+			const database = firebase.database().ref('User');
+			
+			database.on('value', snap => {
+				preDisplay.innerText = JSON.stringify(snap.val(), null, 3);
+				
+			});
+			
+			const database1 = firebase.database().ref('Shipment/Shipment1');
+			
+			database1.on('value', snap => {
+				preDisplay1.innerText = JSON.stringify(snap.val(), null, 3);
+				
+			});
+			
+			const database2 = firebase.database().ref();
+			
+			database2.once('value', snap => {
+				preDisplay2.innerText = JSON.stringify(snap.val(), null, 3);
+				
+			});
+			
+			const database3 = firebase.database().ref('User');
+			
+			database3.orderByChild("Address").limitToLast(2).on('value', snap => {
+				preDisplay3.innerText = JSON.stringify(snap.val(), null, 3);
+				
+			});
+			
+			const database3a = firebase.database().ref('User');
+			
+			database3a.orderByValue().limitToLast(2).on('value', snap => {
+				preDisplay3a.innerText = JSON.stringify(snap.val(), null, 3);
+				
+			});
+			
+			
+		//	const database4 = firebase.database().ref('User');
+			
+			database3.orderByChild("LastName").limitToFirst(2).on('value', snap => {
+				preDisplay4.innerText = JSON.stringify(snap.val(), null, 3);
+				
+			});
+			
+			const database5 = firebase.database().ref('Truck_Costing');
+			
+			database5.orderByKey().endAt("cat2").on('value', snap => {
+				preDisplay5.innerText = JSON.stringify(snap.val(), null, 3);
+				
+			});
+			
+			const database6 = firebase.database().ref('Truck_Costing');
+			
+			database6.orderByKey().startAt("cat2").on('value', snap => {
+				preDisplay6.innerText = JSON.stringify(snap.val(), null, 3);
+				
+			});
+			
+			
+			const Url1 = database5.toString();
+			preDisplay7.innerText = Url1;
+				
+			
+			database5.on('value', snap => {
+				var object1 = snap.val();
+				var keys = Object.keys(object1);
+				
+				for (var i=0; i<keys.length; i++) {
+					var k= keys[i];
+					var tr = $("<tr>").html('<td>'+object1[k].weight+'</td><td>'+object1[k].distance+'</td><td>'+object1[k].cost+'</td><td><button onclick="testFunction(\''+k+'\',\''+object1[k].weight+'\',\''+object1[k].distance+'\')" ><span class="glyphicon glyphicon-search"></button></td>');
+					$("#testingData").append(tr);
+					if ( k == "cat2") {
+						
+						console.log(k +' '+object1[k].weight+' '+object1[k].distance);
+					}
+				
+				}
+				});
+				
+				
+			function testFunction(id,weight,distance) {
+				console.log(id +weight+ distance);
+				}
+			
+		</script>
+	
+	
+	</body>
+</html>
