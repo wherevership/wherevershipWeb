@@ -77,7 +77,10 @@
 				<input type="hidden" name="toState" value="<?=$toState?>"/>
 				<div class="col-md-6">
 					<div class="form-group">
-						<label class="col-sm-4">Acc Number: </label>
+						<div class="col-sm-4">
+							<label for="shipper_account_number">Acc Number: </label>
+						</div>
+						
 							<div class="col-sm-8">
 								<div class="has-feedback">
 									<input type="text" name="shipper_account_number" id="shipper_account_number" class="form-control" title="please enter shipper's account number!"/>
@@ -85,7 +88,10 @@
 							</div>
 					</div>
 					<div class ="form-group">
-						<label class="col-sm-4">Acc Name: </label>
+						<div class="col-sm-4">
+							<label for="shipper_account_name">Acc Name: </label>
+						</div>
+						
 							<div class="col-sm-8">
 								<div class="has-feedback">
 									<input type="text" name="shipper_account_name" id="shipper_account_name" class="form-control" title="please enter shipper's name!"/>
@@ -93,7 +99,10 @@
 						</div>
 					</div>	
 					<div class ="form-group">
-						<label class="col-sm-4">Company Name: </label>
+						<div class="col-sm-4">
+							<label for="shipper_company_name">Company Name: </label>
+						</div>
+						
 							<div class="col-sm-8">
 								<div class="has-feedback">
 									<input type="text" name="shipper_company_name" id="shipper_company_name" class="form-control" title="please enter company name!"/>
@@ -101,10 +110,13 @@
 							</div>
 					</div>		
 					<div class ="form-group">
-						<label class="col-sm-4">Country:</label>
+						<div class="col-sm-4">
+							<label for="shipper_country">Country:</label>
+						</div>
+						
 							<div class="col-sm-8">
 							<div class="has-feedback">
-								<select name="shipper_country" class="form-control">
+								<select name="shipper_country" class="form-control" id="shipper_country">
 									<option value="MY">Malaysia</option>
 									<option value="SG">Singapore</option>
 									<option value="ID">Indonesia</option>
@@ -113,41 +125,56 @@
 						</div>
 					</div>	
 					<div class ="form-group">
-						<label class="col-sm-4">Address:</label>
+						<div class="col-sm-4">
+							<label for="shipper_address">Address:<span class="required">*</span></label>
+						</div>
+						
 						<div class="col-sm-8">
 							<div class="has-feedback">
-								<input type="text" name="shipper_address" id="shipper_address" class="form-control" title="please enter shipper's address" />
+								<input type="text" name="shipper_address" id="shipper_address" class="form-control" title="please enter shipper's address" required />
 							</div>
 						</div>
 					</div>
 					<div class ="form-group">
-						<label class="col-sm-4">City:</label>
+						<div class="col-sm-4">
+							<label for="shipper_city">City:<span class="required">*</span></label>
+						</div>
+						
 						<div class="col-sm-8">
 							<div class="has-feedback">
-							<input type="text" name="shipper_city" id="shipper_city" class="form-control" title="please enter shipper's city!"/>
+							<input type="text" name="shipper_city" id="shipper_city" class="form-control" title="please enter shipper's city!" required/>
 							</div>
 						</div>	
 					</div>			
 					<div class ="form-group">
-						<label class="col-sm-4">PostCode:</label>
+						<div class="col-sm-4">
+							<label for="shipper_postcode">PostCode:<span class="required">*</span></label>
+						</div>
+						
 						<div class="col-sm-8">
 							<div class="has-feedback">
-								<input type="text" name="shipper_postcode" id="shipper_postcode" class="form-control" title="please enter shipper's postcode"/>
+								<input type="text" name="shipper_postcode" id="shipper_postcode" class="form-control" title="please enter shipper's postcode" required/>
 							</div>
 						</div>
 					</div>			
 					<div class ="form-group">
-						<label class="col-sm-4">State:</label>
+						<div class="col-sm-4">
+							<label for="shipper_state">State:<span class="required">*</span></label>
+						</div>
+						
 						<div class="col-sm-8">
 							<div class="has-feedback">
-								<input type="text" name="shipper_state" id="shipper_state" class="form-control" title="please enter shipper's state"/>
+								<input type="text" name="shipper_state" id="shipper_state" class="form-control" title="please enter shipper's state" required/>
 							</div>
 						</div>
 					</div>
 				</div>
 				<div class="col-md-6">
 					<div class ="form-group">
-						<label class="col-sm-4">Subhub:</label>
+						<div class="col-sm-4">
+							<label for="shipper_subhub">Subhub:</label>
+						</div>
+						
 						<div class="col-sm-8">
 							<div class="has-feedback">
 								<input type="text" name="shipper_subhub" id="shipper_subhub" class="form-control" title="please enter shipper's subhub"/>
@@ -155,26 +182,35 @@
 						</div>
 					</div>
 					<div class ="form-group">
-						<label class="col-sm-4">Contact Person:</label>
+						<div class="col-sm-4">
+							<label for="shipper_contact_person">Contact Person:<span class="required">*</span></label>
+						</div>
+						
 						<div class="col-sm-8">
 							<div class="has-feedback">
-								<input type="text" name="shipper_contact_person" id="shipper_contact_person" class="form-control" title="please enter contact person name" />
+								<input type="text" name="shipper_contact_person" id="shipper_contact_person" class="form-control" title="please enter contact person name" required/>
 							</div>
 						</div>
 					</div>	
 					<div class ="form-group">
-						<label class="col-sm-4">Phone Number</label>
+						<div class="col-sm-4">
+							<label for="shipper_contact_Person">Phone Number:<span class="required">*</span></label>
+						</div>
+						
 						<div class="col-sm-8">
 							<div class="has-feedback">
-								<input type="text" name="shipper_phone_number" id="shipper_contact_Person" class="form-control" title="please enter contact person phone number"/>
+								<input type="text" name="shipper_phone_number" id="shipper_contact_Person" class="form-control" title="please enter contact person phone number" required/>
 							</div>
 						</div>
 					</div>
 					<div class ="form-group">
-						<label class="col-sm-4">Email</label>
+						<div class="col-sm-4">
+							<label for="shipper_email">Email:<span class="required">*</span></label>
+						</div>
+						
 						<div class="col-sm-8">
 							<div class="has-feedback">
-								<input type="text" name="shipper_email" id="shipper_email" class="form-control" title="please enter contact person email"/>
+								<input type="text" name="shipper_email" id="shipper_email" class="form-control" title="please enter contact person email" required/>
 							</div>
 						</div>
 					</div>

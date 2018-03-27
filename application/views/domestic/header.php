@@ -208,5 +208,9 @@ $(function () {
 			label {
 					font-weight: 300; !important
 			}
+			
+			.required {
+				color: #FF0000;
+			}
 		
 		</style>

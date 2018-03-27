@@ -90,7 +90,10 @@
 				
 				<div class="col-md-6">
 					<div class="form-group">
-						<label class="col-sm-4">Acc Number</label>
+						<div class="col-sm-4">
+							<label for="receiver_account_number">Acc Number:</label>
+						</div>
+						
 							<div class="col-sm-8">
 								<div class="has-feedback">
 									<input type="text" name="receiver_account_number" id="receiver_account_number" class="form-control" title="please enter receiver's account number!"/>
@@ -98,7 +101,10 @@
 							</div>
 					</div>
 					<div class="form-group">
-						<label class="col-sm-4">Acc Name</label>
+						<div class="col-sm-4">
+							<label for="receiver_account_name">Acc Name:</label>
+						</div>
+						
 							<div class="col-sm-8">
 								<div class="has-feedback">
 									<input type="text" name="receiver_account_name" id="receiver_account_name" class="form-control" title="please enter receiver's account name!"/>
@@ -106,7 +112,10 @@
 							</div>
 					</div>	
 					<div class="form-group">
-						<label class="col-sm-4">Company Name</label>
+						<div class="col-sm-4">
+							<label for="receiver_company_name">Company Name:</label>
+						</div>
+						
 							<div class="col-sm-8">
 								<div class="has-feedback">
 									<input type="text" name="receiver_company_name" id="receiver_company_name" class="form-control" title="please enter receiver's company name!"/>
@@ -114,10 +123,13 @@
 							</div>
 					</div>
 					<div class="form-group">
-						<label class="col-sm-4">Country</label>
+						<div class="col-sm-4">
+							<label for="receiver_country">Country:</label>
+						</div>
+						
 							<div class="col-sm-8">
 								<div class="has-feedback">
-									<select name="receiver_country" class="form-control">
+									<select name="receiver_country" class="form-control" id="receiver_country" required>
 										<option value="MY">Malaysia</option>
 										<option value="SG">Singapore</option>
 										<option value="ID">Indonesia</option>
@@ -126,41 +138,56 @@
 							</div>
 					</div>
 					<div class="form-group">
-						<label class="col-sm-4">Address</label>
+						<div class="col-sm-4">
+							<label for="receiver_address">Address:<span class="required">*</span></label>
+						</div>
+						
 							<div class="col-sm-8">
 								<div class="has-feedback">
-									<input type="text" name="receiver_address" id="receiver_address" class="form-control" title="please enter receiver's address!"/>
+									<input type="text" name="receiver_address" id="receiver_address" class="form-control" title="please enter receiver's address!" required/>
 								</div>
 							</div>
 					</div>
 					<div class="form-group">
-						<label class="col-sm-4">City</label>
+						<div class="col-sm-4">
+							<label for="receiver_city">City:<span class="required">*</span></label>
+						</div>
+						
 							<div class="col-sm-8">
 								<div class="has-feedback">
-									<input type="text" name="receiver_city" id="receiver_city" class="form-control" title="please enter receiver's city!"/>
+									<input type="text" name="receiver_city" id="receiver_city" class="form-control" title="please enter receiver's city!" required/>
 								</div>
 							</div>
 					</div>
 					<div class="form-group">
-						<label class="col-sm-4">PostCode</label>
+						<div class="col-sm-4">
+							<label for="receiver_postcode">PostCode:<span class="required">*</span></label>
+						</div>
+						
 							<div class="col-sm-8">
 								<div class="has-feedback">
-									<input type="text" name="receiver_postcode" id="receiver_postcode" class="form-control" title="please enter receiver's postcode!"/>
+									<input type="text" name="receiver_postcode" id="receiver_postcode" class="form-control" title="please enter receiver's postcode!" required/>
 								</div>
 							</div>
 					</div>
 					<div class="form-group">
-					<label class="col-sm-4">State</label>
+						<div class="col-sm-4">
+							<label for="receiver_state">State:<span class="required">*</span></label>
+						</div>
+					
 						<div class="col-sm-8">
 							<div class="has-feedback">
-								<input type="text" name="receiver_state" id="receiver_state" class="form-control" title="please enter receiver's state!"/>
+								<input type="text" name="receiver_state" id="receiver_state" class="form-control" title="please enter receiver's state!" required/>
 							</div>
 						</div>
 				</div>
 				</div>
 				<div class="col-md-6">
 					<div class="form-group">
-						<label class="col-sm-4">Subhub</label>
+						<div class="col-sm-4">
+							<label for="receiver_subhub">Subhub:</label>
+						</div>
+						
 							<div class="col-sm-8">
 								<div class="has-feedback">
 									<input type="text" name="receiver_subhub" id="receiver_subhub" class="form-control" title="please enter receiver's subhub!"/>
@@ -168,26 +195,35 @@
 							</div>
 					</div>
 					<div class="form-group">
-						<label class="col-sm-4">Contact Person</label>
+						<div class="col-sm-4">
+							<label for="receiver_contact_person">Contact Person:<span class="required">*</span></label>
+						</div>
+						
 							<div class="col-sm-8">
 								<div class="has-feedback">
-									<input type="text" name="receiver_contact_person" id="receiver_contact_person" class="form-control" title="please enter receiver's name!"/>
+									<input type="text" name="receiver_contact_person" id="receiver_contact_person" class="form-control" title="please enter receiver's name!" required/>
 								</div>
 							</div>
 					</div>
 					<div class="form-group">
-						<label class="col-sm-4">Phone Number</label>
+						<div class="col-sm-4">
+							<label for="receiver_phone_number">Phone Number:<span class="required">*</span></label>
+						</div>
+						
 							<div class="col-sm-8">
 								<div class="has-feedback">
-									<input type="text" name="receiver_phone_number" id="receiver_phone_number" class="form-control" title="please enter receiver's phone number!"/>
+									<input type="text" name="receiver_phone_number" id="receiver_phone_number" class="form-control" title="please enter receiver's phone number!" required/>
 								</div>
 							</div>
 					</div>
 					<div class="form-group">
-					<label class="col-sm-4">Email</label>
+						<div class="col-sm-4">
+							<label for="receiver_email">Email:<span class="required">*</span></label>
+						</div>
+					
 						<div class="col-sm-8">
 							<div class="has-feedback">
-								<input type="text" name="receiver_email" id="receiver_email" class="form-control" title="please enter receiver's email!"/>
+								<input type="text" name="receiver_email" id="receiver_email" class="form-control" title="please enter receiver's email!" required/>
 							</div>
 						</div>
 				</div>
