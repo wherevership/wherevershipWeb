@@ -66,6 +66,7 @@
 		<form method="POST" action="<?=base_url('dtc_product_detail')?>" class="form-horizontal">
 			<div class="row">
 				<input type="hidden" name="weight" value="<?=$weight?>"/>
+				<input type="hidden" name="height" value="<?=$height?>"/>
 				<input type="hidden" name="width" value="<?=$width?>"/>
 				<input type="hidden" name="length" value="<?=$length?>"/>
 				<input type="hidden" name="v_weight" value="<?=$v_weight?>"/>
@@ -73,19 +74,20 @@
 				<input type="hidden" name="fromState" value="<?=$fromState?>"/>
 				<input type="hidden" name="toState" value="<?=$toState?>"/>
 				
-				<input type="hidden" name="shipper_account_number" value=""/>
-				<input type="hidden" name="shipper_account_name" value=""/>
-				<input type="hidden" name="shipper_company_name" value=""/>
-				<input type="hidden" name="shipper_country" value=""/>
-				<input type="hidden" name="shipper_address" value=""/>
-				<input type="hidden" name="shipper_city" value=""/>
-				<input type="hidden" name="shipper_postcode" value=""/>
-				<input type="hidden" name="shipper_state" value=""/>
-				<input type="hidden" name="shipper_subhub" value=""/>
-				<input type="hidden" name="shipper_contact_person" value=""/>
-				<input type="hidden" name="shipper_phone_number" value=""/>
-				<input type="hidden" name="shipper_email" value=""/>
-			
+				<input type="hidden" name="shipper_account_number" value="<?=$shipper_account_number?>"/>
+				<input type="hidden" name="shipper_account_name" value="<?=$shipper_account_name?>"/>
+				<input type="hidden" name="shipper_company_name" value="<?=$shipper_company_name?>"/>
+				<input type="hidden" name="shipper_country" value="<?=$shipper_country?>"/>
+				<input type="hidden" name="shipper_address" value="<?=$shipper_address?>"/>
+				<input type="hidden" name="shipper_city" value="<?=$shipper_city?>"/>
+				<input type="hidden" name="shipper_postcode" value="<?=$shipper_postcode?>"/>
+				<input type="hidden" name="shipper_state" value="<?=$shipper_state?>"/>
+				<input type="hidden" name="shipper_subhub" value="<?=$shipper_subhub?>"/>
+				<input type="hidden" name="shipper_contact_person" value="<?=$shipper_contact_person?>"/>
+				<input type="hidden" name="shipper_phone_number" value="<?=$shipper_phone_number?>"/>
+				<input type="hidden" name="shipper_email" value="<?=$shipper_email?>"/>
+				
+				
 				<div class="col-md-6">
 					<div class="form-group">
 						<label class="col-sm-4">Acc Number</label>

@@ -172,7 +172,7 @@ $(function () {
 			.breadcrumb-body .current .breadcrumb-statge-container {
 			
 				background-color: #00a9b0;
-				color: #0000ff;
+				color: #fff;
 			}
 			
 			.breadcrumb-body .future .breadcrumb-statge-container {
@@ -209,6 +209,10 @@ $(function () {
 			label, input {
 				font-size: 20px; !important
 			
+			}
+			
+			label {
+					font-weight: 300; !important
 			}
 		
 		</style>

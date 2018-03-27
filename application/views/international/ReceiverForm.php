@@ -63,23 +63,35 @@
 		</div>
 		<div class="container">
 		<form method="POST" action="<?=base_url('int_product_detail')?>" class="form-horizontal">
-			<div class="row">	
-				<input type="hidden" name="shipper_account_number" value=""/>
-				<input type="hidden" name="shipper_account_name" value=""/>
-				<input type="hidden" name="shipper_company_name" value=""/>
-				<input type="hidden" name="shipper_country" value=""/>
-				<input type="hidden" name="shipper_address" value=""/>
-				<input type="hidden" name="shipper_city" value=""/>
-				<input type="hidden" name="shipper_postcode" value=""/>
-				<input type="hidden" name="shipper_state" value=""/>
-				<input type="hidden" name="shipper_subhub" value=""/>
-				<input type="hidden" name="shipper_contact_person" value=""/>
-				<input type="hidden" name="shipper_phone_number" value=""/>
-				<input type="hidden" name="shipper_email" value=""/>
+			<div class="row">
+				<input type="hidden" name="weight" value="<?=$weight?>"/>
+				<input type="hidden" name="height" value="<?=$height?>"/>
+				<input type="hidden" name="width" value="<?=$width?>"/>
+				<input type="hidden" name="length" value="<?=$length?>"/>
+				<input type="hidden" name="v_weight" value="<?=$v_weight?>"/>
+				<input type="hidden" name="cost" value="<?=$cost?>"/>
+				<input type="hidden" name="fromState" value="<?=$fromState?>"/>
+				<input type="hidden" name="toCountry" value="<?=$toCountry?>"/>
+				
+				<input type="hidden" name="shipper_account_number" value="<?=$shipper_account_number?>"/>
+				<input type="hidden" name="shipper_account_name" value="<?=$shipper_account_name?>"/>
+				<input type="hidden" name="shipper_company_name" value="<?=$shipper_company_name?>"/>
+				<input type="hidden" name="shipper_country" value="<?=$shipper_country?>"/>
+				<input type="hidden" name="shipper_address" value="<?=$shipper_address?>"/>
+				<input type="hidden" name="shipper_city" value="<?=$shipper_city?>"/>
+				<input type="hidden" name="shipper_postcode" value="<?=$shipper_postcode?>"/>
+				<input type="hidden" name="shipper_state" value="<?=$shipper_state?>"/>
+				<input type="hidden" name="shipper_subhub" value="<?=$shipper_subhub?>"/>
+				<input type="hidden" name="shipper_contact_person" value="<?=$shipper_contact_person?>"/>
+				<input type="hidden" name="shipper_phone_number" value="<?=$shipper_phone_number?>"/>
+				<input type="hidden" name="shipper_email" value="<?=$shipper_email?>"/>
 			
 				<div class="col-md-6">
 					<div class="form-group">
-						<label class="col-sm-4">Acc Number</label>
+						<div class="col-sm-4">
+							<label for="receiver_account_number">Acc Number</label>
+						</div>
+						
 							<div class="col-sm-8">
 								<div class="has-feedback">
 									<input type="text" name="receiver_account_number" id="receiver_account_number" class="form-control" title="please enter receiver's account number!"/>
@@ -87,7 +99,10 @@
 							</div>
 					</div>
 					<div class="form-group">
-						<label class="col-sm-4">Acc Name</label>
+						<div class="col-sm-4">
+							<label for="receiver_account_name">Acc Name</label>
+						</div>
+						
 							<div class="col-sm-8">
 								<div class="has-feedback">
 									<input type="text" name="receiver_account_name" id="receiver_account_name" class="form-control" title="please enter receiver's account name!"/>
@@ -95,7 +110,10 @@
 							</div>
 					</div>	
 					<div class="form-group">
-						<label class="col-sm-4">Company Name</label>
+						<div class="col-sm-4">
+							<label for="receiver_company_name">Company Name</label>
+						</div>
+						
 							<div class="col-sm-8">
 								<div class="has-feedback">
 									<input type="text" name="receiver_company_name" id="receiver_company_name" class="form-control" title="please enter receiver's company name!"/>
@@ -103,10 +121,13 @@
 							</div>
 					</div>
 					<div class="form-group">
-						<label class="col-sm-4">Country</label>
+						<div class="col-sm-4">
+							<label for="receiver_country">Country</label>
+						</div>
+						
 							<div class="col-sm-8">
 								<div class="has-feedback">
-									<select name="receiver_country" class="form-control">
+									<select name="receiver_country" class="form-control" id="receiver_country">
 										<option value="MY">Malaysia</option>
 										<option value="SG">Singapore</option>
 										<option value="ID">Indonesia</option>
@@ -115,7 +136,10 @@
 							</div>
 					</div>
 					<div class="form-group">
-						<label class="col-sm-4">Address</label>
+						<div class="col-sm-4">
+							<label for="receiver_address">Address</label>
+						</div>
+						
 							<div class="col-sm-8">
 								<div class="has-feedback">
 									<input type="text" name="receiver_address" required id="receiver_address" class="form-control" title="please enter receiver's address!"/>
@@ -123,7 +147,10 @@
 							</div>
 					</div>
 					<div class="form-group">
-						<label class="col-sm-4">City</label>
+						<div class="col-sm-4">
+							<label for="receiver_city">City</label>
+						</div>
+						
 							<div class="col-sm-8">
 								<div class="has-feedback">
 									<input type="text" name="receiver_city" required id="receiver_city" class="form-control" title="please enter receiver's city!"/>
@@ -131,7 +158,10 @@
 							</div>
 					</div>
 					<div class="form-group">
-						<label class="col-sm-4">PostCode</label>
+						<div class="col-sm-4">
+							<label for="receiver_postcode">PostCode</label>
+						</div>
+						
 							<div class="col-sm-8">
 								<div class="has-feedback">
 									<input type="text" name="receiver_postcode" required id="receiver_postcode" class="form-control" title="please enter receiver's postcode!"/>
@@ -139,7 +169,10 @@
 							</div>
 					</div>
 					<div class="form-group">
-					<label class="col-sm-4">State</label>
+						<div class="col-sm-4">
+							<label for="receiver_state">State</label>
+						</div>
+					
 						<div class="col-sm-8">
 							<div class="has-feedback">
 								<input type="text" name="receiver_state" required id="receiver_state" class="form-control" title="please enter receiver's state!"/>
@@ -148,8 +181,12 @@
 				</div>
 				</div>
 				<div class="col-md-6">
+					
 					<div class="form-group">
-						<label class="col-sm-4">Subhub</label>
+						<div class="col-sm-4">
+							<label for="receiver_subhub">Subhub</label>
+						</div>
+						
 							<div class="col-sm-8">
 								<div class="has-feedback">
 									<input type="text" name="receiver_subhub" id="receiver_subhub" class="form-control" title="please enter receiver's subhub!"/>
@@ -157,7 +194,10 @@
 							</div>
 					</div>
 					<div class="form-group">
-						<label class="col-sm-4">Contact Person</label>
+						<div class="col-sm-4">
+							<label for="receiver_contact_person">Contact Person</label>
+						</div>
+						
 							<div class="col-sm-8">
 								<div class="has-feedback">
 									<input type="text" name="receiver_contact_person" required id="receiver_contact_person" class="form-control" title="please enter receiver's name!"/>
@@ -165,7 +205,10 @@
 							</div>
 					</div>
 					<div class="form-group">
-						<label class="col-sm-4">Phone Number</label>
+						<div class="col-sm-4">
+							<label for="receiver_phone_number">Phone Number</label>
+						</div>
+						
 							<div class="col-sm-8">
 								<div class="has-feedback">
 									<input type="text" name="receiver_phone_number" required id="receiver_phone_number" class="form-control" title="please enter receiver's phone number!"/>
@@ -173,7 +216,10 @@
 							</div>
 					</div>
 					<div class="form-group">
-					<label class="col-sm-4">Email</label>
+						<div class="col-sm-4">
+							<label for="receiver_email">Email</label>
+						</div>
+					
 						<div class="col-sm-8">
 							<div class="has-feedback">
 								<input type="text" name="receiver_email" id="receiver_email" required class="form-control" title="please enter receiver's email!"/>

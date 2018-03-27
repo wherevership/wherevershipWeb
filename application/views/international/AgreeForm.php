@@ -76,50 +76,59 @@
 	
 	<div class="container">
 		<form method="POST">
-			<?php //shipper info ?>
-			<input type="hidden" name="shipper_account_number" value=""/>
-			<input type="hidden" name="shipper_account_name" value=""/>
-			<input type="hidden" name="shipper_company_name" value=""/>
-			<input type="hidden" name="shipper_country" value=""/>
-			<input type="hidden" name="shipper_address" value=""/>
-			<input type="hidden" name="shipper_city" value=""/>
-			<input type="hidden" name="shipper_postcode" value=""/>
-			<input type="hidden" name="shipper_state" value=""/>
-			<input type="hidden" name="shipper_subhub" value=""/>
-			<input type="hidden" name="shipper_contact_person" value=""/>
-			<input type="hidden" name="shipper_phone_number" value=""/>
-			<input type="hidden" name="shipper_email" value=""/>
-			<?php //receiver info ?>
-			<input type="hidden" name="receiver_account_number" value=""/>
-			<input type="hidden" name="receiver_account_name" value=""/>
-			<input type="hidden" name="receiver_company_name" value=""/>
-			<input type="hidden" name="receiver_country" value=""/>
-			<input type="hidden" name="receiver_address" value=""/>
-			<input type="hidden" name="receiver_city" value=""/>
-			<input type="hidden" name="receiver_postcode" value=""/>
-			<input type="hidden" name="receiver_state" value=""/>
-			<input type="hidden" name="receiver_subhub" value=""/>
-			<input type="hidden" name="receiver_contact_person" value=""/>
-			<input type="hidden" name="receiver_phone_number" value=""/>
-			<input type="hidden" name="receiver_email" value=""/>
-			<?php //product detail ?>
-			<input type="hidden" name="shipper_country" value=""/>
-			<input type="hidden" name="shipper_country" value=""/>
-			<input type="hidden" name="pieces" value=""/>
-			<input type="hidden" name="pieces_weight" value=""/>
-			<input type="hidden" name="length" value=""/>
-			<input type="hidden" name="width" value=""/>
-			<input type="hidden" name="height" value=""/>
-			<input type="hidden" name="shipper_GST" value=""/>
-			<input type="hidden" name="receiver_GST" value=""/>
-			<input type="hidden" name="declared_value" value=""/>
-			<input type="hidden" name="currecy" value=""/>
-			<input type="hidden" name="commodity_code" value=""/>
-			<input type="hidden" name="Exemtion" value=""/>
-			<input type="hidden" name="ITN" value=""/>
-			<input type="hidden" name="type_of_export" value=""/>
-			<input type="hidden" name="destination_duties" value=""/>
-			<input type="hidden" name="approved_account_number" value=""/>
+			
+			<input type="hidden" name="weight" value="<?=$weight?>"/>
+			<input type="hidden" name="height" value="<?=$height?>"/>
+			<input type="hidden" name="width" value="<?=$width?>"/>
+			<input type="hidden" name="length" value="<?=$length?>"/>
+			<input type="hidden" name="v_weight" value="<?=$v_weight?>"/>
+			<input type="hidden" name="cost" value="<?=$cost?>"/>
+			<input type="hidden" name="fromState" value="<?=$fromState?>"/>
+			<input type="hidden" name="toCountry" value="<?=$toCountry?>"/>
+			
+			<!-- //shipper info -->
+			<input type="hidden" name="shipper_account_number" value="<?=$shipper_account_number?>"/>
+			<input type="hidden" name="shipper_account_name" value="<?=$shipper_account_name?>"/>
+			<input type="hidden" name="shipper_company_name" value="<?=$shipper_company_name?>"/>
+			<input type="hidden" name="shipper_country" value="<?=$shipper_country?>"/>
+			<input type="hidden" name="shipper_address" value="<?=$shipper_address?>"/>
+			<input type="hidden" name="shipper_city" value="<?=$shipper_city?>"/>
+			<input type="hidden" name="shipper_postcode" value="<?=$shipper_postcode?>"/>
+			<input type="hidden" name="shipper_state" value="<?=$shipper_state?>"/>
+			<input type="hidden" name="shipper_subhub" value="<?=$shipper_subhub?>"/>
+			<input type="hidden" name="shipper_contact_person" value="<?=$shipper_contact_person?>"/>
+			<input type="hidden" name="shipper_phone_number" value="<?=$shipper_phone_number?>"/>
+			<input type="hidden" name="shipper_email" value="<?=$shipper_email?>"/>
+			
+			<!-- //receiver info -->
+			<input type="hidden" name="receiver_account_number" value="<?=$receiver_account_number?>"/>
+			<input type="hidden" name="receiver_account_name" value="<?=$receiver_account_name?>"/>
+			<input type="hidden" name="receiver_company_name" value="<?=$receiver_company_name?>"/>
+			<input type="hidden" name="receiver_country" value="<?=$receiver_country?>"/>
+			<input type="hidden" name="receiver_address" value="<?=$receiver_address?>"/>
+			<input type="hidden" name="receiver_city" value="<?=$receiver_city?>"/>
+			<input type="hidden" name="receiver_postcode" value="<?=$receiver_postcode?>"/>
+			<input type="hidden" name="receiver_state" value="<?=$receiver_state?>"/>
+			<input type="hidden" name="receiver_subhub" value="<?=$receiver_subhub?>"/>
+			<input type="hidden" name="receiver_contact_person" value="<?=$receiver_contact_person?>"/>
+			<input type="hidden" name="receiver_phone_number" value="<?=$receiver_phone_number?>"/>
+			<input type="hidden" name="receiver_email" value="<?=$receiver_email?>"/>
+			
+			<!-- //product info -->
+			<input type="hidden" name="type" value="<?=$type?>"/>
+			<input type="hidden" name="pickUp_required" value="<?=$pickUp_required?>"/>
+			<input type="hidden" name="pieces" value="<?=$pieces?>"/>
+			
+			<input type="hidden" name="shipper_GST" value="<?=$shipper_GST?>"/>
+			<input type="hidden" name="receiver_GST" value="<?=$receiver_GST?>"/>
+			<input type="hidden" name="declared_value" value="<?=$declared_value?>"/>
+			<input type="hidden" name="currecy" value="<?=$currecy?>"/>
+			<input type="hidden" name="commodity_code" value="<?=$commodity_code?>"/>
+			<input type="hidden" name="exemtion" value="<?=$exemtion?>"/>
+			<input type="hidden" name="itn" value="<?=$itn?>"/>
+			<input type="hidden" name="type_of_export" value="<?=$type_of_export?>"/>
+			<input type="hidden" name="destination_duties" value="<?=$destination_duties?>"/>
+			<input type="hidden" name="approved_account_number" value="<?=$approved_account_number?>"/>
 			<div class="row">
 				<p style="font-size: 15px; color: red">
 					unless otherwise agree in writing .i/we agree that DHL's Terms and Condition of

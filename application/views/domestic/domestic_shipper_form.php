@@ -68,6 +68,7 @@
 		<form method="POST" action="<?=base_url('dtc_receiver')?>" class="form-horizontal">
 				<div class="row">
 				<input type="hidden" name="weight" value="<?=$weight?>"/>
+				<input type="hidden" name="height" value="<?=$height?>"/>
 				<input type="hidden" name="width" value="<?=$width?>"/>
 				<input type="hidden" name="length" value="<?=$length?>"/>
 				<input type="hidden" name="v_weight" value="<?=$v_weight?>"/>
