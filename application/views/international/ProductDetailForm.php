@@ -12,12 +12,12 @@
 	<div class="container top1">
 			<div class="row">
 				<div class="container-fluid">
-					<div class="col-lg-6 col-md-4 col-sm-6 logo-wrapper">
+					<div class="col-lg-6 col-md-4 col-sm-12 logo-wrapper">
 						<a href="<?=base_url('')?>" class="logo-wrapper">
 							<img src="<?=base_url('assets2/image/logo.png')?>" class="logo hidden-xs" width="50%">
 						</a>
 					</div>
-					<div class="col-lg-6 col-md-8 col-sm-6 padding-off hidden-sm">
+					<div class="col-lg-6 col-md-8 col-sm-12 padding-off">
 						<div class="row">
 							<ol class="breadcrumb-body">
 								<li class="past">
@@ -25,16 +25,16 @@
 										<div class="breadcrumb-statge-container">
 										
 											<div class="breadcrumb-stage">1</div>
-											<div class="breadcrumb-stage">Shipper Detail</div>
+											<div class="breadcrumb-stage">Shipper <br/>Detail</div>
 										</div>
-									</a>	
+									</a>
 								</li>
 								<li class="past">
 									<a href="javascript:history.go(-1)">
 										<div class="breadcrumb-statge-container">
 										
 											<div class="breadcrumb-stage">2</div>
-											<div class="breadcrumb-stage">Receiver Detail </div>
+											<div class="breadcrumb-stage">Receiver <br/>Detail </div>
 									
 										</div>
 									</a>
@@ -44,20 +44,20 @@
 										<div class="breadcrumb-statge-container">
 										
 											<div class="breadcrumb-stage">3</div>
-											<div class="breadcrumb-stage">Product Detail</div>
+											<div class="breadcrumb-stage">Product <br/>Detail</div>
 										
 										</div>
-								
+										
 								</li>
 								<li class="future">
-									
+										
 										<div class="breadcrumb-statge-container">
 									
 											<div class="breadcrumb-stage">4</div>
-											<div class="breadcrumb-stage">Agreement <span style="visibility: hidden;">.....</span></div>
+											<div class="breadcrumb-stage">Shipment <br/>Overview</span></div>
 										
 										</div>
-								
+									
 								</li>
 							
 						
@@ -151,7 +151,7 @@
 			
 				<div class="col-md-2">
 					<div class="form-group">
-						<label>Pieces*</label>
+						<label>Pieces</label>
 						<input type="text" name="pieces" id="pieces" class="form-control" />
 					</div>
 				</div>

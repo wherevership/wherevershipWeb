@@ -143,8 +143,8 @@ $(function () {
 <style>
 			.breadcrumb-body {
 				list-style: outside none none;
-				margin: 20px auto;
-				padding: 30px 0px;
+				margin: 6px auto;
+				padding: 10px 0px;
 				width: 530px;
 			}
 			
@@ -183,9 +183,10 @@ $(function () {
 			.breadcrumb-body li .breadcrumb-statge-container .breadcrumb-stage {
 				text-align: center;
 				font-weight: bolder;
-				font-size: 16px;
-				line-height: 20px;
+				font-size: 10pt;
+				line-height: 18px;
 				margin: 10px auto;
+				
 				
 			}
 			

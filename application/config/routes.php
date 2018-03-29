@@ -55,6 +55,7 @@ $route['user_signup_form'] = 'Form_manage/userSignupForm';
 $route['dtc_shipper'] = 'Domestic_shipment_manage/domesticShipperForm';
 $route['dtc_receiver'] = 'Domestic_shipment_manage/domesticReceiverForm';
 $route['dtc_product_detail'] = 'Domestic_shipment_manage/domesticProductDetailForm';
+$route['dtc_shipment_overview'] = 'Domestic_shipment_manage/domesticShipmentOverview';
 
 $route['tk_shipper'] = 'Trucking_shipment_manage/tkShipperForm';
 $route['tk_receiver'] = 'Trucking_shipment_manage/tkReceiverForm';

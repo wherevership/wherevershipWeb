@@ -20,14 +20,11 @@
 			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-3 footer-link-height">
 				<ul class="links">
 				<li class="title-link">My Account</li>
-				<li><a href="<?=base_url('userLogin')?>">Log In</a></li>
-				<li><a href="#">Dashboard</a></li>
-				<li><a href="#">Edit Your Profile</a></li>
-				<li><a href="#">My Cart</a></li>
-				<li><a href="#">Top Up History</a></li>
-				<li><a href="#">Credit History</a></li>
-				<li><a href="#">Referral/Affiliate</a></li>
-				</ul>
+				<li><a id="log_in_f">Log In</a></li>
+				<li><a id="dashboard_f">Dashboard</a></li>
+				<li><a id="edit_profile_f">Edit Your Profile</a></li>
+				<li><a id="my_cart_f">My Cart</a></li>
+			</ul>
 			</div>
 			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-3 footer-link-height">
 				<ul class="links">
@@ -99,6 +96,28 @@
 
 
 <script>
+		firebase.auth().onAuthStateChanged( firebaseUser => {
+				if(firebaseUser) {
+					$(".login_top").hide();
+					$(".signUp_top").hide();
+					$(".logout_top").show();
+					
+				
+				} else {
+					$(".login_top").show();
+					$(".signUp_top").show();
+					$(".logout_top").hide();
+					$("#welcome").text("Hi, Welcome");
+					$("#welcome").attr("href","<?=base_url("userLogin")?>");
+					$("#log_in_f").attr("href","<?=base_url("userLogin")?>");
+					$("#dashboard_f").attr("href","<?=base_url("userLogin")?>");
+					$("#edit_profile_f").attr("href","<?=base_url("userLogin")?>");
+					$("#my_cart_f").attr("href","<?=base_url("userLogin")?>");
+					console.log('not logged in');
+				}
+			
+			});
+
 
 $(function () {
 	var console_styles = {

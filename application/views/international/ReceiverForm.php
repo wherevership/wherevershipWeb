@@ -2,12 +2,12 @@
 	<div class="container top1">
 			<div class="row">
 				<div class="container-fluid">
-					<div class="col-lg-6 col-md-4 col-sm-6 logo-wrapper">
+					<div class="col-lg-6 col-md-4 col-sm-12 logo-wrapper">
 						<a href="<?=base_url('')?>" class="logo-wrapper">
 							<img src="<?=base_url('assets2/image/logo.png')?>" class="logo hidden-xs" width="50%">
 						</a>
 					</div>
-					<div class="col-lg-6 col-md-8 col-sm-6 padding-off hidden-sm">
+					<div class="col-lg-6 col-md-8 col-sm-12 padding-off">
 						<div class="row">
 							<ol class="breadcrumb-body">
 								<li class="past">
@@ -15,16 +15,16 @@
 										<div class="breadcrumb-statge-container">
 										
 											<div class="breadcrumb-stage">1</div>
-											<div class="breadcrumb-stage">Shipper Detail</div>
+											<div class="breadcrumb-stage">Shipper <br/>Detail</div>
 										</div>
-									</a>	
+									</a>
 								</li>
 								<li class="current">
 									
 										<div class="breadcrumb-statge-container">
 										
 											<div class="breadcrumb-stage">2</div>
-											<div class="breadcrumb-stage">Receiver Detail </div>
+											<div class="breadcrumb-stage">Receiver <br/>Detail </div>
 									
 										</div>
 									
@@ -34,17 +34,17 @@
 										<div class="breadcrumb-statge-container">
 										
 											<div class="breadcrumb-stage">3</div>
-											<div class="breadcrumb-stage">Product Detail</div>
+											<div class="breadcrumb-stage">Product <br/>Detail</div>
 										
 										</div>
 									
 								</li>
 								<li class="future">
-									
+										
 										<div class="breadcrumb-statge-container">
 									
 											<div class="breadcrumb-stage">4</div>
-											<div class="breadcrumb-stage">Agreement <span style="visibility: hidden;">.....</span></div>
+											<div class="breadcrumb-stage">Shipment <br/>Overview</span></div>
 										
 										</div>
 									
@@ -89,7 +89,7 @@
 				<div class="col-md-6">
 					<div class="form-group">
 						<div class="col-sm-4">
-							<label for="receiver_account_number">Acc Number</label>
+							<label for="receiver_account_number">Acc Number:</label>
 						</div>
 						
 							<div class="col-sm-8">
@@ -100,7 +100,7 @@
 					</div>
 					<div class="form-group">
 						<div class="col-sm-4">
-							<label for="receiver_account_name">Acc Name</label>
+							<label for="receiver_account_name">Acc Name:</label>
 						</div>
 						
 							<div class="col-sm-8">
@@ -111,7 +111,7 @@
 					</div>	
 					<div class="form-group">
 						<div class="col-sm-4">
-							<label for="receiver_company_name">Company Name</label>
+							<label for="receiver_company_name">Company Name:</label>
 						</div>
 						
 							<div class="col-sm-8">
@@ -122,7 +122,7 @@
 					</div>
 					<div class="form-group">
 						<div class="col-sm-4">
-							<label for="receiver_country">Country</label>
+							<label for="receiver_country">Country:</label>
 						</div>
 						
 							<div class="col-sm-8">
@@ -137,7 +137,7 @@
 					</div>
 					<div class="form-group">
 						<div class="col-sm-4">
-							<label for="receiver_address">Address</label>
+							<label for="receiver_address">Address:<span class="required">*</span></label>
 						</div>
 						
 							<div class="col-sm-8">
@@ -148,7 +148,7 @@
 					</div>
 					<div class="form-group">
 						<div class="col-sm-4">
-							<label for="receiver_city">City</label>
+							<label for="receiver_city">City:<span class="required">*</span></label>
 						</div>
 						
 							<div class="col-sm-8">
@@ -159,7 +159,7 @@
 					</div>
 					<div class="form-group">
 						<div class="col-sm-4">
-							<label for="receiver_postcode">PostCode</label>
+							<label for="receiver_postcode">PostCode:<span class="required">*</span></label>
 						</div>
 						
 							<div class="col-sm-8">
@@ -170,7 +170,7 @@
 					</div>
 					<div class="form-group">
 						<div class="col-sm-4">
-							<label for="receiver_state">State</label>
+							<label for="receiver_state">State:<span class="required">*</span></label>
 						</div>
 					
 						<div class="col-sm-8">
@@ -184,7 +184,7 @@
 					
 					<div class="form-group">
 						<div class="col-sm-4">
-							<label for="receiver_subhub">Subhub</label>
+							<label for="receiver_subhub">Subhub:</label>
 						</div>
 						
 							<div class="col-sm-8">
@@ -195,7 +195,7 @@
 					</div>
 					<div class="form-group">
 						<div class="col-sm-4">
-							<label for="receiver_contact_person">Contact Person</label>
+							<label for="receiver_contact_person">Contact Person:<span class="required">*</span></label>
 						</div>
 						
 							<div class="col-sm-8">
@@ -206,7 +206,7 @@
 					</div>
 					<div class="form-group">
 						<div class="col-sm-4">
-							<label for="receiver_phone_number">Phone Number</label>
+							<label for="receiver_phone_number">Phone Number:<span class="required">*</span></label>
 						</div>
 						
 							<div class="col-sm-8">
@@ -217,7 +217,7 @@
 					</div>
 					<div class="form-group">
 						<div class="col-sm-4">
-							<label for="receiver_email">Email</label>
+							<label for="receiver_email">Email:<span class="required">*</span></label>
 						</div>
 					
 						<div class="col-sm-8">

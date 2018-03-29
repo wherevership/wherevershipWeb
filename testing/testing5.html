@@ -11,26 +11,20 @@
 		<script type="text/javascript" src="js/jquery-1.12.1.min.js"></script>
 		<script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+		<script src="js/firConfig.js"></script>
 		
 	</head>
 	
 	<body>
 		<p id="title">123456</p>
 		<a id="testingLink">test link</a>
+		<a id="t6">t6</a>
 		<p id="lastName"></p>
 		<p id="firstName"></p>
 		
 		<script>
 			var testingBtn = document.getElementById("testingLink");
-		    var config = {
-				apiKey: "AIzaSyDxGSdMgiJjzgO0fIZGoB6lKCh4QxQ4l_0",
-				authDomain: "wherevership-7eafa.firebaseapp.com",
-				databaseURL: "https://wherevership-7eafa.firebaseio.com",
-				projectId: "wherevership-7eafa",
-				storageBucket: "wherevership-7eafa.appspot.com",
-				messagingSenderId: "952318944133"
-			};
-			firebase.initializeApp(config);  
+		    
 			firebase.auth().onAuthStateChanged( firebaseUser => {
 				if(firebaseUser) {
 					console.log(firebaseUser.uid);
@@ -41,6 +35,8 @@
 						
 						$("#lastName").text(snap.val().LastName);
 						$("#firstName").text(snap.val().firstName);
+						$("#t6").attr("href", "testing6.html")
+						
 						console.log(snap.val());
 						
 							
@@ -49,6 +45,7 @@
 				
 				} else {
 					$("#title").text('not logged in');
+					$("#t6").attr("href", "testing2.html")
 					console.log('not logged in');
 				}
 			

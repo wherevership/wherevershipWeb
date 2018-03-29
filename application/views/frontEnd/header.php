@@ -77,6 +77,10 @@
 <script type="text/javascript" src="<?=base_url('assets2/js/jquery.dataTables.js')?>"></script>
 
 <script type="text/javascript" src="<?=base_url('assets2/js/quote.js')?>"></script>
+
+<script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+
+<script src="<?=base_url('assets2/js/firConfig.js')?>"></script>
 <!--
 <script type="text/javascript" src="https://www.googleadservices.com/pagead/conversion.js"></script>
 <script>
@@ -99,8 +103,8 @@
       
 					<nav id="nav-toggle-menu" class="hidden-xs">
 						<ul class="nav-list">
-							<li><i class="fas fa-user"></i> <a href="<?=base_url('userLogin')?>">Hi, Welcome</a></li>
-							<li><i class="fas fa-truck"></i> <a href="<?=base_url('courier')?>">Send A Parcel</a></li>
+							<li><i class="fas fa-user"></i> <a id="welcome">Hi, Welcome</a></li>
+							<li><i class="fas fa-truck"></i> <a data-toggle="modal" data-target="#services">Send A Parcel</a></li>
 							<li><i class="far fa-question-circle"></i><a href="<?=base_url('contactUs')?>"> Help</a></li>
               
 						</ul>
@@ -117,8 +121,9 @@
 					<div class="col-lg-6 col-md-4 col-sm-6 logo-wrapper"> <a href="<?=base_url('')?>" class="logo-wrapper"><img src="<?=base_url('assets2/image/logo.png')?>" class="logo hidden-xs"></a> </div>
 				
 						<ul class="nav navbar-nav navbar-right visible-sm">
-							<li class="login-menu"><a href="<?=base_url('userLogin')?>"><i class="fas fa-user"></i>Log In</a></li>
-							<li class="login-menu" style="border-left: 2px solid #fff;"><a href="<?=base_url('signUp')?>">Sign Up</a></li>
+							<li class="login-menu login_top"><a href="<?=base_url('userLogin')?>"><i class="fas fa-user"></i>Log In</a></li>
+							<li class="login-menu signUp_top" style="border-left: 2px solid #fff;"><a href="<?=base_url('signUp')?>">Sign Up</a></li>
+							<li class="login-menu logout_top" style="border-left: 2px solid #fff;"><a>Log Out</a></li>
 						</ul>
 				
 					<div class="col-lg-6 col-md-8 padding-off hidden-sm">
@@ -222,8 +227,9 @@
             
 		</ul>
           <ul class="nav navbar-nav navbar-right hidden-sm">
-            <li class="login-menu"><a href="<?=base_url('userLogin')?>"><i class="fas fa-user"></i> Log In</a></li>
-            <li class="login-menu"><a href="<?=base_url('signUp')?>" style="border-left: 1px solid rgba(255, 255, 255, 0.5);">Sign Up</a></li>
+            <li class="login-menu login_top"><a href="<?=base_url('userLogin')?>"><i class="fas fa-user"></i> Log In</a></li>
+            <li class="login-menu signUp_top"><a href="<?=base_url('signUp')?>" style="border-left: 1px solid rgba(255, 255, 255, 0.5);">Sign Up</a></li>
+			<li class="login-menu logout_top"><a>Log Out</a></li>
           </ul>
         </nav>
       </div>
@@ -256,8 +262,9 @@
     
     <h3 class="site-nav-title">PROFILE</h3>
     <ul class="nav navbar-nav site-nav-group">
-      <li class="site-nav-item"> <a href="<?=base_url('userLogin')?>"><span>Log In</span> <span class="side-menu-box"><i class="fas fa-user"></i></span></a> </li>
-      <li class="site-nav-item"> <a href="<?=base_url('signUp')?>"><span>Sign Up</span> <span class="side-menu-box"><i class="fas fa-user"></i></span></a> </li>
+      <li class="site-nav-item login_top"> <a href="<?=base_url('userLogin')?>"><span>Log In</span> <span class="side-menu-box"><i class="fas fa-user"></i></span></a> </li>
+      <li class="site-nav-item signUp_top"> <a href="<?=base_url('signUp')?>"><span>Sign Up</span> <span class="side-menu-box"><i class="fas fa-user"></i></span></a> </li>
+	  <li class="site-nav-item logout_top"> <a><span>Log Out</span> <span class="side-menu-box"><i class="fas fa-user"></i></span></a> </li>
     </ul>
     <h3 class="site-nav-title">USEFUL LINKS</h3>
     <ul class="nav navbar-nav site-nav-group">
@@ -271,6 +278,29 @@
   	
    </div>
 </div>
+
+		<div class="modal fade" id="services" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h2 class="modal-title" id="exampleModalLabel">Please Choose a serives.</h2>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+							</button>
+					</div>
+					<div class="modal-body">
+						<div class="text-center">
+							<a class="btn btn-primary btn-lg btn-block" href="<?=base_url('courier')?>">Courier</a>
+							<a class="btn btn-primary btn-lg btn-block" href="<?=base_url('truck')?>">Truck</a>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+       
+					</div>
+				</div>
+			</div>
+		</div>
 <!--END OF MOBILE DROP DOWN MENU--> 
 
 <script>
@@ -307,4 +337,5 @@ function sticky_relocate() {
 	 
 }
 </script> 
+<div id="text"></div>
 

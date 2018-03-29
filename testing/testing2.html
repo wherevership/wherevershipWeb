@@ -9,6 +9,7 @@
 		<link href="css/style.css" rel="stylesheet">
 		
 		<script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+		<script src="js/firConfig.js"></script>
 		
 		<style>
 			body {
@@ -111,40 +112,75 @@
 		</div>
 		
 		<script>
-			// Initialize Firebase
-			var config = {
-				apiKey: "AIzaSyDxGSdMgiJjzgO0fIZGoB6lKCh4QxQ4l_0",
-				authDomain: "wherevership-7eafa.firebaseapp.com",
-				databaseURL: "https://wherevership-7eafa.firebaseio.com",
-				projectId: "wherevership-7eafa",
-				storageBucket: "wherevership-7eafa.appspot.com",
-				messagingSenderId: "952318944133"
-			};
-			firebase.initializeApp(config);
 			
-		
+			var userId;
+			firebase.auth().onAuthStateChanged( firebaseUser => {
+				if(firebaseUser) {
+					userId = firebaseUser.uid;
+					console.log(firebaseUser.uid);
+					
+					console.log(firebaseUser.email);
+					const database2 = firebase.database().ref('User');
+					database2.on('value', snap => {
+						$("#testingData").empty();
+						var object1 = snap.val();
+						console.log(object1);
+						var keys = Object.keys(object1);
+						console.log(keys);
+				     
+						if (keys.length == 0) {
+							var tr = $("<tr>").html('<td>no data aliable</td>');
+							$("#testingData").append(tr);
+						} else {
+						
+							for (var i=0; i<keys.length; i++) {
+							var k= keys[i];
+								console.log(k);
+								console.log(object1[k].lastName);
+								console.log(object1[k].role);
+								if (object1[k].role == "admin") {
 
+								var tr = $("<tr>").html('<td>'+object1[k].lastName+'</td><td>'+object1[k].firstName+'</td><td>'+object1[k].role+'</td><td>'+object1[k].mobileNumber+'</td>');
+								$("#testingData").append(tr);
+							
+								}
+							
+				
+							}
+						
+						
+						}
+						
+				});
+					
+				
+				} else {
+					console.log('not logged in');
+				}
+			
+			});
 			function login() {
 				const username = document.getElementById('user_login').value;
 				const password = document.getElementById('user_pass').value;
 				const auth = firebase.auth();
-				
+				console.log(auth);
 				auth.signInWithEmailAndPassword(username,password).then(function(firebaseUser) {
 					const database2 = firebase.database().ref('User').child(firebaseUser.uid);
-					
+					console.log(database2);
 					database2.on('value', snap => {
-						if (snap.val().Role == 'Admin') {
+						console.log(snap.val());
+						if (snap.val().role == 'admin') {
 							window.location.href = "testing5.html";
 						}
 						else {
 							
 							firebase.auth().signOut().then(function() {
-				
-								alert('You are permis to access')
+								
+								alert('You not permis to access')
 							}).catch(function(error) {
 									console.log(error);
 				
-							});
+						});
 						
 						}
 							

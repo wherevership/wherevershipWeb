@@ -14,12 +14,12 @@
 	<div class="container top1">
 			<div class="row">
 				<div class="container-fluid">
-					<div class="col-lg-6 col-md-4 col-sm-6 logo-wrapper">
+					<div class="col-lg-6 col-md-4 col-sm-12 logo-wrapper">
 						<a href="<?=base_url('')?>" class="logo-wrapper">
 							<img src="<?=base_url('assets2/image/logo.png')?>" class="logo hidden-xs" width="50%">
 						</a>
 					</div>
-					<div class="col-lg-6 col-md-8 col-sm-6 padding-off hidden-sm">
+					<div class="col-lg-6 col-md-8 col-sm-12 padding-off">
 						<div class="row">
 							<ol class="breadcrumb-body">
 								<li class="past">
@@ -27,16 +27,16 @@
 										<div class="breadcrumb-statge-container">
 										
 											<div class="breadcrumb-stage">1</div>
-											<div class="breadcrumb-stage">Shipper Detail</div>
+											<div class="breadcrumb-stage">Shipper <br/>Detail</div>
 										</div>
 									</a>	
 								</li>
 								<li class="past">
-									<a href="javascript:history.go(-2)">
+									<a href="javascript:history.go(-1)">
 										<div class="breadcrumb-statge-container">
 										
 											<div class="breadcrumb-stage">2</div>
-											<div class="breadcrumb-stage">Receiver Detail </div>
+											<div class="breadcrumb-stage">Receiver <br/>Detail </div>
 									
 										</div>
 									</a>
@@ -46,7 +46,7 @@
 										<div class="breadcrumb-statge-container">
 										
 											<div class="breadcrumb-stage">3</div>
-											<div class="breadcrumb-stage">Product Detail</div>
+											<div class="breadcrumb-stage">Product <br/>Detail</div>
 										
 										</div>
 								
@@ -56,7 +56,7 @@
 										<div class="breadcrumb-statge-container">
 									
 											<div class="breadcrumb-stage">4</div>
-											<div class="breadcrumb-stage">Agreement <span style="visibility: hidden;">.....</span></div>
+											<div class="breadcrumb-stage">Shipment <br/>Overview</div>
 										
 										</div>
 									
@@ -76,7 +76,7 @@
 	</div>
 	
 	<div class="container">
-	<form method="POST" action="<?=base_url('int_agreement')?>" class="form-horizontal">
+	<form method="POST" action="<?=base_url('dtc_shipment_overview')?>" class="form-horizontal">
 			<input type="hidden" name="weight" value="<?=$weight?>"/>
 			<input type="hidden" name="height" value="<?=$height?>"/>
 			<input type="hidden" name="width" value="<?=$width?>"/>
@@ -120,9 +120,7 @@
 						<label class="col-sm-4">Type</label>
 							<div class="col-sm-8">
 								<div class="has-feedback">
-									<select name="shipper_country" class="form-control">
-										<option value="1">International Non Document</option>
-										<option value="2">International Document</option>
+									<select name="type" class="form-control">
 										<option value="3">Domestic</option>
 									</select>
 								</div>
@@ -135,7 +133,7 @@
 						<label class="col-sm-4">Pickup Required</label>
 							<div class="col-sm-8">
 								<div class="has-feedback">
-									<select name="shipper_country" class="form-control">
+									<select name="pickup_required" class="form-control">
 										<option value="0">Select</option>
 										<option value="1">Yes</option>
 										<option value="2">No</option>

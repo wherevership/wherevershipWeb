@@ -13,7 +13,7 @@
 		<script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
 		<script type="text/javascript" src="js/bootstrap.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
-		
+		<script src="js/firConfig.js"></script>
 	</head>
 	
 	<body>
@@ -40,21 +40,39 @@
 		<pre></pre>
 		</div>
 		
+		<a type="button" class="btn btn-primary" data-toggle="modal" data-target="#services">
+			Launch demo modal
+		</a>
+		
+		<div class="modal fade" id="services" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h2 class="modal-title" id="exampleModalLabel">Please Choose a serives.</h2>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+							</button>
+					</div>
+					<div class="modal-body">
+						<div class="text-center">
+							<a class="btn btn-primary btn-lg btn-block">Courier</a>
+							<a class="btn btn-primary btn-lg btn-block">Truck</a>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+       
+					</div>
+				</div>
+			</div>
+		</div>
 		
 		
 		<script>
 			var logoutBtn = document.getElementById("logOut");
 			var changeBtn = document.getElementById("change");
 			
-			var config = {
-				apiKey: "AIzaSyDxGSdMgiJjzgO0fIZGoB6lKCh4QxQ4l_0",
-				authDomain: "wherevership-7eafa.firebaseapp.com",
-				databaseURL: "https://wherevership-7eafa.firebaseio.com",
-				projectId: "wherevership-7eafa",
-				storageBucket: "wherevership-7eafa.appspot.com",
-				messagingSenderId: "952318944133"
-			};
-			firebase.initializeApp(config);
+		
 		
 			var userId;
 			firebase.auth().onAuthStateChanged( firebaseUser => {
@@ -79,11 +97,11 @@
 							for (var i=0; i<keys.length; i++) {
 							var k= keys[i];
 								console.log(k);
-								console.log(object1[k].LastName);
-								
-								if (object1[k].Role == "Admin") {
+								console.log(object1[k].lastName);
+								console.log(object1[k].role);
+								if (object1[k].role == "admin") {
 
-								var tr = $("<tr>").html('<td>'+object1[k].LastName+'</td><td>'+object1[k].firstName+'</td><td>'+object1[k].Role+'</td><td>'+object1[k].contact+'</td>');
+								var tr = $("<tr>").html('<td>'+object1[k].lastName+'</td><td>'+object1[k].firstName+'</td><td>'+object1[k].role+'</td><td>'+object1[k].mobileNumber+'</td>');
 								$("#testingData").append(tr);
 							
 								}
@@ -138,7 +156,7 @@
 									console.log(k);
 									console.log(object1[k].LastName);
 								
-									var tr = $("<tr>").html('<td><a>'+object1[k].LastName+'</a></td><td>'+object1[k].firstName+'</td><td>'+object1[k].Role+'</td><td>'+object1[k].contact+'</td>');
+									var tr = $("<tr>").html('<td><a onclick="display(\''+k+'\');">'+object1[k].lastName+'</a></td><td>'+object1[k].firstName+'</td><td>'+object1[k].role+'</td><td>'+object1[k].mobileNumber+'</td>');
 									$("#testingData").append(tr);
 									$("<pre>").text(userId);
 							
@@ -149,6 +167,19 @@
 				});
 			});
 			
+			
+			function display(k) {
+			
+				const database2 = firebase.database().ref('User/' + k);
+				database2.on('value', snap => {
+				
+				var object1 = snap.val();
+				console.log(object1);
+				$("pre").text(snap.val().lastName + " " + snap.val().username);
+				
+				});
+			
+			}
 		
 		</script>
 	

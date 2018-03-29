@@ -77,6 +77,9 @@
 <script type="text/javascript" src="<?=base_url('assets2/js/jquery.dataTables.js')?>"></script>
 
 <script type="text/javascript" src="<?=base_url('assets2/js/quote.js')?>"></script>
+
+<script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+<script src="<?=base_url('assets2/js/firConfig.js')?>"></script>
 <!--
 <script type="text/javascript" src="https://www.googleadservices.com/pagead/conversion.js"></script>
 <script>
@@ -161,7 +164,7 @@
 						
 					</a>
 				</h1>
-				<form name="loginform" id="loginform" action="" method="post ">
+				<form name="loginform" id="loginform" action="javascript:login();" method="post ">
 					<p>
 						<label for="user_login">
 							Username or Email Address
@@ -185,6 +188,48 @@
 			</div>
 		</div>
 		
+	<script>
+			function login() {
+				const username = document.getElementById('user_login').value;
+				const password = document.getElementById('user_pass').value;
+				const auth = firebase.auth();
+				console.log(auth);
+				auth.signInWithEmailAndPassword(username,password).then(function(firebaseUser) {
+					const database2 = firebase.database().ref('User').child(firebaseUser.uid);
+					console.log(database2);
+					database2.on('value', snap => {
+						console.log(snap.val());
+						if (snap.val().role == 'admin') {
+							window.location.href = "<?=base_url('user_panel')?>";
+						}
+						else {
+							
+							firebase.auth().signOut().then(function() {
+								$("#user_login").val("");
+								$("#user_pass").val("");
+								
+								alert('You not permis to access');
+								
+								
+							}).catch(function(error) {
+									console.log(error);
+				
+						});
+						
+						}
+							
+					});
+				
+				})
+				.catch(function(error) {
+				   alert(error.message);
+				
+				});
+				
+			}
+	
+	
+	</script>	
 	
 	</body>
 	

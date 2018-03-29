@@ -55,7 +55,7 @@
 										<div class="breadcrumb-statge-container">
 									
 											<div class="breadcrumb-stage">4</div>
-											<div class="breadcrumb-stage">Shipment <br/>Overview</div>
+											<div class="breadcrumb-stage">shipment <br/>Overview</div>
 										
 										</div>
 									
@@ -75,7 +75,7 @@
 	</div>
 	
 	<div class="container">
-		<form method="POST" class="form-horizontal">
+		<form method="POST">
 			
 			<input type="hidden" name="weight" value="<?=$weight?>"/>
 			<input type="hidden" name="height" value="<?=$height?>"/>
@@ -116,19 +116,8 @@
 			
 			<!-- //product info -->
 			<input type="hidden" name="type" value="<?=$type?>"/>
-			<input type="hidden" name="pickUp_required" value="<?=$pickUp_required?>"/>
+			<input type="hidden" name="pickUp_required" value="<?=$pickup_required?>"/>
 			<input type="hidden" name="pieces" value="<?=$pieces?>"/>
-			
-			<input type="hidden" name="shipper_GST" value="<?=$shipper_GST?>"/>
-			<input type="hidden" name="receiver_GST" value="<?=$receiver_GST?>"/>
-			<input type="hidden" name="declared_value" value="<?=$declared_value?>"/>
-			<input type="hidden" name="currecy" value="<?=$currecy?>"/>
-			<input type="hidden" name="commodity_code" value="<?=$commodity_code?>"/>
-			<input type="hidden" name="exemtion" value="<?=$exemtion?>"/>
-			<input type="hidden" name="itn" value="<?=$itn?>"/>
-			<input type="hidden" name="type_of_export" value="<?=$type_of_export?>"/>
-			<input type="hidden" name="destination_duties" value="<?=$destination_duties?>"/>
-			<input type="hidden" name="approved_account_number" value="<?=$approved_account_number?>"/>
 			<div class="row">
 				<p style="font-size: 15px; color: red">
 					unless otherwise agree in writing .i/we agree that DHL's Terms and Condition of
