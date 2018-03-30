@@ -549,26 +549,27 @@ span.tip {
 	<!--<div id="focusQuickQuoteBlock" class="focusQuickQuoteBlock" onclick="unfocusQuickQuote();"></div> -->
 
 	<div class="row">
-			<div style="border-top: 1px solid #ddd;">	
+				
 				<ul class="list-group">
-					<a href="<?=base_url('user_panel')?>" class="active selected list-group-item">
+					<a href="<?=base_url('member/user_panel')?>" class="active selected list-group-item">
 						<i class="fas fa-home"></i> Dashboard
 					</a>
 				</ul>
-			</div>
+			
 
 			<div style="border-top: 1px solid #ddd;">
-				<ul class="list-group btn" data  -toggle="collapse" data-target="#SendParcel" aria-expanded="false" aria-controls="collapseExample">
+				<ul class="list-group btn" data-toggle="collapse" data-target="#SendParcel" aria-expanded="false" aria-controls="collapseExample">
 					<a class="list-group-item active">
-						<i class="fas fa-truck"></i> Send Parcel<i class="epi-plus-squared-alt epi pull-right"></i>
+						<i class="fas fa-truck"></i> Send Parcel<i class="fas fa-plus pull-right"></i>
 					</a>
 				</ul>
 				<div>
 					<div class="collapse dropdown" id="SendParcel">
 						<ul class="list-group">
-							<a onclick="focusQuickQuote()" class="list-group-item" style="cursor: pointer;" id="Send_A_Parcel">Send A Parcel</a>
+							<a href="<?=base_url('member/courier')?>" class= "list-group-item" id="Send_A_Parcel">Courier</a>
+							<a href="" class= "list-group-item" id ="Truck">Trucking</a>
   	
-							<a href="" class="[:ac_bulkupload:] list-group-item" id ="Bulk_Upload">Bulk Upload</a>
+							<a href="<?=base_url('member/bulk_upload')?>" class="[:ac_bulkupload:] list-group-item" id ="Bulk_Upload">Bulk Upload</a>
 						</ul>
 					</div>
 				</div>
@@ -577,33 +578,67 @@ span.tip {
 			<div style="border-top: 1px solid #ddd;">	
 				<ul class="list-group btn" data-toggle="collapse" data-target="#MyBookings" aria-expanded="false" aria-controls="collapseExample">
 					<a class="list-group-item active">
-					<i class="fas fa-shopping-cart"></i> My Cart<i class="epi-plus-squared-alt epi pull-right"></i>
+					<i class="fas fa-shopping-cart"></i> My Cart<i class="fas fa-plus pull-right"></i>
 					</a>
 				</ul>
 
 				<div class="collapse dropdown" id="MyBookings">
 					<ul class="list-group">
-						<a href="" class="[:ac_book_pending:] list-group-item" id="Pending_Bookings">Pending Items <span class="badge" id="pending">0</span></a>
-						<a href="" class="[:ac_book_expired:] list-group-item" id="Expired_Bookings">Action Required <span class="badge" id="expire">0</span></a>
+						<a href="<?=base_url('member/pending_items')?>" class="[:ac_book_pending:] list-group-item" id="Pending_Bookings">Pending Items <span class="badge" id="pending">0</span></a>
+						<a href="<?=base_url('member/actions_required')?>" class="[:ac_book_expired:] list-group-item" id="Expired_Bookings">Action Required <span class="badge" id="expire">0</span></a>
 					</ul>
+				</div>
+			</div>
+			
+			<div style="border-top: 1px solid #ddd;">
+				<ul class="list-group btn" data-toggle="collapse" data-target="#MyOrders" aria-expanded="false" aria-controls="collapseExample">
+					<a class="list-group-item active">
+					<i class="fas fa-shopping-basket"></i> My Orders<i class="fas fa-plus pull-right"></i>
+					</a>
+				</ul>	
+			 
+				<div class="collapse dropdown" id="MyOrders">
+					<ul class="list-group">
+					<a href="<?=base_url('member/unpaid_orders')?>" class="list-group-item" id="Unpaid_Order_Invoices" >Unpaid Orders<span class="badge" id="unpaid">0</span>
+					</a>
+					<a href="<?=base_url('member/partial_paid_order')?>" class=" list-group-item" id="Partialpaid_Order_Invoices" >Partial Paid Orders <span class="badge" id="partialpaid">0</span>
+					</a>
+					<a href="<?=base_url('member/invoice')?>" class=" list-group-item" id="Order_Invoices">Invoices</a>
+				</ul>
 				</div>
 			</div>
 
 			<div style="border-top: 1px solid #ddd;">	
 				<ul class="list-group btn" data-toggle="collapse" data-target="#AllShipments" aria-expanded="false" aria-controls="collapseExample">
 					<a class="list-group-item active">
-					<i class="fas fa-truck"></i> All Shipments<i class="epi-plus-squared-alt epi pull-right"></i>
+					<i class="fas fa-truck"></i> All Shipments<i class="fas fa-plus pull-right"></i>
 					</a>
 				</ul>
 
 				<div class="collapse dropdown" id="AllShipments">
 					<ul class="list-group">
-						<a href="<?=base_url('domestic_report')?>" class=" list-group-item" id="Domestic">Domestic</a>
+						<a href="<?=base_url('member/domestic_report')?>" class=" list-group-item" id="Domestic">Domestic</a>
   	
-						<a href="<?=base_url('international_report')?>" class=" list-group-item" id="International">International</a>
+						<a href="<?=base_url('member/international_report')?>" class=" list-group-item" id="International">International</a>
 						
-						<a href="<?=base_url('international_report')?>" class=" list-group-item" id="International">Trucking</a>
+						<a href="<?=base_url('member/truck_report')?>" class=" list-group-item" id="Trucking">Trucking</a>
 	  	
+					</ul>
+				</div>
+			</div>
+			
+			<div>
+				<ul class="list-group btn" data-toggle="collapse" data-target="#MyCredits" aria-expanded="false" aria-controls="collapseExample">
+					<a class="list-group-item active">
+					<i class="far fa-money-bill-alt"></i> My Credits<i class="fas fa-plus pull-right"></i>
+					</a>
+				</ul>
+
+				<div class="collapse dropdown" id="MyCredits">
+					<ul class="list-group">
+						<a href="<?=base_url('member/top_up')?>" class=" list-group-item" id="Top_Up">Top Up</a>
+						<a href="<?=base_url('member/credit_history')?>" class=" list-group-item" id="Credit_History">Credit History</a>
+						<a href="<?=base_url('member/top_up_history')?>" class="[:ac_history:] list-group-item" id="Top_Up_History">Top Up History</a>
 					</ul>
 				</div>
 			</div>
@@ -611,14 +646,14 @@ span.tip {
 			<div style="border-top: 1px solid #ddd;">	
 				<ul class="list-group btn" data-toggle="collapse" data-target="#MyAccount" aria-expanded="false" aria-controls="collapseExample">
 					<a class="list-group-item active">
-						<i class="fas fa-user"></i> My Account<i class="epi-plus-squared-alt epi pull-right"></i>
+						<i class="fas fa-user"></i> My Account<i class="fas fa-plus pull-right"></i>
 					</a>
 				</ul>
 
 				<div class="collapse dropdown" id="MyAccount">
 					<ul class="list-group">
-						<a href="" class=" list-group-item" id="Profile_Setting">Profile Setting</a>
-						<a href="" class=" list-group-item" id="Address_Book">Address Book</a>
+						<a href="<?=base_url('member/personal_profile')?>" class=" list-group-item" id="Profile_Setting">Profile Setting</a>
+						<a href="<?=base_url('member/address_book')?>" class=" list-group-item" id="Address_Book">Address Book</a>
 						<a href="" class=" list-group-item" id="Referral">Referral</a>
 						<a href="" class=" list-group-item" id="Flyer_Request">Flyer Request
 							<span class="badge" data-toggle="tooltip" data-original-title="Unclaim Flyer">0</span>  <!-- yz changes -->
@@ -636,18 +671,15 @@ span.tip {
 			<div style="border-top: 1px solid #ddd;">	
 				<ul class="list-group btn" data-toggle="collapse" data-target="#Tools" aria-expanded="false" aria-controls="collapseExample">
 					<a class="list-group-item active">
-						<i class="fas fa-wrench"></i> Tools <i class="epi-plus-squared-alt epi pull-right"></i>
+						<i class="fas fa-wrench"></i> Tools <i class="fas fa-plus pull-right"></i>
 					</a>
 				</ul>
 
 				<div class="collapse dropdown" id="Tools">
 					<ul class="list-group">
-						<a href="" class="list-group-item" id="Bulk_Delivery_Tools">Bulk Delivery Tools
-						</a>
-						<a href="" target="_blank" class="list-group-item" id="Widgets">Widgets</a>
-						<a onclick = "window.open('http://wherevership.com/volumetricCalcualator', 'Wherevership  Calculator Popout', 'width=700, height=500')" style="cursor: pointer;" class="list-group-item" id="Volumetric_Calculator">Volumetric Calculator</a>
-						<a href="" target="_blank" class="list-group-item" id="EasyTrack">EasyTrack</a>
-						<a href="" target="_blank" class="[:ac_fragile:] list-group-item" id="Fragile_Logo">Fragile Logo</a>
+						
+						<a onclick = "window.open('<?=base_url('volumetricCalcualator')?>', 'Wherevership  Calculator Popout', 'width=700, height=500')" style="cursor: pointer;" class="list-group-item" id="Volumetric_Calculator">Volumetric Calculator</a>
+					
 					</ul>
 				</div>
 			</div>
@@ -655,20 +687,374 @@ span.tip {
 			<div style="border-top: 1px solid #ddd;">	
 				<ul class="list-group btn" data-toggle="collapse" data-target="#HelpSupport" aria-expanded="false" aria-controls="collapseExample">
 					<a class="list-group-item active">
-						<i class="fas fa-info-circle"></i> Help & Support<i class="epi-plus-squared-alt epi pull-right"></i>
+						<i class="fas fa-info-circle"></i> Help & Support<i class="fas fa-plus pull-right"></i>
 					</a>
 				</ul>
 
 				<div class="collapse dropdown" id="HelpSupport">
 					<ul class="list-group">
-						<a href="" target="_blank" class="list-group-item" id="Contact_Us">Contact Us</a>
-						<a href="" target="_blank" class="list-group-item" id="FAQ">FAQ</a>
-						<a href="" target="_blank" class="list-group-item" id="Tutorial">Tutorial</a>
-						<a href="" target="_blank" class="list-group-item" id="Tutorial">Tour Guide <span class="label label-success">New</span></a>
-	
+						<a href="<?=base_url('contactUs')?>" target="_blank" class="list-group-item" id="Contact_Us">Contact Us</a>
+						<a href="<?=base_url('faq')?>" target="_blank" class="list-group-item" id="FAQ">FAQ</a>
 					</ul>
 				</div>
 			</div>
 		</div>
 	
 	</div>
+	
+	<script>
+var sidebarstatus = '00000000';
+var userid = '188473';
+
+
+$('.list-group-item').click(function (e) {
+	var data = $(e.target).parent().parent().attr('data-target');
+	$(data).on("shown.bs.collapse", function(){
+		$(e.target).parent().children().eq(1).removeClass('fa-plus');
+		$(e.target).parent().children().eq(1).addClass('fa-minus');
+	/*	var status = "";
+		if(data == "#SendParcel"){
+			status = {status_SendParcel : 1};
+		}else if(data == "#MyBookings"){
+			status = {status_MyBookings : 1};
+		}else if(data == "#MyOrders"){
+			status = {status_MyOrders : 1};	
+		}else if(data == "#AllShipments"){
+			status = {status_AllShipments : 1}; 
+		}else if(data == "#MyCredits"){
+			status = {status_MyCredits : 1};
+		}else if(data == "#MyAccount"){
+			status = {status_MyAccount : 1}; 
+		}else if(data == "#Tools"){
+			status = {status_Tools : 1};
+		}else if(data == "#HelpSupport"){
+			status = {status_HelpSupport : 1};
+		} */
+	/*	$.ajax({
+			type : "post",
+			url : "./?ac=updateStatus",
+			data : status,
+			success : function(result){
+				result = $.trim(result);
+			}
+		}); */
+	});
+	$(data).on("hidden.bs.collapse", function(){
+		$(e.target).parent().children().eq(1).removeClass('fa-minus');
+		$(e.target).parent().children().eq(1).addClass('fa-plus');
+/*		var status = "";
+		if(data == "#SendParcel"){
+			status = {status_SendParcel : 0}; 
+		}else if(data == "#MyBookings"){
+			status = {status_MyBookings : 0}; 
+		}else if(data == "#MyOrders"){
+			status = {status_MyOrders : 0};	
+		}else if(data == "#AllShipments"){
+			status = {status_AllShipments : 0};  
+		}else if(data == "#MyCredits"){
+			status = {status_MyCredits : 0}; 
+		}else if(data == "#MyAccount"){
+			status = {status_MyAccount : 0}; 
+		}else if(data == "#Tools"){
+			status = {status_Tools : 0}; 
+		}else if(data == "#HelpSupport"){
+			status = {status_HelpSupport : 0}; 
+		} */
+	/*	$.ajax({
+			type : "post",
+			url : "./?ac=updateStatus",
+			data : status,
+			success : function(result){
+				result = $.trim(result);
+			}
+		}); */
+	});
+});
+
+$('ul[data-toggle=collapse]').click(function (e) {
+	var data = $(e.target).parent().attr('data-target');
+	$(data).on("shown.bs.collapse", function(){
+		$(e.target).children().eq(1).removeClass('fa-plus');
+		$(e.target).children().eq(1).addClass('fa-minus');
+	/*	var status = "";
+		if(data == "#SendParcel"){
+			status = {status_SendParcel : 1};
+		}else if(data == "#MyBookings"){
+			status = {status_MyBookings : 1};
+		}else if(data == "#MyOrders"){
+			status = {status_MyOrders : 1};	
+		}else if(data == "#AllShipments"){
+			status = {status_AllShipments : 1}; 
+		}else if(data == "#MyCredits"){
+			status = {status_MyCredits : 1};
+		}else if(data == "#MyAccount"){
+			status = {status_MyAccount : 1}; 
+		}else if(data == "#Tools"){
+			status = {status_Tools : 1};
+		}else if(data == "#HelpSupport"){
+			status = {status_HelpSupport : 1};
+		} */
+	/*	$.ajax({
+			type : "post",
+			url : "./?ac=updateStatus",
+			data : status,
+			success : function(result){
+				result = $.trim(result);
+			}
+		}); */
+	});
+	$(data).on("hidden.bs.collapse", function(){
+		$(e.target).children().eq(1).removeClass('fa-minus')
+		$(e.target).children().eq(1).addClass('fa-plus');
+	/*	var status = ""
+		if(data == "#SendParcel"){
+			status = {status_SendParcel : 0}; 
+		}else if(data == "#MyBookings"){
+			status = {status_MyBookings : 0}; 
+		}else if(data == "#MyOrders"){
+			status = {status_MyOrders : 0};	
+		}else if(data == "#AllShipments"){
+			status = {status_AllShipments : 0};  
+		}else if(data == "#MyCredits"){
+			status = {status_MyCredits : 0}; 
+		}else if(data == "#MyAccount"){
+			status = {status_MyAccount : 0}; 
+		}else if(data == "#Tools"){
+			status = {status_Tools : 0}; 
+		}else if(data == "#HelpSupport"){
+			status = {status_HelpSupport : 0}; 
+		}  */
+	/*	$.ajax({
+			type : "post",
+			url : "./?ac=updateStatus",
+			data : status,
+			success : function(result){
+				result = $.trim(result);
+			}
+		}); */
+	});
+});
+
+if(sidebarstatus.substring(0, 1) == 1){
+	$('#SendParcel').collapse();
+	$("ul[data-target='#SendParcel']").children().children().eq(1).removeClass('fa-plus').addClass('fa-minus');
+}
+if(sidebarstatus.substring(1, 2) == 1){
+	$('#MyBookings').collapse();
+	$("ul[data-target='#MyBookings']").children().children().eq(1).removeClass('fa-plus').addClass('fa-minus');
+}
+
+if(sidebarstatus.substring(2, 3) == 1){
+	$('#MyOrders').collapse();
+	$("ul[data-target='#MyOrders']").children().children().eq(1).removeClass('fa-plus').addClass('fa-minus');
+}
+
+if(sidebarstatus.substring(3, 4) == 1){
+	$('#AllShipments').collapse();
+	$("ul[data-target='#AllShipments']").children().children().eq(1).removeClass('fa-plus').addClass('fa-minus');
+}
+if(sidebarstatus.substring(4, 5) == 1){
+	$('#MyCredits').collapse();
+	$("ul[data-target='#MyCredits']").children().children().eq(1).removeClass('fa-plus').addClass('fa-minus');
+}
+
+if(sidebarstatus.substring(5, 6) == 1){
+	$('#MyAccount').collapse();
+	$("ul[data-target='#MyAccount']").children().children().eq(1).removeClass('fa-plus').addClass('fa-minus');
+}
+if(sidebarstatus.substring(6, 7) == 1){
+	$('#Tools').collapse();
+	$("ul[data-target='#Tools']").children().children().eq(1).removeClass('fa-plus').addClass('fa-minus');
+}
+if(sidebarstatus.substring(7, 8) == 1){
+	$('#HelpSupport').collapse();
+	$("ul[data-target='#HelpSupport']").children().children().eq(1).removeClass('fa-plus').addClass('fa-minus');
+}
+
+$('#expandForm input').on('change', function() {
+	var status = $('input[name="acceptNotice"]:checked', '#expandForm').val();
+	if(status=="0"){
+		var fullstatus = {fullstatus : 1};
+		$(".collapse.dropdown:not(.in)").collapse('show');
+		$(".fas").removeClass('fa-plus');
+		$(".fas").addClass('fa-minus');
+		$.ajax({
+			type : "post",
+			url : "./?ac=updateAllStatus",
+			data : fullstatus,
+			success : function(result){
+				result = $.trim(result);
+			}
+		});
+	}else if(status=="1"){
+		var fullstatus = {fullstatus : 0};
+		$(".collapse.in").collapse('hide');
+		$(".fas").removeClass('fa-plus');
+		$(".fas").addClass('fa-minus');
+		$.ajax({
+			type : "post",
+			url : "./?ac=updateAllStatus",
+			data : fullstatus,
+			success : function(result){
+				result = $.trim(result);
+			}
+		});
+	}
+});
+
+if(sidebarstatus == 11111111 && userid != 0){
+	$('input:radio[name=acceptNotice][value="0"]').prop('checked', true);
+	$(".fas").removeClass('fa-plus');
+	$(".fas").addClass('fa-minus');
+}else if(sidebarstatus == 00000000 && userid != 0){
+	$('input:radio[name=acceptNotice][value="1"]').prop('checked', true);
+}
+
+function switchTemplate(version){
+	var data = {
+		version : version
+	};
+	$.ajax({
+		type : "post",
+		url : "./?ac=doChangeTemplate",
+		data : data,
+		success : function(result){
+			if(result == "pass"){
+				window.location.reload();
+			}
+		}
+	});
+}
+var bookDoneCount = false;
+var unpaidDoneCount = false;
+var bookCountAjax;
+var unpaidCountAjax;
+
+$(window).load(function(){
+	getUnpaidOrder();
+	getBookCount();
+	setInterval(function(){
+		getUnpaidOrder();
+		getBookCount();
+	}, 600000);
+	$('.hover[data-toggle="tooltip"]').tooltip({
+		animated: 'fade',
+		html: true
+	});
+});
+
+function getBookCount(){
+	<!-- yz changes -->
+	var mssg="0";
+	var flyerUnclaim="0";
+	if(mssg != 0 || flyerUnclaim != 0)
+	{
+		$('#MyAccount').collapse();
+		$("ul[data-target='#MyAccount']").children().children().eq(1).removeClass('epi-plus-squared-alt').addClass('epi-minus-squared-alt');
+	}
+	
+	bookCountAjax = $.ajax({
+		type : "post",
+		url : "./?ac=getBookingCount",
+		data : '',
+		success : function(result){
+			bookDoneCount = true;
+			result = $.trim(result);
+			if(result != "fail"){
+				result = result.split(',');
+				$('span#pending').text(result[0]);
+				$('span#expire').text(result[1]);
+				if((result[0])>0 || (result[1])>0){
+					$('#MyBookings').collapse();
+					$("ul[data-target='#MyBookings']").children().children().eq(1).removeClass('epi-plus-squared-alt').addClass('epi-minus-squared-alt');
+				}
+			}else{
+				swal({
+					title: 'Opps!',
+					text: "You've been idle for some time. For security purposes, kindly relogin..",
+					type: 'info',
+					confirmButtonColor: '#4e97d8'
+					}).then(function() {
+						location.reload();
+					})
+			}
+		}
+	});
+	
+	/*$.ajax({
+		type : "post",
+		async : true,
+		url : "./?ac=getUnpaidOrderCount",
+		data : '',
+		success : function(result){
+			result = $.trim(result);
+			if(result != "fail"){
+				//split result
+				result = result.split(",");
+				$('span#unpaid').text(result[0]);
+				$('span#partialpaid').text(result[1]);
+				if(result[0]>0 || result[1]>0){
+					$('#MyOrders').collapse();
+					$("ul[data-target='#MyOrders']").children().children().eq(1).removeClass('epi-plus-squared-alt').addClass('epi-minus-squared-alt');
+				}
+			}else{
+				swal({
+					title: 'Opps!',
+					text: "You've been idle for some time. For security purposes, kindly relogin..",
+					type: 'info',
+					confirmButtonColor: '#4e97d8'
+					}).then(function() {
+						location.reload();
+					})
+			}
+		}
+	});*/
+}
+
+function getUnpaidOrder() {
+	unpaidCountAjax = $.ajax({
+		type : "post",
+		async : true,
+		url : "./?ac=getUnpaidOrderCount",
+		data : '',
+		success : function(result){
+			unpaidDoneCount = true;
+			result = $.trim(result);
+			if(result != "fail"){
+				//split result
+				result = result.split(",");
+				$('span#unpaid').text(result[0]);
+				$('span#partialpaid').text(result[1]);
+				if(result[0]>0 || result[1]>0){
+					$('#MyOrders').collapse();
+					$("ul[data-target='#MyOrders']").children().children().eq(1).removeClass('epi-plus-squared-alt').addClass('epi-minus-squared-alt');
+				}
+			}else{
+				swal({
+					title: 'Opps!',
+					text: "You've been idle for some time. For security purposes, kindly relogin..",
+					type: 'info',
+					confirmButtonColor: '#4e97d8'
+					}).then(function() {
+						location.reload();
+					})
+			}
+		}
+	});
+}
+
+/*
+$('.list-group').click(function(e){
+	var tab_status = {tabstatus : $(e.target).attr('id')};
+	$.ajax({
+		type : "post",
+		url : "./?ac=updateTabStatus",
+		data : tab_status,
+		success : function(result){
+		result = $.trim(result);
+		}
+	});
+});
+*/
+
+</script>
