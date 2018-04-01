@@ -1,3 +1,9 @@
+<script>
+	$('#MyCredits').collapse();
+	$("ul[data-target='#MyCredits']").children().children().eq(1).removeClass('fa-plus').addClass('fa-minus');
+	$("#Top_Up").addClass('active selected');
+
+</script>
 <div class="col-md-10 col-xs-12 dashboard-wrapped padding-right-off">
 		
 		<!--<div class="row dashoboard-account"> <img  width="100%" src="https://secure.easyparcel.my/pass/application/APP_6.15/theme/easyparcel/images/Top-Up-Banner.jpg">

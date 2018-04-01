@@ -1,3 +1,9 @@
+ <script>
+	$('#MyOrders').collapse();
+	$("ul[data-target='#MyOrders']").children().children().eq(1).removeClass('fa-plus').addClass('fa-minus');
+	$("#Partialpaid_Order_Invoices").addClass('active selected');
+
+</script>
  <div class="col-md-10 col-xs-12 dashboard-wrapped padding-right-off">
     <div class="row dashoboard-account">
     <div class="container-fluid space-small" style="padding-bottom: 15px;">

@@ -120,7 +120,7 @@
 						<ul class="nav navbar-nav navbar-right visible-sm">
 							<li class="login-menu login_top"><a href="<?=base_url('userLogin')?>"><i class="fas fa-user"></i>Log In</a></li>
 							<li class="login-menu signUp_top" style="border-left: 2px solid #fff;"><a href="<?=base_url('signUp')?>">Sign Up</a></li>
-							<li class="login-menu logout_top" style="border-left: 2px solid #fff;"><a>Log Out</a></li>
+							<li class="login-menu logout_top" style="border-left: 2px solid #fff;"><a onclick='logout()'>Log Out</a></li>
 						</ul>
 				
 					<div class="col-lg-6 col-md-8 padding-off hidden-sm">
@@ -196,6 +196,23 @@
 	}
 }
 
+function logout() {
+		firebase.auth().signOut().then(function() {
+								
+								window.location.href = '<?=base_url()?>';
+							}).catch(function(error) {
+								 swal({
+									title: 'Oops',
+									type: 'error',
+									html: error,
+									confirmButtonColor: '#4e97d8'
+									})
+									
+				
+						});
+		
+	}
+
 </script>
 					</div>
 				</div>
@@ -226,7 +243,7 @@
           <ul class="nav navbar-nav navbar-right hidden-sm">
              <li class="login-menu login_top"><a href="<?=base_url('userLogin')?>"><i class="fas fa-user"></i> Log In</a></li>
             <li class="login-menu signUp_top"><a href="<?=base_url('signUp')?>" style="border-left: 1px solid rgba(255, 255, 255, 0.5);">Sign Up</a></li>
-			<li class="login-menu logout_top"><a>Log Out</a></li>
+			<li class="login-menu logout_top"><a onclick='logout()'>Log Out</a></li>
           </ul>
         </nav>
       </div>
@@ -261,7 +278,7 @@
     <ul class="nav navbar-nav site-nav-group">
       <li class="site-nav-item login_top"> <a href="<?=base_url('userLogin')?>"><span>Log In</span> <span class="side-menu-box"><i class="fas fa-user"></i></span></a> </li>
       <li class="site-nav-item signUp_top"> <a href="<?=base_url('signUp')?>"><span>Sign Up</span> <span class="side-menu-box"><i class="fas fa-user"></i></span></a> </li>
-	  <li class="site-nav-item logout_top"> <a><span>Log Out</span> <span class="side-menu-box"><i class="fas fa-user"></i></span></a> </li>
+	  <li class="site-nav-item logout_top"> <a onclick='logout()'><span>Log Out</span> <span class="side-menu-box"><i class="fas fa-user"></i></span></a> </li>
     </ul>
     <h3 class="site-nav-title">USEFUL LINKS</h3>
     <ul class="nav navbar-nav site-nav-group">
@@ -551,7 +568,7 @@ span.tip {
 	<div class="row">
 				
 				<ul class="list-group">
-					<a href="<?=base_url('member/user_panel')?>" class="active selected list-group-item">
+					<a href="<?=base_url('member/user_panel')?>" class="list-group-item" id="dashboard">
 						<i class="fas fa-home"></i> Dashboard
 					</a>
 				</ul>
@@ -585,7 +602,7 @@ span.tip {
 				<div class="collapse dropdown" id="MyBookings">
 					<ul class="list-group">
 						<a href="<?=base_url('member/pending_items')?>" class="[:ac_book_pending:] list-group-item" id="Pending_Bookings">Pending Items <span class="badge" id="pending">0</span></a>
-						<a href="<?=base_url('member/actions_required')?>" class="[:ac_book_expired:] list-group-item" id="Expired_Bookings">Action Required <span class="badge" id="expire">0</span></a>
+						<a href="<?=base_url('member/actions_required')?>" class="[:ac_book_expired:] list-group-item" id="Action_Required">Action Required <span class="badge" id="expire">0</span></a>
 					</ul>
 				</div>
 			</div>

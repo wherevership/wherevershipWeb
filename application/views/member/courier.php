@@ -1,3 +1,9 @@
+<script>
+	$('#SendParcel').collapse();
+	$("ul[data-target='#SendParcel']").children().children().eq(1).removeClass('fa-plus').addClass('fa-minus');
+	$("#Send_A_Parcel").addClass('active selected');
+
+</script>
  <div class="col-md-10 col-xs-12 dashboard-wrapped padding-right-off">
     <div class="row dashoboard-account">
 		<div class="container-fluid space-small" style="padding-bottom: 15px;">

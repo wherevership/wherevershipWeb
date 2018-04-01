@@ -26,7 +26,7 @@
 			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-3 footer-link-height">
 				<ul class="links">
 				<li class="title-link">Tools</li>
-				<li><a href="#">Send A Parcel</a></li>
+				<li><a data-toggle="modal" data-target="#services>"Send A Parcel</a></li>
 				<li><a href="#">Trace & Track</a></li>
 				<li><a onclick = "#">Volumetric Calculator</a></li>
 				<li><a href="#">Widgets</a></li>
@@ -95,9 +95,19 @@
 <script>
 firebase.auth().onAuthStateChanged( firebaseUser => {
 				if(firebaseUser) {
+					const database2 = firebase.database().ref('User').child(firebaseUser.uid);
+					database2.on('value', snap => {
+						$("#welcome").text("Hi " + snap.val().firstName + " " + snap.val().lastName);
+					});
 					$(".login_top").hide();
 					$(".signUp_top").hide();
 					$(".logout_top").show();
+					$("#welcome").attr("href","<?=base_url("member/user_panel")?>");
+					$("#log_in_f").text("LogOut").attr("href","javascript:logout()");
+					
+					$("#dashboard_f").attr("href","<?=base_url("member/user_panel")?>");
+					$("#edit_profile_f").attr("href","<?=base_url("member/personal_profile")?>");
+					$("#my_cart_f").attr("href","<?=base_url("member/actions_required")?>");
 					
 				
 				} else {
@@ -106,7 +116,7 @@ firebase.auth().onAuthStateChanged( firebaseUser => {
 					$(".logout_top").hide();
 					$("#welcome").text("Hi, Welcome");
 					$("#welcome").attr("href","<?=base_url("userLogin")?>");
-					$("#log_in_f").attr("href","<?=base_url("userLogin")?>");
+					$("#log_in_f").text("logIn").attr("href","<?=base_url("userLogin")?>");
 					$("#dashboard_f").attr("href","<?=base_url("userLogin")?>");
 					$("#edit_profile_f").attr("href","<?=base_url("userLogin")?>");
 					$("#my_cart_f").attr("href","<?=base_url("userLogin")?>");

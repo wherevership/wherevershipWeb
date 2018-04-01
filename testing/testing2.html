@@ -7,7 +7,11 @@
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 		<link href="css/bootstrap-select.min.css" rel="stylesheet">
 		<link href="css/style.css" rel="stylesheet">
+		<link href="css/sweetalert2.min.css" rel="stylesheet">
 		
+		<script type="text/javascript" src="js/jquery-1.12.1.min.js"></script>
+		<script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
+		<script type="text/javascript" src="js/sweetalert2.min.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
 		<script src="js/firConfig.js"></script>
 		
@@ -160,8 +164,8 @@
 			
 			});
 			function login() {
-				const username = document.getElementById('user_login').value;
-				const password = document.getElementById('user_pass').value;
+				const username = $('#user_login').val();
+				const password = $('#user_pass').val();
 				const auth = firebase.auth();
 				console.log(auth);
 				auth.signInWithEmailAndPassword(username,password).then(function(firebaseUser) {
@@ -178,7 +182,13 @@
 								
 								alert('You not permis to access')
 							}).catch(function(error) {
-									console.log(error);
+								 swal({
+									title: 'Oops',
+									type: 'error',
+									html: error,
+									confirmButtonColor: '#4e97d8'
+									})
+									
 				
 						});
 						
@@ -188,7 +198,14 @@
 				
 				})
 				.catch(function(error) {
-				   alert(error.message);
+				   swal({
+						title: 'Oops',
+						type: 'error',
+						html: error.message,
+						confirmButtonColor: '#4e97d8'
+						})
+				   
+				
 				
 				});
 				

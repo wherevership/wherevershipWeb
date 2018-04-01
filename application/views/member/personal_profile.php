@@ -1,3 +1,9 @@
+<script>
+	$('#MyAccount').collapse();
+	$("ul[data-target='#MyAccount']").children().children().eq(1).removeClass('fa-plus').addClass('fa-minus');
+	$("#Profile_Setting").addClass('active selected');
+
+</script>
 <div class="col-md-10 col-xs-12 dashboard-wrapped padding-right-off">
     <div class="row dashoboard-account">
   <div class="hidden-xs"><style>

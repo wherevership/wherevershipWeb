@@ -1,3 +1,9 @@
+ <script>
+	$('#MyCredits').collapse();
+	$("ul[data-target='#MyCredits']").children().children().eq(1).removeClass('fa-plus').addClass('fa-minus');
+	$("#Credit_History").addClass('active selected');
+
+</script>
  <div class="col-md-10 col-xs-12 dashboard-wrapped padding-right-off">
     <div class="row credits-available hidden-xs">
       <h4><i class="epi-money173" style="font-size:48px; vertical-align: middle;"></i> My credits : RM 25.00

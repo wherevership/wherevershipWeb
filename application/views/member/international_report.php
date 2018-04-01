@@ -1,3 +1,9 @@
+ <script>
+	$('#AllShipments').collapse();
+	$("ul[data-target='#AllShipments']").children().children().eq(1).removeClass('fa-plus').addClass('fa-minus');
+	$("#International").addClass('active selected');
+
+</script>
  <div class="col-md-10 col-xs-12 dashboard-wrapped padding-right-off">
     <div class="row dashoboard-account">
     

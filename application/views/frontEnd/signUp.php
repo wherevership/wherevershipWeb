@@ -53,7 +53,7 @@
 		</div>
         <label class="checkbox">
           <input type="checkbox" name="acceptTerm" >
-          I accept the <a href="./?pg=TermAndCond">Terms and Conditions</a></label>
+          I accept the <a href="<?=base_url('term_and_condition')?>">Terms and Conditions</a></label>
         <button class="btn btn-primary btn-lg sign-up" value="Sign up" onclick="ga('send', 'event', { eventCategory: 'New Account', eventAction: 'Sign Up'});SignUp()" style="width:100%"> Sign Up </button>
 		<div class="clearfix"></div>
         <br>
@@ -64,7 +64,7 @@
         </div>
         <hr>
         <br>
-        Log in to reveal exclusive deals and book faster! <strong> <a href="?pg=UserLogin">Log In</a> </strong>
+        Log in to reveal exclusive deals and book faster! <strong> <a href="<?=base_url('userLogin')?>">Log In</a> </strong>
       </div>
     </div>
   </div>

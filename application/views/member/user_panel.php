@@ -1,3 +1,7 @@
+ <script>
+	$("#dashboard").addClass('active selected');
+</script>
+
 	<div class="col-md-10 col-xs-12 dashboard-wrapped padding-right-off">
     <style>
 		.profile-bg {

@@ -1,3 +1,9 @@
+<script>
+	$('#MyBookings').collapse();
+	$("ul[data-target='#MyBookings']").children().children().eq(1).removeClass('fa-plus').addClass('fa-minus');
+	$("#Action_Required").addClass('active selected');
+
+</script>
 <div class="col-md-10 col-xs-12 dashboard-wrapped padding-right-off">
 <style>
 .profile-bg {

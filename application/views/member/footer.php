@@ -29,7 +29,7 @@
 			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-3 footer-link-height">
 				<ul class="links">
 				<li class="title-link">Tools</li>
-				<li><a href="#">Send A Parcel</a></li>
+				<li><a data-toggle="modal" data-target="#services">Send A Parcel</a></li>
 				<li><a href="#">Trace & Track</a></li>
 				<li><a onclick = "#">Volumetric Calculator</a></li>
 				<li><a href="#">Widgets</a></li>
@@ -38,7 +38,7 @@
 		          
 				</ul>
 			</div>
-			<div class="col-xs-12 col-sm-12 col-md-12 footer-link-height social-links">
+			<div class="col-xs-12 col-sm-6 col-md-4 footer-link-height social-links">
 				<ul class="links" style="padding-bottom: 5px;">
 					<li class="title-link">Follow Us</li>
 					<li style="float: left; margin-right: 10px;"><a href="#" target="_blank"><i class="fab fa-facebook-f" style="text-align: center"></i></a></li>
@@ -98,9 +98,20 @@
 <script>
 		firebase.auth().onAuthStateChanged( firebaseUser => {
 				if(firebaseUser) {
+					
+					const database2 = firebase.database().ref('User').child(firebaseUser.uid);
+					database2.on('value', snap => {
+						$("#welcome").text("Hi " + snap.val().firstName + " " + snap.val().lastName);
+					});
 					$(".login_top").hide();
 					$(".signUp_top").hide();
 					$(".logout_top").show();
+					$("#welcome").attr("href","<?=base_url("member/user_panel")?>");
+					$("#log_in_f").text("LogOut").attr("href","javascript:logout()");
+					
+					$("#dashboard_f").attr("href","<?=base_url("member/user_panel")?>");
+					$("#edit_profile_f").attr("href","<?=base_url("member/personal_profile")?>");
+					$("#my_cart_f").attr("href","<?=base_url("member/actions_required")?>");
 					
 				
 				} else {
@@ -109,7 +120,7 @@
 					$(".logout_top").hide();
 					$("#welcome").text("Hi, Welcome");
 					$("#welcome").attr("href","<?=base_url("userLogin")?>");
-					$("#log_in_f").attr("href","<?=base_url("userLogin")?>");
+					$("#log_in_f").text("logIn").attr("href","<?=base_url("userLogin")?>");
 					$("#dashboard_f").attr("href","<?=base_url("userLogin")?>");
 					$("#edit_profile_f").attr("href","<?=base_url("userLogin")?>");
 					$("#my_cart_f").attr("href","<?=base_url("userLogin")?>");

@@ -155,7 +155,7 @@
         <br>
 		</div>
 		<div class="has-feedback">
-       <input class="form-control" type="password" placeholder="Sign in Password" name="txt_pass"><span class="epi-info-circled form-control-feedback hide"  aria-hidden="true"></span>
+       <input class="form-control" type="password" placeholder="Sign in Password" id="login_pass" name="txt_pass"><span class="epi-info-circled form-control-feedback hide"  aria-hidden="true"></span>
         </div>
         <input type="hidden" name="txt_wechatID" value="">
         <br>
@@ -181,7 +181,7 @@
     	
         <hr>
         <br>
-        No account? Start here! <strong> <a href="?pg=UserSignUp">Register Now</a> </strong>
+        No account? Start here! <strong> <a href="<?=base_url('signUp')?>">Register Now</a> </strong>
         </div>
     </div>
   </div>
@@ -226,46 +226,34 @@ function Signin(){
 			html: 'Please enter your email and password.',
 			confirmButtonColor: '#4e97d8'
 			})
-	}else{
+	}else
+	{
 		CheckNull($(".SigninForm [name=txt_user]"),$(".SigninForm [name=txt_pass]"));
 		$(".log-in").addClass("disabled");
 		$(".log-in").html("<i class='epi-spin4 selector__glyph-inner animate-spin' style='font-size: 24px;'></i>");
-	var
-		type = "post",
-		url = "./?ac=doUserLogin",
-		data = {
-			email : $(".SigninForm [name=txt_user]").val(),
-			pwd : $(".SigninForm [name=txt_pass]").val(),
-			wechatID : $(".SigninForm [name=txt_wechatID]").val()
-		},
-		callback = function(result){			
-			if(result == "pass"){
-				var url = window.location.href;
-				if(url.indexOf("pg=ShopifyLanding") > -1){
-					window.location.href=(url);
-				}else if("[:redirect:]" == 1){
-					UpdateQuoteRedirectId();
-				}else{
-					LocationLink = './?pg=MyAccount'
-					window.location.href = LocationLink.replace(/&amp;/g,'&');
-					
-				}
-			}else{
-				swal({
-					title: 'Sign In Fail',
-					type: 'error',
-					html: 'Sorry, invalid email or password. Please Try Again.',
-					confirmButtonColor: '#4e97d8'
-					})
-				$(".log-in").removeClass("disabled");
-				$(".log-in").html("Log In");
-				isLogin = false;
+		const username = $('#login_email').val();
+		const password = $('#login_pass').val();
+		const auth = firebase.auth();
+		console.log(username);
+		auth.signInWithEmailAndPassword(username,password).then(function(firebaseUser) {
+			
+			window.location.href = '<?=base_url("member/user_panel")?>';
+		}).catch(function(error) {
+				   isLogin = false;
+				   swal({
+						title: 'Oops',
+						type: 'error',
+						html: error.message,
+						confirmButtonColor: '#4e97d8'
+						});
+				   
 				
-			}
-		};
+				
+		});
+	
 		if(!isLogin){
 			isLogin = true;
-			General.loadAjax(type,url,data,callback);
+		
 		}
 	}
 }
@@ -323,7 +311,7 @@ function clearNull(obj){
 	$(obj).css("border-color","");
 	$(obj).parent().children().eq(1).addClass("hide");
 }
-
+/*
 function SignInFB(response){
 	FB.api('/me?fields=first_name, last_name, picture, email', function(response2){
 	FBValidation = true;
@@ -472,13 +460,13 @@ FB.getLoginStatus(function(response) {
 	//console.log('Successful login for: ' + response.name + response.email);
     });
   }
-
+*/
 function checkEnter(e) {
     if (e.keyCode == 13) {
 		Signin();
     }
 }
-
+/*
 $(function(){
 	$("#login_email").focus();
 });
@@ -566,7 +554,7 @@ function attachSignin(element) {
 }
 startApp();
 
-
+*/
 
 function removeAcc(id){
 		var
