@@ -47,14 +47,20 @@
 		<div class="has-feedback">
 			<!-- TY-S EMAIL -->
 	        <input class="form-control" type="text" placeholder="Email" id="email1" name="txt_email" onchange="checkEmail(this,true,true)" value="">
+			<span class="fas fa-info-circle form-control-feedback hide"  aria-hidden="true"></span>
+			<br>
 			<!-- TY-E EMAIL -->
-			<span class="epi-info-circled form-control-feedback hide"  aria-hidden="true"></span>
+			<input class="form-control" type="password" placeholder="Password" id="pass" name="txt_pass" onchange="checkPwdC(this)"  value="">
+			<span class="fas fa-info-circle form-control-feedback hide"  aria-hidden="true"></span>
+			<br>
+			<input class="form-control" type="password" placeholder="Retype Password" id="repass" name="txt_pass_confirm" onchange="checkPwd(this)" value="">
+			<span class="fas fa-info-circle form-control-feedback hide"  aria-hidden="true"></span>
 			<br>
 		</div>
         <label class="checkbox">
           <input type="checkbox" name="acceptTerm" >
           I accept the <a href="<?=base_url('term_and_condition')?>">Terms and Conditions</a></label>
-        <button class="btn btn-primary btn-lg sign-up" value="Sign up" onclick="ga('send', 'event', { eventCategory: 'New Account', eventAction: 'Sign Up'});SignUp()" style="width:100%"> Sign Up </button>
+        <button class="btn btn-primary btn-lg sign-up" value="Sign up" onclick="SignUp()" style="width:100%"> Sign Up </button>
 		<div class="clearfix"></div>
         <br>
         <div class="social-login-divider"><i class="social-login-divider-text">Or</i></div>
@@ -98,44 +104,9 @@ if(url.indexOf("pg=ShopifyLanding") > -1){
 function SignUp(){
 	ValidateResult = ValidateSignUp();
 		$(".sign-up").addClass("disabled");
-		$(".sign-up").html("<i class='epi-spin4 selector__glyph-inner animate-spin' style='font-size: 24px;'></i>");
+		$(".sign-up").html("<i class='far fa-times-circle selector__glyph-inner animate-spin' style='font-size: 24px;'></i>");
 	if(ValidateResult==true){
-		var
-		type = "post",
-		url = "./?ac=doQuickUserSignUp",
-		data = {
-			email : $(".SignupForm [name=txt_email]").val(),
-			parameter : parameter
-		},
-		callback = function(result){
-			if(result == "pass"){	
-				swal({
-					title: 'Registration Completed',
-					type: 'success',
-					html: 'Congratulations your account has been created successfully.',
-					confirmButtonColor: '#4e97d8'
-					}).then(function() {
-						window.location.reload();
-					})
-				$(".sign-up").removeClass("disabled");
-				$(".sign-up").html("Sign Up");
-				isLogin = false;
-			}else{
-				swal({
-					title: 'Sign Up Fail',
-					type: 'error',
-					html: 'The website has encountered a problem and cannot complete the requested action.',
-					confirmButtonColor: '#4e97d8'
-					})
-				$(".sign-up").removeClass("disabled");
-				$(".sign-up").html("Sign Up");
-				isLogin = false;
-			}
-		};
-		if(!isLogin){
-			isLogin = true;
-			General.loadAjax(type,url,data,callback);
-		}
+	    console.log("pass");
 	}else{
 		window.exist = 0;
 		if(ValidateResult != ""){
@@ -155,8 +126,8 @@ function SignUp(){
 function checkEmail(obj,check,async){
 	$(".alert.alert-danger").text("").removeClass();
 	$(".sign-up").attr("disabled", true);
-	$(obj).parent().children().eq(1).removeClass("epi-info-circled hide");
-	$(obj).parent().children().children().eq(0).removeClass("epi-ok");
+	$(obj).parent().children().eq(1).removeClass("fas fa-info-circle hide");
+	$(obj).parent().children().children().eq(0).removeClass("fas fa-genderless");
     $(obj).parent().children().eq(1).html("<i class='epi-spin5 selector__glyph-inner animate-spin' style='font-size: 18px; position: absolute; top: 13px; right:5px;'></i>");
 	var pass = true;
 	var email = $(".SignupForm [name=txt_email]").val();
@@ -174,32 +145,15 @@ function checkEmail(obj,check,async){
 	}else{
 		doPadding(obj);
 		if(check){
-			$.ajax({
-				type: "POST",
-				url: "./?ac=CheckUserEmail",
-				data : { 
-					email : email
-				},
-				async : async,
-				success:function(response){
-					$(".sign-up").attr("disabled", false);
-					if(response == "pass"){
-						doPass(obj);
-						window.outcome = 2;
-					}else if(response == "invalidemail"){
-						doFail(obj);
-						window.outcome = 0;
-						$(".has-feedback").before('<p class="alert alert-danger">Mmmm, your email is not valid. Kindly verify your secret identity by clicking <a href="" onclick="SendLink();event.preventDefault();">Verification Link</a>.</p>');
-					}else{
-						doFail(obj);
-						window.outcome = 1;
-						$(".has-feedback").before('<p class="alert alert-danger">Email already exist.</p>');
-					}
-				}
-			});
+			doPass(obj);
+			window.outcome = 3;
+			$(".sign-up").attr("disabled", true);
+			
 		}
 	}
 }
+
+
 
 function SendLink(){
 	$(".alert.alert-danger").text("").removeClass();
@@ -222,6 +176,7 @@ function SendLink(){
 function checkEmpty(obj){
 	if(!General.isTextEmpty($(obj))){
 		doPass(obj);
+		
 	}else{
 		doFail(obj);
 	}
@@ -233,11 +188,13 @@ function CheckNull(obj,obj1){
 	
 	if(General.isTextEmpty($(obj))){
 		doFail(obj);
+		
 	}else{
 		clearNull(obj);
 	}
 	if(General.isTextEmpty($(obj1))){
 		doFail(obj1);
+		
 	}else{
 		clearNull(obj1);
 	}
@@ -245,6 +202,28 @@ function CheckNull(obj,obj1){
 
 function checkPwd(obj){
 	var pwd  = $(".SignupForm [name=txt_pass]");
+	var pass = true;
+	
+	if(General.isTextEmpty($(obj))){
+		pass = false;
+	}
+	
+	if(General.isLengthLess($(obj),6)){
+		pass = false;
+	}
+	
+	if(pass){
+		doPass(obj);
+		window.outcome = 3;
+	}else{
+		doFail(obj);
+		window.outcome = 2;
+	}
+	
+}
+
+function checkPwdC(obj){
+	
 	var pwdc = $(".SignupForm [name=txt_pass_confirm]");
 	var pass = true;
 	
@@ -263,9 +242,11 @@ function checkPwd(obj){
 	}
 	if(hasValidate(pwdc)){
 		if(pwd.val() != pwdc.val() || General.isTextEmpty(pwdc)){
-			doFail(pwdc);
+			doFail(pwdc); 
+			window.outcome = 2;
 		}else{
 			doPass(pwdc);
+			window.outcome = 3;
 		}
 	}
 }
@@ -331,7 +312,9 @@ function ValidateSignUp(){
 		returnResult += "Please insert a valid email into the email field.<br>";
 	}else if(window.outcome == 1){
 		returnResult += "Another user with this email already exists. Maybe it's your evil twin. Spooky. If it is you, kindly log in with the email or click <br><a href='./?pg=MemberForgotPassword'><b><u>HERE</u></b></a> to reset a new password.<br>";
-	}else if(window.outcome == 2){
+	}else if(window.outcome == 2) {
+		returnResult += "invalid password<br>";
+	}else if(window.outcome == 3){
 		if(returnResult == ""){
 			returnResult = true;
 		}

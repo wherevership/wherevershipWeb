@@ -256,16 +256,16 @@ function logout() {
 <!--START OF MOBILE TOP MENU-->
 <div id="sticky-anchor-mobile"></div>
 <div id="sticky" class="mobile-navbar navbar-header visible-xs">
-  <a href="index.html"><img src="<?=base_url('assets2/image/logo.png')?>" class="visible-xs hiddenn-sm phone-logo" style="float: left;"></a>
+  <a href="<?=base_url('')?>"><img src="<?=base_url('assets2/image/logo.png')?>" class="visible-xs hiddenn-sm phone-logo" style="float: left;"></a>
     <div class="mobile-menu pull-right">
-      <button type="button" class="navbar-toggle collapsed" onclick="displayMainMenu()"><i class="fas fa-home"></i></button>
+      <a class="navbar-toggle collapsed" onclick="displayMainMenu()"><i class="fas fa-home"></i></a>
     </div>
-    <div class="mobile-menu pull-right"> <a href="signUp.html">
-      <button type="button" class="navbar-toggle collapsed"><i class="fas fa-user"></i></button>
-      </a> </div>
-    <div class="mobile-menu pull-right"> <a href="quote.html">
-      <button type="button" class="navbar-toggle collapsed"><i class="fas fa-truck"></i></button>
-      </a> </div>
+    <div class="mobile-menu pull-right"> 
+      <a  class="navbar-toggle collapsed" id="log_in_mobile"><i class="fas fa-user"></i></a>
+    </div>
+    <div class="mobile-menu pull-right">
+      <a class="navbar-toggle collapsed" data-toggle="modal" data-target="#services"><i class="fas fa-truck"></i></a>
+    </div>
 </div>
 </div>
 <!--END OF MOBILE TOP MENU--> 
@@ -293,8 +293,11 @@ function logout() {
 </div>
 <!--END OF MOBILE DROP DOWN MENU--> 
 
+		<!--END OF MOBILE DROP DOWN MENU--> 
+		
 		<div class="modal fade" id="services" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-			<div class="modal-dialog" role="document">
+			
+			<div class="modal-dialog" role="document" id="services1">
 				<div class="modal-content">
 					<div class="modal-header">
 						<h2 class="modal-title" id="exampleModalLabel">Please Choose a serives.</h2>
@@ -314,7 +317,19 @@ function logout() {
 					</div>
 				</div>
 			</div>
-		</div>
+			</div>
+		
+		
+<style>
+
+@media (max-width: 767px) {
+  #services1{
+        max-width: 650px; !important
+  }
+
+
+	
+</style>
 
 <script>
 function displayMainMenu(){
