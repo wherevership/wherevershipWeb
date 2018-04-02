@@ -104,7 +104,7 @@ firebase.auth().onAuthStateChanged( firebaseUser => {
 					$(".logout_top").show();
 					$("#welcome").attr("href","<?=base_url("member/user_panel")?>");
 					$("#log_in_f").text("LogOut").attr("href","javascript:logout()");
-					
+					$("#log_in_mobile").attr("href","<?=base_url("member/user_panel")?>");
 					$("#dashboard_f").attr("href","<?=base_url("member/user_panel")?>");
 					$("#edit_profile_f").attr("href","<?=base_url("member/personal_profile")?>");
 					$("#my_cart_f").attr("href","<?=base_url("member/actions_required")?>");
@@ -116,7 +116,8 @@ firebase.auth().onAuthStateChanged( firebaseUser => {
 					$(".logout_top").hide();
 					$("#welcome").text("Hi, Welcome");
 					$("#welcome").attr("href","<?=base_url("userLogin")?>");
-					$("#log_in_f").text("logIn").attr("href","<?=base_url("userLogin")?>");
+					$("#log_in_mobile").attr("href","<?=base_url("userLogin")?>");
+					$("log_in_f").text("logIn").attr("href","<?=base_url("userLogin")?>");
 					$("#dashboard_f").attr("href","<?=base_url("userLogin")?>");
 					$("#edit_profile_f").attr("href","<?=base_url("userLogin")?>");
 					$("#my_cart_f").attr("href","<?=base_url("userLogin")?>");

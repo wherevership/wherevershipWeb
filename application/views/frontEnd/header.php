@@ -253,22 +253,24 @@
     </div>
   </header>
 </div>
+
+
  
 <!--END OF TOP STICKY MENU--> 
 
 <!--START OF MOBILE TOP MENU-->
 <div id="sticky-anchor-mobile"></div>
 <div id="sticky" class="mobile-navbar navbar-header visible-xs">
-  <a href="index.html"><img src="<?=base_url('assets2/image/logo.png')?>" class="visible-xs hiddenn-sm phone-logo" style="float: left;"></a>
+  <a href="<?=base_url('')?>"><img src="<?=base_url('assets2/image/logo.png')?>" class="visible-xs hiddenn-sm phone-logo" style="float: left;"></a>
     <div class="mobile-menu pull-right">
-      <button type="button" class="navbar-toggle collapsed" onclick="displayMainMenu()"><i class="fas fa-home"></i></button>
+      <a class="navbar-toggle collapsed" onclick="displayMainMenu()"><i class="fas fa-home"></i></a>
     </div>
-    <div class="mobile-menu pull-right"> <a href="signUp.html">
-      <button type="button" class="navbar-toggle collapsed"><i class="fas fa-user"></i></button>
-      </a> </div>
-    <div class="mobile-menu pull-right"> <a href="quote.html">
-      <button type="button" class="navbar-toggle collapsed"><i class="fas fa-truck"></i></button>
-      </a> </div>
+    <div class="mobile-menu pull-right"> 
+      <a  class="navbar-toggle collapsed" id="log_in_mobile"><i class="fas fa-user"></i></a>
+    </div>
+    <div class="mobile-menu pull-right">
+      <a class="navbar-toggle collapsed" data-toggle="modal" data-target="#services"><i class="fas fa-truck"></i></a>
+    </div>
 </div>
 </div>
 <!--END OF MOBILE TOP MENU--> 
@@ -279,8 +281,8 @@
     
     <h3 class="site-nav-title">PROFILE</h3>
     <ul class="nav navbar-nav site-nav-group">
-      <li class="site-nav-item login_top"> <a href="<?=base_url('userLogin')?>"><span>Log In</span> <span class="side-menu-box"><i class="fas fa-user"></i></span></a> </li>
-      <li class="site-nav-item signUp_top"> <a href="<?=base_url('signUp')?>"><span>Sign Up</span> <span class="side-menu-box"><i class="fas fa-user"></i></span></a> </li>
+      <li class="site-nav-item login_top"> <a href="<?=base_url('userLogin')?>" class="login_mobile"><span>Log In</span> <span class="side-menu-box"><i class="fas fa-user"></i></span></a> </li>
+      <li class="site-nav-item signUp_top"> <a href="<?=base_url('signUp')?>" ><span>Sign Up</span> <span class="side-menu-box"><i class="fas fa-user"></i></span></a> </li>
 	  <li class="site-nav-item logout_top"> <a><span onclick='logout()'>Log Out</span> <span class="side-menu-box"><i class="fas fa-user"></i></span></a> </li>
     </ul>
     <h3 class="site-nav-title">USEFUL LINKS</h3>
@@ -296,8 +298,11 @@
    </div>
 </div>
 
+<!--END OF MOBILE DROP DOWN MENU--> 
+		
 		<div class="modal fade" id="services" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-			<div class="modal-dialog" role="document">
+			
+			<div class="modal-dialog" role="document" id="services1">
 				<div class="modal-content">
 					<div class="modal-header">
 						<h2 class="modal-title" id="exampleModalLabel">Please Choose a serives.</h2>
@@ -317,8 +322,22 @@
 					</div>
 				</div>
 			</div>
-		</div>
-<!--END OF MOBILE DROP DOWN MENU--> 
+			</div>
+		
+		
+<style>
+
+@media (max-width: 767px) {
+  #services1{
+        max-width: 650px; !important
+  }
+
+
+	
+</style>
+
+
+
 
 <script>
 function displayMainMenu(){
