@@ -22,11 +22,11 @@
 		<form role="form">
             <div class="form-group">
               <label for="wt"><span class="glyphicon glyphicon-info-sign"></span> Weight(kg)</label>
-              <input type="text" name="t_a" id="t_a" class="form-control" value="" onchange="" >
+              <input type="text" name="t_a" id="t_a" class="form-control" value="" onchange="checkEmail(this)" >
             </div>
 			<div class="form-group">
               <label for="frm"><span class="glyphicon glyphicon-info-sign"></span> From</label>
-              <input type="text" name="t_b" id="t_b" class="form-control" value="">
+              <input type="text" name="t_b" id="t_b" class="form-control" value=""  onchange="checkPass(this)">
             </div>
 			<div class="form-group">
               <label for="to"><span class="glyphicon glyphicon-info-sign"></span> To</label>
@@ -45,8 +45,25 @@
 	</body>
 	
 	<script>
-	var outcome = 0;
-	var outcome1 =0;
+	var emailValue = 0;
+	var passValue =0;
+	var ConformPass = 0;
+	var message = "";
+	
+	function checkEmail(obj) {
+	 if ($(obj).val() == "") {
+		window.emailValue = 2;
+		
+	 
+	 
+		
+	}
+	
+	
+	function checkPass(obj) {
+		console.log(window.outcome);
+	
+	}
 	
 	
 	</script>
