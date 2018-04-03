@@ -44,21 +44,25 @@
       <div class="SignupForm well">
         <h1>Register & <br> Start Sending Parcels</h1>
         <p>New to EasyParcel? Sign up. It's free and simple!</p>
-		<div class="has-feedback">
+		<div class="has-feedback" style="margin-bottom: 10px;">
+		
 			<!-- TY-S EMAIL -->
-	        <input class="form-control" type="text" placeholder="Email" id="email1" name="txt_email" onchange="checkEmail(this,true,true)" value="">
-			<span class="fas fa-info-circle form-control-feedback hide"  aria-hidden="true"></span>
-			<br>
+	        <input class="form-control" type="text" placeholder="Email" id="email1" name="txt_email" onchange="checkEmail(this)" value="">
+			<span class="far fa-times-circle form-control-feedback hide"  aria-hidden="true"></span>
 			<!-- TY-E EMAIL -->
-			<input class="form-control" type="password" placeholder="Password" id="pass" name="txt_pass" onchange="checkPwdC(this)"  value="">
-			<span class="fas fa-info-circle form-control-feedback hide"  aria-hidden="true"></span>
-			<br>
-			<input class="form-control" type="password" placeholder="Retype Password" id="repass" name="txt_pass_confirm" onchange="checkPwd(this)" value="">
-			<span class="fas fa-info-circle form-control-feedback hide"  aria-hidden="true"></span>
-			<br>
+		</div>
+		
+		<div class="has-feedback" style="margin-bottom: 10px;">
+			<input class="form-control" type="password" placeholder="Password" id="pass" name="txt_pass" onchange="checkPass(this)"  value="">
+			<span class="far fa-times-circle form-control-feedback hide"  aria-hidden="true"></span>
+		</div>
+		<div class="has-feedback">
+			<input class="form-control" type="password" placeholder="Retype Password" id="cpass" name="txt_pass_confirm" onchange="checkConfirmPass(this)" value="">
+			<span class="far fa-times-circle form-control-feedback hide"  aria-hidden="true"></span>
+		
 		</div>
         <label class="checkbox">
-          <input type="checkbox" name="acceptTerm" >
+          <input type="checkbox" name="acceptTerm" id="termsCheck" onchange="checkvalid()">
           I accept the <a href="<?=base_url('term_and_condition')?>">Terms and Conditions</a></label>
         <button class="btn btn-primary btn-lg sign-up" value="Sign up" onclick="SignUp()" style="width:100%"> Sign Up </button>
 		<div class="clearfix"></div>
@@ -79,7 +83,9 @@
 <div id="dialog"></div>
 
 <script>
-var outcome="";
+var emailOutcome = "";
+var passOutcome = "";
+var confirmPassOutcome = "";
 var isLogin=false;
 var message="";
 var exist=0;
@@ -103,10 +109,22 @@ if(url.indexOf("pg=ShopifyLanding") > -1){
 
 function SignUp(){
 	ValidateResult = ValidateSignUp();
-		$(".sign-up").addClass("disabled");
+		$(".sign-up").attr("disabled",true);
 		$(".sign-up").html("<i class='far fa-times-circle selector__glyph-inner animate-spin' style='font-size: 24px;'></i>");
 	if(ValidateResult==true){
 	    console.log("pass");
+		var email = $("#email1").val();
+		var pass = $("#cpass").val()
+		firebase.auth().createUserWithEmailAndPassword(email, pass)
+		.then(function(firebaseUser) {
+			window.location.href = '<?=base_url("member/user_panel")?>';
+		})
+		.catch(function(error) {
+			// Error Handling
+			var errorCode = error.code;
+			var errorMessage = error.message;
+			console.log("Error Msg"  + errorMessage);
+		});
 	}else{
 		window.exist = 0;
 		if(ValidateResult != ""){
@@ -123,36 +141,95 @@ function SignUp(){
 	}
 }
 
-function checkEmail(obj,check,async){
+function checkEmail(obj){
 	$(".alert.alert-danger").text("").removeClass();
 	$(".sign-up").attr("disabled", true);
 	$(obj).parent().children().eq(1).removeClass("fas fa-info-circle hide");
 	$(obj).parent().children().children().eq(0).removeClass("fas fa-genderless");
-    $(obj).parent().children().eq(1).html("<i class='epi-spin5 selector__glyph-inner animate-spin' style='font-size: 18px; position: absolute; top: 13px; right:5px;'></i>");
+    $(obj).parent().children().eq(1).html("<i class='far fa-times-circle selector__glyph-inner animate-spin' style='font-size: 18px;'></i>");
 	var pass = true;
 	var email = $(".SignupForm [name=txt_email]").val();
 	email = email.trim();
-	
+	console.log(email);
 	if(General.isTextEmpty($(obj))){
 		doEmpty(obj);
-		window.outcome = 0;
-		$(".sign-up").attr("disabled", false);
+		window.emailOutcome = 0;
+		$(".sign-up").attr("disabled", true);
 	}else if(!General.validateEmail(email)){
 		doFail(obj);
-		window.outcome = 0;
-		$(".has-feedback").before('<p class="alert alert-danger">Email is not valid.</p>');
-		$(".sign-up").attr("disabled", false);
+		window.emailOutcome = 1;
+		$(".sign-up").attr("disabled", true);
 	}else{
-		doPadding(obj);
-		if(check){
-			doPass(obj);
-			window.outcome = 3;
-			$(".sign-up").attr("disabled", true);
+		
+		doPass(obj);
+		window.emailOutcome = 3;
+		
 			
 		}
+	checkvalid()
 	}
-}
 
+
+function checkPass(obj) {
+	$(obj).parent().children().eq(1).removeClass("fas fa-info-circle hide");
+	$(obj).parent().children().children().eq(0).removeClass("fas fa-genderless");
+    $(obj).parent().children().eq(1).html("<i class='far fa-times-circle selector__glyph-inner animate-spin' style='font-size: 18px;'></i>");
+		if  (General.isTextEmpty($(obj))){
+			doEmpty(obj);
+			window.passOutcome = 0;
+			
+			$(".sign-up").attr("disabled",true);
+		} else if (General.isLengthLess($(obj),8)) {
+			doFail(obj);
+		
+			window.passOutcome = 1;
+			$(".sign-up").attr("disabled",true);
+		} else {
+			doPass(obj);
+			window.passOutcome = 2;
+		}
+		
+		checkvalid()
+		
+	
+	}
+	
+	function checkConfirmPass(obj) {
+		$(obj).parent().children().eq(1).removeClass("fas fa-info-circle hide");
+	$(obj).parent().children().children().eq(0).removeClass("fas fa-genderless");
+    $(obj).parent().children().eq(1).html("<i class='far fa-times-circle selector__glyph-inner animate-spin' style='font-size: 18px;'></i>");
+		var pwd = $("#pass").val();	
+		var pwdc = $("#cpass").val();
+		if  (General.isTextEmpty($(obj))){
+			doEmpty(obj);
+			window.confirmPassOutcom = 0;
+		
+			$(".sign-up").attr("disabled",true);
+		}  else if (pwd != pwdc){
+			doFail(obj);
+			window.confirmPassOutcome = 1;
+			
+			$(".sign-up").attr("disabled",true);
+		
+		} else {
+			window.confirmPassOutcome = 2;
+			doPass(obj)
+		}
+	checkvalid()
+	}
+
+	function checkvalid() {
+		var term = $("#termsCheck");
+	
+		if (term.is(':checked')) {
+			if (window.emailOutcome == 3 && window.passOutcome == 2 && window.confirmPassOutcome == 2) {
+				$(".sign-up").attr("disabled",false);
+			}
+		}
+	
+	}
+	
+	
 
 
 function SendLink(){
@@ -200,68 +277,14 @@ function CheckNull(obj,obj1){
 	}
 }
 
-function checkPwd(obj){
-	var pwd  = $(".SignupForm [name=txt_pass]");
-	var pass = true;
-	
-	if(General.isTextEmpty($(obj))){
-		pass = false;
-	}
-	
-	if(General.isLengthLess($(obj),6)){
-		pass = false;
-	}
-	
-	if(pass){
-		doPass(obj);
-		window.outcome = 3;
-	}else{
-		doFail(obj);
-		window.outcome = 2;
-	}
-	
-}
 
-function checkPwdC(obj){
-	
-	var pwdc = $(".SignupForm [name=txt_pass_confirm]");
-	var pass = true;
-	
-	if(General.isTextEmpty($(obj))){
-		pass = false;
-	}
-	
-	if(General.isLengthLess($(obj),6)){
-		pass = false;
-	}
-	
-	if(pass){
-		doPass(obj);
-	}else{
-		doFail(obj);
-	}
-	if(hasValidate(pwdc)){
-		if(pwd.val() != pwdc.val() || General.isTextEmpty(pwdc)){
-			doFail(pwdc); 
-			window.outcome = 2;
-		}else{
-			doPass(pwdc);
-			window.outcome = 3;
-		}
-	}
-}
 
-function hasValidate(obj){
-	if($(obj).hasClass("pass") || $(obj).hasClass("padding") || $(obj).hasClass("fail"))
-		return true;
-	else
-		return false;
-}
+
 
 function doPass(obj){
-	$(obj).parent().children().children().eq(0).removeClass("epi-spin5 selector__glyph-inner animate-spin");
-	$(obj).parent().children().eq(1).removeClass("epi-info-circled hide");
-	$(obj).parent().children().eq(1).html("<i class='epi-ok' style='font-size: 18px; position: absolute; top: 13px; right:5px; color: #5cb85c;'></i>");
+	$(obj).parent().children().children().eq(0).removeClass("far fa-times-circle selector__glyph-inner animate-spin");
+	$(obj).parent().children().eq(1).removeClass("far fa-times-circle hide");
+	$(obj).parent().children().eq(1).html("<i class='fas fa-check' style='font-size: 18px; color: #5cb85c;'></i>");
 	$(obj).addClass("pass");
 	$(obj).removeClass("padding");
 	$(obj).removeClass("fail");
@@ -276,8 +299,8 @@ function doPadding(obj){
 }
 
 function doFail(obj){
-	$(obj).parent().children().children().eq(0).removeClass("epi-spin5 selector__glyph-inner animate-spin");
-	$(obj).parent().children().eq(1).addClass("epi-info-circled");
+	$(obj).parent().children().children().eq(0).removeClass("far fa-times-circle selector__glyph-inner animate-spin");
+	$(obj).parent().children().eq(1).addClass("far fa-times-circle");
 	$(obj).addClass("fail");
 	$(obj).removeClass("padding");
 	$(obj).removeClass("pass");
@@ -301,20 +324,33 @@ function clearNull(obj){
 }
 
 function ValidateSignUp(){
-	var email = $(".SignupForm [name=txt_email]");
-	var term = $(".SignupForm [name=acceptTerm]");
+	var email = $("#email1");
+	var pass = $("#pass");
+	var cpass = $("#cpass");
+	var term = $("#termsCheck");
 	var returnResult = "";
-	checkEmail(email,true,false);
+	checkEmail(email);
+	checkPass(pass);
+	checkConfirmPass(cpass);
+	
 	if(term.is(":checked")==false){
 		returnResult += "Looks like you have forgotten to tick on 'Terms and Conditions'.<br>";
 	}
-	if(window.outcome == 0){
+	if(window.emailOutcome == 0){
 		returnResult += "Please insert a valid email into the email field.<br>";
-	}else if(window.outcome == 1){
+	}else if(window.emailOutcome == 1){
+		returnResult += "Please insert a valid email into the email field. <br>";
+	}else if(window.emailOutcome == 2) {
 		returnResult += "Another user with this email already exists. Maybe it's your evil twin. Spooky. If it is you, kindly log in with the email or click <br><a href='./?pg=MemberForgotPassword'><b><u>HERE</u></b></a> to reset a new password.<br>";
-	}else if(window.outcome == 2) {
-		returnResult += "invalid password<br>";
-	}else if(window.outcome == 3){
+	}else if(window.passOutcome == 0) {
+		returnResult += "Please insert a password into the password field.<br>";
+	}else if(window.passOutcome == 1) {
+		returnResult += "Password too short<br>";
+	}else if(window.confirmPassOutcome == 0) {
+		returnResult += "Please insert a password into the comfirm password field.<br>";
+	}else if(window.confirmPassOutcome == 1) {
+		returnResult += "Password not march<br>";
+	}else if(window.emailOutcome == 3 && window.passOutcome == 2 && window.confirmPassOutcome == 2){
 		if(returnResult == ""){
 			returnResult = true;
 		}
