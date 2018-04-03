@@ -130,9 +130,8 @@
 							<div class="col-sm-8">
 								<div class="has-feedback">
 									<select name="receiver_country" class="form-control" id="receiver_country" required>
-										<option value="MY">Malaysia</option>
-										<option value="SG">Singapore</option>
-										<option value="ID">Indonesia</option>
+										<option value="Malaysia">Malaysia</option>
+										
 									</select>
 								</div>
 							</div>
@@ -177,7 +176,8 @@
 					
 						<div class="col-sm-8">
 							<div class="has-feedback">
-								<input type="text" name="receiver_state" id="receiver_state" class="form-control" title="please enter receiver's state!" required/>
+								<input type="text" name="receiver_state" id="receiver_state" class="form-control" title="please enter receiver's state!" value="<?=$toState?>" disabled />
+							
 							</div>
 						</div>
 				</div>

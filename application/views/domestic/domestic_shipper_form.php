@@ -117,9 +117,8 @@
 							<div class="col-sm-8">
 							<div class="has-feedback">
 								<select name="shipper_country" class="form-control" id="shipper_country">
-									<option value="MY">Malaysia</option>
-									<option value="SG">Singapore</option>
-									<option value="ID">Indonesia</option>
+									<option value="Malaysia">Malaysia</option>
+									
 								</select>
 							</div>
 						</div>
@@ -164,7 +163,7 @@
 						
 						<div class="col-sm-8">
 							<div class="has-feedback">
-								<input type="text" name="shipper_state" id="shipper_state" class="form-control" title="please enter shipper's state" required/>
+								<input type="text" name="shipper_state" id="shipper_state" class="form-control" title="please enter shipper's state" value="<?=$fromState?>" disabled />
 							</div>
 						</div>
 					</div>

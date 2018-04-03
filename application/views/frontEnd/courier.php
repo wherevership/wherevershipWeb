@@ -88,7 +88,7 @@ span.tip {
 		
 		<option value="phg" >Pahang</option>
 		
-		<option value="pkr" >Perak</option>
+		<option value="prk" >Perak</option>
 		
 		<option value="pls" >Perlis</option>
 		
@@ -245,7 +245,7 @@ span.tip {
 	
 		<select required class="selectpicker form-control" data-show-subtext="true" data-live-search="true" id="d" name="d" onChange="quote.CollAddrChange(this)" txt_id_state>
 			 <option value="" readonly>Country</option>
- 			 <o
+ 			 
     			<option value="AL" >Albania</option>
    			
     			<option value="DZ" >Algeria</option>
