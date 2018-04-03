@@ -21,22 +21,27 @@
 	<div class="container">
 		<form role="form">
             <div class="form-group">
-              <label for="wt"><span class="glyphicon glyphicon-info-sign"></span> Weight(kg)</label>
-              <input type="text" name="t_a" id="t_a" class="form-control" value="" onchange="checkEmail(this)" >
-            </div>
-			<div class="form-group">
-              <label for="frm"><span class="glyphicon glyphicon-info-sign"></span> From</label>
-              <input type="text" name="t_b" id="t_b" class="form-control" value=""  onchange="checkPass(this)">
-            </div>
-			<div class="form-group">
-              <label for="to"><span class="glyphicon glyphicon-info-sign"></span> To</label>
-              <input type="text" name="t_b" id="t_b" class="form-control" value="">
-            </div>
-			<div class="form-group">
-              <label for="wt"><span class="glyphicon glyphicon-info-sign"></span> Cost(RM)</label>
-              <input type="text" name="t_b" id="t_b" class="form-control" value="">
-            </div>
-				<button type="submit" class="btn btn-success btn-block" disabled>Continue >></button>
+
+				<div class="has-feedback">
+					<div style="margin-bottom: 10px;">
+					<input class="form-control" type="text" placeholder="Email" id="email" name="txt_email" onchange="checkEmail(this)" value="">
+					<span class="fas fa-info-circle form-control-feedback hide"  aria-hidden="true"></span>
+					</div>
+					<div style="margin-bottom: 10px;">
+					<input class="form-control" type="password" placeholder="Password" id="pass" name="txt_pass" onchange="checkPass(this)" value="">
+					<span class="fas fa-info-circle form-control-feedback hide"  aria-hidden="true"></span>
+					</div>
+					<div>
+					<input class="form-control" type="password" placeholder="Comfirm Password" id="cpass" name="txt_cpass" onchange="checkConfirmPass(this)" value="">
+					<span class="fas fa-info-circle form-control-feedback hide"  aria-hidden="true"></span>
+					</div>
+				</div>
+			</div>
+			<label class="checkbox" >
+					<input type="checkbox" name="acceptTerm" id="termsCheck" onchange="checkvalid(this)">
+						I accept the Terms and Conditions</a></label>
+				<button class="btn btn-primary btn-lg sign-up" value="Sign up" onclick="SignUp()" style="width:100%"> Sign Up </button>
+
           </form>
 	
 	
@@ -45,25 +50,140 @@
 	</body>
 	
 	<script>
-	var emailValue = 0;
-	var passValue =0;
-	var ConformPass = 0;
-	var message = "";
+
+	var emailOutcome = 0;
+	var passOutcome =0;
+	var confirmPassOutcome = 0;
 	
 	function checkEmail(obj) {
-	 if ($(obj).val() == "") {
-		window.emailValue = 2;
+		var email = $("#email").val()
+		email = email.trim;
 		
-	 
-	 
+		if  (General.isTextEmpty($(obj))){
+			doEmpty(obj);
+			window.emailOutcome = 0;
+			$(".sign-up").attr("disabled",true);
 		
-	}
+		} else if(!General.validateEmail(email)) {
+			doFail(obj);
+			window.emailOutcome = 1;
+			$(".sign-up").attr("disabled",true);
+		} else {
+			doPass(obj)
+			window.emailOutcome = 3;
+		}
 	
+	
+	}
 	
 	function checkPass(obj) {
-		console.log(window.outcome);
+		if  (General.isTextEmpty($(obj))){
+			doEmpty(obj);
+			window.passOutcome = 0;
+			
+			$(".sign-up").attr("disabled",true);
+		} else if (General.isLengthLess($(obj),8)) {
+			doFail(obj);
+		
+			window.passOutcome = 1;
+			$(".sign-up").attr("disabled",true);
+		} else {
+			doPass(obj)
+			window.passOutcome = 2;
+			}
+		
 	
 	}
+	
+	function checkConfirmPass(obj) {
+		var pwd = $("#pass").val();	
+		var pwdc = $("#cpass").val();
+		if  (General.isTextEmpty($(obj))){
+			doEmpty(obj);
+			window.confirmPassOutcom = 0;
+		
+			$(".sign-up").attr("disabled",true);
+		}  else if (pwd != pwdc){
+			doFail(obj);
+			window.confirmPassOutcome = 1;
+			
+			$(".sign-up").attr("disabled",true);
+		
+		} else {
+			window.confirmPassOutcome = 2;
+			doPass(obj)
+		}
+		
+	}
+	
+	function checkvalid(obj) {
+		console.log(obj);
+		window.emailOutcome = 3;
+		if ($(obj).is(':checked')) {
+			if (window.emailOutcome == 3 || window.passOutcome == 2 || window.confirmPassOutcome == 2) {
+				$(".sign-up").attr("disabled",false);
+			}
+		}
+	
+	}
+	
+	function doPass(obj){
+	$(obj).parent().children().children().eq(0).removeClass("epi-spin5 selector__glyph-inner animate-spin");
+	$(obj).parent().children().eq(1).removeClass("far fa-info-circle hide");
+	$(obj).parent().children().eq(1).html("<i class='fas fa-check' style='font-size: 18px; position: absolute; top: 13px; right:5px; color: #5cb85c;'></i>");
+	$(obj).addClass("pass");
+	$(obj).removeClass("padding");
+	$(obj).removeClass("fail");
+	$(obj).css("border-color","#0F0");
+}
+
+function doPadding(obj){
+	$(obj).addClass("padding");
+	$(obj).removeClass("pass");
+	$(obj).removeClass("fail");
+	$(obj).css("border-color","#F90");
+}
+
+function doFail(obj){
+	$(obj).parent().children().children().eq(0).removeClass("epi-spin5 selector__glyph-inner animate-spin");
+	$(obj).parent().children().eq(1).addClass("far fa-info-circle");
+	$(obj).addClass("fail");
+	$(obj).removeClass("padding");
+	$(obj).removeClass("pass");
+	$(obj).css("border-color","#F00");
+}
+
+function doEmpty(obj){
+	$(obj).addClass("fail");
+	$(obj).removeClass("padding");
+	$(obj).removeClass("pass");
+	$(obj).css("border-color","#F00");
+	$(obj).parent().children().eq(1).addClass("hide");
+}
+	
+	
+	
+	var General = {
+		isTextEmpty : function(Obj){
+		return ($.trim($(Obj).val()).length == 0);
+	},
+	
+		validateEmail : function(email) {
+			var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+			if( !emailReg.test( email ) ) {
+				return false;
+			} else {
+				return true;
+			}
+		},
+		
+		isLengthLess : function(Obj,len){
+		return ($.trim($(Obj).val()).length < len);
+	},
+	
+	
+	};
+
 	
 	
 	</script>
