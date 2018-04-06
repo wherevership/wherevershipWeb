@@ -65,6 +65,10 @@
 						</div>
 					</div>
 					<div class="row">
+						
+					
+					</div>
+					<div class="row">
 						<div class="form-group">
 					<div class="col-md-6">
 						<a type="button" class="form-control btn" href="javascript:history.go(-1)">Cancel</a>
