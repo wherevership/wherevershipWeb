@@ -203,6 +203,25 @@ $(function () {
 			
 			}
 			
+			.panel-title-bar {
+				background-color: #00a9b0; 
+				text-align: center;
+				padding: 10px auto;
+				color: #fff;
+				margin-bottom: 0px;
+			}
+			
+			.panel-title-bar .title {
+				padding: 10px;
+			
+			}
+			
+			.panel-subtitle {
+				
+				color: #00a9b0;
+				
+			}
+			
 			.top1 {
 				margin-top: 15px;
 			}

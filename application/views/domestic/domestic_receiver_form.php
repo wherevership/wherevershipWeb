@@ -74,161 +74,127 @@
 				<input type="hidden" name="fromState" value="<?=$fromState?>"/>
 				<input type="hidden" name="toState" value="<?=$toState?>"/>
 				
-				<input type="hidden" name="shipper_account_number" value="<?=$shipper_account_number?>"/>
-				<input type="hidden" name="shipper_account_name" value="<?=$shipper_account_name?>"/>
 				<input type="hidden" name="shipper_company_name" value="<?=$shipper_company_name?>"/>
 				<input type="hidden" name="shipper_country" value="<?=$shipper_country?>"/>
-				<input type="hidden" name="shipper_address" value="<?=$shipper_address?>"/>
-				<input type="hidden" name="shipper_city" value="<?=$shipper_city?>"/>
-				<input type="hidden" name="shipper_postcode" value="<?=$shipper_postcode?>"/>
-				<input type="hidden" name="shipper_state" value="<?=$shipper_state?>"/>
-				<input type="hidden" name="shipper_subhub" value="<?=$shipper_subhub?>"/>
+				<input type="hidden" id="shipper_address1" name="shipper_address1" value="<?=$shipper_address1?>"/>
+				<input type="hidden" id="shipper_address2" name="shipper_address2" value="<?=$shipper_address2?>"/>
+				<input type="hidden" id="shipper_address3" name="shipper_address3" value="<?=$shipper_address3?>"/>
+				<input type="hidden" id="shipper_city" name="shipper_city" value="<?=$shipper_city?>"/>
+				<input type="hidden" id="shipper_postcode" name="shipper_postcode" value="<?=$shipper_postcode?>"/>
+				<input type="hidden" id="shipper_state" name="shipper_state" value="<?=$shipper_state?>"/>
 				<input type="hidden" name="shipper_contact_person" value="<?=$shipper_contact_person?>"/>
 				<input type="hidden" name="shipper_phone_number" value="<?=$shipper_phone_number?>"/>
 				<input type="hidden" name="shipper_email" value="<?=$shipper_email?>"/>
 				
 				
-				<div class="col-md-6">
-					<div class="form-group">
-						<div class="col-sm-4">
-							<label for="receiver_account_number">Acc Number:</label>
+				<input type="hidden" name="receiver_company_name" value="<?=$receiver_company_name?>"/>
+				<input type="hidden" name="receiver_country" value="<?=$receiver_country?>"/>
+				<input type="hidden" id="receiver_address1" name="receiver_address1" value="<?=$receiver_address1?>"/>
+				<input type="hidden" id="receiver_address2" name="receiver_address2" value="<?=$receiver_address2?>"/>
+				<input type="hidden" id="receiver_address3" name="receiver_address3" value="<?=$receiver_address3?>"/>
+				<input type="hidden" id="receiver_city" name="receiver_city" value="<?=$receiver_city?>"/>
+				<input type="hidden" id="receiver_postcode" name="receiver_postcode" value="<?=$receiver_postcode?>"/>
+				<input type="hidden" id="receiver_state" name="receiver_state" value="<?=$receiver_state?>"/>
+				<input type="hidden" name="receiver_contact_person" value="<?=$receiver_contact_person?>"/>
+				<input type="hidden" name="receiver_phone_number" value="<?=$receiver_phone_number?>"/>
+				<input type="hidden" name="receiver_email" value="<?=$receiver_email?>"/>
+				
+			<!--	<input type="hidden" name="type" value="<?=$receiver_email?>"/> -->
+				<input type="hidden" name="pickup_required" value="<?=$pickup_required?>"/>
+				<input type="hidden" name="pickup_required" value="<?=$parcel_content?>"/>
+				<input type="hidden" name="pickup_required" value="<?=$value_of_content?>"/>
+				
+			</div>
+			
+			<div class="row">
+				<div class="panel panel-default">
+					<div class="panel-title-bar">
+						<div class="title">
+							<img src="<?=base_url('assets2/image/poslaju.png')?>" width="20%">
 						</div>
-						
-							<div class="col-sm-8">
-								<div class="has-feedback">
-									<input type="text" name="receiver_account_number" id="receiver_account_number" class="form-control" title="please enter receiver's account number!"/>
-								</div>
-							</div>
 					</div>
-					<div class="form-group">
-						<div class="col-sm-4">
-							<label for="receiver_account_name">Acc Name:</label>
+				
+					<div class="panel-body" style="background-color: #f2f5f8">
+						<div class="col-md-3">
+								
+							<p>
+								<hr class="visible-sm visible-xs">
+								<h3 class="panel-subtitle">
+									Pick Up Info
+								</h3>
+								<hr>
+								<?=$shipper_contact_person?><br>
+								<?=$shipper_company_name?><br>
+								<?=$shipper_address1?><br>
+								<?=$shipper_address2?><br>
+								<?=$shipper_address3?><br>
+								<?=$shipper_city?><br>
+								<?=$shipper_state?><br>
+								<?=$shipper_country?><br>
+								<?=$shipper_postcode?><br>
+								<?=$shipper_phone_number?><br>
+								<?=$shipper_email?>
+							</p>
 						</div>
-						
-							<div class="col-sm-8">
-								<div class="has-feedback">
-									<input type="text" name="receiver_account_name" id="receiver_account_name" class="form-control" title="please enter receiver's account name!"/>
-								</div>
-							</div>
-					</div>	
-					<div class="form-group">
-						<div class="col-sm-4">
-							<label for="receiver_company_name">Company Name:</label>
+						<div class="col-md-3">
+								
+							<p>
+								<hr class="visible-sm visible-xs">
+								<h3 class="panel-subtitle">
+									Drop Off Info
+								</h3>
+								<hr>
+								<?=$receiver_contact_person?><br>
+								<?=$receiver_company_name?><br>
+								<?=$receiver_address1?><br>
+								<?=$receiver_address2?><br>
+								<?=$receiver_address3?><br>
+								<?=$receiver_city?><br>
+								<?=$receiver_state?><br>
+								<?=$receiver_country?><br>
+								<?=$receiver_postcode?><br>
+								<?=$receiver_phone_number?><br>
+								<?=$receiver_email?>
+							</p>
 						</div>
-						
-							<div class="col-sm-8">
-								<div class="has-feedback">
-									<input type="text" name="receiver_company_name" id="receiver_company_name" class="form-control" title="please enter receiver's company name!"/>
-								</div>
-							</div>
-					</div>
-					<div class="form-group">
-						<div class="col-sm-4">
-							<label for="receiver_country">Country:</label>
-						</div>
-						
-							<div class="col-sm-8">
-								<div class="has-feedback">
-									<select name="receiver_country" class="form-control" id="receiver_country" required>
-										<option value="Malaysia">Malaysia</option>
-										
-									</select>
-								</div>
-							</div>
-					</div>
-					<div class="form-group">
-						<div class="col-sm-4">
-							<label for="receiver_address">Address:<span class="required">*</span></label>
-						</div>
-						
-							<div class="col-sm-8">
-								<div class="has-feedback">
-									<input type="text" name="receiver_address" id="receiver_address" class="form-control" title="please enter receiver's address!" required/>
-								</div>
-							</div>
-					</div>
-					<div class="form-group">
-						<div class="col-sm-4">
-							<label for="receiver_city">City:<span class="required">*</span></label>
-						</div>
-						
-							<div class="col-sm-8">
-								<div class="has-feedback">
-									<input type="text" name="receiver_city" id="receiver_city" class="form-control" title="please enter receiver's city!" required/>
-								</div>
-							</div>
-					</div>
-					<div class="form-group">
-						<div class="col-sm-4">
-							<label for="receiver_postcode">PostCode:<span class="required">*</span></label>
-						</div>
-						
-							<div class="col-sm-8">
-								<div class="has-feedback">
-									<input type="text" name="receiver_postcode" id="receiver_postcode" class="form-control" title="please enter receiver's postcode!" required/>
-								</div>
-							</div>
-					</div>
-					<div class="form-group">
-						<div class="col-sm-4">
-							<label for="receiver_state">State:<span class="required">*</span></label>
-						</div>
-					
-						<div class="col-sm-8">
-							<div class="has-feedback">
-								<input type="text" name="receiver_state" id="receiver_state" class="form-control" title="please enter receiver's state!" value="<?=$toState?>" disabled />
+						<div class="col-md-3">
+							<p>
+								<hr class="visible-sm visible-xs">
+								<h3 class="panel-subtitle">
+									Parcel Info
+								</h3>
+								<hr>
+								Length: <?=$length?>cm<br>
+								Width: <?=$width?>cm<br>
+								Height: <?=$height?>cm<br>
+								Weight: <?=$weight?>kg<br>
+								<hr>
+								Parcel Content: <?=$parcel_content?><br>
+								Value of content: <?=$value_of_content?>
 							
-							</div>
+								<hr>
+								Required pickup: <?=$pickup_required?>
+								
+							</p>
 						</div>
-				</div>
-				</div>
-				<div class="col-md-6">
-					<div class="form-group">
-						<div class="col-sm-4">
-							<label for="receiver_subhub">Subhub:</label>
+						<div class="col-md-3">
+							<p>
+								<hr class="visible-sm visible-xs">
+								<h3 class="panel-subtitle">
+									Price 
+								</h3> 
+								<hr>
+								<span style="font-size: 20pt;"><b>RM<?=$cost?></b></span>
+							</p>
 						</div>
-						
-							<div class="col-sm-8">
-								<div class="has-feedback">
-									<input type="text" name="receiver_subhub" id="receiver_subhub" class="form-control" title="please enter receiver's subhub!"/>
-								</div>
-							</div>
 					</div>
-					<div class="form-group">
-						<div class="col-sm-4">
-							<label for="receiver_contact_person">Contact Person:<span class="required">*</span></label>
-						</div>
-						
-							<div class="col-sm-8">
-								<div class="has-feedback">
-									<input type="text" name="receiver_contact_person" id="receiver_contact_person" class="form-control" title="please enter receiver's name!" required/>
-								</div>
-							</div>
-					</div>
-					<div class="form-group">
-						<div class="col-sm-4">
-							<label for="receiver_phone_number">Phone Number:<span class="required">*</span></label>
-						</div>
-						
-							<div class="col-sm-8">
-								<div class="has-feedback">
-									<input type="text" name="receiver_phone_number" id="receiver_phone_number" class="form-control" title="please enter receiver's phone number!" required/>
-								</div>
-							</div>
-					</div>
-					<div class="form-group">
-						<div class="col-sm-4">
-							<label for="receiver_email">Email:<span class="required">*</span></label>
-						</div>
-					
-						<div class="col-sm-8">
-							<div class="has-feedback">
-								<input type="text" name="receiver_email" id="receiver_email" class="form-control" title="please enter receiver's email!" required/>
-							</div>
-						</div>
 				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					 <label><input type="checkbox" name="acceptNotice" style="margin-top:11px;"/> &nbsp; I agree & have acknowledged on the <a href="<?=base_url('term_and_condition')?>" target="_blank">Terms & Conditions </a> . </label>
 				</div>
-			</div>	
+			</div>
 			<div class="row">		
 				<div class="form-group">
 					<div class="col-md-6">
@@ -241,7 +207,9 @@
 					</div>
 				</div>
 			</div>
+		
 		</form>
+		
 		
 	</div>
 
