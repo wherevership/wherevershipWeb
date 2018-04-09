@@ -3,76 +3,64 @@
 	<div id="masterContent" >
 		<div class="container">
 			<form method="POST" action="<?=base_url('int_shipper')?>" class="form-horizontal">
-				<div class="row">
-						<h1>Cost Info</h1>
-						<div class="col-xs-12 col-md-12 col-lg-12" style="padding: 10px 30px;">
-								<h2>Cost</h2>
-								<div class="form-group">
-									<label for="cost"><span class="glyphicon glyphicon-info-sign"></span> Cost(RM)</label>
-									<input type="hidden" class="form-control" id="cost" name="cost" value="123" />
-									<div class="alert alert-info">
-									<p id="cost1"></p>
+				<input type="hidden" id="wt" name="weight" value="<?=$weight?>" />
+				<input type="hidden" id="l" name="length" value="<?=$length?>" />
+				<input type="hidden" id="w" name="width" value="<?=$width?>" />
+				<input type="hidden" id="h" name="height" value="<?=$height?>" />
+				<input type="hidden"  id="frm" name="fromCountry" value="<?=$fromState?>"/>
+				<input type="hidden" id="to" name="toCountry" value="<?=$toCountry?>" />
+				<input type="hidden" id="toCountryZone" name="toCountryZone" value="<?=$toCountryZone?>" />
+				<div class="space">
+						<div class="row">
+							<div class="panel panel-default">
+								<div class="panel panel-title-bar">
+									<img src="<?=base_url('assets2/image/DHL.jpg')?>" width="20%">
+								</div>
+								<div class="panel-body">
+									<div class="col-md-3">
+										<h3>From:</h3>
+										<p><?=$fromState?></p>
+							
+									</div>
+									<div class="col-md-3">
+										<h3>To:</h3>
+										<p><?=$toCountry?></p>
+										<p><?=$toCountryZone?></p>
+									</div>
+									<div class="col-md-3">
+										<p>
+											Length: <?=$length?>cm<br>
+											Width: <?=$width?>cm<br>
+											Height: <?=$height?>cm<br>
+											Weight: <?=$weight?>Kg<br>
+											Volumetic Weight: <?=$v_weight?>Kg
+										
+										</p>
+									</div>
+									<div class="col-md-3">
+										<div>
+											<h3>Price</h3>
+										
+											<p style="color: #00a9b0;"><b>RM<span id="cost1"></span></b></p>
+										</div>
+										<div class="form-group">
+											<input type="submit" value="Continue >>" id="next" class="form-control btn btn-success"/>
+										</div>
 									</div>
 								</div>
-						</div>
-					</div>
-				<div class="row">
-					
-						<div class="col-xs-12 col-md-6" style="padding: 10px 30px;">
-							<h2>Product Dimension</h2>
-								<div class="form-group">
-									<label for="wt"><span class="glyphicon glyphicon-info-sign"></span> Weight(kg)</label>
-									<input type="hidden" id="wt" name="weight" value="<?=$weight?>" />
-									<p class="form-control"><?=$weight?></p>
-								</div>
-								<div class="form-group">
-									<label for="l"><span class="glyphicon glyphicon-info-sign"></span> Length(cm)</label>
-									<input type="hidden" id="l" name="length" value="<?=$length?>" />
-									<p class="form-control"><?=$length?></p>
-								</div>
-								<div class="form-group">
-									<label for="w"><span class="glyphicon glyphicon-info-sign"></span> width(cm)</label>
-									<input type="hidden" id="w" name="width" value="<?=$width?>" />
-									<p class="form-control"><?=$width?></p>
-								</div>
-								<div class="form-group">
-									<label for="h"><span class="glyphicon glyphicon-info-sign"></span> height(cm)</label>
-									<input type="hidden" id="h" name="height" value="<?=$height?>" />
-									<p class="form-control"><?=$height?></p>
-								</div>
-								<div class="form-group">
-									<label for="vw"><span class="glyphicon glyphicon-info-sign"></span> Volumetic Weight(kg)</label>
-									<input type="hidden" id="vw" name="v_weight" value="<?=$v_weight?>"/>
-									<p class="form-control"><?=$v_weight?></p>
-								</div>
-							</div>
-							<div class="col-xs-12 col-md-6" style="padding: 10px 30px;">
-								<h2>Addresss</h2>
-								<div class="form-group">
-									<label for="frm"><span class="glyphicon glyphicon-info-sign"></span> From</label>
-									<input type="hidden"  id="frm" name="fromCountry" value="<?=$fromState?>"/>
-									<p class="form-control"><?=$fromState?></p>
-								</div>
-								<div class="form-group">
-									<label for="to"><span class="glyphicon glyphicon-info-sign"></span> To</label>
-									<input type="hidden" id="to" name="toCountry" value="<?=$toCountry?>" />
-									<p class="form-control"><?=$toCountry?></p>
-									<p class="form-control"><?=$toCountryZone?></p>
-								</div>
-								
 							</div>
 						</div>
-								<div class="row">
-						<div class="form-group">
-					<div class="col-md-6">
-						<a type="button" class="form-control btn" href="javascript:history.go(-1)">Cancel</a>
-					</div>
+						<div class="row">
+							<div class="form-group">
+								<div class="col-md-6">
+									<a type="button" class="form-control btn" href="javascript:history.go(-1)">Cancel</a>
+								</div>
 				
-					<div class="col-md-6">
-						<input type="submit" value="Continue >>" id="next" class="form-control btn btn-success"/>
+								<div class="col-md-6">
+						
 					
-					</div>
-					   </div>
+								</div>
+							</div>
 					   </div>
 					</div>
 				</form>
