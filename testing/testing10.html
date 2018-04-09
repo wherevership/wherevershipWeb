@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>WHEREVERSHIP | Delivery Made Easy</title>
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/bootstrap-select.min.css" rel="stylesheet">
+		<link href="css/style.css" rel="stylesheet">
+		
+		
+		<script type="text/javascript" src="js/jquery-1.12.1.min.js"></script>
+		<script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+		
+	</head>
+	
+	<body>
+		<div class="container">
+		<div class="row">
+		<form class="form-horizontal">
+			<div class="col-xs-12" style="padding: 10px 30px;">
+				<input type="text" name="shipperName" id="shipperName" class="input" value size="20" placeholder="shipper name">
+				<input type="text" name="shipperAddress1" id="shipperAddress1" class="input" value size="20" placeholder="shipper address">
+				<input type="text" name="shipperCity" id="shipperCity" class="input" value size="20" placeholder="shipper city">
+				<input type="text" name="shipperPostCode" id="shipperPostCode" class="input" value size="20" placeholder="shipper postcode">
+				
+			</div>
+		
+		</form>
+		<pre id="test01"></pre>
+		<pre id="test02"></pre>
+		<pre id="test03"></pre>
+		<pre id="test04"></pre>
+		<pre id="test05"></pre>
+		<pre id="test06"></pre>
+		<pre id="test07"></pre>
+		<pre id="test08"></pre>
+		<button onclick="display();">testing</button> 
+		<button onclick="change();">change</button> 
+		<button onclick="count();">count</button> 
+		</div>
+		<script>
+		var newId = "";
+		var keys = [];
+			 // Initialize Firebase
+		var config = {
+				apiKey: "AIzaSyDw_mzs0hEk-9Rb0T8UTa25UhMc-kODca4",
+				authDomain: "text-9d938.firebaseapp.com",
+				databaseURL: "https://text-9d938.firebaseio.com",
+				projectId: "text-9d938",
+				storageBucket: "text-9d938.appspot.com",
+				messagingSenderId: "748554038002"
+			};
+			firebase.initializeApp(config);
+		
+		var database = firebase.database().ref('Shipment');
+			
+			database.on('value', snap => {
+				var object1 = snap.val();
+				window.keys = Object.keys(object1);
+				var displayKeys = "";
+				var er = "";
+				$("#test01").text(JSON.stringify(object1,null,3));
+				
+				for (var i=0; i<keys.length; i++) {
+				 er += keys[i]+"<br>";
+			
+				}
+				$("#test02").html(er);
+				
+				var lastKeys = keys[keys.length-1];
+				$("#test03").text(lastKeys+ " " +typeof(lastKeys));
+				
+				var pixel = "SH";
+				var id = parseInt(lastKeys.substring(2,10));
+				id = id + 1;
+				var idString = id.toString();
+				
+				$("#test07").text(idString.length);
+				if (idString.length == 1) {
+					window.newId = pixel + "0000000" + id;
+					
+				} else if (idString.length == 2) {
+					window.newId = pixel + "000000" + id;
+				} else if (idString.length == 3) {
+					window.newId = pixel + "00000" + id;
+				} else if (idString.length == 4) {
+					window.newId = pixel + "0000" + id;
+				} else if (idString.length == 5) {
+					window.newId = pixel + "000" + id;
+				} else if (idString.length == 6) {
+					window.newId = pixel + "00" + id;
+				} else if (idString.length == 7) {
+					window.newId = pixel + "0" + id;
+				} else if (idString.length == 8) {
+					window.newId = pixel + id;
+				}
+				
+				$("#test04").text(pixel);
+				$("#test05").text(idString);
+				$("#test06").text(window.newId);
+				
+			});
+			
+		function display() {
+			
+				var name = $("#shipperName").val();
+				var address1 = $("#shipperAddress1").val();
+				var postcode = $("#shipperPostCode").val();
+				var city = $("#shipperCity").val();
+				
+				firebase.database().ref('Shipment/' + window.newId).set({
+					shipperName: name,
+					shipperAddress1: address1,
+					shipperPostCode: postcode,
+					shipperCity: city
+				});
+				
+		}
+		
+		function change() {
+			
+				
+				firebase.database().ref('Shipment/' + "SH01201113").set({
+					shipperName: "Loh CG",
+					shipperAddress1: "455, Jalan EM",
+					shipperPostCode: "80200",
+					shipperCity: "JB"
+				});
+				 
+		}
+		
+		function count() {
+			$("#test08").text(window.keys.length);
+			
+				 
+		}
+
+		</script>
+	
+	
+	
+	</body>
+	
+</html>
