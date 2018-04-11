@@ -2,7 +2,7 @@
 	<div class="container space">
 <div class="container-fluid">
     <h2>Personal Data Protection Act</h2>
-    <p>EasyParcel is committed to prevent personal data of individuals being used in an inappropriate manner, and ensure compliance with legal, and regulatory requirements for data protection, and privacy.We take the matter of protecting your personal data as a high priority matter. </p>
+    <p>Wherevership is committed to prevent personal data of individuals being used in an inappropriate manner, and ensure compliance with legal, and regulatory requirements for data protection, and privacy.We take the matter of protecting your personal data as a high priority matter. </p>
 	<hr />
     <h4>1.0 General</h4>
     <p>The list below is the terms and conditions of carriage:</p>
@@ -31,47 +31,47 @@
     <h4>2.0 Notice and Choice</h4>
 	<ol>
       <li>
-        <p>EasyParcel collects personal data directly from the Data Subject, and in this context, from you through online application, registration or feedback form.</p>
+        <p>Wherevership collects personal data directly from the Data Subject, and in this context, from you through online application, registration or feedback form.</p>
       </li>
       <li>
-        <p>EasyParcel processes various types of personal data including but not limited to individual's names, addresses, identity card (MyKad) numbers, 
+        <p>Wherevership processes various types of personal data including but not limited to individual's names, addresses, identity card (MyKad) numbers, 
 		passport numbers, telephone numbers and/or facsimile numbers, photographs, finger prints and e-mail addresses and/or social media addresses.</p>
       </li>
       <li>
-        <p>EasyParcel shall process the personal data for the following purposes (which may also include purposes directly related to the said purposes):
+        <p>Wherevership shall process the personal data for the following purposes (which may also include purposes directly related to the said purposes):
 		<ul>
-			<li>providing you with services under EasyParcel's business which includes any matters relating to the supply or exchange of goods or services;</li>
-			<li>processing your application or registration under any EasyParcel's program; and </li>
-			<li>for the purposes of exercising or performing any right or obligation which is conferred or imposed by law on EasyParcel in connection with candidates 
+			<li>providing you with services under Wherevership's business which includes any matters relating to the supply or exchange of goods or services;</li>
+			<li>processing your application or registration under any Wherevership's program; and </li>
+			<li>for the purposes of exercising or performing any right or obligation which is conferred or imposed by law on Wherevership in connection with candidates 
 			for employment including personal data relating to other individuals who may be identified from that personal data.</li>
 		</ul></p>
       </li>
       <li>
-        <p>EasyParcel may disclose personal data to third parties for legitimate business purposes, including for the following purposes or in the following circumstances: 
+        <p>Wherevership may disclose personal data to third parties for legitimate business purposes, including for the following purposes or in the following circumstances: 
 			<ul>
 				<li>background verification checks on candidates for employment;  </li>
 				<li>in anticipation of, and in the course of an actual or potential sale, reorganization, consolidation, merger, or amalgamation of all or part of our 
 					business or operations; </li>
-				<li>relating to advertising, publicity, marketing and communication relating to EasyParcel; </li>
-				<li>for the purposes of exercising or performing any right or obligation which is conferred or imposed by law on EasyParcel in connection with candidates 
+				<li>relating to advertising, publicity, marketing and communication relating to Wherevership; </li>
+				<li>for the purposes of exercising or performing any right or obligation which is conferred or imposed by law on Wherevership in connection with candidates 
 					for employment including any referee whose personal data are provided by you; and  </li>
 				<li>making such disclosures as may be required by law or by order of a court of competent jurisdiction or by any rule, direction or regulation of any 
 					regulatory or governmental authority or any other relevant authority to be disclosed. </li>
 			</ul>
 		</p>
       </li>
-	  <li>EasyParcel would like to notify that it is obligatory for you to supply the personal data in order for us to provide you with services under EasyParcel's 
-			business which includes any matters relating to the supply or exchange of goods or services, to process your application or registration under any EasyParcel's program, and to process your application in relation to employment application under EasyParcel. EasyParcel will not be able to provide you with adequate 
+	  <li>Wherevership would like to notify that it is obligatory for you to supply the personal data in order for us to provide you with services under Wherevership's 
+			business which includes any matters relating to the supply or exchange of goods or services, to process your application or registration under any Wherevership's program, and to process your application in relation to employment application under Wherevership. Wherevership will not be able to provide you with adequate 
 			services if you fail to supply the personal data. 
 	  </li>
-	  <li>Where sensitive personal data is provided, and disclosed by you to EasyParcel, by such disclosure, you have consented to its collection, and processing by 
-			EasyParcel.
+	  <li>Where sensitive personal data is provided, and disclosed by you to Wherevership, by such disclosure, you have consented to its collection, and processing by 
+			Wherevership.
 	  </li>
-	  <li>You hereby represent that if at any time you have provided, and disclosed to EasyParcel personal data about other individuals, you are authorized to do so, 
-			and are aware that EasyParcel may use, and/or process such personal data for the relevant purposes as set out in "Item 3" above.
+	  <li>You hereby represent that if at any time you have provided, and disclosed to Wherevership personal data about other individuals, you are authorized to do so, 
+			and are aware that Wherevership may use, and/or process such personal data for the relevant purposes as set out in "Item 3" above.
 	  </li>
-	  <li>You may by notice in writing to EasyParcel withdraw your consent to or limit the processing of personal data in respect of which you are the Data Subject. 
-			EasyParcel shall upon receiving the written notice cease or limit the processing of the personal data accordingly. Please refer to the "Access" section 
+	  <li>You may by notice in writing to Wherevership withdraw your consent to or limit the processing of personal data in respect of which you are the Data Subject. 
+			Wherevership shall upon receiving the written notice cease or limit the processing of the personal data accordingly. Please refer to the "Access" section 
 			below for the communication methods available.
 	  </li>
   </ol>
@@ -83,34 +83,34 @@
 	</li></ol>
     <hr />
     <h4>4.0 Security</h4>
-	<ol><li>EasyParcel shall take appropriate measures to protect the personal data from any loss, misuse, modification, unauthorized or accidental access or disclosure, 
+	<ol><li>Wherevership shall take appropriate measures to protect the personal data from any loss, misuse, modification, unauthorized or accidental access or disclosure, 
 		alteration or destruction when processing personal data.
 	</li></ol>
 		<hr />
       <h4>5.0 Retention</h4>
-	  <ol><li>EasyParcel retains personal data for as long as necessary for its legitimate business purposes, and as otherwise permitted by applicable law.
+	  <ol><li>Wherevership retains personal data for as long as necessary for its legitimate business purposes, and as otherwise permitted by applicable law.
 	  </li></ol>
       <hr />
       <h4>6.0 Data Integrity</h4>
 	  <ol>
-		<li>Personal data supplied by you to EasyParcel shall be accurate, complete, and not misleading.
+		<li>Personal data supplied by you to Wherevership shall be accurate, complete, and not misleading.
 		</li>
-		<li>You shall by notice in writing to EasyParcel inform EasyParcel of any changes to the personal data supplied by you to EasyParcel to ensure the personal data is 
+		<li>You shall by notice in writing to Wherevership inform Wherevership of any changes to the personal data supplied by you to Wherevership to ensure the personal data is 
 			kept up-to-date. Please refer to the "Access" section below for the communication methods available.
 		</li>
 	  </ol>
       <hr />
       <h4>7.0 Access</h4>
 	  <ol>
-		<li>You have the right to request access to your personal data processed by EasyParcel, and be able to correct your personal data. You may send your request to EasyParcel at the following address or e-mail:</li>
-	  <p>Email: <br>support@easyparcel.my
+		<li>You have the right to request access to your personal data processed by Wherevership, and be able to correct your personal data. You may send your request to Wherevership at the following address or e-mail:</li>
+	  <p>Email: <br>admin@wherevership.com
 	  </p>
 	  </ol>
 	  
 	  <hr />
 	  <h4>8.0 Inquiries</h4>
 	  <ol>
-	    <li>Any inquiries to the processing of personal data shall be submitted to EasyParcel by e-mail at support@easyparcel.my
+	    <li>Any inquiries to the processing of personal data shall be submitted to Wherevership by e-mail at admin@wherevership.com
 	  </li>
   </ol>
 </div>

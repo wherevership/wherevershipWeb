@@ -7,9 +7,11 @@
 				<input type="hidden" id="l" name="length" value="<?=$length?>" />
 				<input type="hidden" id="w" name="width" value="<?=$width?>" />
 				<input type="hidden" id="h" name="height" value="<?=$height?>" />
-				<input type="hidden"  id="frm" name="fromCountry" value="<?=$fromState?>"/>
+				<input type="hidden" id="vwt" name="v_weight" value="<?=$v_weight?>"/>
+				<input type="hidden"  id="frm" name="fromState" value="<?=$fromState?>"/>
 				<input type="hidden" id="to" name="toCountry" value="<?=$toCountry?>" />
 				<input type="hidden" id="toCountryZone" name="toCountryZone" value="<?=$toCountryZone?>" />
+				<input type="hidden" id="cost" name="cost" value=""/>
 				<div class="space">
 						<div class="row">
 							<div class="panel panel-default">

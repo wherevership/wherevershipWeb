@@ -21,7 +21,7 @@ class Frontend extends CI_Controller {
 	public function contactUs() {
 		$this->data['title'] = "Contact Us";
 		$this->load->view("frontEnd/header", $this->data);
-		$this->load->view("frontEnd/contactUs");
+		$this->load->view("frontEnd/contactUs1");
 		$this->load->view("frontEnd/footer");
 		
 	}

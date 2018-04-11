@@ -14,8 +14,8 @@
       <div class="tab-pane active" id="prohibited-items"> <br />
         <div class="alert alert-danger">
           <h4>Prohibited Items</h4>
-          <p>At EasyParcel,the following items (or any item similar to the description or content) are strictly prohibited by any of the courier company. Any shipment containing such items may be subjected to their order being cancelled without notice.Items that fall under these list are prohibited. EasyParcel and courier companies will not be responsible for any loss or damage of the prohibited item(s). No compensation for loss or damage will be given.</p>
-          <p>If you have any questions or enquiries about this matter, feel free to <a href="./?pg=ContactUs">contact us</a>.</p>
+          <p>At Wherevership,the following items (or any item similar to the description or content) are strictly prohibited by any of the courier company. Any shipment containing such items may be subjected to their order being cancelled without notice.Items that fall under these list are prohibited. EasyParcel and courier companies will not be responsible for any loss or damage of the prohibited item(s). No compensation for loss or damage will be given.</p>
+          <p>If you have any questions or enquiries about this matter, feel free to <a href="<?=base_url('contactUs')?>">contact us</a>.</p>
         </div>
         <div class="row">
           <div class="col-xs-6 col-md-4">
@@ -195,70 +195,10 @@
       </div>
       <div class="tab-pane" id="new"><br />
         <div class="col-md-6"> 
-        <img src="https://secure.easyparcel.my/pass/application/APP_6.15/theme/easyparcel/images/partners/SF_Global_Express.png"> 
-        <br>
-        <h3>S.F. Express</h3>
-        <b>Prohibited- Not Acceptable</b>
-        <ul>
-        <li>Firearms, weaponry, ammunition and their parts, Military equipment, Imitation (replica) firearms, weaponry, ammunition and their parts, Toy gun, toy pistols, toy revolvers</li>
-        <li>Antiques, Cultural artifacts</li>
-        <li>Animal products e.g. Animal oil & fats, Antibody, Bacillus, Bacon, Bacteria, Biological substance, Blood, Bone, Cell, Coliform, Feathers, Feed, Guts, Horns, Jerky, Petfood, Protein, Raw wool & leather, Sausage, Semen, Serum</li>
-        <li>Live animals, insects, fish and birds</li>
-        <li>Plants, Seeds, Cotton seeds, Grain samples, Soil samples</li>
-        <li>Plant products e.g. Barley, Beans, Clay, Flour, Green coffee, Potpourri, Hay, Fresh / Dried fruits, Grain, Herb, Leaf, Malt, Nuts, Flowers, Rice, Seeds,</li>
-        <li>Soil, Spices, Tea (excluding tea bag), tobacco, Walnut, Wheat, Wood, Vegetable</li> 
-        <li>Tissue of livestock, Corpse (dead animals), human remains and ashes</li>
-        <li>Hazardous waste - Biological and Chemical waste</li>
-        <li>Fuel samples (for analytical purposes)</li> 
-        <li>Petroleum products</li> 
-        <li>Cash (coins, currency,bank notes) and cash-like negotiable instruments such as endorsed stocks, bonds, postage stamp and cash letters.</li>
-        <li>All Classes of Dangerous Goods (DG) including Battery e.g. Explosives, Gases, Flammable liquids/solids, Oxidizing agents and organic peroxides, Toxic and infectious substances, Radioactive substances, Corrosive substances</li>
-        <li>Drug - non-prescription, Drug - Prescription, Drug- samples</li>
-        <li>Hazardous waste, e.g. used syringes, hypodermic needles, and other medical waste</li>
-        <li>Medical equipments</li>
-        <li> Hazardous wastes</li>
-        <li>Perishable food (decays quickly, needs refrigeration) e.g. fruits, vegetables</li>
-        <li>Animal skins, Fur skin</li>
-        <li>All liquor & alcoholic beverages</li>
-        <li>Radar equipment</li>
-        <li>All products in powder or liquid form</li>
-        <li>ATA CARNET shipment</li>
-        <li>Counterfeit products</li>
-        <li>Gambling devices, including lottery tickets</li>
-        <li>Perishable products and other goods that required refrigeration or other environmental control</li>
-        <li>Pornographic and/or obscene materials</li>
-        <li>Precious metal - Bullion, Precious stones</li>
-        <li>Product made from endangered species including Ivory, Product made from wildlife</li>
-        <li>Shipments to PO box (Post Office box) / APO (Army Post Office) / FPO (Fleet Post Office) / DPO (Diplomatic Post Office) addresses</li>
-        <li>Tobacco (including chewing tobacco, imitation tobacco, smokeless tobacco, electronic cigarettes)</li>
-        <li>Coal and firewood, raw material of woods, unprocessed woods</li>
-        </ul>
-        <b>Restricted</b>
-        <ul>
-        <li>Artworks - fine, for commercial, for personal Restricted</li>
-        <li>General cosmetics - for commercial & for personal</li>
-        <li>Cheque - for business, for personal, for travellers</li>
-        <li>Credit card</li>
-        <li>Cell phones / Mobile phones</li>
-        <li>Computer, desktop computer, notebook computer, laptop computer</li>
-        <li>Film: copies, for commercial, for entertainment, publicity and training Microfilm, Negative, Slides</li>
-        <li>Jewellery including imitation jewellery</li>
-        <li>Watch</li>  
-        </ul>
-          </div>
-          <hr class="visible-sm visible-xs">
-        <div class="col-md-6">
-          <div class="col-md-6">
-            <img src="https://secure.easyparcel.my/pass/application/APP_6.15/theme/easyparcel/images/partners/DHL_Express.png"> 
+			<img src="<?=base_url('assets2/image/DHL.jpg')?>" width="30%"> 
             <br>
             <h3>DHL Express</h3>
-          </div>
-          <div class="col-md-6">
-            <img src="https://secure.easyparcel.my/pass/application/APP_6.15/theme/easyparcel/images/partners/Mystery-Saver.gif" style="border: 1px solid #f69;"> 
-            <br>
-            <h3>Mystery Saver</h3>
-          </div>
-          <b>Prohibited- not acceptable</b>
+			<b>Prohibited- not acceptable</b>
           <ul>
             <li>Animals, fish, birds (live)</li>
             <li>Banderols/ tax stickers</li>
@@ -295,54 +235,10 @@
             <li>Mobile telephones, accessories, microprocessors and electronic components</li>
             <li>Medical samples</li>
           </ul>
-        </div>
+          </div>
+          
         <div class="col-md-6">
-          <img src="https://secure.easyparcel.my/pass/application/APP_6.15/theme/easyparcel/images/partners/TNT_Express_Worldwide_(M)_Sdn_Bhd.png"> 
-          <br>
-          <h3>TNT (Express & Economy Express)</h3>
-          <b>Prohibited- not acceptable</b>
-          <ul>
-            <li>Counterfeit goods</li>
-            <li>Arms and weapons</li>
-            <li>Illegal drugs and narcotics</li>
-            <li>Food or perishable items</li>
-          </ul>
-
-          <b>Restricted – may be acceptable</b>
-          <ul>
-            <li>Dangerous goods</li>
-            <li>lithium batteries</li>
-            <li>Dry ice</li>
-            <li>Perfume</li>
-            <li>Biodegradable substances</li>
-            <li>Food</li>
-            <li>Perishable items</li>
-            <li>Organic and industrial waste</li>
-            <li>Plants and seeds</li>
-            <li>Awkwardly-sized items</li>
-            <li>Agricultural equipment</li>
-            <li>Vehicles</li>
-            <li>Furniture</li>
-            <li>Carpet rolls</li>
-            <li>High-value items</li>
-            <li>Jewellery</li>
-            <li>Precious metals</li>
-            <li>Antiques</li>
-            <li>Gemstones</li>
-            <li>Currency</li>
-            <li>Biological substances</li>
-            <li>Blood samples</li>
-            <li>Live animals</li>
-            <li>Dead animals</li>
-            <li>Animal fur</li>
-            <li>Human organs and remains</li>
-            <li>Tobacco and alcohol</li>
-            <li>Asbestos</li>
-            <li>Pornography</li>
-            <li>Ivory</li>
-            <li>Passports</li>
-            <li>Endangered plants and species</li>
-          </ul>
+         
         </div>
       </div>
     </div>

@@ -15,7 +15,7 @@
 										<div class="breadcrumb-statge-container">
 										
 											<div class="breadcrumb-stage">1</div>
-											<div class="breadcrumb-stage">Shipper <br/>Detail</div>
+											<div class="breadcrumb-stage">Shipment <br/>Detail</div>
 										</div>
 									</a>	
 								</li>
@@ -24,7 +24,7 @@
 										<div class="breadcrumb-statge-container">
 										
 											<div class="breadcrumb-stage">2</div>
-											<div class="breadcrumb-stage">Receiver <br/>Detail </div>
+											<div class="breadcrumb-stage">Shipment <br/>Overview </div>
 									
 										</div>
 								
@@ -34,22 +34,12 @@
 										<div class="breadcrumb-statge-container">
 										
 											<div class="breadcrumb-stage">3</div>
-											<div class="breadcrumb-stage">Product <br/>Detail</div>
+											<div class="breadcrumb-stage">Payment <br/>Option</div>
 										
 										</div>
 									
 								</li>
-								<li class="future">
-									
-										<div class="breadcrumb-statge-container">
-									
-											<div class="breadcrumb-stage">4</div>
-											<div class="breadcrumb-stage">Shipment <br/>Overview</div>
-										
-										</div>
-									
-								</li>
-							
+								
 						
 							</ol>
 						</div>
@@ -60,10 +50,10 @@
 
 	
 		<div class="row title-bar">
-			<h1 class="title">To (Receiver)</h1>
+			<h1 class="title">Shipment Overview</h1>
 		</div>
 	<div class="container">
-		<form method="POST" action="<?=base_url('dtc_product_detail')?>" class="form-horizontal">
+		<form method="POST" action="" class="form-horizontal">
 			<div class="row">
 				<input type="hidden" name="weight" value="<?=$weight?>"/>
 				<input type="hidden" name="height" value="<?=$height?>"/>
@@ -99,10 +89,11 @@
 				<input type="hidden" name="receiver_phone_number" value="<?=$receiver_phone_number?>"/>
 				<input type="hidden" name="receiver_email" value="<?=$receiver_email?>"/>
 				
-			<!--	<input type="hidden" name="type" value="<?=$receiver_email?>"/> -->
+				
+			
 				<input type="hidden" name="pickup_required" value="<?=$pickup_required?>"/>
-				<input type="hidden" name="pickup_required" value="<?=$parcel_content?>"/>
-				<input type="hidden" name="pickup_required" value="<?=$value_of_content?>"/>
+				<input type="hidden" name="parcel_content" value="<?=$parcel_content?>"/>
+				<input type="hidden" name="value_of_content" value="<?=$value_of_content?>"/>
 				
 			</div>
 			
@@ -190,11 +181,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-md-12">
-					 <label><input type="checkbox" name="acceptNotice" style="margin-top:11px;"/> &nbsp; I agree & have acknowledged on the <a href="<?=base_url('term_and_condition')?>" target="_blank">Terms & Conditions </a> . </label>
-				</div>
-			</div>
+			
 			<div class="row">		
 				<div class="form-group">
 					<div class="col-md-6">

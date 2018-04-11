@@ -15,7 +15,7 @@
 										<div class="breadcrumb-statge-container">
 										
 											<div class="breadcrumb-stage">1</div>
-											<div class="breadcrumb-stage">Shipper <br/>Detail</div>
+											<div class="breadcrumb-stage">Shipment <br/>Detail</div>
 										</div>
 										
 								</li>
@@ -24,7 +24,7 @@
 										<div class="breadcrumb-statge-container">
 										
 											<div class="breadcrumb-stage">2</div>
-											<div class="breadcrumb-stage">Receiver <br/>Detail </div>
+											<div class="breadcrumb-stage">Shipment <br/>Overview </div>
 									
 										</div>
 									
@@ -34,21 +34,12 @@
 										<div class="breadcrumb-statge-container">
 										
 											<div class="breadcrumb-stage">3</div>
-											<div class="breadcrumb-stage">Product <br/>Detail</div>
+											<div class="breadcrumb-stage">Payment <br/>Option</div>
 										
 										</div>
 									
 								</li>
-								<li class="future">
-									
-										<div class="breadcrumb-statge-container">
-									
-											<div class="breadcrumb-stage">4</div>
-											<div class="breadcrumb-stage">Shipment <br/>Overview</div>
-										
-										</div>
-									
-								</li>
+								
 							
 						
 							</ol>
@@ -58,7 +49,7 @@
 			</div>
 		</div>
 	
-	<script>
+	<style>
 	@media screen and (max-width : 767px) {
 			.address_detail{
 					padding: 0px;
@@ -67,10 +58,10 @@
 		
 	}
 	
-	</script>
+	</style>
 
 		<div class="row title-bar">
-			<h1 class="title">From (Shipper)</h1>
+			<h1 class="title">Shipment Detail</h1>
 		</div>
 		<div class="container-fluid space">
 			<form method="POST" action="<?=base_url('dtc_receiver')?>" class="form-horizontal">
@@ -373,7 +364,11 @@
 								
 							</div>
 						</div>
-					
+						<div class="row">
+							<div class="col-md-12">
+								<label><input type="checkbox" name="acceptNotice" style="margin-top:11px;" id="acceptCheck"/> &nbsp; I agree & have acknowledged on the <a href="<?=base_url('term_and_condition')?>" target="_blank">Terms & Conditions </a> . </label>
+							</div>
+						</div>
 						<div class="row">
 							<div class ="form-group">
 								<div class="col-md-6">
@@ -381,7 +376,7 @@
 								</div>
 				
 								<div class="col-md-6">
-									<input type="submit" value="Next" id="next" class="form-control btn btn-success"/>
+									<input type="submit" value="Next" id="next" class="form-control btn btn-success" onclick="return checkvalid()"/>
 					
 								</div>
 							</div>
@@ -453,6 +448,26 @@
 			</form>	
 		</div>
 		
+	<script>
+	function checkvalid() {
+		var term=$("#acceptCheck");
+		
+		if (term.is(':checked')) {
+		 	
+		  return true;	
+		} else {
+			swal({
+				title: 'Oops',
+				type: 'error',
+				html: 'Your must check the term and condition',
+				confirmButtonColor: '#4e97d8'
+				})
+
+			return false;
+		}
+		
+	}
 	
+	</script>
 
 	
