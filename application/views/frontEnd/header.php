@@ -76,7 +76,9 @@
 
 <script type="text/javascript" src="<?=base_url('assets2/js/jquery.dataTables.js')?>"></script>
 
-<script type="text/javascript" src="<?=base_url('assets2/js/quote.js')?>"></script>
+<script type="text/javascript" src="<?=base_url('assets2/js/quote.js?')?>"></script>
+
+<script type="text/javascript" src="<?=base_url('assets2/js/quickquote.js?v=1.1')?>"></script>
 
 <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
 

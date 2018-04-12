@@ -10,6 +10,8 @@ class Domestic_shipment_manage extends CI_Controller {
 		$this->data['width'] = $this->input->post("width", true);
 		$this->data['length'] = $this->input->post("length", true);
 		$this->data['v_weight'] = $this->input->post("v_weight", true);
+		$this->data['fromPostcode'] = $this->input->post("fromPostcode", true);
+		$this->data['toPostcode'] = $this->input->post("toPostcode", true);
 		$this->data['fromState'] = $this->input->post("fromState", true);
 		$this->data['toState'] = $this->input->post("toState", true);
 		$this->data['cost'] = $this->input->post("cost", true);

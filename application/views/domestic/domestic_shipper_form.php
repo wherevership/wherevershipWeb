@@ -73,6 +73,9 @@
 					<input type="hidden" name="cost" value="<?=$cost?>"/>
 					<input type="hidden" name="fromState" value="<?=$fromState?>"/>
 					<input type="hidden" name="toState" value="<?=$toState?>"/>
+					<input type="hidden" name="shipper_postcode" value="<?=$fromPostcode?>"/>
+					<input type="hidden" name="receiver_postcode" value="<?=$toPostcode?>"/>
+					
 				<div class="row">
 					<div class="col-md-9  col-xs-12">
 						
@@ -130,7 +133,7 @@
 						
 											<div class="col-sm-8">
 												<div class="has-feedback">
-													<input type="text" name="shipper_postcode" id="shipper_postcode" class="form-control" title="please enter shipper's postcode" required/>
+													<input type="text" name="spr_postcode" id="shipper_postcode" class="form-control" title="please enter shipper's postcode" value="<?=$fromPostcode?>" disabled />
 												</div>
 											</div>
 										</div>			
@@ -248,7 +251,7 @@
 						
 											<div class="col-sm-8">
 												<div class="has-feedback">
-													<input type="text" name="receiver_postcode" id="receiver_postcode" class="form-control" title="please enter receiver's postcode!" required/>
+													<input type="text" name="rec_postcode" id="receiver_postcode" class="form-control" title="please enter receiver's postcode!" value="<?=$toPostcode?>" disabled />
 												</div>
 											</div>
 										</div>

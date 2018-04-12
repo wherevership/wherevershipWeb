@@ -11,6 +11,8 @@
 					<input type="hidden" id="frm" name="fromStateZone" value="<?=$fromStateZone?>"/>
 					<input type="hidden" id="frm" name="toStateZone" value="<?=$toStateZone?>"/>
 					<input type="hidden" id="to" name="toState" value="<?=$toState?>"/>
+					<input type="hidden" id="cp" name="fromPostcode" value="<?=$frPostcode?>"/>
+					<input type="hidden" id="dp" name="toPostcode" value="<?=$toPostCode?>"/>
 					<input type="hidden" id="cost1" name="cost" value=""/>
 					
 					<div class="space">
@@ -23,11 +25,13 @@
 									<div class="col-md-3">
 										<h3>From:</h3>
 										<p><?=$fromState?></p>
+										<p><?=$frPostcode?></p>
 										<p><?=$fromStateZone?> Malaysia</p>
 									</div>
 									<div class="col-md-3">
 										<h3>To:</h3>
 										<p><?=$toState?></p>
+										<p><?=$toPostCode?></p>
 										<p><?=$toStateZone?> Malaysia</p>
 									</div>
 									<div class="col-md-3">

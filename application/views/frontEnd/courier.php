@@ -69,10 +69,11 @@ span.tip {
     <form method="POST" onsubmit="return checkaddress()" action="<?=base_url('dtc_cost_preview')?>">
 	<div class="col-xs-12">
 		<h2>Get Instant Quotes</h2>
+		<h5>FROM:</h5>
 	</div>
 	
-	<div class="col-xs-6 col-sm-6 dropbox-body padding-right-off" id="domestic">
-		<h5>FROM:</h5>
+	<div class="col-xs-5 col-sm-6 dropbox-body padding-right-off" id="domestic">
+		
 		<select  required class="selectpicker form-control" data-show-subtext="true" data-live-search="true" id="c"  name="c" onChange="quote.CollAddrChange(this)" txt_c_state>
 		<option value="" readonly>State</option>
 		
@@ -110,12 +111,17 @@ span.tip {
 		
 		</select>
 	</div>
+	<div class="col-xs-7 col-sm-6 dropbox-body" id="domestic">
+		<input type="text" class="form-control" id="cp" name="cp" placeholder="Postcode" onkeyup="quickQ.checkField(this,'c')" onchange="quickQ.checkField(this,'c')" onblur="quickQ.clearPostcode()" maxlength="5" value="" txt_c_postcode/>
+	</div>
 	
 	
-	
-      <div class="col-xs-6 col-sm-6 dropbox-body padding-right-off" id="domestic">
-	
+	<div class="col-xs-12">
 	<h5>TO:</h5>
+	</div>
+      <div class="col-xs-5 col-sm-6 dropbox-body padding-right-off" id="domestic">
+	
+
 	
 	
 		<select required class="selectpicker form-control" data-show-subtext="true" data-live-search="true" id="d" name="d" onChange="quote.CollAddrChange(this)" txt_d_state>
@@ -155,6 +161,11 @@ span.tip {
 			
 		</select>
 	</div>
+	<div class="col-xs-7 col-sm-6 dropbox-body" id="domestic">
+		<input type="text" class="form-control" id="dp" name="dp" placeholder="Postcode" 
+		onkeyup="quickQ.checkField(this,'d')" onchange="quickQ.checkField(this,'d')" onblur="quickQ.clearPostcode()" maxlength="5" value="" txt_d_postcode/>
+	</div>
+
 	
 	<div class="col-xs-4 col-sm-4 padding-right-off">
 		<h5>ENTER HEIGHT:</h5>
@@ -196,10 +207,10 @@ span.tip {
     <form method="POST" onsubmit="return checkaddressint()" action="<?=base_url('cost_preview')?>">
 	<div class="col-xs-12">
 		<h2>Get Instant Quotes</h2>
-		
-	</div>
-	<div class="col-xs-6 col-sm-6 dropbox-body padding-right-off" id="domestic">
 		<h5>FROM:</h5>
+	</div>
+	<div class="col-xs-5 col-sm-6 dropbox-body padding-right-off" id="domestic">
+		
 	
 	
 		<select   class="selectpicker form-control" data-show-subtext="true" data-live-search="true" id="ic"  name="c"  txt_ic_state>
@@ -239,10 +250,14 @@ span.tip {
 		
 		</select>
 	</div>
+	<div class="col-xs-7 col-sm-6 dropbox-body" id="domestic">
+		<input type="text" class="form-control" id="icp" name="cp" placeholder="Postcode" onkeyup="quickQ.checkField(this,'ic')" onchange="quickQ.checkField(this,'ic')" onblur="quickQ.clearPostcode()" maxlength="5" value="" txt_ic_postcode/>
+	</div>
 	
-	<div class="col-xs-6 col-sm-6 dropbox-body padding-right-off" id="domestic">
+	<div class="col-xs-12">
 	<h5>TO:</h5>
-	
+	</div>
+	<div class="col-xs-5 col-sm-6 dropbox-body padding-right-off" id="domestic">
 		<select required class="selectpicker form-control" data-show-subtext="true" data-live-search="true" id="d" name="d" onChange="quote.CollAddrChange(this)" txt_id_state>
 			 <option value="" readonly>Country</option>
 				<option value="AF" >Afghanistan</option>
@@ -716,6 +731,9 @@ span.tip {
   			</optgroup>
 		</select>
 	</div>
+	<div class="col-xs-7 col-sm-6 dropbox-body" id="domestic">
+		<input type="text" class="form-control" id="idp" name="dp" placeholder="Postcode"  maxlength="10" value="" txt_id_postcode/>
+	</div>
 	
 	<div class="col-xs-4 col-sm-4 padding-right-off">
 		<h5>ENTER HEIGHT:</h5>
@@ -771,14 +789,22 @@ function checkaddress(){
 	var message = "";
 	if($('#d').val() == ''){
 		message += "Delivery State Not Chosen.<br>"; 
-	}else{
-		d_state = $('#d').val();
-	} 
+		status=false;
+	}
 
 	if($('#c').val() == ''){
 		message += "Collection State Not Chosen.<br>";
-	}else{
-		c_state = $('#c').val();
+		status=false;
+	}
+	
+	if ($('#cp').val().length < 5) {
+		message += "Delivery Postcode Not Valid.<br>";
+		status=false;
+	}
+	
+	if ($('#dp').val().length < 5) {
+		message += "Collection Postcode Not Valid.<br>";
+		status=false;
 	}
 	
 	if(message != ""){
@@ -796,16 +822,19 @@ function checkaddressint(){
 	var message = "";
 	if($('#id').val() == ''){
 		message += "Collection State Not Chosen.<br>"; 
-	}else{
-		d_state = $('#id').val();
-	} 
+	}
 
 	if($('#ic').val() == ''){
 		message += "Deliver Country Not Chosen.<br>";
-	}else{
-		c_state = $('#ic').val();
 	}
 	
+	
+	if ($('#icp').val().length < 5) {
+		message += "Delivery Postcode Not Valid.<br>";
+		status=false;
+	}
+	
+
 	if(message != ""){
 		swal({
 			title: 'Oops',
@@ -838,7 +867,7 @@ function isNumberKey(evt){
       <h3>Get Everything Done At The Comfort Of Your Home</h3>
     </div>
     <div class="col-sm-4 col-xs-12 steps padding-off" >
-      <div class="col-md-4 col-sm-12 col-xs-4"><img src="https://secure.easyparcel.my/pass/application/APP_6.8/theme/easyparcel/images/compare.png" class="fade-in-down"></div>
+      <div class="col-md-4 col-sm-12 col-xs-4"><img src="<?=base_url('assets2/image/service/compare.png')?>" class="fade-in-down"></div>
       <div class="col-md-8 col-sm-12 col-xs-8">
         <h3><span style="color:#f69; font-size:36px;">1.</span>Compare Prices</h3>
         <p>Use our price comparison engine to find the best prices today.</p>
@@ -848,7 +877,7 @@ function isNumberKey(evt){
       <p class="hr-home"></p>
     </div>
     <div class="col-sm-4 col-xs-12 steps padding-off">
-      <div class="col-md-4 col-sm-12 col-xs-4"><img src="https://secure.easyparcel.my/pass/application/APP_6.8/theme/easyparcel/images/steps-2.png" class="fade-in-down"></div>
+      <div class="col-md-4 col-sm-12 col-xs-4"><img src="<?=base_url('assets2/image/service/steps-2.png')?>" class="fade-in-down"></div>
       <div class="col-md-8 col-sm-12 col-xs-8">
         <h3><span style="color:#f69; font-size:36px;">2.</span> Book Online</h3>
         <p>Book for your favourite courier provider and just pay online.</p>
@@ -858,7 +887,7 @@ function isNumberKey(evt){
       <p class="hr-home"></p>
     </div>
     <div class="col-sm-4 col-xs-12 steps-last padding-off">
-      <div class="col-md-4 col-sm-12 col-xs-4"><img src="https://secure.easyparcel.my/pass/application/APP_6.8/theme/easyparcel/images/steps-3.png" class="fade-in-down"></div>
+      <div class="col-md-4 col-sm-12 col-xs-4"><img src="<?=base_url('assets2/image/service/steps-3.png')?>" class="fade-in-down"></div>
       <div class="col-md-8 col-sm-12 col-xs-8">
         <h3><span style="color:#f69; font-size:36px;">3.</span> Parcel Collected</h3>
         <p>Prepare your shipment and we'll come to you!</p>
@@ -874,47 +903,47 @@ function isNumberKey(evt){
       <h3>These Are Why You'll Love Us</h3>
     </div>
     <div class="col-md-4 col-sm-6 col-xs-12">
-      <div class="whyus-point"> <span><img src="https://secure.easyparcel.my/pass/application/APP_6.8/theme/easyparcel/images/why/why-1.png" width="60px" class="fade-in-down"></span>
+      <div class="whyus-point"> <span><img src="<?=base_url('assets2/image/why/why-1.png')?>" width="60px" class="fade-in-down"></span>
         <h4>Fast Online Delivery Booking</h4>
       </div>
     </div>
     <div class="col-md-4 col-sm-6 col-xs-12">
-      <div class="whyus-point"> <span><img src="https://secure.easyparcel.my/pass/application/APP_6.8/theme/easyparcel/images/why/why-4.png" width="60px" class="fade-in-down"></span>
+      <div class="whyus-point"> <span><img src="<?=base_url('assets2/image/why/why-4.png')?>" width="60px" class="fade-in-down"></span>
         <h4>Multiple Courier Choices</h4>
       </div>
     </div>
     <div class="col-md-4 col-sm-6 col-xs-12">
-      <div class="whyus-point"> <span><img src="https://secure.easyparcel.my/pass/application/APP_6.8/theme/easyparcel/images/why/why-6.png" width="60px" class="fade-in-down"></span>
+      <div class="whyus-point"> <span><img src="<?=base_url('assets2/image/why/why-6.png')?>" width="60px" class="fade-in-down"></span>
         <h4>Save On Every Delivery</h4>
       </div>
     </div>
     <div class="col-md-4 col-sm-6 col-xs-12">
-      <div class="whyus-point"> <span><img src="https://secure.easyparcel.my/pass/application/APP_6.8/theme/easyparcel/images/why/why-2.png" width="60px" class="fade-in-down"></span>
+      <div class="whyus-point"> <span><img src="<?=base_url('assets2/image/why/why-2.png')?>" width="60px" class="fade-in-down"></span>
         <h4>Easy Online Tracking</h4>
       </div>
     </div>
     <div class="col-md-4 col-sm-6 col-xs-12">
-      <div class="whyus-point"> <span><img src="https://secure.easyparcel.my/pass/application/APP_6.8/theme/easyparcel/images/why/why-5.png" width="60px" class="fade-in-down"></span>
+      <div class="whyus-point"> <span><img src="<?=base_url('assets2/image/why/why-5.png')?>" width="60px" class="fade-in-down"></span>
         <h4>Free Door To Door Collection</h4>
       </div>
     </div>
     <div class="col-md-4 col-sm-6 col-xs-12">
-      <div class="whyus-point"> <span><img src="https://secure.easyparcel.my/pass/application/APP_6.8/theme/easyparcel/images/why/why-8.png" width="60px" class="fade-in-down"></span>
+      <div class="whyus-point"> <span><img src="<?=base_url('assets2/image/why/why-8.png')?>" width="60px" class="fade-in-down"></span>
         <h4>InsurePlus - RM50 Extra Coverage</h4>
       </div>
     </div>
     <div class="col-md-4 col-sm-6 col-xs-12">
-      <div class="whyus-point"> <span><img src="https://secure.easyparcel.my/pass/application/APP_6.8/theme/easyparcel/images/why/why-3.png" width="60px" class="fade-in-down"></span>
+      <div class="whyus-point"> <span><img src="<?=base_url('assets2/image/why/why-3.png')?>" width="60px" class="fade-in-down"></span>
         <h4>Auto-Generated Consignment Note</h4>
       </div>
     </div>
     <div class="col-md-4 col-sm-6 col-xs-12">
-      <div class="whyus-point"> <span><img src="https://secure.easyparcel.my/pass/application/APP_6.8/theme/easyparcel/images/why/why-7.png" width="60px" class="fade-in-down"></span>
+      <div class="whyus-point"> <span><img src="<?=base_url('assets2/image/why/why-7.png')?>" width="60px" class="fade-in-down"></span>
         <h4>No Volume Commitments Required</h4>
       </div>
     </div>
     <div class="col-md-4 col-sm-6 col-xs-12">
-      <div class="whyus-point"> <span><img src="https://secure.easyparcel.my/pass/application/APP_6.8/theme/easyparcel/images/why/why-9.png" width="60px" class="fade-in-down"></span>
+      <div class="whyus-point"> <span><img src="<?=base_url('assets2/image/why/why-9.png')?>" width="60px" class="fade-in-down"></span>
         <h4>E-Commerce Integration Ready</h4>
       </div>
     </div>
