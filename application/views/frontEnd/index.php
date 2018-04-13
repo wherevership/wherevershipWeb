@@ -192,7 +192,7 @@ span.tip {
 	<li data-target="#slider_carousel_points" data-slide-to="9"></li>
 	<li data-target="#slider_carousel_points" data-slide-to="10"></li>
   </ol>
-  <div class="visible-xs visible-sm slider-static"></div>
+ <!-- <div class="visible-xs visible-sm slider-static hide"></div> -->
   
   <!-- Wrapper for slides -->
   <div class="carousel-inner hidden-xs hidden-sm">  

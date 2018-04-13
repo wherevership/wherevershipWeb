@@ -265,7 +265,7 @@
 <div id="sticky" class="mobile-navbar navbar-header visible-xs">
   <a href="<?=base_url('')?>"><img src="<?=base_url('assets2/image/logo.png')?>" class="visible-xs hiddenn-sm phone-logo" style="float: left;"></a>
     <div class="mobile-menu pull-right">
-      <a class="navbar-toggle collapsed" onclick="displayMainMenu()"><i class="fas fa-home"></i></a>
+      <a class="navbar-toggle collapsed" onclick="displayMainMenu()"><i class="fas fa-bars"></i></a>
     </div>
     <div class="mobile-menu pull-right"> 
       <a  class="navbar-toggle collapsed" id="log_in_mobile"><i class="fas fa-user"></i></a>
@@ -278,7 +278,7 @@
 <!--END OF MOBILE TOP MENU--> 
 
 <!--START OF MOBILE DROP DOWN MENU-->
-<div id="MasterMobileMenu" style="display:none; background-color: rgba(255,102,153,0.1);">
+<div id="MasterMobileMenu" style="display:none; background-color: rgba(0,169,176,0.1);">
   <div class="container"> 
     
     <h3 class="site-nav-title">PROFILE</h3>

@@ -74,6 +74,7 @@
 				<input type="hidden" name="cost" value="<?=$cost?>"/>
 				<input type="hidden" name="fromState" value="<?=$fromState?>"/>
 				<input type="hidden" name="toCountry" value="<?=$toCountry?>"/>
+				<input type="hidden" id="userId"  name="userId" value=""/>
 				
 				<div class="row">
 					<div class="col-md-9  col-xs-12">
@@ -468,6 +469,171 @@
 			
 			</form>
 		</div>
+		
+	<div id="myModal" class="modal fade in">
+  <div class="modal-content" style="max-width:700px;">
+      <div class="modal-body">
+        <div class="row text-center"> 
+          <h2>Already an account holder</h2>
+        </div>
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+            <div class="SigninForm well" onkeypress="return checkEnter(event)">
+              <p>Please log in so we can help you faster and better.</p>
+              <div class="has-feedback">
+                <input class="form-control" type="text" placeholder="Sign in Email" id="username" name="txt_user"><span class="glyphicon glyphicon-info-sign form-control-feedback hide" aria-hidden="true"></span>
+                <br>
+              </div>
+              <div class="has-feedback">
+                <input class="form-control" type="password" placeholder="Sign in Password" name="txt_pass" id="password"><span class="glyphicon glyphicon-info-sign form-control-feedback hide" aria-hidden="true"></span>
+              </div>
+              <input type="hidden" name="txt_wechatID" value="">
+              <br>
+              <label class="checkbox">
+                <input type="checkbox" id="rememberme">Remember Me
+              </label>
+              <button class="btn btn-primary btn-lg log-in" id="loginPay" onclick="Signin()" style="width:100%;"> Log In and Continue</button>
+              <a href="./?pg=MemberForgotPassword" class="span11" target="_blank">Forgot your password?</a> / <a href="./?pg=MemberForgotEmail" class="span11" target="_blank">Forgot your login email?</a>
+              <div class="clearfix"></div>
+              <br>  
+              
+            </div>
+          </div>      
+          <div class="visible-xs space"></div>    
+        </div>
+      </div>
+      <div class="modal-footer">
+        
+      </div>
+  </div>
+</div>	
+
+<script>
+	
+	firebase.auth().onAuthStateChanged( firebaseUser => {
+	if(firebaseUser) {
+		
+		$("#userId").val(firebaseUser.uid);
+	
+	} else {
+		$("#myModal").modal({
+			show: 'false',
+			backdrop: 'static', 
+			keyboard: false
+		});
+		
+	}
+
+
+});	
+	
+	
+	
+	
+	
+	function Signin(){
+		 buttonInProcess();
+		if(document.getElementById('rememberme').checked){
+			rememberme = $(".SigninForm [name=txt_user]").val();
+			var d = new Date();
+			d.setTime(d.getTime() + (1825*24*60*60*1000));
+			var expires = "expires="+d.toUTCString();
+			document.cookie = 'username = '+rememberme+ "; " + expires;
+		}
+		if($("#username").val() == "" || $("#password").val() == ""){
+			CheckNull($("#username"),$("#password"));
+			swal({
+				title: 'Oops',
+				type: 'error',
+				html: 'Please enter your email and password.',
+				confirmButtonColor: '#4e97d8'
+				})
+			buttonNotInProcess();
+		}else
+		{
+			CheckNull($("#username"),$("#password"));
+			const username = $('#username').val();
+			const password = $('#password').val();
+			const auth = firebase.auth();
+			console.log(username);
+			auth.signInWithEmailAndPassword(username,password).then(function(firebaseUser) {
+				 window.location.reload();
+			
+			}).catch(function(error) {
+				   
+				   swal({
+						title: 'Oops',
+						type: 'error',
+						html: error.message,
+						confirmButtonColor: '#4e97d8'
+						});
+				   
+				buttonNotInProcess();
+				
+			});
+	
+		}
+	}
+	
+	function CheckNull(obj,obj1){
+
+		if(General.isTextEmpty($(obj))){
+			doFail(obj);
+		}else{
+			clearNull(obj);
+		}
+		if(General.isTextEmpty($(obj1))){
+			doFail(obj1);
+		}else{
+			clearNull(obj1);
+		}
+
+	}
+
+	function doPass(obj){
+		$(obj).addClass("pass");
+		$(obj).removeClass("padding");
+		$(obj).removeClass("fail");
+		$(obj).css("border-color","#0F0");
+		$(obj).parent().children().eq(1).addClass("hide");
+	}
+
+	function doFail(obj){
+		$(obj).addClass("fail");
+		$(obj).removeClass("padding");
+		$(obj).removeClass("pass");
+		$(obj).css("border-color","#F00");
+		$(obj).parent().children().eq(1).removeClass("hide");
+	}
+
+	function clearNull(obj){
+		$(obj).removeClass("pass");
+		$(obj).removeClass("fail");
+		$(obj).removeClass("padding");
+		$(obj).css("border-color","");
+		$(obj).parent().children().eq(1).addClass("hide");
+	}
+
+	
+	function checkEnter(e) {
+		if (e.keyCode == 13) {
+				Signin();
+		}
+	}
+	
+	function buttonInProcess(){
+  
+		$("#loginPay").html('<i class="fas fa-spinner selector__glyph-inner animate-spin" style="font-size: 24px;"></i> In Progress');
+		$("#loginPay").prop('disabled', true);
+	}
+
+	function buttonNotInProcess(){
+		$("#loginPay").prop('disabled', false);
+		$("#loginPay").html('Log In and Continue');
+		
+	}
+
+	</script>
 	
 
 	

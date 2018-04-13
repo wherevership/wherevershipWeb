@@ -27,22 +27,26 @@
 										<p><?=$fromState?></p>
 										<p><?=$frPostcode?></p>
 										<p><?=$fromStateZone?> Malaysia</p>
+										<hr class="visible-sm visible-xs">
 									</div>
 									<div class="col-md-3">
 										<h3>To:</h3>
 										<p><?=$toState?></p>
 										<p><?=$toPostCode?></p>
 										<p><?=$toStateZone?> Malaysia</p>
+										<hr class="visible-sm visible-xs">
 									</div>
 									<div class="col-md-3">
-										<p>
-											Length: <?=$length?>cm<br>
-											Width: <?=$width?>cm<br>
-											Height: <?=$height?>cm<br>
-											Weight: <?=$weight?>Kg<br>
-											Volumetic Weight: <?=$v_weight?>Kg
+										<h3>Parcel Info</h3>
 										
-										</p>
+										<p>Length: <?=$length?>cm</p>
+										<p>Width: <?=$width?>cm</p>
+										<p>Height: <?=$height?>cm</p>
+										<p>Weight: <?=$weight?>Kg</p>
+										<p>Volumetic Weight: <?=$v_weight?>Kg<p>
+										
+										
+										<hr class="visible-sm visible-xs">
 									</div>
 									<div class="col-md-3">
 										<div>
@@ -77,6 +81,8 @@
 		</div>
 	</div>
 	
+	
+	
 	<script>
 		var weight = <?=$weight_f?>;
 		var formStateZone = "<?=$fromStateZone?>";
@@ -98,4 +104,7 @@
 			  	
 			}
 		});
+		
+		
+		
 	</script>

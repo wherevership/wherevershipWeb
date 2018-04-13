@@ -18,7 +18,7 @@ class Domestic_shipment_manage extends CI_Controller {
 		
 		$this->load->view("domestic/header", $this->data);
 		$this->load->view("domestic/domestic_shipper_form", $this->data);
-		$this->load->view("frontEnd/footer3");
+		$this->load->view("domestic/footer");
 		
 	}
 	

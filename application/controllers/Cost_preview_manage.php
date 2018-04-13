@@ -9,8 +9,8 @@
 			$height = $this->input->post("h", true);
 			$width = $this->input->post("wi", true);
 			$length = $this->input->post("l", true);
-			$frPostcode = $this->input->post("cp", true);
-			$tPostCode = $this->input->post("dp", true);
+			$this->data['frPostcode'] = $this->input->post("cp", true);
+			$this->data['toPostCode'] = $this->input->post("dp", true);
 			$this->data['fromState'] = $this->state_name($this->data['frState']);
 			$this->data['toCountry'] = $this->countryCode($this->data['tCountry']);
 			$this->data['toCountryZone'] = $this->countryZone($this->data['tCountry']);
@@ -51,7 +51,7 @@
 			
 			$this->load->view("frontEnd/header", $this->data);
 			$this->load->view("frontEnd/dt_cost_preview", $this->data);
-			$this->load->view("frontEnd/footer");
+			$this->load->view("frontEnd/footer2");
 			}
 			
 			

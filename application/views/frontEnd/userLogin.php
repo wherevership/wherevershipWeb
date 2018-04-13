@@ -151,11 +151,11 @@
         <h1>Log In</h1>
         <p>Welcome back! Access your account and manage your bookings.</p>
 		<div class="has-feedback">
-       <input class="form-control" type="text" placeholder="Sign in Email" id="login_email" name="txt_user"><span class="epi-info-circled form-control-feedback hide"  aria-hidden="true"></span>
+       <input class="form-control" type="text" placeholder="Sign in Email" id="login_email" name="txt_user"><span class="glyphicon glyphicon-info-sign form-control-feedback hide"  aria-hidden="true"></span>
         <br>
 		</div>
 		<div class="has-feedback">
-       <input class="form-control" type="password" placeholder="Sign in Password" id="login_pass" name="txt_pass"><span class="epi-info-circled form-control-feedback hide"  aria-hidden="true"></span>
+       <input class="form-control" type="password" placeholder="Sign in Password" id="login_pass" name="txt_pass"><span class="glyphicon glyphicon-info-sign form-control-feedback hide"  aria-hidden="true"></span>
         </div>
         <input type="hidden" name="txt_wechatID" value="">
         <br>

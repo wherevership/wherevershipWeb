@@ -8,11 +8,12 @@
 				<ul class="links">
 				<li class="title-link">Overview</li>
 				<li><a href="<?=base_url('aboutUs')?>">About Us</a></li>
-				<li><a href="#">Blog</a></li>
+				<li><a href="#" class="hide">Blog</a></li>
 			    <li><a href="<?=base_url('faq')?>">FAQ</a></li>
 				<li><a href="<?=base_url('contactUs')?>">Contact Us</a></li>
 				<li><a href="<?=base_url('prohibited_item_list')?>">Prohibited Item List</a></li>
 				<li><a href="<?=base_url('term_and_condition')?>">Terms & Conditions</a></li>
+				<li><a href="<?=base_url('refund_policy')?>">Refund Policy</a></li>
 				<li><a href="<?=base_url('privacy_policy')?>">Privacy Policy</a></li>
 				</ul>
 			</div>
@@ -121,7 +122,7 @@
 					$("#welcome").text("Hi, Welcome");
 					$("#welcome").attr("href","<?=base_url("userLogin")?>");
 					$("#log_in_mobile").attr("href","<?=base_url("userLogin")?>");
-					$("#log_in_f").text("logIn").attr("href","<?=base_url("userLogin")?>");
+					$("#log_in_f").text("LogIn").attr("href","<?=base_url("userLogin")?>");
 					$("#dashboard_f").attr("href","<?=base_url("userLogin")?>");
 					$("#edit_profile_f").attr("href","<?=base_url("userLogin")?>");
 					$("#my_cart_f").attr("href","<?=base_url("userLogin")?>");

@@ -12,6 +12,8 @@
 				<input type="hidden" id="to" name="toCountry" value="<?=$toCountry?>" />
 				<input type="hidden" id="toCountryZone" name="toCountryZone" value="<?=$toCountryZone?>" />
 				<input type="hidden" id="cost" name="cost" value=""/>
+				<input type="hidden" id="icp" name="fromPostcode" value="<?=$frPostcode?>"/>
+				<input type="hidden" id="idp" name="toPostcode" value="<?=$toPostCode?>"/>
 				<div class="space">
 						<div class="row">
 							<div class="panel panel-default">
@@ -22,22 +24,25 @@
 									<div class="col-md-3">
 										<h3>From:</h3>
 										<p><?=$fromState?></p>
+										<p><?=$frPostcode?></p>
+										<hr class="visible-sm visible-xs">
 							
 									</div>
 									<div class="col-md-3">
 										<h3>To:</h3>
 										<p><?=$toCountry?></p>
+										<p><?=$toPostCode?></p>
 										<p><?=$toCountryZone?></p>
+										<hr class="visible-sm visible-xs">
 									</div>
 									<div class="col-md-3">
-										<p>
-											Length: <?=$length?>cm<br>
-											Width: <?=$width?>cm<br>
-											Height: <?=$height?>cm<br>
-											Weight: <?=$weight?>Kg<br>
-											Volumetic Weight: <?=$v_weight?>Kg
-										
-										</p>
+										<h3>Parcel Info</h3>
+										<p>Length: <?=$length?>cm</p>
+										<p>Width: <?=$width?>cm</p>
+										<p>Height: <?=$height?>cm</p>
+										<p>Weight: <?=$weight?>Kg</p>
+										<p>Volumetic Weight: <?=$v_weight?>Kg</p>
+										<hr class="visible-sm visible-xs">
 									</div>
 									<div class="col-md-3">
 										<div>

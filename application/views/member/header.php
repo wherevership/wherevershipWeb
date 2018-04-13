@@ -258,7 +258,7 @@ function logout() {
 <div id="sticky" class="mobile-navbar navbar-header visible-xs">
   <a href="<?=base_url('')?>"><img src="<?=base_url('assets2/image/logo.png')?>" class="visible-xs hiddenn-sm phone-logo" style="float: left;"></a>
     <div class="mobile-menu pull-right">
-      <a class="navbar-toggle collapsed" onclick="displayMainMenu()"><i class="fas fa-home"></i></a>
+      <a class="navbar-toggle collapsed" onclick="displayMainMenu()"><i class="fas fa-bars"></i></a>
     </div>
     <div class="mobile-menu pull-right"> 
       <a  class="navbar-toggle collapsed" id="log_in_mobile"><i class="fas fa-user"></i></a>

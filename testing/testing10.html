@@ -60,25 +60,11 @@
 			database.on('value', snap => {
 				var object1 = snap.val();
 				window.keys = Object.keys(object1);
-				var displayKeys = "";
-				var er = "";
-				$("#test01").text(JSON.stringify(object1,null,3));
-				
-				for (var i=0; i<keys.length; i++) {
-				 er += keys[i]+"<br>";
-			
-				}
-				$("#test02").html(er);
-				
 				var lastKeys = keys[keys.length-1];
-				$("#test03").text(lastKeys+ " " +typeof(lastKeys));
-				
 				var pixel = "SH";
 				var id = parseInt(lastKeys.substring(2,10));
 				id = id + 1;
 				var idString = id.toString();
-				
-				$("#test07").text(idString.length);
 				if (idString.length == 1) {
 					window.newId = pixel + "0000000" + id;
 					

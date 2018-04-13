@@ -112,11 +112,14 @@ firebase.auth().onAuthStateChanged( firebaseUser => {
 					
 				
 				} else {
+					
+					
 					$(".login_top").show();
 					$(".signUp_top").show();
 					$(".logout_top").hide();
 					$("#welcome").text("Hi, Welcome");
 					$("#welcome").attr("href","<?=base_url("userLogin")?>");
+					$("#log_in_mobile").attr("href","<?=base_url("userLogin")?>");
 					$("#log_in_f").text("LogIn").attr("href","<?=base_url("userLogin")?>");
 					$("#dashboard_f").attr("href","<?=base_url("userLogin")?>");
 					$("#edit_profile_f").attr("href","<?=base_url("userLogin")?>");
