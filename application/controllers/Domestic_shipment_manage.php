@@ -4,7 +4,7 @@ class Domestic_shipment_manage extends CI_Controller {
 	private $data = array();
 	
 	public function domesticShipperForm() {
-		$this->data['title'] = "Domestic Courier Shipper Info Form";
+		$this->data['title'] = "Domestic Courier Shipment Form";
 		$this->data['weight'] = $this->input->post("weight", true);
 		$this->data['height'] = $this->input->post("height", true);
 		$this->data['width'] = $this->input->post("width", true);
@@ -23,7 +23,7 @@ class Domestic_shipment_manage extends CI_Controller {
 	}
 	
 	public function domesticReceiverForm() {
-		$this->data['title'] = "Domestic Courier Shipper Info Form";
+		$this->data['title'] = "Domestic Courier Shipment Overview";
 		$this->data['weight'] = $this->input->post("weight", true);
 		$this->data['height'] = $this->input->post("height", true);
 		$this->data['width'] = $this->input->post("width", true);
@@ -32,6 +32,7 @@ class Domestic_shipment_manage extends CI_Controller {
 		$this->data['fromState'] = $this->input->post("fromState", true);
 		$this->data['toState'] = $this->input->post("toState", true);
 		$this->data['cost'] = $this->input->post("cost", true);
+		$this->data['useId'] = $this->input->post("userId", true);
 		
 		$this->data['shipper_company_name'] = $this->input->post("shipper_company_name)", true);
 		$this->data['shipper_country'] = $this->input->post("shipper_country", true);
@@ -56,6 +57,7 @@ class Domestic_shipment_manage extends CI_Controller {
 		$this->data['receiver_contact_person'] = $this->input->post("receiver_contact_person", true);
 		$this->data['receiver_phone_number'] = $this->input->post("receiver_phone_number", true);
 		$this->data['receiver_email'] = $this->input->post("receiver_email", true);
+		
 		
 	//	$this->data['type'] = $this->input->post("type", true);
 		$this->data['pickup_required'] = $this->input->post("pickup_required", true);

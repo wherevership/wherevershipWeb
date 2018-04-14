@@ -24,7 +24,7 @@
 				<input type="text" name="shipperName" id="shipperName" class="input" value size="20" placeholder="shipper name">
 				<input type="text" name="shipperAddress1" id="shipperAddress1" class="input" value size="20" placeholder="shipper address">
 				<input type="text" name="shipperCity" id="shipperCity" class="input" value size="20" placeholder="shipper city">
-				<input type="text" name="shipperPostCode" id="shipperPostCode" class="input" value size="20" placeholder="shipper postcode">
+				<input type="hidden" name="shipperPostCode" id="shipperPostCode" class="input" value="81500" size="20" placeholder="shipper postcode"/>
 				
 			</div>
 		
@@ -37,9 +37,10 @@
 		<pre id="test06"></pre>
 		<pre id="test07"></pre>
 		<pre id="test08"></pre>
-		<button onclick="display();">testing</button> 
+		<button onclick="display();" id="testing">testing</button> 
 		<button onclick="change();">change</button> 
 		<button onclick="count();">count</button> 
+		<button onclick="testCreateId();">test create Id</button>
 		</div>
 		<script>
 		var newId = "";
@@ -54,45 +55,58 @@
 				messagingSenderId: "748554038002"
 			};
 			firebase.initializeApp(config);
+		$("#testing").prop('disabled', true);
+		createId();	
+		console.log("abc");
+		function testCreateId() {
+			createId();
+			$("#test08").text(window.newId);
 		
-		var database = firebase.database().ref('Shipment');
+		}
 			
-			database.on('value', snap => {
-				var object1 = snap.val();
-				window.keys = Object.keys(object1);
-				var lastKeys = keys[keys.length-1];
-				var pixel = "SH";
-				var id = parseInt(lastKeys.substring(2,10));
-				id = id + 1;
-				var idString = id.toString();
+		function createId() {
+		
+			var database = firebase.database().ref('Shipment');
+			
+				database.on('value', snap => {
+					var object1 = snap.val();
+					window.keys = Object.keys(object1);
+					var lastKeys = keys[keys.length-1];
+					var pixel = "SH";
+					var id = parseInt(lastKeys.substring(2,10));
+					id = id + 1;
+					var idString = id.toString();
 				
-				if (idString.length == 1) {
-					window.newId = pixel + "0000000" + id;
+					if (idString.length == 1) {
+						window.newId = pixel + "0000000" + id;
 					
-				} else if (idString.length == 2) {
-					window.newId = pixel + "000000" + id;
-				} else if (idString.length == 3) {
-					window.newId = pixel + "00000" + id;
-				} else if (idString.length == 4) {
-					window.newId = pixel + "0000" + id;
-				} else if (idString.length == 5) {
-					window.newId = pixel + "000" + id;
-				} else if (idString.length == 6) {
-					window.newId = pixel + "00" + id;
-				} else if (idString.length == 7) {
-					window.newId = pixel + "0" + id;
-				} else if (idString.length == 8) {
-					window.newId = pixel + id;
-				}
+					} else if (idString.length == 2) {
+						window.newId = pixel + "000000" + id;
+					} else if (idString.length == 3) {
+						window.newId = pixel + "00000" + id;
+					} else if (idString.length == 4) {
+						window.newId = pixel + "0000" + id;
+					} else if (idString.length == 5) {
+						window.newId = pixel + "000" + id;
+					} else if (idString.length == 6) {
+						window.newId = pixel + "00" + id;
+					} else if (idString.length == 7) {
+						window.newId = pixel + "0" + id;
+					} else if (idString.length == 8) {
+						window.newId = pixel + id;
+					}
 				
-				$("#test04").text(pixel);
-				$("#test05").text(idString);
-				$("#test06").text(window.newId);
+				console.log(window.newId);
+				$("#testing").prop('disabled', false);
 				
 			});
 			
+		}
+			
 		function display() {
 			
+				createId();
+				console.log(window.newId);
 				var name = $("#shipperName").val();
 				var address1 = $("#shipperAddress1").val();
 				var postcode = $("#shipperPostCode").val();
@@ -105,8 +119,8 @@
 					shipperCity: city
 				});
 				
+			
 		}
-		
 		function change() {
 			
 				

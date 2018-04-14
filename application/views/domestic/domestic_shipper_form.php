@@ -492,7 +492,6 @@
 		
 		
 	<script>
-	
 	firebase.auth().onAuthStateChanged( firebaseUser => {
 	if(firebaseUser) {
 		
@@ -507,55 +506,7 @@
 		
 	}
 
-
-});	
-	
-	function texting() {
-		var nid = createId();
-		
-		
-	}
-
-
-	function createId() {
-			var newId;
-			var database = firebase.database().ref('Shipment');
-			database.on('value', snap => {
-				var object1 = snap.val();
-				var keys = Object.keys(object1);
-				var lastKeys = keys[keys.length-1];
-				var pixel = "SH";
-				var id = parseInt(lastKeys.substring(2,10));
-				id = id + 1;
-				var idString = id.toString();
-				
-				if (idString.length == 1) {
-					 
-					 newId = pixel + "00000" + id;
-					 console.log(newId);
-					
-				} else if (idString.length == 2) {
-					 newId = pixel + "0000" + id;
-					 console.log(wnewId);
-				} else if (idString.length == 3) {
-					 newId = pixel + "000" + id;
-					 console.log(newId);
-				} else if (idString.length == 4) {
-					 newId = pixel + "00" + id;
-					 console.log(newId);
-				} else if (idString.length == 5) {
-					 newId = pixel + "0" + id;
-					 console.log(newId);
-				} else if (idString.length == 6) {
-					 newId = pixel + id;
-					 console.log(newId);
-				}
-				 console.log(newId);
-				 return newId;
-		
-			});
-			 console.log(newId);
-	}
+	});	
 	
 	function checkvalid() {
 		var term=$("#acceptCheck");
