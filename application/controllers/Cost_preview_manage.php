@@ -32,7 +32,7 @@
 			$this->data['tState'] = $this->input->post("d", true);
 			
 			$this->data['fromState'] = $this->state_name($this->data['frState']);
-			$this->data['fromStateZone'] = $this->state_zone($this->data['frState']);
+			$this->data['fromStateZone'] = $this->location($this->data['frState']);
 			
 			$weight = $this->input->post("w", true);
 			$height = $this->input->post("h", true);
@@ -41,14 +41,15 @@
 			$this->data['frPostcode'] = $this->input->post("cp", true);
 			$this->data['toPostCode'] = $this->input->post("dp", true);
 			$this->data['toState'] = $this->state_name($this->data['tState']);
-			$this->data['toStateZone'] = $this->state_zone($this->data['tState']);
+			$this->data['toStateZone'] = $this->location($this->data['tState']);
+			$this->data['zone'] = $this->detemineZone($this->data['fromStateZone'],$this->data['toStateZone']);
 			$this->data['weight_f'] = $this->compareWeight($weight, $height, $width, $length);
 			$this->data['v_weight'] = ($length * $width * $height) / 5000;
 			$this->data['weight'] = $weight;
 			$this->data['length'] = $length;
 			$this->data['width'] = $width;
 			$this->data['height'] = $height;
-			
+			$this->data['weightClass'] = $this->detemineDemesticWeight($this->data['weight_f']);
 			$this->load->view("frontEnd/header", $this->data);
 			$this->load->view("frontEnd/dt_cost_preview", $this->data);
 			$this->load->view("frontEnd/footer2");
@@ -116,55 +117,99 @@
 		}
 		
 		
+		function detemineZone($fromState,$toState) {
+				if ($fromState == "West" && $toState == "West") {
+					return "zone2";
+				} else if ($fromState == "West" && $toState == "Sarawak") {
+					return "zone4";
+				} else if ($fromState == "Sarawak" && $toState == "West") {
+					return "zone4";
+				} else if ($fromState == "West" && $toState == "Sabah") {
+					return "zone5";
+				} else if ($fromState == "Sabah" && $toState == "West") {
+					return "zone5";
+				}
+			
+		}
 		
-		function state_zone($state) {
+		function detemineDemesticWeight($weight) {
+			if ($weight > 0 && $weight <=0.5) {
+				return "weight001";
+			} else if ($weight > 0.5 && $weight <=0.75) {
+				return "weight002";
+			} else if ($weight > 0.75 && $weight <=1.0) {
+				return "weight003";
+			} else if ($weight > 1.0 && $weight <=1.25) {
+				return "weight004";
+			} else if ($weight > 1.25 && $weight <=1.5) {
+				return "weight005";
+			} else if ($weight > 1.5 && $weight <=1.75) {
+				return "weight006";
+			} else if ($weight > 1.75 && $weight <=2.0) {
+				return "weight007";
+			} else if ($weight > 2.0 && $weight <=2.5) {
+				return "weight008";
+			} else if ($weight > 2.5 && $weight <=3.0) {
+				return "weight009";
+			} else if ($weight > 3.0 && $weight <=3.5) {
+				return "weight010";
+			} else if ($weight >3.5 && $weight <=4.0) {
+				return "weight011";
+			} else if ($weight >4.0 && $weight <=4.5) {
+				return "weight011";
+			} else if ($weight >4.5 && $weight <=5.0) {
+				return "weight011";
+			} 
+		}
+		
+		function location($state) {
 			if ($state == "jhr") {
-				return "west" ;
+				return "West" ;
 		    }
 		    else if ($state == "mlk") {
-				return "west";
+				return "West";
 		    }
 		    else if ($state == "kdh") {
-				return "west";
+				return "West";
 		    }
 		    else if ($state == "ktn") {
-				return "west";
+				return "West";
 	     	}
 	    	else if ($state == "nsn") {
-				return "west";
+				return "West";
 		    }
 		    else if ($state == "phg") {
-				return "west";
+				return "West";
 	     	}
 			else if ($state == "prk") {
-				return "west";
+				return "West";
 			}
 			else if ($state == "pls") {
-				return "west";
+				return "West";
 			}
 			else if ($state == "png") {
-				return "west";
+				return "West";
 			}
 			else if ($state == "sgr") {
-				return "west";
+				return "West";
 			}
 			else if ($state == "trg") {
-				return "west";
+				return "West";
 			}
 			else if ($state == "kul") {
-				return "west";
+				return "West";
 			}
 			else if ($state == "srw") {
-				return "east";
+				return "Sarawak";
 			}
 			else if ($state == "pjy") {
-				return "west";
+				return "West";
 			}
 			else if ($state == "sbh") {
-				return "east";
+				return "Sabah";
 			}
 			else if ($state == "lbn") {
-				return "east";
+				return "Sabah";
 			}
 		}
 		

@@ -44,8 +44,7 @@
 										<p>Height: <?=$height?>cm</p>
 										<p>Weight: <?=$weight?>Kg</p>
 										<p>Volumetic Weight: <?=$v_weight?>Kg<p>
-										
-										
+																		
 										<hr class="visible-sm visible-xs">
 									</div>
 									<div class="col-md-3">
@@ -84,25 +83,16 @@
 	
 	
 	<script>
-		var weight = <?=$weight_f?>;
-		var formStateZone = "<?=$fromStateZone?>";
-		var toStateZone = "<?=$toStateZone?>";
-		console.log(weight);
-		const database = firebase.database().ref('domestic_cost');
+		var zone = "<?=$zone?>";
+		var weightClass = "<?=$weightClass?>";
+		
+		//console.log(weight);
+		const database = firebase.database().ref('domestic_fare/'+ zone + '/' + weightClass);
 		database.on('value', snap => {
 			var object1 = snap.val();
-			var keys = Object.keys(object1);
-			for (var i=0; i<keys.length; i++) {
-				var k= keys[i];
-				console.log(k);
-				if (weight >= object1[k].minWeight && weight <= object1[k].maxWeight && formStateZone == object1[k].fromStateZone && toStateZone == object1[k].toStateZone ) {
-					
-					$("#cost").text(object1[k].cost.toFixed(2));
-					$("#cost1").val(object1[k].cost.toFixed(2));
-					console.log(object1[k].cost.toFixed(2));
-				}
-			  	
-			}
+			console.log(object1);
+			$("#cost").text(object1.toFixed(2));
+			$("#cost1").val(object1.toFixed(2));
 		});
 		
 		
