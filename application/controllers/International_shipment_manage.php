@@ -13,6 +13,7 @@ class International_shipment_manage extends CI_Controller {
 		$this->data['fromState'] = $this->input->post("fromState", true);
 		$this->data['toCountry'] = $this->input->post("toCountry", true);
 		$this->data['cost'] = $this->input->post("cost", true);
+		$this->data['type'] = $this->input->post("type", true);
 		
 		$this->load->view("international/header", $this->data);
 		$this->load->view("international/ShipperForm", $this->data);

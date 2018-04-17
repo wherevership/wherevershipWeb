@@ -154,6 +154,8 @@
 									Parcel Info
 								</h3>
 								<hr>
+								<p id="shipmentId"></p>
+								<hr>
 								Length: <?=$length?>cm<br>
 								Width: <?=$width?>cm<br>
 								Height: <?=$height?>cm<br>
@@ -264,12 +266,13 @@
 						window.newId = pixel + id;
 					} 
 				console.log(window.newId);
+				$("#shipmentId").text(window.newId);
 				firebase.database().ref('Shipment/' + window.newId).set({
 					weight: weight,
 					height: height,
 					width: width,
 					length: length, 
-					cost: cost,
+					fare: cost,
 					userId: userId,
 					shipperCompanyName: window.shipperCompanyName,
 					shipperCountry: window.shipperCountry,

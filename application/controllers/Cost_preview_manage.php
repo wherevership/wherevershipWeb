@@ -20,7 +20,7 @@
 			$this->data['length'] = $length;
 			$this->data['width'] = $width;
 			$this->data['height'] = $height;
-			
+			$this->data['weightClass'] = $this->detemineInternationalWeight($this->data['weight_f']);
 			$this->load->view("frontEnd/header",$this->data);
 			$this->load->view("frontEnd/cost_preview", $this->data);
 			$this->load->view("frontEnd/footer");
@@ -156,9 +156,134 @@
 			} else if ($weight >3.5 && $weight <=4.0) {
 				return "weight011";
 			} else if ($weight >4.0 && $weight <=4.5) {
-				return "weight011";
+				return "weight012";
 			} else if ($weight >4.5 && $weight <=5.0) {
+				return "weight013";
+			} 
+		}
+		
+		
+		function detemineInternationalWeight($weight) {
+			if ($weight > 0 && $weight <=0.5) {
+				return "weight001";
+			} else if ($weight > 0.5 && $weight <=1.0) {
+				return "weight002";
+			} else if ($weight > 1.0 && $weight <=1.5) {
+				return "weight003";
+			} else if ($weight > 1.5 && $weight <=2.0) {
+				return "weight004";
+			} else if ($weight > 2.0 && $weight <=2.5) {
+				return "weight005";
+			} else if ($weight > 2.5 && $weight <=3.0) {
+				return "weight006";
+			} else if ($weight > 3.0 && $weight <=3.5) {
+				return "weight007";
+			} else if ($weight > 3.5 && $weight <=4.0) {
+				return "weight008";
+			} else if ($weight > 4.0 && $weight <=4.5) {
+				return "weight009";
+			} else if ($weight > 4.5 && $weight <=5.0) {
+				return "weight010";
+			} else if ($weight >5.0 && $weight <=5.5) {
 				return "weight011";
+			} else if ($weight >5.5 && $weight <=6.0) {
+				return "weight012";
+			} else if ($weight >6.0 && $weight <=6.5) {
+				return "weight013";
+			} else if ($weight >6.5 && $weight <=7.0) {
+				return "weight014";
+			} else if ($weight >7.0 && $weight <=7.5) {
+				return "weight015";
+			} else if ($weight >7.5 && $weight <=8.0) {
+				return "weight016";
+			} else if ($weight >8.0 && $weight <=8.5) {
+				return "weight017";
+			} else if ($weight >8.5 && $weight <=9.0) {
+				return "weight018";
+			} else if ($weight >9.0 && $weight <=9.5) {
+				return "weight019";
+			} else if ($weight >9.5 && $weight <=10.0) {
+				return "weight020";
+			} else if ($weight >10.0 && $weight <=10.5) {
+				return "weight021";
+			} else if ($weight >10.5 && $weight <=11.0) {
+				return "weight022";
+			} else if ($weight >11.0 && $weight <=11.5) {
+				return "weight023";
+			} else if ($weight >11.5 && $weight <=12.0) {
+				return "weight024";
+			} else if ($weight >12.0 && $weight <=12.5) {
+				return "weight025";
+			} else if ($weight >12.5 && $weight <=13.0) {
+				return "weight026";
+			} else if ($weight >13.0 && $weight <=13.5) {
+				return "weight027";
+			} else if ($weight >13.5 && $weight <=14.0) {
+				return "weight028";
+			} else if ($weight >14.0 && $weight <=14.5) {
+				return "weight029";
+			} else if ($weight >14.5 && $weight <=15.0) {
+				return "weight030";
+			} else if ($weight >15.0 && $weight <=15.5) {
+				return "weight031";
+			} else if ($weight >15.5 && $weight <=16.0) {
+				return "weight032";
+			} else if ($weight >16.0 && $weight <=16.5) {
+				return "weight033";
+			} else if ($weight >16.5 && $weight <=17.0) {
+				return "weight034";
+			} else if ($weight >17.0 && $weight <=17.5) {
+				return "weight035";
+			} else if ($weight >17.5 && $weight <=18.0) {
+				return "weight036";
+			} else if ($weight >18.0 && $weight <=18.5) {
+				return "weight037";
+			} else if ($weight >18.5 && $weight <=19.0) {
+				return "weight038";
+			} else if ($weight >19.0 && $weight <=19.5) {
+				return "weight039";
+			} else if ($weight >19.5 && $weight <=20.0) {
+				return "weight040";
+			} else if ($weight >20.0 && $weight <=20.5) {
+				return "weight041";
+			} else if ($weight >20.5 && $weight <=21.0) {
+				return "weight042";
+			} else if ($weight >21.0 && $weight <=21.5) {
+				return "weight043";
+			} else if ($weight >21.5 && $weight <=22.0) {
+				return "weight044";
+			} else if ($weight >22.0 && $weight <=22.5) {
+				return "weight045";
+			} else if ($weight >22.5 && $weight <=23.0) {
+				return "weight046";
+			} else if ($weight >23.0 && $weight <=23.5) {
+				return "weight047";
+			} else if ($weight >23.5 && $weight <=24.0) {
+				return "weight048";
+			} else if ($weight >24.0 && $weight <=24.5) {
+				return "weight049";
+			} else if ($weight >24.5 && $weight <=25.0) {
+				return "weight050";
+			} else if ($weight >25.0 && $weight <=25.5) {
+				return "weight051";
+			} else if ($weight >25.5 && $weight <=26.0) {
+				return "weight052";
+			} else if ($weight >26.0 && $weight <=26.5) {
+				return "weight053";
+			} else if ($weight >26.5 && $weight <=27.0) {
+				return "weight054";
+			} else if ($weight >27.0 && $weight <=27.5) {
+				return "weight055";
+			} else if ($weight >27.5 && $weight <=28.0) {
+				return "weight056";
+			} else if ($weight >28.0 && $weight <=28.5) {
+				return "weight057";
+			} else if ($weight >28.5 && $weight <=29.0) {
+				return "weight058";
+			} else if ($weight >29.0 && $weight <=29.5) {
+				return "weight059";
+			} else if ($weight >29.5 && $weight <=30.0) {
+				return "weight060";
 			} 
 		}
 		
@@ -605,381 +730,381 @@
 				function countryZone($country) {
 			switch ($country) {
 			case "AF":
-				return "Zone_8";
+				return "zone8";
 				break;
 			case "AL":
-				return "Zone_7";
+				return "zone7";
 				break;
    			case "DZ" : 
-				return "Zone_8";
+				return "zone8";
 				break;
    			case "AS" :
-				return "Zone_8";
+				return "zone8";
 				break;
 			case "AD" :
-				return "Zone_7";
+				return "zone7";
 				break;
     		case "AO" :
-				return "Zone_8";
+				return "zone8";
 				break;
    			case "AI" :
-				return "Zone_8";
+				return "zone8";
 				break;
     		case "AG" :
-				return "Zone_8";
+				return "zone8";
 				break;
    			case "AR" :
-				return "Zone_8";
+				return "zone8";
 				break;
 			case "AM" :
-				return "Zone_7";
+				return "zone7";
 				break;
    			case "AW" :
-				return "Zone_8";
+				return "zone8";
 				break;
    			case "AU" :
-				return "Zone_4";
+				return "zone4";
 				break;
     		case "AT" :
-				return "Zone_6";
+				return "zone6";
 				break;
    			case "AZ" :
-				return "Zone_7";
+				return "zone7";
 				break;
 			case "BS" :
-				return "Zone_8";
+				return "zone8";
 				break;
 			case "BH" :
-				return "Zone_7";
+				return "zone7";
 				break;
    			case "BD" :
-				return "Zone_6";
+				return "zone6";
 				break;
    			case "BB" :
-				return "Zone_8";
+				return "zone8";
 				break;
    			case "BY" : 
-				return "Zone_7"; 
+				return "zone7"; 
 				break;
    			case "BE" : 
-				return "Zone_6";
+				return "zone6";
 				break;
    			case "BZ" :	
-				return "Zone_8"; 
+				return "zone8"; 
 				break;
    			case "BJ" : 
-				return "Zone_8"; 
+				return "zone8"; 
 				break;
    			case "BM" : 
-				return "Zone_8"; 
+				return "zone8"; 
 				break;
    			case "BT" : 
-				return "Zone_3"; 
+				return "zone3"; 
 				break;
 			case "BO" : 
-				return "Zone_8"; 
+				return "zone8"; 
 				break;
    			case "XB" : 
-				return "Zone_8"; 
+				return "zone8"; 
 				break;
    			case "BA" : 
-				return "Zone_7"; 
+				return "zone7"; 
 				break;
    			case "BW" : 
-				return "Zone_8"; 
+				return "zone8"; 
 				break;
    			case "BR" : 
-				return "Zone_8"; 
+				return "zone8"; 
 				break;
    			case "BN" : 
-				return "Zone_2"; 
+				return "zone2"; 
 				break;
    			case "BG" : 
-				return "Zone_7"; 
+				return "zone7"; 
 				break;
    			case "BF" : 
-				return "Zone_8"; 
+				return "zone8"; 
 				break;
 			case "BI":
-				return "Zone_8";
+				return "zone8";
 				break;
    			case "KH" : 
-				return "Zone_3"; 
+				return "zone3"; 
 				break;
    			case "CM" : 
-				return "Zone_8"; 
+				return "zone8"; 
 				break;
    			case "CA" : 
-				return "Zone_5"; 
+				return "zone5"; 
 				break;
    			case "IC" : 
-				return "Zone_8"; 
+				return "zone8"; 
 				break;
    			case "CV" : 
-				return "Zone_8"; 
+				return "zone8"; 
 				break;
    			case "KY" : 
-				return "Zone_8"; 
+				return "zone8"; 
 				break;
 			case "CF":
-				return "Zone_8";
+				return "zone8";
 				break;
    			case "TD" : 
-				return "Zone_8"; 
+				return "zone8"; 
 				break;
    			case "CL" : 
-				return "Zone_7"; 
+				return "zone7"; 
 				break;
    			case "CN1" : 
-				return "Zone_2"; 
+				return "zone2"; 
 				break;
    			case "CN2" : 
-				return "Zone_3"; 
+				return "zone3"; 
 				break;
    			case "CO" : 
-				return "Zone_8"; 
+				return "zone8"; 
 				break;
    			case "KM" : 
-				return "Zone_8"; 
+				return "zone8"; 
 				break;
    			case "CG" : 
-				return "Zone_8"; 
+				return "zone8"; 
 				break;
 			case "CD":
-				return "Zone_8";
+				return "zone8";
 				break;
    			case "CK" : 
-				return "Zone_8"; 
+				return "zone8"; 
 				break;
    			case "CR" : 
-				return "Zone_8"; 
+				return "zone8"; 
 				break;
    			case "CI" : 
-				return "Zone_8"; 
+				return "zone8"; 
 				break;
    			case "HR" : 
-				return "Zone_7"; 
+				return "zone7"; 
 				break;
    			case "CU" : 
-				return "Zone_8"; 
+				return "zone8"; 
 				break;
    			case "XC" : 
-				return "Zone_8"; 
+				return "zone8"; 
 				break;
    			case "CY" : 
-				return "Zone_7"; 
+				return "zone7"; 
 				break;
    			case "CZ" : 
-				return "Zone_7"; 
+				return "zone7"; 
 				break;
    			case "DK" : 
-				return "Zone_6"; 
+				return "zone6"; 
 				break;
    			case "DJ" : 
-				return "Zone_8"; 
+				return "zone8"; 
 				break;
    			case "DM" : 
-				return "Zone_8"; 
+				return "zone8"; 
 				break;
    			case "DO" : 
-				return "Zone_8"; 
+				return "zone8"; 
 				break;
    			case "TL" : 
-				return "Zone_8"; 
+				return "zone8"; 
 				break;
    			case "EC" : 
-				return "Zone_8"; 
+				return "zone8"; 
 				break;
    			case "EG" : 
-				return "Zone_8"; 
+				return "zone8"; 
 				break;
    			case "SV" : 
-				return "Zone_8"; 
+				return "zone8"; 
 				break;
 			case "ER":
-				return "Zone_8";
+				return "zone8";
 				break;
    			case "EE" : 
-				return "Zone_7"; 
+				return "zone7"; 
 				break;
    			case "ET" : 
-				return "Zone_8"; 
+				return "zone8"; 
 				break;
    			case "FK" : 
-				return "Zone_8";
+				return "zone8";
 				break;
    			case "FO" : 
-				return "Zone_8"; 
+				return "zone8"; 
 				break;
    			case "FJ" : 
-				return "Zone_8"; 
+				return "zone8"; 
 				break;
    			case "FI" : 
-				return "Zone_6"; 
+				return "zone6"; 
 				break;
    			case "FR" : 
-				return "Zone_6"; 
+				return "zone6"; 
 				break;
-   			case "GF" : return "Zone_8"; break;
-   			case "GA" : return "Zone_8"; break;
-   			case "GM" : return "Zone_8"; break;
-   			case "GE" : return "Zone_7"; break;
-   			case "DE" : return "Zone_6"; break;
-   			case "GH" : return "Zone_8"; break;
-   			case "GI" : return "Zone_7"; break;
-   			case "GR" : return "Zone_7"; break;
-   			case "GL" : return "Zone_7"; break;
-   			case "GD" : return "Zone_8"; break;
-   			case "GP" : return "Zone_8"; break;
-   			case "GU" : return "Zone_8"; break;
-   			case "GT" : return "Zone_8"; break;
-   			case "GG" : return "Zone_7"; break;
-   			case "GN" : return "Zone_8"; break;
-   			case "GW" : return "Zone_8"; break;
-			case "GQ" : return "Zone_8"; break;
-   			case "GY" : return "Zone_8"; break;
-   			case "HT" : return "Zone_8"; break;
-   			case "HN" : return "Zone_8"; break;
-   			case "HK" : return "Zone_2"; break;
-   			case "HU" : return "Zone_6"; break;
-   			case "IS" : return "Zone_7"; break;
-			case "IN" : return "Zone_6"; break;
-   			case "ID" : return "Zone_2"; break;
-			case "IR" : return "Zone_8"; break;
-			case "IE" : return "Zone_8"; break;
-   			case "IE" : return "Zone_8"; break;
-   			case "IL" : return "Zone_8"; break;
-   			case "IT" : return "Zone_6"; break;
-   			case "JM" : return "Zone_8"; break;
-   			case "JP" : return "Zone_4"; break;
-   			case "JE" : return "Zone_7"; break;
-   			case "JO" : return "Zone_7"; break;
-   			case "KZ" : return "Zone_7"; break;
-   			case "KE" : return "Zone_8"; break;
-   			case "KI" : return "Zone_8"; break;
-			case "KP" : return "Zone_8"; break;
-   			case "KR" : return "Zone_4"; break;
-   			case "KV" : return "Zone_7"; break;
-   			case "KW" : return "Zone_7"; break;
-   			case "KG" : return "Zone_7"; break;
-   			case "LA" : return "Zone_3"; break;
-   			case "LV" : return "Zone_7"; break;
-			case "LB" : return "Zone_8"; break;
-   			case "LS" : return "Zone_8"; break;
-   			case "LR" : return "Zone_8"; break;
-			case "LY" : return "Zone_8"; break;
-   			case "LI" : return "Zone_6"; break;
-   			case "LT" : return "Zone_7"; break;
-   			case "LU" : return "Zone_6"; break;
-   			case "MO" : return "Zone_2"; break;
-   			case "MK" : return "Zone_7"; break;
-   			case "MG" : return "Zone_8"; break;
-   			case "MW" : return "Zone_8"; break;
-   			case "MV" : return "Zone_3"; break;
-			case "ML" : return "Zone_8"; break;
-   			case "MT" : return "Zone_7"; break;
-			case "MP" : return "Zone_8"; break;
-   			case "MH" : return "Zone_8"; break;
-   			case "MQ" : return "Zone_8"; break;
-   			case "MR" : return "Zone_8"; break;
-   			case "MU" : return "Zone_8"; break;
-   			case "YT" : return "Zone_8"; break;
-   			case "MX" : return "Zone_5"; break;
-   			case "FM" : return "Zone_8"; break;
-   			case "MD" : return "Zone_7"; break;
-   			case "MC" : return "Zone_6"; break;
-   			case "MN" : return "Zone_3"; break;
-   			case "ME" : return "Zone_7"; break;
-   			case "MS" : return "Zone_8"; break;
-   			case "MA" : return "Zone_8"; break;
-   			case "MZ" : return "Zone_8"; break;
-   			case "MM" : return "Zone_3"; break;
-   			case "NA" : return "Zone_8"; break;
-   			case "NR" : return "Zone_8"; break;
-   			case "NP" : return "Zone_3"; break;
-   			case "NL" : return "Zone_6"; break;
-   			case "XN" : return "Zone_8"; break;
-   			case "NC" : return "Zone_8"; break;
-			case "NZ" : return "Zone_4"; break;
-   			case "NI" : return "Zone_8"; break;
-			case "NE" : return "Zone_8"; break;
-   			case "NG" : return "Zone_8"; break;
-   			case "NU" : return "Zone_8"; break;
-   			case "NO" : return "Zone_6"; break;
-   			case "OM" : return "Zone_7"; break;
-   			case "PK" : return "Zone_7"; break;
-   			case "PW" : return "Zone_8"; break;
-   			case "PA" : return "Zone_8"; break;
-   			case "PG" : return "Zone_8"; break;
-   			case "PY" : return "Zone_8"; break;
-   			case "PE" : return "Zone_8"; break;
-   			case "PH" : return "Zone_2"; break;
-			case "PL" : return "Zone_7"; break;
-   			case "PT" : return "Zone_6"; break;
-   			case "PR" : return "Zone_8"; break;
-   			case "QA" : return "Zone_7"; break;
-   			case "RE" : return "Zone_8"; break;
-   			case "RO" : return "Zone_7"; break;
-   			case "RU" : return "Zone_7"; break;
-   			case "RW" : return "Zone_8"; break;
-			case "SH" : return "Zone_8"; break;
-			case "WS" : return "Zone_8"; break;
-   			case "SM" : return "Zone_7"; break;
-   			case "ST" : return "Zone_8"; break;
-   			case "SA" : return "Zone_7"; break;
-   			case "SN" : return "Zone_8"; break;
-   			case "RS" : return "Zone_7"; break;
-   			case "SC" : return "Zone_8"; break;
-   			case "SL" : return "Zone_8"; break;
-   			case "SG" : return "Zone_1"; break;
-   			case "SK" : return "Zone_7"; break;
-   			case "SI" : return "Zone_7"; break;
-   			case "SB" : return "Zone_8"; break;
-			case "SO" : return "Zone_8"; break;
-   			case "XS" : return "Zone_8"; break;
-   			case "ZA" : return "Zone_8"; break;
-			case "SS" : return "Zone_8"; break;
-   			case "ES" : return "Zone_6"; break;
-   			case "LK" : return "Zone_3"; break;
-   			case "BL" : return "Zone_8"; break;
-   			case "XE" : return "Zone_8"; break;
-   			case "KN" : return "Zone_8"; break;
-   			case "LC" : return "Zone_8"; break;
-   			case "XM" : return "Zone_8"; break;
-   			case "VC" : return "Zone_8"; break;
-			case "SD" : return "Zone_8"; break;
-   			case "SR" : return "Zone_8"; break;
-   			case "SZ" : return "Zone_8"; break;
-   			case "SE" : return "Zone_6"; break;
-   			case "CH" : return "Zone_6"; break;
-			case "SY" : return "Zone_8"; break;
-   			case "PF" : return "Zone_8"; break;
-   			case "TW" : return "Zone_2"; break;
-   			case "TJ" : return "Zone_7"; break;
-   			case "TZ" : return "Zone_8"; break;
-   			case "TH" : return "Zone_2"; break;
-   			case "TG" : return "Zone_8"; break;
-   			case "TO" : return "Zone_8"; break;
-   			case "TT" : return "Zone_8"; break;
-   			case "TN" : return "Zone_8"; break;
-   			case "TR" : return "Zone_7"; break;
-   			case "TC" : return "Zone_8"; break;
-   			case "TV" : return "Zone_8"; break;
-   			case "UG" : return "Zone_8"; break;
-   			case "UA" : return "Zone_7"; break;
-   			case "AE" : return "Zone_7"; break;
-   			case "GB" : return "Zone_6"; break;
-   			case "US" : return "Zone_5"; break;
-   			case "UY" : return "Zone_8"; break;
-   			case "UZ" : return "Zone_7"; break;
-   			case "VU" : return "Zone_8"; break;
-   			case "VE" : return "Zone_8"; break;
-   			case "VN" : return "Zone_3"; break;
-   			case "VG" : return "Zone_8"; break;
-   			case "VI" : return "Zone_8"; break;
-			case "YE" : return "Zone_8"; break;
-   			case "ZM" : return "Zone_8"; break;
-   			case "ZW" : return "Zone_8"; break;
+   			case "GF" : return "zone8"; break;
+   			case "GA" : return "zone8"; break;
+   			case "GM" : return "zone8"; break;
+   			case "GE" : return "zone7"; break;
+   			case "DE" : return "zone6"; break;
+   			case "GH" : return "zone8"; break;
+   			case "GI" : return "zone7"; break;
+   			case "GR" : return "zone7"; break;
+   			case "GL" : return "zone7"; break;
+   			case "GD" : return "zone8"; break;
+   			case "GP" : return "zone8"; break;
+   			case "GU" : return "zone8"; break;
+   			case "GT" : return "zone8"; break;
+   			case "GG" : return "zone7"; break;
+   			case "GN" : return "zone8"; break;
+   			case "GW" : return "zone8"; break;
+			case "GQ" : return "zone8"; break;
+   			case "GY" : return "zone8"; break;
+   			case "HT" : return "zone8"; break;
+   			case "HN" : return "zone8"; break;
+   			case "HK" : return "zone2"; break;
+   			case "HU" : return "zone6"; break;
+   			case "IS" : return "zone7"; break;
+			case "IN" : return "zone6"; break;
+   			case "ID" : return "zone2"; break;
+			case "IR" : return "zone8"; break;
+			case "IE" : return "zone8"; break;
+   			case "IE" : return "zone8"; break;
+   			case "IL" : return "zone8"; break;
+   			case "IT" : return "zone6"; break;
+   			case "JM" : return "zone8"; break;
+   			case "JP" : return "zone4"; break;
+   			case "JE" : return "zone7"; break;
+   			case "JO" : return "zone7"; break;
+   			case "KZ" : return "zone7"; break;
+   			case "KE" : return "zone8"; break;
+   			case "KI" : return "zone8"; break;
+			case "KP" : return "zone8"; break;
+   			case "KR" : return "zone4"; break;
+   			case "KV" : return "zone7"; break;
+   			case "KW" : return "zone7"; break;
+   			case "KG" : return "zone7"; break;
+   			case "LA" : return "zone3"; break;
+   			case "LV" : return "zone7"; break;
+			case "LB" : return "zone8"; break;
+   			case "LS" : return "zone8"; break;
+   			case "LR" : return "zone8"; break;
+			case "LY" : return "zone8"; break;
+   			case "LI" : return "zone6"; break;
+   			case "LT" : return "zone7"; break;
+   			case "LU" : return "zone6"; break;
+   			case "MO" : return "zone2"; break;
+   			case "MK" : return "zone7"; break;
+   			case "MG" : return "zone8"; break;
+   			case "MW" : return "zone8"; break;
+   			case "MV" : return "zone3"; break;
+			case "ML" : return "zone8"; break;
+   			case "MT" : return "zone7"; break;
+			case "MP" : return "zone8"; break;
+   			case "MH" : return "zone8"; break;
+   			case "MQ" : return "zone8"; break;
+   			case "MR" : return "zone8"; break;
+   			case "MU" : return "zone8"; break;
+   			case "YT" : return "zone8"; break;
+   			case "MX" : return "zone5"; break;
+   			case "FM" : return "zone8"; break;
+   			case "MD" : return "zone7"; break;
+   			case "MC" : return "zone6"; break;
+   			case "MN" : return "zone3"; break;
+   			case "ME" : return "zone7"; break;
+   			case "MS" : return "zone8"; break;
+   			case "MA" : return "zone8"; break;
+   			case "MZ" : return "zone8"; break;
+   			case "MM" : return "zone3"; break;
+   			case "NA" : return "zone8"; break;
+   			case "NR" : return "zone8"; break;
+   			case "NP" : return "zone3"; break;
+   			case "NL" : return "zone6"; break;
+   			case "XN" : return "zone8"; break;
+   			case "NC" : return "zone8"; break;
+			case "NZ" : return "zone4"; break;
+   			case "NI" : return "zone8"; break;
+			case "NE" : return "zone8"; break;
+   			case "NG" : return "zone8"; break;
+   			case "NU" : return "zone8"; break;
+   			case "NO" : return "zone6"; break;
+   			case "OM" : return "zone7"; break;
+   			case "PK" : return "zone7"; break;
+   			case "PW" : return "zone8"; break;
+   			case "PA" : return "zone8"; break;
+   			case "PG" : return "zone8"; break;
+   			case "PY" : return "zone8"; break;
+   			case "PE" : return "zone8"; break;
+   			case "PH" : return "zone2"; break;
+			case "PL" : return "zone7"; break;
+   			case "PT" : return "zone6"; break;
+   			case "PR" : return "zone8"; break;
+   			case "QA" : return "zone7"; break;
+   			case "RE" : return "zone8"; break;
+   			case "RO" : return "zone7"; break;
+   			case "RU" : return "zone7"; break;
+   			case "RW" : return "zone8"; break;
+			case "SH" : return "zone8"; break;
+			case "WS" : return "zone8"; break;
+   			case "SM" : return "zone7"; break;
+   			case "ST" : return "zone8"; break;
+   			case "SA" : return "zone7"; break;
+   			case "SN" : return "zone8"; break;
+   			case "RS" : return "zone7"; break;
+   			case "SC" : return "zone8"; break;
+   			case "SL" : return "zone8"; break;
+   			case "SG" : return "zone1"; break;
+   			case "SK" : return "zone7"; break;
+   			case "SI" : return "zone7"; break;
+   			case "SB" : return "zone8"; break;
+			case "SO" : return "zone8"; break;
+   			case "XS" : return "zone8"; break;
+   			case "ZA" : return "zone8"; break;
+			case "SS" : return "zone8"; break;
+   			case "ES" : return "zone6"; break;
+   			case "LK" : return "zone3"; break;
+   			case "BL" : return "zone8"; break;
+   			case "XE" : return "zone8"; break;
+   			case "KN" : return "zone8"; break;
+   			case "LC" : return "zone8"; break;
+   			case "XM" : return "zone8"; break;
+   			case "VC" : return "zone8"; break;
+			case "SD" : return "zone8"; break;
+   			case "SR" : return "zone8"; break;
+   			case "SZ" : return "zone8"; break;
+   			case "SE" : return "zone6"; break;
+   			case "CH" : return "zone6"; break;
+			case "SY" : return "zone8"; break;
+   			case "PF" : return "zone8"; break;
+   			case "TW" : return "zone2"; break;
+   			case "TJ" : return "zone7"; break;
+   			case "TZ" : return "zone8"; break;
+   			case "TH" : return "zone2"; break;
+   			case "TG" : return "zone8"; break;
+   			case "TO" : return "zone8"; break;
+   			case "TT" : return "zone8"; break;
+   			case "TN" : return "zone8"; break;
+   			case "TR" : return "zone7"; break;
+   			case "TC" : return "zone8"; break;
+   			case "TV" : return "zone8"; break;
+   			case "UG" : return "zone8"; break;
+   			case "UA" : return "zone7"; break;
+   			case "AE" : return "zone7"; break;
+   			case "GB" : return "zone6"; break;
+   			case "US" : return "zone5"; break;
+   			case "UY" : return "zone8"; break;
+   			case "UZ" : return "zone7"; break;
+   			case "VU" : return "zone8"; break;
+   			case "VE" : return "zone8"; break;
+   			case "VN" : return "zone3"; break;
+   			case "VG" : return "zone8"; break;
+   			case "VI" : return "zone8"; break;
+			case "YE" : return "zone8"; break;
+   			case "ZM" : return "zone8"; break;
+   			case "ZW" : return "zone8"; break;
 			default:
 				return "Malaysia";
 		}

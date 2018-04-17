@@ -454,6 +454,15 @@
 								</div>
 							</div>
 							<div class="row">
+								<div class="col-md-5">
+									<label>Pascel Type: </label>
+								</div>
+										
+								<div class="col-md-7">
+									<p class="pull-right"><?=$type?></p>
+								</div>
+							</div>
+							<div class="row">
 								<hr>
 								<div class="col-md-5">
 									<label>Price (RM): </label>
