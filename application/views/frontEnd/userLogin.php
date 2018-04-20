@@ -135,17 +135,7 @@
 <section style="background-color: #ebeced;">
 <div class="container space">
   <div class="row">
-	  <div id="recentLogin" class="col-md-6 col-xs-12 space padding-off" style="padding-top: 19px;">
-	    <h1 class="text-center">Recent Logins</h1>
- 	    <br>
- 	    <div class="row">
-	      <stage(login_status)>
-		    <Yes>
-			  
-		    </Yes>
-	      </stage(login_status)>
-	    </div>
-	  </div>
+	  
 	<div id="LoginForm" class="col-md-6 col-xs-12">							   
       <div class="SigninForm well" onkeypress="return checkEnter(event)">
         <h1>Log In</h1>
@@ -162,24 +152,11 @@
         
 		<label class="checkbox">
         <input type="checkbox" id="rememberme"/>Remember Me</label>
-		<button class="btn btn-primary btn-lg log-in" value="Login" onclick="Signin()" style="width:100%;"> Log In </button>
+		<button class="btn btn-primary btn-lg log-in" value="Login" onclick="Signin()" style="width:100%;" id="loginButton"> Log In </button>
         
-		<a href="./?pg=MemberForgotPassword" class="span11">Forgot your password?</a> / <a href="./?pg=MemberForgotEmail" class="span11">Forgot your login email?</a>
+		<a href="<?=base_url('forgotPass')?>" class="span11">Forgot your password?</a> / <a href="<?=base_url('forgotEmail')?>" class="span11">Forgot your login email?</a>
         <div class="clearfix"></div>
-        <br>
-        
-	        <div class="social-login-divider"><i class="social-login-divider-text">Or</i></div>
-	        <div class="social-connect-buttons-wrapper text-center">
-	      
-	        <a rel="nofollow" onClick="FBloginnow()" class="fb-btn btn btn-lg btn-default"><img src="https://secure.easyparcel.my/pass/application/APP_6.8/theme/easyparcel/images/fblogin.png"></a>
-	      
-	        <a rel="nofollow" class="google-btn google-login btn btn-lg btn-default"><img src="https://secure.easyparcel.my/pass/application/APP_6.8/theme/easyparcel/images/googlelogin.png" id="googlelogin"></a>
-	      
-	    
-	      	</div>
-	      
-    	
-        <hr>
+       
         <br>
         No account? Start here! <strong> <a href="<?=base_url('signUp')?>">Register Now</a> </strong>
         </div>
@@ -226,11 +203,12 @@ function Signin(){
 			html: 'Please enter your email and password.',
 			confirmButtonColor: '#4e97d8'
 			})
+		buttonNotInProcess()
 	}else
 	{
 		CheckNull($(".SigninForm [name=txt_user]"),$(".SigninForm [name=txt_pass]"));
-		$(".log-in").addClass("disabled");
-		$(".log-in").html("<i class='epi-spin4 selector__glyph-inner animate-spin' style='font-size: 24px;'></i>");
+		$(".log-in").prop('disabled', true);
+		$(".log-in").html("<i class='fas fa-spinner selector__glyph-inner animate-spin' style='font-size: 24px;'></i>");
 		const username = $('#login_email').val();
 		const password = $('#login_pass').val();
 		const auth = firebase.auth();
@@ -247,7 +225,7 @@ function Signin(){
 						confirmButtonColor: '#4e97d8'
 						});
 				   
-				
+					buttonNotInProcess()
 				
 		});
 	
@@ -258,7 +236,12 @@ function Signin(){
 	}
 }
 
-function UpdateQuoteRedirectId(){
+function buttonNotInProcess(){
+		$("#loginButton").prop('disabled', false);
+		$("#loginButton").html('Log In');
+		
+	}
+/*function UpdateQuoteRedirectId(){
 	var
 		type = "post",
 		url = "./?ac=doUpdateQuoteRedirectId",
@@ -270,7 +253,7 @@ function UpdateQuoteRedirectId(){
 			}
 		};	
 	General.loadAjax(type,url,data,callback);	
-}
+} */
 
 function CheckNull(obj,obj1){
 	var pwd  = $(".SignupForm [name=txt_pass]");

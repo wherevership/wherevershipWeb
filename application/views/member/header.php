@@ -984,7 +984,7 @@ function getBookCount(){
 		$('#MyAccount').collapse();
 		$("ul[data-target='#MyAccount']").children().children().eq(1).removeClass('epi-plus-squared-alt').addClass('epi-minus-squared-alt');
 	}
-	
+	/*
 	bookCountAjax = $.ajax({
 		type : "post",
 		url : "./?ac=getBookingCount",
@@ -1012,7 +1012,7 @@ function getBookCount(){
 			}
 		}
 	});
-	
+	*/
 	/*$.ajax({
 		type : "post",
 		async : true,
@@ -1044,6 +1044,7 @@ function getBookCount(){
 }
 
 function getUnpaidOrder() {
+	/*
 	unpaidCountAjax = $.ajax({
 		type : "post",
 		async : true,
@@ -1072,8 +1073,9 @@ function getUnpaidOrder() {
 					})
 			}
 		}
-	});
+	});   */
 }
+
 
 /*
 $('.list-group').click(function(e){

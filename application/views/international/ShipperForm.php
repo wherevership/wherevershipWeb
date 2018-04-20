@@ -64,7 +64,7 @@
 		<div class="row title-bar">
 			<h1 class="title">Shipment Info</h1>
 		</div>
-		<div class="container">
+		<div class="container-fluid space">
 			<form method="POST" action="<?=base_url('int_receiver')?>" class="form-horizontal">
 				<input type="hidden" name="weight" value="<?=$weight?>"/>
 				<input type="hidden" name="height" value="<?=$height?>"/>
@@ -502,7 +502,7 @@
                 <input type="checkbox" id="rememberme">Remember Me
               </label>
               <button class="btn btn-primary btn-lg log-in" id="loginPay" onclick="Signin()" style="width:100%;"> Log In and Continue</button>
-              <a href="./?pg=MemberForgotPassword" class="span11" target="_blank">Forgot your password?</a> / <a href="./?pg=MemberForgotEmail" class="span11" target="_blank">Forgot your login email?</a>
+              <a href="<?=base_url('forgotPass')?>" class="span11" target="_blank">Forgot your password?</a> / <a href="<?=base_url('forgotEmail')?>" class="span11" target="_blank">Forgot your login email?</a>
               <div class="clearfix"></div>
               <br>  
               

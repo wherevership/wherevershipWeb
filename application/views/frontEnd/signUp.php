@@ -66,13 +66,7 @@
           I accept the <a href="<?=base_url('term_and_condition')?>">Terms and Conditions</a></label>
         <button class="btn btn-primary btn-lg sign-up" value="Sign up" onclick="SignUp()" style="width:100%"> Sign Up </button>
 		<div class="clearfix"></div>
-        <br>
-        <div class="social-login-divider"><i class="social-login-divider-text">Or</i></div>
-        <div class="social-connect-buttons-wrapper text-center">
-        <a rel="nofollow" onClick="FBloginnow()" class="fb-btn btn btn-lg btn-default"><img src="https://secure.easyparcel.my/pass/application/APP_6.8/theme/easyparcel/images/fbsignup.png"></a>
-        <a rel="nofollow" class="google-btn btn btn-lg btn-default"><img src="https://secure.easyparcel.my/pass/application/APP_6.8/theme/easyparcel/images/googlesignup.png" id="googlesignup"></a>
-        </div>
-        <hr>
+        
         <br>
         Log in to reveal exclusive deals and book faster! <strong> <a href="<?=base_url('userLogin')?>">Log In</a> </strong>
       </div>
@@ -178,12 +172,12 @@ function checkPass(obj) {
 			doEmpty(obj);
 			window.passOutcome = 0;
 			
-			$(".sign-up").attr("disabled",true);
+			$(".sign-up").attr("disabled",false);
 		} else if (General.isLengthLess($(obj),8)) {
 			doFail(obj);
 		
 			window.passOutcome = 1;
-			$(".sign-up").attr("disabled",true);
+			$(".sign-up").attr("disabled",false);
 		} else {
 			doPass(obj);
 			window.passOutcome = 2;
@@ -204,12 +198,12 @@ function checkPass(obj) {
 			doEmpty(obj);
 			window.confirmPassOutcom = 0;
 		
-			$(".sign-up").attr("disabled",true);
+			$(".sign-up").attr("disabled",false);
 		}  else if (pwd != pwdc){
 			doFail(obj);
 			window.confirmPassOutcome = 1;
 			
-			$(".sign-up").attr("disabled",true);
+			$(".sign-up").attr("disabled",false);
 		
 		} else {
 			window.confirmPassOutcome = 2;
@@ -223,7 +217,7 @@ function checkPass(obj) {
 	
 		if (term.is(':checked')) {
 			if (window.emailOutcome == 3 && window.passOutcome == 2 && window.confirmPassOutcome == 2) {
-				$(".sign-up").attr("disabled",false);
+				$(".sign-up").attr("disabled",true);
 			}
 		}
 	

@@ -71,6 +71,9 @@ $route['internatinal_quote'] = 'Cost_manage/international_quote';
 $route['test'] = 'Cost_manage/test_get';
 $route['testOne'] = 'Cost_manage/test_getOne';
 
+
+$route['forgotPass'] = 'Frontend/forgotPass';
+$route['forgotEmail'] = 'Frontend/forgotEmail';
 $route['truck'] = 'Frontend/truck';
 $route['aboutUs'] = 'Frontend/aboutUs';
 $route['contactUs'] = 'Frontend/contactUs';
@@ -85,6 +88,7 @@ $route['term_and_condition'] = 'Frontend/tos';
 $route['privacy_policy'] = 'Frontend/privacyPolicy';
 $route['cost_preview'] = 'Cost_preview_manage/costPreview';
 $route['dtc_cost_preview'] = 'Cost_preview_manage/dtcCostPreview';
+$route['tracking'] = 'track_manage/track';
 
 $route['member/user_panel'] = 'Member_manage/user_panel';
 $route['member/personal_profile'] = 'Member_manage/personal_profile';

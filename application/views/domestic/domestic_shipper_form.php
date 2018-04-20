@@ -362,9 +362,7 @@
 												</div>
 										</div>
 									</div>
-									<div class="col-md-6">
-									<button onclick="texting()" class="btn btn-primary">testing</button>
-									</div>
+									
 								</div>
 								
 							</div>
@@ -475,7 +473,7 @@
                 <input type="checkbox" id="rememberme">Remember Me
               </label>
               <button class="btn btn-primary btn-lg log-in" id="loginPay" onclick="Signin()" style="width:100%;"> Log In and Continue</button>
-              <a href="./?pg=MemberForgotPassword" class="span11" target="_blank">Forgot your password?</a> / <a href="./?pg=MemberForgotEmail" class="span11" target="_blank">Forgot your login email?</a>
+              <a href="<?=base_url('forgotPass')?>" class="span11" target="_blank">Forgot your password?</a> / <a href="<?=base_url('forgotEmail')?>" class="span11" target="_blank">Forgot your login email?</a>
               <div class="clearfix"></div>
               <br>  
               
