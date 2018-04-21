@@ -77,10 +77,11 @@ span.tip {
     <form method="POST" onsubmit="return checkaddress()" action="<?=base_url('dtc_cost_preview')?>">
 	<div class="col-xs-12">
 		<h2>Get Instant Quotes</h2>
+		<h5>FROM:</h5>
 	</div>
 	
-	<div class="col-xs-6 col-sm-6 dropbox-body padding-right-off" id="domestic">
-		<h5>FROM:</h5>
+	<div class="col-xs-5 col-sm-6 dropbox-body padding-right-off" id="domestic">
+		
 		<select  required class="selectpicker form-control" data-show-subtext="true" data-live-search="true" id="c"  name="c" onChange="quote.CollAddrChange(this)" txt_c_state>
 		<option value="" readonly>State</option>
 		
@@ -96,7 +97,7 @@ span.tip {
 		
 		<option value="phg" >Pahang</option>
 		
-		<option value="pkr" >Perak</option>
+		<option value="prk" >Perak</option>
 		
 		<option value="pls" >Perlis</option>
 		
@@ -118,12 +119,17 @@ span.tip {
 		
 		</select>
 	</div>
+	<div class="col-xs-7 col-sm-6 dropbox-body" id="domestic">
+		<input type="text" class="form-control" id="cp" name="cp" placeholder="Postcode" onkeyup="quickQ.checkField(this,'c')" onchange="quickQ.checkField(this,'c')" onblur="quickQ.clearPostcode()" maxlength="5" value="" txt_c_postcode/>
+	</div>
 	
 	
-	
-      <div class="col-xs-6 col-sm-6 dropbox-body padding-right-off" id="domestic">
-	
+	<div class="col-xs-12">
 	<h5>TO:</h5>
+	</div>
+      <div class="col-xs-5 col-sm-6 dropbox-body padding-right-off" id="domestic">
+	
+
 	
 	
 		<select required class="selectpicker form-control" data-show-subtext="true" data-live-search="true" id="d" name="d" onChange="quote.CollAddrChange(this)" txt_d_state>
@@ -163,6 +169,11 @@ span.tip {
 			
 		</select>
 	</div>
+	<div class="col-xs-7 col-sm-6 dropbox-body" id="domestic">
+		<input type="text" class="form-control" id="dp" name="dp" placeholder="Postcode" 
+		onkeyup="quickQ.checkField(this,'d')" onchange="quickQ.checkField(this,'d')" onblur="quickQ.clearPostcode()" maxlength="5" value="" txt_d_postcode/>
+	</div>
+
 	
 	<div class="col-xs-4 col-sm-4 padding-right-off">
 		<h5>ENTER HEIGHT:</h5>
@@ -201,13 +212,13 @@ span.tip {
 <!--international tab start-->
 <div role="tabpanel" class="tab-pane   clearfix QuickQuote international" style="z-index:999999;padding:0px"  id="international">
   <div class="container-fluid quote-book international-body"> 
-    <form method="POST" onsubmit="return checkaddressint()" action="<?=base_url('cost_preview')?>">
+     <form method="POST" onsubmit="return checkaddressint()" action="<?=base_url('cost_preview')?>">
 	<div class="col-xs-12">
 		<h2>Get Instant Quotes</h2>
-		
-	</div>
-	<div class="col-xs-6 col-sm-6 dropbox-body padding-right-off" id="domestic">
 		<h5>FROM:</h5>
+	</div>
+	<div class="col-xs-5 col-sm-6 dropbox-body padding-right-off" id="domestic">
+		
 	
 	
 		<select   class="selectpicker form-control" data-show-subtext="true" data-live-search="true" id="ic"  name="c"  txt_ic_state>
@@ -247,14 +258,19 @@ span.tip {
 		
 		</select>
 	</div>
+	<div class="col-xs-7 col-sm-6 dropbox-body" id="domestic">
+		<input type="text" class="form-control" id="icp" name="cp" placeholder="Postcode" onkeyup="quickQ.checkField(this,'ic')" onchange="quickQ.checkField(this,'ic')" onblur="quickQ.clearPostcode()" maxlength="5" value="" txt_ic_postcode/>
+	</div>
 	
-	<div class="col-xs-6 col-sm-6 dropbox-body padding-right-off" id="domestic">
+	<div class="col-xs-12">
 	<h5>TO:</h5>
-	
+	</div>
+	<div class="col-xs-5 col-sm-6 dropbox-body padding-right-off" id="domestic">
 		<select required class="selectpicker form-control" data-show-subtext="true" data-live-search="true" id="d" name="d" onChange="quote.CollAddrChange(this)" txt_id_state>
 			 <option value="" readonly>Country</option>
- 			 <o
-    			<option value="AL" >Albania</option>
+				<option value="AF" >Afghanistan</option>
+    			
+				<option value="AL" >Albania</option>
    			
     			<option value="DZ" >Algeria</option>
    			
@@ -302,7 +318,7 @@ span.tip {
    			
     			<option value="BO" >Bolivia</option>
    			
-    			<option value="BQ" >Bonaire</option>
+    			<option value="XB" >Bonaire</option>
    			
     			<option value="BA" >Bosnia And Herzegovina</option>
    			
@@ -315,6 +331,8 @@ span.tip {
     			<option value="BG" >Bulgaria</option>
    			
     			<option value="BF" >Burkina Faso</option>
+				
+				<option value="BI" >Burundi</option>
    			
     			<option value="KH" >Cambodia</option>
    			
@@ -327,6 +345,8 @@ span.tip {
     			<option value="CV" >Cape Verde</option>
    			
     			<option value="KY" >Cayman Islands</option>
+				
+				<option value="CF" >Central African Rep</option>
    			
     			<option value="TD" >Chad</option>
    			
@@ -335,8 +355,6 @@ span.tip {
     			<option value="CN1" >China I</option>
    			
     			<option value="CN2" >China Ii</option>
-   			
-    			<option value="CN" >China</option>
    			
     			<option value="CO" >Colombia</option>
    			
@@ -354,7 +372,7 @@ span.tip {
    			
     			<option value="CU" >Cuba</option>
    			
-    			<option value="CW" >Curacao</option>
+    			<option value="XC" >Curacao</option>
    			
     			<option value="CY" >Cyprus</option>
    			
@@ -368,17 +386,17 @@ span.tip {
    			
     			<option value="DO" >Dominican Republic</option>
    			
-    			<option value="TP" >East Timor</option>
+    			<option value="TL" >East Timor</option>
    			
     			<option value="EC" >Ecuador</option>
    			
     			<option value="EG" >Egypt</option>
    			
     			<option value="SV" >El Salvador</option>
-   			
-    			<option value="GQ" >Equatorial Guinea</option>
-   			
-    			<option value="EE" >Estonia</option>
+				
+				<option value="ER" >Eritrea</option>
+				
+				<option value="EE" >Estonia</option>
    			
     			<option value="ET" >Ethiopia</option>
    			
@@ -423,6 +441,8 @@ span.tip {
     			<option value="GN" >Guinea Republic</option>
    			
     			<option value="GW" >Guinea Bissau</option>
+				
+				<option value="GQ" >Guinea Equatorial</option>
    			
     			<option value="GY" >Guyana</option>
    			
@@ -439,10 +459,14 @@ span.tip {
     			<option value="IN" >India</option>
    			
     			<option value="ID" >Indonesia</option>
+				
+				<option value="IR" >Iran</option>
+				
+				<option value="IQ" >Iraq</option>
    			
     			<option value="IE" >Ireland</option>
-   			
-    			<option value="IL" >Israel</option>
+				
+				<option value="IL" >Israel</option>
    			
     			<option value="IT" >Italy</option>
    			
@@ -459,10 +483,12 @@ span.tip {
     			<option value="KE" >Kenya</option>
    			
     			<option value="KI" >Kiribati</option>
-   			
+				
+				<option value="KP" >North Korea</option>
+				
     			<option value="KR" >South Korea</option>
    			
-    			<option value="XK" >Kosovo</option>
+    			<option value="KV" >Kosovo</option>
    			
     			<option value="KW" >Kuwait</option>
    			
@@ -477,7 +503,9 @@ span.tip {
     			<option value="LS" >Lesotho</option>
    			
     			<option value="LR" >Liberia</option>
-   			
+				
+				<option value="LY" >Libya</option>
+				
     			<option value="LI" >Liechtenstein</option>
    			
     			<option value="LT" >Lithuania</option>
@@ -492,9 +520,13 @@ span.tip {
    			
     			<option value="MW" >Malawi</option>
    			
-    			<option value="MV" >Maldives</option>
+    			<option value="ML" >Mali</option>
+				
+				<option value="MV" >Maldives</option>
    			
     			<option value="MT" >Malta</option>
+				
+				<option value="MP" >Mariana Islands</option>
    			
     			<option value="MH" >Marshall Islands</option>
    			
@@ -543,6 +575,8 @@ span.tip {
     			<option value="NZ" >New Zealand</option>
    			
     			<option value="NI" >Nicaragua</option>
+				
+				<option value="NE" >Niger</option>
    			
     			<option value="NG" >Nigeria</option>
    			
@@ -582,7 +616,7 @@ span.tip {
    			
     			<option value="RW" >Rwanda</option>
    			
-    			<option value="MP" >Saipan</option>
+    			<option value="SH" >Saint Helena</option>
    			
     			<option value="WS" >Samoa</option>
    			
@@ -607,10 +641,14 @@ span.tip {
     			<option value="SI" >Slovenia</option>
    			
     			<option value="SB" >Solomon Islands</option>
+				
+				<option value="SO" >Somalia</option>
    			
     			<option value="XS" >Somaliland (north Somalia)</option>
    			
     			<option value="ZA" >South Africa</option>
+				
+				<option value="SS" >South Sudan</option>
    			
     			<option value="ES" >Spain</option>
    			
@@ -627,14 +665,18 @@ span.tip {
     			<option value="XM" >St. Maarten</option>
    			
     			<option value="VC" >St. Vincent</option>
-   			
-    			<option value="SR" >Suriname</option>
+				
+    			<option value="SD" >Sudan</option>
+				
+				<option value="SR" >Suriname</option>
    			
     			<option value="SZ" >Swaziland</option>
    			
     			<option value="SE" >Sweden</option>
    			
     			<option value="CH" >Switzerland</option>
+				
+				<option value="SY" >Syria</option>
    			
     			<option value="PF" >Tahiti</option>
    			
@@ -669,7 +711,7 @@ span.tip {
     			<option value="AE" >United Arab Emirates</option>
    			
     			<option value="GB" >United Kingdom</option>
-   			
+				
     			<option value="US" >United States</option>
    			
     			<option value="UM" >United States Minor Outlying Islands</option>
@@ -687,6 +729,8 @@ span.tip {
     			<option value="VG" >Virgin Islands, British</option>
    			
     			<option value="VI" >Virgin Islands, U.s.</option>
+				
+				<option value="YE" >Yemen, Rep. Of</option>
    			
     			<option value="ZM" >Zambia</option>
    			
@@ -694,6 +738,9 @@ span.tip {
    			
   			</optgroup>
 		</select>
+	</div>
+	<div class="col-xs-7 col-sm-6 dropbox-body" id="domestic">
+		<input type="text" class="form-control" id="idp" name="dp" placeholder="Postcode"  maxlength="10" value="" txt_id_postcode/>
 	</div>
 	
 	<div class="col-xs-4 col-sm-4 padding-right-off">
@@ -741,7 +788,7 @@ $('#myTabs a').click(function (e) {
   $(this).tab('show')
 });
 /* For Use in External js */
-var home = "https://secure.easyparcel.my/pass/";
+//var home = "https://secure.easyparcel.my/pass/";
 var noStateMsg = "No State Available";
 var fromPostCode = 5;
 var laststr;
@@ -750,14 +797,22 @@ function checkaddress(){
 	var message = "";
 	if($('#d').val() == ''){
 		message += "Delivery State Not Chosen.<br>"; 
-	}else{
-		d_state = $('#d').val();
-	} 
+		status=false;
+	}
 
 	if($('#c').val() == ''){
 		message += "Collection State Not Chosen.<br>";
-	}else{
-		c_state = $('#c').val();
+		status=false;
+	}
+	
+	if ($('#cp').val().length < 5) {
+		message += "Delivery Postcode Not Valid.<br>";
+		status=false;
+	}
+	
+	if ($('#dp').val().length < 5) {
+		message += "Collection Postcode Not Valid.<br>";
+		status=false;
 	}
 	
 	if(message != ""){
@@ -775,16 +830,19 @@ function checkaddressint(){
 	var message = "";
 	if($('#id').val() == ''){
 		message += "Collection State Not Chosen.<br>"; 
-	}else{
-		d_state = $('#id').val();
-	} 
+	}
 
 	if($('#ic').val() == ''){
 		message += "Deliver Country Not Chosen.<br>";
-	}else{
-		c_state = $('#ic').val();
 	}
 	
+	
+	if ($('#icp').val().length < 5) {
+		message += "Delivery Postcode Not Valid.<br>";
+		status=false;
+	}
+	
+
 	if(message != ""){
 		swal({
 			title: 'Oops',
