@@ -96,6 +96,19 @@ class Frontend extends CI_Controller {
 			$this->load->view("frontEnd/footer");
 	}
 	
+	public function forgotPass() {
+			$this->data['title'] = "Forgot Password";
+			$this->load->view("frontEnd/header", $this->data);
+			$this->load->view("frontEnd/forgotPass");
+			$this->load->view("frontEnd/footer");
+	}
+	
+	public function forgotEmail() {
+			$this->data['title'] = "Forgot Email";
+			$this->load->view("frontEnd/header", $this->data);
+			$this->load->view("frontEnd/forgotEmail");
+			$this->load->view("frontEnd/footer");
+	}
 		
 }
 

@@ -73,7 +73,7 @@
 		<h1>Shipment Overview</h1>
 	</div>
 	
-	<div class="container">
+	<div class="container-fluid space">
 		<form method="POST" action="" class="form-horizontal">
 			<div class="row">
 				<input type="hidden" name="weight" value="<?=$weight?>"/>

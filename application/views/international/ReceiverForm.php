@@ -61,7 +61,7 @@
 		<div class="row title-bar">
 			<h1>Custom Clearance</h1>
 		</div>
-		<div class="container">
+		<div class="container-fluid space">
 		<form method="POST" action="<?=base_url('int_product_detail')?>" class="form-horizontal">
 			<div class="row">
 				<input type="hidden" name="weight" value="<?=$weight?>"/>

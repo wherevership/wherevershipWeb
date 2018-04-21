@@ -7,7 +7,7 @@
 			$this->data['title'] = "User Panel";
 			$this->load->view("member/header", $this->data);
 			$this->load->view("member/user_panel");
-			$this->load->view("member/footer");
+			$this->load->view("member/footer1");
 		}
 	
 	
