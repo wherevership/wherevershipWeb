@@ -271,7 +271,7 @@ function logout() {
 <!--END OF MOBILE TOP MENU--> 
 
 <!--START OF MOBILE DROP DOWN MENU-->
-<div id="MasterMobileMenu" style="display:none; background-color: rgba(255,102,153,0.1);">
+<div id="MasterMobileMenu" style="display:none; background-color: rgba(0,169,176,0.1);">
   <div class="container"> 
     
     <h3 class="site-nav-title">PROFILE</h3>
@@ -284,8 +284,72 @@ function logout() {
     <ul class="nav navbar-nav site-nav-group">
       <li class="site-nav-item"> <a href="<?=base_url()?>"><span>Home</span> <span class="side-menu-box"><i class="fas fa-home"></i></span></a> </li>
       <li class="site-nav-item"> <a href="<?=base_url('aboutUs')?>"><span>About Us</span> <span class="side-menu-box"><i class="fas fa-info-circle"></i></span></a> </li>
-      <li class="site-nav-item"> <a href="<?=base_url('courier')?>"><span>Send A Parcel</span> <span class="side-menu-box"><i class="fas fa-truck"></i></span></a> </li>
+      <li class="site-nav-item dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span> Send Parcel <span class="caret"></span></span> <span class="side-menu-box"><i class="fas fa-truck"></i></span></a>
+        <ul class="dropdown-menu" role="menu">
+         
+			  <li><a href="<?=base_url('courier')?>">Send A Parcel</a></li>
+              <li><a href="./?pg=MyAccount&tab=BulkUpload">Bulk Upload</a></li>
+            
+        </ul>
+      </li>
+      <li class="site-nav-item dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span> My Cart <span class="caret"></span></span> <span class="side-menu-box"><i class="fas fa-shopping-cart"></i></span></a>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="<?=base_url('member/pending_items')?>">Pending Items</a></li>
+          <li><a href="<?=base_url('member/actions_required')?>">Action Required</a></li>
+        </ul>
+      </li>
+      <li class="site-nav-item dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span> My Orders <span class="caret"></span></span> <span class="side-menu-box"><i class="fas fa-shopping-basket"></i></span></a>
+        <ul class="dropdown-menu" role="menu">
+        	<li><a href="<?=base_url('member/unpaid_orders')?>">Unpaid Orders</a></li>
+        	<li><a href="<?=base_url('member/partial_paid_order')?>">Partial Paid Orders</a></li>
+			<li><a href="<?=base_url('member/invoice')?>">Invoices</a></li>
+        </ul>
+      </li>
+      <li class="site-nav-item dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span> All Shipments <span class="caret"></span></span> <span class="side-menu-box"><i class="fas fa-truck"></i></span></a>
+        <ul class="dropdown-menu" role="menu">
+			<li><a href="<?=base_url('member/domestic_report')?>">Domestic</a></li>
+			<li><a href="<?=base_url('member/international_report')?>">International</a></li>
+			<li><a href="<?=base_url('member/truck_report')?>">truck</a></li>
+		  
+        </ul>
+      </li>
+      <li class="site-nav-item dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span> My Credits <span class="caret"></span></span> <span class="side-menu-box"><i class="far fa-money-bill-alt"></i></span></a>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="<?=base_url('member/top_up')?>">Top Up</a></li>
+          <li><a href="<?=base_url('member/credit_history')?>">Credit History</a></li>
+          <li><a href="<?=base_url('member/top_up_history')?>">Top Up History</a></li>
+        </ul>
+      </li>
       
+      <li class="site-nav-item dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span>My Account <span class="caret"></span></span> <span class="side-menu-box"><i class="fas fa-user"></i></span></a>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="<?=base_url('member/personal_profile')?>">Profile Setting</a></li>
+          <li><a href="<?=base_url('member/address_book')?>">Address Book</a></li>
+          <li><a href="./?pg=MyAccount&tab=Referral">Referral</a></li>
+    		  
+              <li><a href="./?pg=MyAccount&tab=FlyerModule">Flyer Request</a></li>
+    		   
+          
+              <li><a href="./?pg=MyAccount&tab=ParcelReport">Parcel Report</a></li>
+            
+        </ul>
+      </li>
+      <li class="site-nav-item dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span> Tools<span class="caret"></span></span> <span class="side-menu-box"><i class="fas fa-wrench"></i></span></a>
+        <ul class="dropdown-menu" role="menu">
+			<li><a onclick = "window.open('<?=base_url('volumetricCalcualator')?>', 'Wherevership Calculator Popout', 'width=700, height=500')">Volumetric Calculator</a></li>
+         
+        </ul>
+      </li>
+      <li class="site-nav-item dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span> Help & Support <span class="caret"></span></span> <span class="side-menu-box"><i class="fas fa-info-circle"></i></span></a>
+        <ul class="dropdown-menu" role="menu">
+		
+		
+		
+          <li><a href="<?=base_url('contactUs')?>">Contact Us</a></li>
+          <li><a href="<?=base_url('faq')?>">FAQ</a></li>
+          
+        </ul>
+      </li>
     </ul>
     
   	

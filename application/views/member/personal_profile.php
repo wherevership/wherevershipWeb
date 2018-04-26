@@ -72,7 +72,7 @@ document.getElementById("instantpay").submit();
             </div>
             <input class="hidden" type="file" value="upload" id="upload"/>
             <br>
-            <div class="row"> <span>Hello <b>Loh Chin Guan</b><br>
+            <div class="row"> <span>Hello <b id="name-title"></b><br>
             Welcome back, it's nice to see you!</span> 
             </div>
           </div>  
@@ -82,14 +82,14 @@ document.getElementById("instantpay").submit();
             <div class="col-sm-6 col-xs-12 form-group">
               <label>First Name <span style="color:red;">*</span></label>
                 <div class="has-feedback">
-                  <input class="form-control required" type="text" name="txt_first" value="Loh" required placeholder="First Name"/>
+                  <input class="form-control required" type="text" name="txt_first" id="txt_first" value="Loh" required placeholder="First Name"/>
                   <span class="epi-info-circled form-control-feedback hide"  aria-hidden="true"></span> 
                 </div>
             </div>
             <div class="col-sm-6 col-xs-12 form-group">
               <label>Last Name <span style="color:red;">*</span></label>
               <div class="has-feedback">
-                <input class="form-control required" type="text" name="txt_last" value="Chin Guan" required placeholder="Last Name"/>
+                <input class="form-control required" type="text" name="txt_last" id="txt_last" value="Chin Guan" required placeholder="Last Name"/>
                 <span class="epi-info-circled form-control-feedback hide"  aria-hidden="true"></span>
               </div> 
             </div>
@@ -115,32 +115,32 @@ document.getElementById("instantpay").submit();
             <div class="col-xs-12 form-group">
               <label>Address <span style="color:red;">*</span></label>
               <div class="has-feedback">
-                <input class="form-control required" type="text" name="txt_unit" value="42, Jln Emas Merah," maxlength="40" required placeholder="Address Line 1">
+                <input class="form-control required" type="text" name="txt_unit" value=""  id="txt_unit" maxlength="40" required placeholder="Address Line 1">
                 <span class="epi-info-circled form-control-feedback hide"  aria-hidden="true"></span>
               </div>
             </div>
             <div class="col-xs-12 form-group">
-                <input class="form-control required" type="text" name="txt_building" value="Tmn Emas Merah," maxlength="35" required placeholder="Address Line 2 (optional)">
+                <input class="form-control required" type="text" name="txt_building" value="" id="txt_building" maxlength="35" required placeholder="Address Line 2 (optional)">
             </div>
             <div class="col-xs-12 form-group">
-                <input class="form-control required" type="text" name="txt_street" value="" maxlength="35" required placeholder="Address Line 3 (optional)"/>
+                <input class="form-control required" type="text" name="txt_street" value="" id="txt_street" maxlength="35" required placeholder="Address Line 3 (optional)"/>
             </div>
             <div class="col-xs-12 form-group">
-              <input class="form-control required" type="text" name="txt_taman" value="" maxlength="35" required placeholder="Address Line 4 (optional)">
+              <input class="form-control required" type="text" name="txt_taman" value="" id="txt_taman" maxlength="35" required placeholder="Address Line 4 (optional)">
             </div>  
           </div>
           <div class="col-md-6  col-xs-12 padding-off">
             <div class="col-md-12 col-sm-6 col-xs-12 form-group">
               <label>Town/City<span style="color:red;">*</span></label>
               <div class="has-feedback">
-                <input class="form-control required" type="text" name="txt_city" value="Pekan Nanas" required placeholder="Town / City"/>
+                <input class="form-control required" type="text" name="txt_city"  id="txt_city" value="Pekan Nanas" required placeholder="Town / City"/>
                 <span class="epi-info-circled form-control-feedback hide"  aria-hidden="true"></span>
               </div>
             </div>
             <div class="col-md-12 col-sm-6 col-xs-12 form-group">
               <label>Zip/Postal Code<span style="color:red;">*</span></label>
               <div class="has-feedback">
-                <input class="form-control required" type="text" name="txt_postcode" value="81500" onChange="postGetState(this)" required placeholder="Zip / Postal code"/>
+                <input class="form-control required" type="text" name="txt_postcode" id="txt_postcode" value="81500" onChange="postGetState(this)" required placeholder="Zip / Postal code"/>
                 <span class="epi-info-circled form-control-feedback hide"  aria-hidden="true"></span>
               </div>
             </div>
@@ -184,7 +184,7 @@ document.getElementById("instantpay").submit();
             </div>
             <div class="col-md-12 col-sm-6 col-xs-12 form-group">
               <label>Country <span style="color:red;">*</span></label>
-              <select class="form-control" name="txt_country">
+              <select class="form-control" name="txt_country" id="txt_country">
                 <option value="Malaysia">Malaysia</option>
                 <!--<option value="Singapore">Singapore</option>-->
               </select>
@@ -308,6 +308,51 @@ document.getElementById("instantpay").submit();
 </div>
 <div id="dialog"></div>
 <script>
+firebase.auth().onAuthStateChanged( firebaseUser => {
+				if(firebaseUser) {
+					
+					const database2 = firebase.database().ref('User').child(firebaseUser.uid);
+					database2.on('value', snap => {
+						console.log(snap.val());
+						$("#welcome").text("Hi " + snap.val().firstName + " " + snap.val().lastName);
+						$("#name-title").text(snap.val().firstName + " " + snap.val().lastName);
+						$("#txt_first").val(snap.val().firstName);
+						$("#txt_last").val(snap.val().lastName);
+						$("#txt_unit").val(snap.val().profileAddress1);
+						$("#txt_building").val(snap.val().profileAddress2);
+						$("#txt_street").val(snap.val().profileAddress3);
+						$("#txt_taman").val(snap.val().profileAddress4);
+						$("#txt_city").val(snap.val().profileCity);
+						$("#txt_postcode").val(snap.val().profilePostcode);
+						$("#txt_country").val(snap.val().profileCountry);
+					});
+					$(".login_top").hide();
+					$(".signUp_top").hide();
+					$(".logout_top").show();
+					$("#welcome").attr("href","<?=base_url("member/user_panel")?>");
+					$("#log_in_f").text("LogOut").attr("href","javascript:logout()");
+					$("#log_in_mobile").attr("href","<?=base_url("member/user_panel")?>");
+					$("#dashboard_f").attr("href","<?=base_url("member/user_panel")?>");
+					$("#edit_profile_f").attr("href","<?=base_url("member/personal_profile")?>");
+					$("#my_cart_f").attr("href","<?=base_url("member/actions_required")?>");
+					
+				
+				} else {
+					$(".login_top").show();
+					$(".signUp_top").show();
+					$(".logout_top").hide();
+					$("#welcome").text("Hi, Welcome");
+					$("#welcome").attr("href","<?=base_url("userLogin")?>");
+					$("#log_in_mobile").attr("href","<?=base_url("userLogin")?>");
+					$("#log_in_f").text("LogIn").attr("href","<?=base_url("userLogin")?>");
+					$("#dashboard_f").attr("href","<?=base_url("userLogin")?>");
+					$("#edit_profile_f").attr("href","<?=base_url("userLogin")?>");
+					$("#my_cart_f").attr("href","<?=base_url("userLogin")?>");
+					console.log('not logged in');
+				}
+			
+			});
+
 function DeleteImage(obj){
   $("[for="+$(obj).attr("for")+"]").parent().parent().append(
     '<input type="file" class="filestyle" data-classButton="btn btn-warning" '+

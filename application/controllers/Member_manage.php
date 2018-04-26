@@ -15,7 +15,7 @@
 			$this->data['title'] = "Personal Profile";
 			$this->load->view("member/header", $this->data);
 			$this->load->view("member/personal_profile");
-			$this->load->view("member/footer");
+			$this->load->view("member/footer1");
 		}
 	
 		public function unpaid_orders() {
