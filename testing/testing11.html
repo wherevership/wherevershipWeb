@@ -29,7 +29,9 @@
 	
 	<p id="date"></p>
 	<p id="date2"></p>
+        <p><input type="text" id="date3"></p>
 	<p>Date: <input type="text" id="datepicker"></p>
+        <p id="we"></p>
 	<script>
 		var today = new Date();
 		var dd = today.getDate();
@@ -47,20 +49,19 @@
 			today = dd + '/' + mm + '/' + yyyy;
 			$("#date").text(today);
 	
-	$("#datepicker").datepicker();
-	var dateTime = $("#datepicker").datepicker('getDate');
-	function convert(jdate)
-{
-     var date = new Date(jdate),
-     mnth = ("0" + (date.getMonth()+1)).slice(-2),
-     day  = ("0" + date.getDate()).slice(-2);
-     return [ date.getFullYear(), mnth, day ].join("-");
-}
-
-	var finalDate = convert(dateTime);
-	$("#date2").text(finalDate);
+	$( function() {
+           $("#datepicker").datepicker({
+              altField: "#date3",
+              altFormat: "DD, d MM, yy"
+               
+           }); 
+            
+        });
 	
-	
+	var test2 = $("#date2").val();
+        console.log(test2);
+        $("#we").text(test2);
+        
 	</script>
 	
 	</body>

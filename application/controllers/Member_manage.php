@@ -29,7 +29,7 @@
 			$this->data['title'] = "Domestic Report";
 			$this->load->view("member/header", $this->data);
 			$this->load->view("member/domestic_report");
-			$this->load->view("member/footer");
+			$this->load->view("member/footer1");
 			
 		}
 	
