@@ -239,10 +239,9 @@ z-index:10001;}
       <tr>
         <th width="2%"><input type='checkbox' name='checkall' id='checkall' onclick="AwbCheckAll()"></th>
         <th width="15%" class="hidden-xs">Tracking No</th>
-        <th width="10%" class="hidden-xs">Order No</th>
-        <th width="23%" class="hidden-xs">Deliver To</th>
-        <th width="15%" class="hidden-xs">Courier</th>
-        <th width="12%" class="hidden-xs">Collection Date</th>
+        <th width="15%" class="hidden-xs">Order No</th>
+        <th width="26%" class="hidden-xs">Deliver To</th>
+        <th width="16%" class="hidden-xs">Collection Date</th>
         <th width="20%" class="hidden-xs">Status</th>
         <th class="visible-xs">Shipment Summary</th>
  
@@ -250,7 +249,10 @@ z-index:10001;}
       </tr>
     </thead>
     <tbody id="table1">
-      
+		 <tr>
+		<td colspan='9'>No Record Found.</td>
+      </tr>
+	  </tbody>
 
       </tbody>
     
@@ -348,33 +350,34 @@ z-index:10001;}
 <script>
 firebase.auth().onAuthStateChanged( firebaseUser => {
 	if(firebaseUser) {
-					console.log(firebaseUser.uid);
+					
 					const userDatebase = firebase.database().ref('User/' + firebaseUser.uid);
-					console.log(userDatebase)
+					
 					userDatebase.on('value', snap => {
-						console.log(snap.val());
-					//	$("#welcome").text("Hi " + snap.val().firstName + " " + snap.val().lastName);
+						
+						$("#welcome").text("Hi " + snap.val().firstName + " " + snap.val().lastName);
 						
 					
 					
-					if (snap.hasChild('shipment')) {
-					const userShipDatebase = firebase.database().ref('User/' + firebaseUser.uid + '/shipment');
+					if (snap.hasChild('order')) {
+					const userShipDatebase = firebase.database().ref('User/' + firebaseUser.uid + '/order');
 					userShipDatebase.once('value', snap=> {
 							var object1 = snap.val();
 							var keys = Object.keys(object1);
-							console.log(keys);
-								$("#table1").empty();
+							
+								
 								for (var i=0; i<keys.length; i++) {
 										var k= keys[i];
-										const shipmentdata = firebase.database().ref('Shipment/' + k);
-										console.log(k);
+										const shipmentdata = firebase.database().ref('Order/' + k);
+										$("#table1").empty();
 										shipmentdata.once('value', snap=>{
-											console.log(k);
+											
 											var object2 = snap.val();
 											var shipKey = snap.key;
-											console.log(shipKey);
+											
 											if (object2.serviceType == 'Domestic') {
-												var tr = $("<tr>").html('<td width="2%"><input type=\'checkbox\' name=\'checkall\' id=\'checkall\' onclick="AwbCheckAll()"></td><td width="15%" class="hidden-xs">'+shipKey+'</td><td width="10%" class="hidden-xs">12</td><td width="23%" class="hidden-xs">'+object2.receiverState+'</td><td width="15%" class="hidden-xs">12</td><td width="12%" class="hidden-xs">12</td><td width="20%" class="hidden-xs">'+object2.status+'</td><td width="5%" class="hidden-xs">12</td>');
+												
+												var tr = $("<tr>").html('<td width="2%"><input type=\'checkbox\' name=\'checkall\' id=\'checkall\' onclick="AwbCheckAll()"></td><td width="15%" class="hidden-xs">'+object2.trackingNo+'</td><td width="15%" class="hidden-xs">'+shipKey+'</td><td width="26%" class="hidden-xs">'+object2.receiverState+'</td><td width="16%" class="hidden-xs">'+object2.pickupDate+'</td><td width="20%" class="hidden-xs">'+object2.status+'</td><td width="6%" class="hidden-xs">12</td>');
 												$("#table1").append(tr);
 												
 												

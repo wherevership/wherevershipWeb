@@ -200,7 +200,7 @@
 					database2.on('value', snap => {
 						console.log(snap.val());
 						if (snap.val().role == 'admin') {
-							window.location.href = "<?=base_url('member/user_panel')?>";
+							window.location.href = "<?=base_url('user_panel')?>";
 						}
 						else {
 							

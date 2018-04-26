@@ -90,7 +90,6 @@ $route['cost_preview'] = 'Cost_preview_manage/costPreview';
 $route['dtc_cost_preview'] = 'Cost_preview_manage/dtcCostPreview';
 $route['tracking'] = 'track_manage/track';
 
-
 $route['member/user_panel'] = 'Member_manage/user_panel';
 $route['member/personal_profile'] = 'Member_manage/personal_profile';
 $route['member/unpaid_orders'] = 'Member_manage/unpaid_orders';

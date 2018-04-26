@@ -234,20 +234,20 @@ z-index:10001;}
       <tr>
         <th width="2%"><input type='checkbox' name='checkall' id='checkall' onclick="AwbCheckAll()"></th>
         <th width="15%" class="hidden-xs">Tracking No</th>
-        <th width="10%" class="hidden-xs">Order No</th>
-        <th width="23%" class="hidden-xs">Deliver To</th>
-        <th width="15%" class="hidden-xs">Courier</th>
-        <th width="12%" class="hidden-xs">Collection Date</th>
+        <th width="15%" class="hidden-xs">Order No</th>
+        <th width="26%" class="hidden-xs">Deliver To</th>
+        <th width="16%" class="hidden-xs">Collection Date</th>
         <th width="20%" class="hidden-xs">Status</th>
         <th class="visible-xs">Shipment Summary</th>
  
     <th width="22%" style="padding:4px;"></th> <!-- leaver pigeon -->
       </tr>
     </thead>
-    <tbody>
-      
-    <tr><td colspan='9'>No Record Found.</td></tr>
-      </tbody>
+    <tbody id="table1">
+      <tr>
+		<td colspan='9'>No Record Found.</td>
+      </tr>
+	  </tbody>
     
   </table>
   
@@ -341,6 +341,81 @@ z-index:10001;}
 </div>
 
 <script>
+firebase.auth().onAuthStateChanged( firebaseUser => {
+	if(firebaseUser) {
+					
+					const userDatebase = firebase.database().ref('User/' + firebaseUser.uid);
+					
+					userDatebase.on('value', snap => {
+						
+						$("#welcome").text("Hi " + snap.val().firstName + " " + snap.val().lastName);
+						
+					
+					
+					if (snap.hasChild('order')) {
+					const userShipDatebase = firebase.database().ref('User/' + firebaseUser.uid + '/order');
+					userShipDatebase.once('value', snap=> {
+							var object1 = snap.val();
+							var keys = Object.keys(object1);
+						
+								
+								for (var i=0; i<keys.length; i++) {
+										var k= keys[i];
+										var hasData = false;
+										const shipmentdata = firebase.database().ref('Order/' + k);
+										$("#table1").empty();
+										shipmentdata.once('value', snap=>{
+											
+											var object2 = snap.val();
+											var shipKey = snap.key;
+											
+											if (object2.serviceType == 'International') {
+												
+												var tr = $("<tr>").html('<td width="2%"><input type=\'checkbox\' name=\'checkall\' id=\'checkall\' onclick="AwbCheckAll()"></td><td width="15%" class="hidden-xs">'+object2.trackingNo+'</td><td width="15%" class="hidden-xs">'+shipKey+'</td><td width="26%" class="hidden-xs">'+object2.receiverCountry+'</td><td width="16%" class="hidden-xs">'+object2.pickupDate+'</td><td width="20%" class="hidden-xs">'+object2.status+'</td><td width="6%" class="hidden-xs">12</td>');
+												$("#table1").append(tr);
+												hasData = true;
+												
+											}
+											
+											
+											
+										});
+									
+									
+								}
+					
+					}); 	
+					} else {
+						$("#table1").empty();
+						var tr= $("<tr>").html('<td colspan=\'9\'>No Record Found.</td>');
+						$("#table1").append(tr);
+					}
+					
+					});
+					$(".login_top").hide();
+					$(".signUp_top").hide();
+					$(".logout_top").show();
+					$("#welcome").attr("href","<?=base_url("member/user_panel")?>");
+					$("#log_in_f").text("LogOut").attr("href","javascript:logout()");
+					$("#log_in_mobile").attr("href","<?=base_url("member/user_panel")?>");
+					$("#dashboard_f").attr("href","<?=base_url("member/user_panel")?>");
+					$("#edit_profile_f").attr("href","<?=base_url("member/personal_profile")?>");
+					$("#my_cart_f").attr("href","<?=base_url("member/actions_required")?>");
+				} else {
+					$(".login_top").show();
+					$(".signUp_top").show();
+					$(".logout_top").hide();
+					$("#welcome").text("Hi, Welcome");
+					$("#welcome").attr("href","<?=base_url("userLogin")?>");
+					$("#log_in_mobile").attr("href","<?=base_url("userLogin")?>");
+					$("#log_in_f").text("LogIn").attr("href","<?=base_url("userLogin")?>");
+					$("#dashboard_f").attr("href","<?=base_url("userLogin")?>");
+					$("#edit_profile_f").attr("href","<?=base_url("userLogin")?>");
+					$("#my_cart_f").attr("href","<?=base_url("userLogin")?>");
+					console.log('not logged in');
+				}
+			
+			});
 <!-- checkbox usage START-->
 var lastChecked = null;
     

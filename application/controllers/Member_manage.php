@@ -22,7 +22,7 @@
 			$this->data['title'] = "Unpaid Order";
 			$this->load->view("member/header", $this->data);
 			$this->load->view("member/unpaid_orders");
-			$this->load->view("member/footer");
+			$this->load->view("member/footer1");
 		}
 	
 		public function domestic_report() {
@@ -37,7 +37,7 @@
 			$this->data['title'] = "International Report";
 			$this->load->view("member/header", $this->data);
 			$this->load->view("member/international_report");
-			$this->load->view("member/footer");
+			$this->load->view("member/footer1");
 			
 		}
 		
@@ -93,7 +93,7 @@
 			$this->data['title'] = "Partial Paid Order";
 			$this->load->view("member/header", $this->data);
 			$this->load->view("member/partial_paid_order");
-			$this->load->view("member/footer");
+			$this->load->view("member/footer1");
 			
 		}
 		
@@ -101,7 +101,7 @@
 			$this->data['title'] = "Invoice";
 			$this->load->view("member/header", $this->data);
 			$this->load->view("member/invoice");
-			$this->load->view("member/footer");
+			$this->load->view("member/footer1");
 			
 		}
 		

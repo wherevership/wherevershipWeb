@@ -253,7 +253,7 @@
 					
 					const database2 = firebase.database().ref('User').child(firebaseUser.uid);
 					database2.on('value', snap => {
-						console.log(snap.val());
+						console.log(snap.val().firstName);
 						$("#welcome").text("Hi " + snap.val().firstName + " " + snap.val().lastName);
 						$(".profile-name").text(snap.val().firstName + " " + snap.val().lastName);
 					});

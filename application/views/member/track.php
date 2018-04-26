@@ -1,3 +1,24 @@
+<style>
+.table>thead:first-child>tr:first-child>th {
+	text-align: center;
+	border-right: 1px solid;
+	border-color: #fff;
+}
+
+.table>tbody>tr>td {
+	text-align: center;
+	border-right: 1px solid #ddd;
+}
+
+.well {
+	background-color: #ddd;
+	margin-bottom: 0px;
+}
+
+tr#DetailRow>td {
+    text-align: left;
+}
+</style>
 <div id="masterContent" >
 	<div class="container space">
 		<div class="row">

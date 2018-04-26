@@ -156,7 +156,7 @@ button.close {
       <th width="18%"></th>
     </tr>
   </thead>
-  <tbody>
+  <tbody id="table1">
     
   <tr><td colspan='7'>No Record Found.</td></tr>
     </tbody>
@@ -193,6 +193,81 @@ button.close {
 </div>
 <div id="dialog"></div>
 <script>
+firebase.auth().onAuthStateChanged( firebaseUser => {
+	if(firebaseUser) {
+					
+					const userDatebase = firebase.database().ref('User/' + firebaseUser.uid);
+					
+					userDatebase.on('value', snap => {
+						
+						$("#welcome").text("Hi " + snap.val().firstName + " " + snap.val().lastName);
+						
+					
+					
+					if (snap.hasChild('order')) {
+					const userShipDatebase = firebase.database().ref('User/' + firebaseUser.uid + '/order');
+					userShipDatebase.once('value', snap=> {
+							var object1 = snap.val();
+							var keys = Object.keys(object1);
+							
+								console.log(object1);
+								for (var i=0; i<keys.length; i++) {
+										
+										var k= keys[i];
+										//console.log(object1[k]);
+										if (object1[k] == "unpaid") {
+										const shipmentdata = firebase.database().ref('Order/' + k);
+										$("#table1").empty();
+										shipmentdata.once('value', snap=>{
+											
+											var object2 = snap.val();
+											var shipKey = snap.key;
+											
+											var tr = $("<tr>").html('<td width="2%"><input type=\'checkbox\' name=\'checkall\' id=\'checkall\' onclick="AwbCheckAll()"></td><td width="15%" class="hidden-xs">'+shipKey+'</td><td width="15%" class="hidden-xs">'+object2.orderDate+'</td><td width="26%" class="hidden-xs">'+object2.receiverState+'</td><td width="16%" class="hidden-xs">'+object2.status+'</td><td width="20%" class="hidden-xs">'+object2.cost.toFixed(2)+'</td><td width="6%" class="hidden-xs">12</td>');
+											$("#table1").append(tr);
+												
+												
+											
+											
+											
+											
+										});
+										}
+									
+									
+								}
+					
+					}); 	
+					} else {
+						$("#table1").empty();
+						var tr= $("<tr>").html('<td colspan=\'9\'>No Record Found.</td>');
+						$("#table1").append(tr);
+					}
+					
+					});
+					$(".login_top").hide();
+					$(".signUp_top").hide();
+					$(".logout_top").show();
+					$("#welcome").attr("href","<?=base_url("member/user_panel")?>");
+					$("#log_in_f").text("LogOut").attr("href","javascript:logout()");
+					$("#log_in_mobile").attr("href","<?=base_url("member/user_panel")?>");
+					$("#dashboard_f").attr("href","<?=base_url("member/user_panel")?>");
+					$("#edit_profile_f").attr("href","<?=base_url("member/personal_profile")?>");
+					$("#my_cart_f").attr("href","<?=base_url("member/actions_required")?>");
+				} else {
+					$(".login_top").show();
+					$(".signUp_top").show();
+					$(".logout_top").hide();
+					$("#welcome").text("Hi, Welcome");
+					$("#welcome").attr("href","<?=base_url("userLogin")?>");
+					$("#log_in_mobile").attr("href","<?=base_url("userLogin")?>");
+					$("#log_in_f").text("LogIn").attr("href","<?=base_url("userLogin")?>");
+					$("#dashboard_f").attr("href","<?=base_url("userLogin")?>");
+					$("#edit_profile_f").attr("href","<?=base_url("userLogin")?>");
+					$("#my_cart_f").attr("href","<?=base_url("userLogin")?>");
+					console.log('not logged in');
+				}
+				});
 <!-- checkbox usage START-->
 var lastChecked = null;
     
