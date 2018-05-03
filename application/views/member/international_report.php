@@ -359,31 +359,36 @@ firebase.auth().onAuthStateChanged( firebaseUser => {
 							var keys = Object.keys(object1);
 						
 								
+							
 								for (var i=0; i<keys.length; i++) {
 										var k= keys[i];
-										var hasData = false;
-										const shipmentdata = firebase.database().ref('Order/' + k);
+										const shipmentdata = firebase.database().ref('Order/' + k + '/shipment');
 										$("#table1").empty();
 										shipmentdata.once('value', snap=>{
 											
 											var object2 = snap.val();
-											var shipKey = snap.key;
+											var shipKey = Object.keys(object2);
 											
-											if (object2.serviceType == 'International') {
+												console.log(object2[shipKey]);
+												if (object2[shipKey] == 'International') {
 												
-												var tr = $("<tr>").html('<td width="2%"><input type=\'checkbox\' name=\'checkall\' id=\'checkall\' onclick="AwbCheckAll()"></td><td width="15%" class="hidden-xs">'+object2.trackingNo+'</td><td width="15%" class="hidden-xs">'+shipKey+'</td><td width="26%" class="hidden-xs">'+object2.receiverCountry+'</td><td width="16%" class="hidden-xs">'+object2.pickupDate+'</td><td width="20%" class="hidden-xs">'+object2.status+'</td><td width="6%" class="hidden-xs">12</td>');
-												$("#table1").append(tr);
-												hasData = true;
+													const shipmentInfo = firebase.database().ref('Shipment/' + shipKey);
+													shipmentInfo.once('value', snap=>{
+													
+													var object3 = snap.val();
+													var shipKey1 = snap.key;
 												
-											}
+													var tr = $("<tr>").html('<td width="2%"><input type=\'checkbox\' name=\'checkall\' id=\'checkall\' onclick="AwbCheckAll()"></td><td width="15%" class="hidden-xs">'+object3.trackingNo+'</td><td width="15%" class="hidden-xs">'+shipKey1+'</td><td width="26%" class="hidden-xs">'+object3.receiverState+'</td><td width="16%" class="hidden-xs">'+object3.pickupDate+'</td><td width="20%" class="hidden-xs">'+object3.status+'</td><td width="6%" class="hidden-xs">12</td>');
+													$("#table1").append(tr);
+												
+												
+													});
 											
-											
-											
-										});
+												} 
+											});
 									
 									
 								}
-					
 					}); 	
 					} else {
 						$("#table1").empty();
