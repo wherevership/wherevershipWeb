@@ -219,7 +219,7 @@ firebase.auth().onAuthStateChanged( firebaseUser => {
 											
 											var object2 = snap.val();
 											var shipKey = snap.key;
-											console.log(object2.shipment.length);
+
 											var tr = $("<tr>").html('<td width="2%"><input type=\'checkbox\' name=\'checkall\' id=\'checkall\' onclick="AwbCheckAll()"></td><td width="15%" class="hidden-xs">'+shipKey+'</td><td width="15%" class="hidden-xs">'+object2.orderDate+'</td><td width="26%" class="hidden-xs">'+object2.shipment.length+'</td><td width="16%" class="hidden-xs">'+object2.status+'</td><td width="20%" class="hidden-xs">'+object2.totalPrice.toFixed(2)+'</td><td width="6%" class="hidden-xs">12</td>');
 											$("#table1").append(tr);
 												
