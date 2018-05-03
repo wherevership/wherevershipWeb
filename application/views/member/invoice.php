@@ -217,12 +217,10 @@ firebase.auth().onAuthStateChanged( firebaseUser => {
 										shipmentdata.once('value', snap=>{
 											
 											var object2 = snap.val();
-				
-											
-											var tr = $("<tr>").html('<td width="2%"><input type=\'checkbox\' name=\'checkall\' id=\'checkall\' onclick="AwbCheckAll()"></td><td width="15%" class="hidden-xs">'+shipKey+'</td><td width="26%" class="hidden-xs">'+object2.orderDate+'</td><td width="26%" class="hidden-xs">'+object2.status+'</td><td width="15%" class="hidden-xs">'+object2.totalPrice.toFixed(2)+'</td><td width="6%" class="hidden-xs my-detail"><a><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></a></td>');
 
-
+											var shipKey = snap.key;
 											
+											var tr = $("<tr>").html('<td width="2%"><input type=\'checkbox\' name=\'checkall\' id=\'checkall\' onclick="AwbCheckAll()"></td><td width="15%" class="hidden-xs">'+shipKey+'</td><td width="26%" class="hidden-xs">'+object2.orderDate+'</td><td width="26%" class="hidden-xs">'+object2.status+'</td><td width="15%" class="hidden-xs">'+object2.totalPrice.toFixed(2)+'</td><td width="6%" class="hidden-xs"><a class="btn btn-info btn-xs"><i class="glyphicon glyphicon-triangle-right" aria-hidden="true"></i></a></td>');
 
 											$("#table1").append(tr);
 												

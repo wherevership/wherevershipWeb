@@ -107,6 +107,10 @@ $route['member/top_up_history'] = 'Member_manage/top_up_history';
 $route['member/top_up'] = 'Member_manage/top_up';
 $route['member/bulk_upload'] = 'Member_manage/bulk_upload';
 
+$route['order/(:any)'] = 'Order_manage/detail/S1';
+$route['dtc_shipment/(:any)'] = 'Shipment_manage/dtcDetail/S1';
+$route['int_shipment/(:any)'] = 'Shipment_manage/intDetail/S1';
+
 $route['home'] = 'Frontend/index';
 $route['default_controller'] = 'Frontend/index';
 
