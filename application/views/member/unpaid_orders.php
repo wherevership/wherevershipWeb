@@ -213,7 +213,7 @@ firebase.auth().onAuthStateChanged( firebaseUser => {
 								for (var i=0; i<keys.length; i++) {
 										
 										var k= keys[i];
-										//console.log(object1[k]);
+										console.log(object1[k]);
 										if (object1[k] == "unpaid") {
 										const shipmentdata = firebase.database().ref('Order/' + k);
 										$("#table1").empty();
@@ -223,6 +223,7 @@ firebase.auth().onAuthStateChanged( firebaseUser => {
 											var shipKey = snap.key;
 											
 											var tr = $("<tr>").html('<td width="2%"><input type=\'checkbox\' name=\'checkall\' id=\'checkall\' onclick="AwbCheckAll()"></td><td width="15%" class="hidden-xs">'+shipKey+'</td><td width="26%" class="hidden-xs">'+object2.orderDate+'</td><td width="26%" class="hidden-xs">'+object2.status+'</td><td width="20%" class="hidden-xs">'+object2.totalPrice.toFixed(2)+'</td><td width="6%" class="hidden-xs my-detail"><a><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></a></td>');
+
 											$("#table1").append(tr);
 												
 												
