@@ -384,7 +384,7 @@ firebase.auth().onAuthStateChanged( firebaseUser => {
 													var object3 = snap.val();
 													var shipKey1 = snap.key;
 												
-													var tr = $("<tr>").html('<td width="2%"><input type=\'checkbox\' name=\'checkall\' id=\'checkall\' onclick="AwbCheckAll()"></td><td width="15%" class="hidden-xs">'+object3.trackingNo+'</td><td width="15%" class="hidden-xs">'+shipKey1+'</td><td width="26%" class="hidden-xs">'+object3.receiverState+'</td><td width="16%" class="hidden-xs">'+object3.pickupDate+'</td><td width="20%" class="hidden-xs">'+object3.status+'</td><td width="6%" class="hidden-xs my-detail"><a><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></a></td>');
+													var tr = $("<tr>").html('<td width="2%"><input type=\'checkbox\' name=\'checkall\' id=\'checkall\' onclick="AwbCheckAll()"></td><td width="15%" class="hidden-xs">'+object3.trackingNo+'</td><td width="15%" class="hidden-xs">'+shipKey1+'</td><td width="26%" class="hidden-xs">'+object3.receiverState+'</td><td width="16%" class="hidden-xs">'+object3.pickupDate+'</td><td width="20%" class="hidden-xs">'+object3.status+'</td><td width="6%" class="hidden-xs"><a class="btn btn-info btn-xs"><i class="glyphicon glyphicon-triangle-right" aria-hidden="true"></i></a></td>');
 													$("#table1").append(tr);
 												
 												
