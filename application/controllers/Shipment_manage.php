@@ -6,8 +6,8 @@
 				$this->data['title'] = $id;
 				$this->data['id'] = $id;
 				$this->load->view("member/header", $this->data);
-				$this->load->view("member/unpaid_orders", $this->data);
-				$this->load->view("member/footer1");
+				$this->load->view("member/dtc_shipment_detail", $this->data);
+				$this->load->view("member/footer");
 			
 			
 			}
@@ -16,8 +16,8 @@
 				$this->data['title'] = $id;
 				$this->data['id'] = $id;
 				$this->load->view("member/header", $this->data);
-				$this->load->view("member/unpaid_orders", $this->data);
-				$this->load->view("member/footer1");
+				$this->load->view("member/int_shipment_detail", $this->data);
+				$this->load->view("member/footer");
 			
 			
 			}

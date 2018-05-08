@@ -220,7 +220,7 @@ firebase.auth().onAuthStateChanged( firebaseUser => {
 
 											var shipKey = snap.key;
 											
-											var tr = $("<tr>").html('<td width="2%"><input type=\'checkbox\' name=\'checkall\' id=\'checkall\' onclick="AwbCheckAll()"></td><td width="15%" class="hidden-xs">'+shipKey+'</td><td width="26%" class="hidden-xs">'+object2.orderDate+'</td><td width="26%" class="hidden-xs">'+object2.status+'</td><td width="15%" class="hidden-xs">'+object2.totalPrice.toFixed(2)+'</td><td width="6%" class="hidden-xs"><a class="btn btn-info btn-xs"><i class="glyphicon glyphicon-triangle-right" aria-hidden="true"></i></a></td>');
+											var tr = $("<tr>").html('<td width="2%"><input type=\'checkbox\' name=\'checkall\' id=\'checkall\' onclick="AwbCheckAll()"></td><td width="15%" class="hidden-xs">'+shipKey+'</td><td width="26%" class="hidden-xs">'+object2.orderDate+'</td><td width="26%" class="hidden-xs">'+object2.status+'</td><td width="15%" class="hidden-xs">'+object2.totalPrice.toFixed(2)+'</td><td width="6%" class="hidden-xs"><a class="btn btn-info btn-xs" href="javascript:showDetail(\''+shipKey+'\')"><i class="glyphicon glyphicon-triangle-right" aria-hidden="true"></i></a></td>');
 
 											$("#table1").append(tr);
 												
@@ -266,6 +266,13 @@ firebase.auth().onAuthStateChanged( firebaseUser => {
 				}
 			
 			});
+			
+				function showDetail(id) {
+			
+				
+				window.location.href = '<?=base_url('order/')?>' + id + '/3';
+					
+		}	
 
 <!-- checkbox usage START-->
 var lastChecked = null;
