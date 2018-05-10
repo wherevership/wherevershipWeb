@@ -125,9 +125,7 @@ document.getElementById("instantpay").submit();
             <div class="col-xs-12 form-group">
                 <input class="form-control required" type="text" name="txt_street" value="" id="txt_street" maxlength="35" required placeholder="Address Line 3 (optional)"/>
             </div>
-            <div class="col-xs-12 form-group">
-              <input class="form-control required" type="text" name="txt_taman" value="" id="txt_taman" maxlength="35" required placeholder="Address Line 4 (optional)">
-            </div>  
+             
           </div>
           <div class="col-md-6  col-xs-12 padding-off">
             <div class="col-md-12 col-sm-6 col-xs-12 form-group">
@@ -200,38 +198,14 @@ document.getElementById("instantpay").submit();
                 <label>Mobile No. <span style="color:red;">*</span></label>
                 <div class="clearfix"></div>
                      
+                    
                     <div class="col-sm-6">
-                      <select class="form-control" name="txt_code1">
-                        
-                          <option value="MY" >60 - Malaysia</option>
-                        
-                      </select>
-                    </div>
-                    <div class="col-sm-6">
-                      <input class="form-control required" type="text" name="txt_mobile" id="number" value="177754956" required placeholder="Contact Number (1)" onkeypress='return event.charCode >= 48 && event.charCode <= 57'/>
+                      <input class="form-control required" type="text" name="txt_mobile" id="txt_mobile" value="" required placeholder="Contact Number" />
                     </div>
                   
               </div>
             </div>
-            <div class="col-md-6  col-xs-12 padding-off">
-              <div class="col-xs-12 form-group">
-                <label>Alternative Contact No. </label>
-                <div class="clearfix"></div>
-                <div class="col-sm-6 padding-left-off">
-                  <select class="form-control" name="txt_code2">
-                    
-                      <option value="MY" >60 - Malaysia</option>
-                    
-                  </select>
-                </div>
-                <div class="col-sm-6 padding-off">
-                  <div class="has-feedback">
-                    <input class="form-control required" type="text" name="txt_other" value="" id="number2" required placeholder="Contact Number (2)"/>
-                    <span class="epi-info-circled form-control-feedback hide"  aria-hidden="true"></span>
-                  </div>
-                </div>
-              </div>
-            </div>
+            
           </form>
         </div>
         <div class="clearfix"></div>
@@ -248,7 +222,7 @@ document.getElementById("instantpay").submit();
                   <div class="col-md-6 col-xs-12 form-group padding-off">
                     <label>I.C. Number <span style="color:red;">*</span></label>
                     <div class="has-feedback">
-                      <input id="ic_no" class="form-control required" type="text" name="txt_ic_no" value="891116015741" required placeholder="example: 8XXXXX078877" title="Please enter your I.C. No."/>
+                      <input id="ic_no" class="form-control required" type="text" name="txt_ic_no" value="" required placeholder="example: 8XXXXX015163" title="Please enter your I.C. No."/>
                       <span class="epi-info-circled form-control-feedback hide"  aria-hidden="true"></span>
                     </div>
                   </div>
@@ -325,6 +299,7 @@ firebase.auth().onAuthStateChanged( firebaseUser => {
 						$("#txt_city").val(snap.val().profileCity);
 						$("#txt_postcode").val(snap.val().profilePostcode);
 						$("#txt_country").val(snap.val().profileCountry);
+						$("#txt_mobile").val(snap.val().mobileNumber);
 					});
 					$(".login_top").hide();
 					$(".signUp_top").hide();

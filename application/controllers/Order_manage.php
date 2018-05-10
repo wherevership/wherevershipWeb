@@ -7,7 +7,7 @@
 				$this->data['mode'] = $mode;
 				$this->load->view("member/header", $this->data);
 				$this->load->view("member/order_detail", $this->data);
-				$this->load->view("member/footer1");
+				$this->load->view("member/footer");
 			
 			}
 		
