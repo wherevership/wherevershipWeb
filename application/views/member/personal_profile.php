@@ -28,38 +28,14 @@
 }
 </style>
 
-<script>
-function bindcardnow()
-{
-document.getElementById("instantpay").submit();
-}
-</script>
-<div class="profile-bg bindCard">
-	<form name="ePayment" id='instantpay' method="post" action="https://www.mobile88.com/ePayment/entry.asp">
-		<input type="hidden" name="MerchantCode" value="M02625_S0001">
-		<input type="hidden" name="PaymentId" value="55">
-		<input type="hidden" id="RefNo" name="RefNo" value="BEP0000188473">
-		<input type="hidden" name="Amount" value="1.00">
-		<input type="hidden" name="Currency" value="MYR">
-		<input type="hidden" id="ProdDesc" name="ProdDesc" value="Credit Card Registration">
-		<input type="hidden" name="UserName" value="Loh Chin Guan">
-		<input type="hidden" name="UserEmail" value="lcg1989@hk3.com.my">
-		<input type="hidden" name="UserContact" value="177754956">
-		<input type="hidden" name="Lang" value="UTF-8">
-		<input type="hidden" id="Signature" name="Signature" value="T5fNtKLSZokRyAm6SLE1eiWukEM=">
-		<input type="hidden" name="ResponseURL" value="https://secure.easyparcel.my/pass/?pg=ReturnUrl&type=bcn">
-		<input type="hidden" name="ActionType" value="BT">
-		<input type="hidden" name="TokenId" value="">
-		<p><i class="epi-credit-card"></i> &nbsp;  Register Your Credit Card And Start Shipping Internationally<a href="#" class="btn btn-default btn-xs pull-right" onclick='bindcardnow()'>Register Now</a> <span class="pull-right" data-toggle="tooltip" data-original-title="Registration is free. The RM1 registration fee will be credited back to your EasyParcel account in 24 hours."><i class="epi-info-circled"></i></span></p>
-	</form>
-</div>          		
+      		
 
        </div>
    
     <div class="container-fluid space-small">
       <h2 class="dashboard-title">Personal Profile</h2>
     <div class="dashboard-title">
-      <span class="label label-warning small-font">Pending</span>
+      
     </div>
     <div class="clearfix"></div>
       <div profile_msg></div>
@@ -188,11 +164,11 @@ document.getElementById("instantpay").submit();
               </select>
             </div>
           </div>
-        </form>
+        
         </div>
         <div class="clearfix"></div>
         <div>
-          <form method="post">
+          
             <div class="col-md-6 col-xs-12 padding-off">
               <div class="col-xs-12 form-group">
                 <label>Mobile No. <span style="color:red;">*</span></label>
@@ -209,69 +185,7 @@ document.getElementById("instantpay").submit();
           </form>
         </div>
         <div class="clearfix"></div>
-        <hr />
-        <!-- Nav tabs -->
-        <h4>Supporting Documents</h4>
         
-        
-        <!-- Tab panes -->
-        <div class="profile-bg">
-            
-              <p>Verify your account via Malaysian Identity Card:</p>
-              <div class="row">
-                  <div class="col-md-6 col-xs-12 form-group padding-off">
-                    <label>I.C. Number <span style="color:red;">*</span></label>
-                    <div class="has-feedback">
-                      <input id="ic_no" class="form-control required" type="text" name="txt_ic_no" value="" required placeholder="example: 8XXXXX015163" title="Please enter your I.C. No."/>
-                      <span class="epi-info-circled form-control-feedback hide"  aria-hidden="true"></span>
-                    </div>
-                  </div>
-                 <div class="clearfix"></div>
-                  
-                      <input type="file" class="filestyle" data-classButton="btn btn-success" data-buttonText="Upload I.C." for="ic" id="upIC" />
-                      <span> .png, .jpg, .pdf Maximum file size: 2MB </span>
-                     
-              </div>
-            </div>
-            <div class="checkbox">
-              <label>
-                <input type="checkbox" id="forBiz" name="biz">For Business use </label>
-            </div>
-           <div id="business" class="profile-bg" style="display:none">
-              <p>Verify your account via company detail:</p>
-              <div class="row">
-                <div>
-                  <div class="col-md-6 col-sm-6 form-group padding-left-off">
-                    <label>Company Name <span style="color:red;">*</span></label>
-                    <div class="has-feedback">
-                      <input id="1stCompName" class="form-control required" type="text" name="txt_comp_name" value="" required placeholder="Company Name" title="Please enter your Company Name" />
-                      <span class="epi-info-circled form-control-feedback hide"  aria-hidden="true"></span>
-                    </div>
-                  </div>
-                  <div class="col-md-6 col-sm-6 form-group padding-left-off">
-                    <label>Company Reg. No. <span style="color:red;">*</span></label>
-                    <div class="has-feedback">
-                      <input id="CompRegNo" class="form-control required" type="text" name="txt_comp_reg_no" value="" required placeholder="Company Registration No.*" title="Please enter Company Reg. No."/>
-                      <span class="epi-info-circled form-control-feedback hide"  aria-hidden="true"></span>
-                    </div>
-                  </div>
-                   
-                  
-                      <input type="file" class="filestyle" data-classButton="btn btn-warning btn-sm" data-buttonText="Upload SSM" for="ssm" id="upSSM" accept=".png, .jpg, .pdf" />
-                      <span> .png, .jpg, .pdf Maximum file size: 2MB  </span>
-                     
-                </div>
-                <div>
-                  
-                    <input type="file" class="filestyle" data-classButton="btn btn-primary btn-sm" data-buttonText="Upload Form 49" for="49" id="upForm49" accept=".png, .jpg, .pdf"/>
-                    <span> .png, .jpg, .pdf Maximum file size: 2MB  </span>
-                   
-                </div>
-                <!-- /input-group --> 
-              </div>
-              <!-- /.col-lg-6 --> 
-            </div>
-        <hr />
         <div class="clearfix">
           <input type="button" class="btn btn-primary pull-right" value="Save Profile" onclick="profile.SaveProfile();">
           </form>
