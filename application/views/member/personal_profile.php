@@ -42,6 +42,7 @@
      <hr />
       <div>
         <form method="post">
+		  <input type="hidden" name="userid" id="userId" value=""/>
           <div class="col-md-6 col-xs-12 profile-pic text-center padding-off" style="position: relative;">
             <div class="profile_picture"> <img src="https://secure.easyparcel.my/pass/application/APP_6.8/theme/easyparcel/images/easyparcel-avatar.png">
               <div id="logo" class="glyphicon glyphicon-camera camera"></div>
@@ -122,37 +123,37 @@
               <label>State<span style="color:red;">*</span></label>
               <select class="form-control" name="txt_state">
                 
-                <option value="jhr" selected>Johor</option>
+                <option value="Johor" selected>Johor</option>
                 
-                <option value="kdh" >Kedah</option>
+                <option value="Kedah" >Kedah</option>
                 
-                <option value="ktn" >Kelantan</option>
+                <option value="Kelantan" >Kelantan</option>
                 
-                <option value="mlk" >Melaka</option>
+                <option value="Melaka" >Melaka</option>
                 
-                <option value="nsn" >Negeri Sembilan</option>
+                <option value="Negeri Sembilan" >Negeri Sembilan</option>
                 
-                <option value="phg" >Pahang</option>
+                <option value="Pahang" >Pahang</option>
                 
-                <option value="prk" >Perak</option>
+                <option value="Perak" >Perak</option>
                 
-                <option value="pls" >Perlis</option>
+                <option value="Perlis" >Perlis</option>
                 
-                <option value="png" >Pulau Pinang</option>
+                <option value="Penang" >Pulau Pinang</option>
                 
-                <option value="sgr" >Selangor</option>
+                <option value="Selangor" >Selangor</option>
                 
-                <option value="trg" >Terengganu</option>
+                <option value="Terengganu" >Terengganu</option>
                 
-                <option value="kul" >Kuala Lumpur</option>
+                <option value="Kuala Lumpur" >Kuala Lumpur</option>
                 
-                <option value="pjy" >Putra Jaya</option>
+                <option value="Putra Jaya" >Putra Jaya</option>
                 
-                <option value="srw" >Sarawak</option>
+                <option value="Sarawak" >Sarawak</option>
                 
-                <option value="sbh" >Sabah</option>
+                <option value="Sabah" >Sabah</option>
                 
-                <option value="lbn" >Labuan</option>
+                <option value="Labuan" >Labuan</option>
                 
               </select>
             </div>
@@ -198,7 +199,7 @@
 <script>
 firebase.auth().onAuthStateChanged( firebaseUser => {
 				if(firebaseUser) {
-					
+					$("#userId").val(firebaseUser.uid);
 					const database2 = firebase.database().ref('User').child(firebaseUser.uid);
 					database2.on('value', snap => {
 						console.log(snap.val());
@@ -289,252 +290,48 @@ function postGetState(obj){
 
 var profile = {
   SaveProfile : function(){
-    var data = {
-      first_name : $("[name=txt_first]").val(),
-      last_name : $("[name=txt_last]").val(),
-      mobile : $("[name=txt_mobile]").val(),
-      other : $("[name=txt_other]").val().replace(/\D/g,''),
-      code1 : $("[name=txt_code1]").val(),
-      code2 : $("[name=txt_code2]").val(),
-      ic_no : $("[name=txt_ic_no]").val().replace(/-/g,''),
-      comp_name : $("[name=txt_comp_name]").val(),
-      comp_reg_no : $("[name=txt_comp_reg_no]").val(),
+	var userId = $("#userId").val();
+	var email = $("[name=txt_email]").val();
+    var firstName = $("[name=txt_first]").val();
+	var lastName = $("[name=txt_last]").val();
+	var mobileNumber = $("[name=txt_mobile]").val();
+     // other : $("[name=txt_other]").val().replace(/\D/g,''),
+     // code1 : $("[name=txt_code1]").val(),
+     // code2 : $("[name=txt_code2]").val(),
+     // ic_no : $("[name=txt_ic_no]").val().replace(/-/g,''),
+      //comp_name : $("[name=txt_comp_name]").val(),
+      //comp_reg_no : $("[name=txt_comp_reg_no]").val(),
       
-      img_ic : $(".DetailFrom #ic_uploaded").attr("href"),
-      img_ssm : $(".DetailFrom #ssm_uploaded").attr("href"),
-      img_form49 : $(".DetailFrom #49_uploaded").attr("href"),
+      //img_ic : $(".DetailFrom #ic_uploaded").attr("href"),
+      //img_ssm : $(".DetailFrom #ssm_uploaded").attr("href"),
+     // img_form49 : $(".DetailFrom #49_uploaded").attr("href"),
     
-      unit : $("[name=txt_unit]").val(),
-      floor : $("[name=txt_floor]").val(),
-      block : $("[name=txt_block]").val(),
-      building : $("[name=txt_building]").val(),
-      taman : $("[name=txt_taman]").val(),
-      street : $("[name=txt_street]").val(),
-      city : $("[name=txt_city]").val(),
-      state : $("[name=txt_state]").val(),
-      postcode : $("[name=txt_postcode]").val(),
-      country : $("[name=txt_country]").val()
-    };
-
-    var message = "";
+      var profileAddress1 = $("[name=txt_unit]").val();
+	  var profileAddress2 = $("[name=txt_building]").val();
+	  var profileAddress3 = $("[name=txt_street]").val();
+	  var city = $("[name=txt_city]").val();
+	  var state = $("[name=txt_state]").val();
+      var postcode = $("[name=txt_postcode]").val();
+      var country = $("[name=txt_country]").val();
+  
+	var message = "";
     var variable = "";
     var error = "";
     clearClass();
-
-    
-    if($("[name=biz]").is(":checked")){
-      if(data.comp_name == ""){
-        doFail($("[name=txt_comp_name]"));
-        message += "Please Fill In Your Company Name.<br>";
-        variable = "[name=txt_comp_name]";  
-      }
-      if(data.comp_reg_no == ""){
-        doFail($("[name=txt_comp_reg_no]"));
-        message += "Please Fill In Your Company Registration Number.<br>";
-        variable = "[name=txt_comp_reg_no]";  
-      }
-    }
-    
-    if(data.ic_no == ""){
-      doFail($("[name=txt_ic_no]"));
-      message += "Please Fill In Your IC Number.<br>";
-      variable = "[name=txt_ic_no]";  
-    }
-    if("pa" != "pa"){
-      if(data.mobile != "177754956"){
-        message += "Your mobile number cannot be changed.<br>";
-        doFail($("[name=txt_mobile]"));
-        variable = "[name=txt_mobile]";
-        error = 1;
-      }
-    }else{
-    if(data.mobile == ""){
-      doFail($("[name=txt_mobile]"));
-      message += "Please Fill In Your Mobile Number.<br>";
-      variable = "[name=txt_mobile]";
-    }else{
-      if(data.code1 == "MY"){
-        if((data.mobile.indexOf("1") != 0) || ((data.mobile).length > 10 || (data.mobile).length < 9)){
-          message += "Please Enter An Valid Mobile No.<br>";
-          doFail($("[name=txt_mobile]"));
-          variable = "[name=txt_mobile]";
-          error = 1;          
-        }
-      }else if (data.code1 == "SG"){
-        if((data.mobile).length > 8){
-          message += "Please Enter An Valid Mobile No.<br>";
-          doFail($("[name=txt_mobile]"));
-          variable = "[name=txt_mobile]"; 
-          error = 1;
-        }
-      }
-    }
-    }
-    if(data.other != ""){
-      if(data.code2 == "MY"){
-        if((data.other).length > 10 || (data.other).length < 8){
-          message += "Please Enter An Valid Alternative Mobile No.<br>";
-          doFail($("[name=txt_other]"));
-          variable = "[name=txt_other]";  
-          error = 1;
-        }
-      }else if(data.code2 == "SG"){
-        if((data.other).length > 8){
-          message += "Please Enter An Valid Alternative Mobile No.<br>";
-          doFail($("[name=txt_other]"));
-          variable = "[name=txt_other]";  
-          error = 1;
-        }
-      }
-    }
-    
-    if(data.country == ""){
-      doFail($("[name=txt_country]"));
-      message += "Please Fill In Your Country Name.<br>";
-      variable = "[name=txt_country]";  
-    }
-    
-    if(data.state == ""){
-      doFail($("[name=txt_state]"));
-      message += "Please Fill In Your State Name.<br>";
-      variable = "[name=txt_state]";  
-    }
-    
-    if(data.postcode == ""){
-      doFail($("[name=txt_postcode]"));
-      message += "Please Fill In Your Zip/Postal Code.<br>";
-      variable = "[name=txt_postcode]"; 
-    }
-    
-    if(data.city == ""){
-      doFail($("[name=txt_city]"));
-      message += "Please Fill In Your Town/City Name.<br>";
-      variable = "[name=txt_city]"; 
-    }
-    
-    if(data.unit == ""){
-      doFail($("[name=txt_unit]"));
-      message += "Please Fill In Your Address.<br>";
-      variable = "[name=txt_unit]"; 
-    }
-    
-    if(data.last_name == ""){
-      doFail($("[name=txt_last]"));
-      message += "Please Fill In Your Last Name.<br>";
-      variable = "[name=txt_last]"; 
-    }
-    
-    if(data.first_name == ""){
-      doFail($("[name=txt_first]"));
-      message += "Please Fill In Your First Name.<br>";
-      variable = "[name=txt_first]";    
-    }
-    if((message != "") && (error = "")){
-        $("html, body").animate({ scrollTop: $(variable).offset().top - 70 }, 1000);
-        swal({
-          title: 'Oops',
-          type: 'error',
-          html: 'Please fill in all required field',
-          confirmButtonColor: '#4e97d8'
-          })
-    }else if ((message != "") && (error = 1)){
-        $("html, body").animate({ scrollTop: $(variable).offset().top - 70 }, 1000);
-        swal({
-          title: 'Oops',
-          type: 'error',
-          html: message,
-          confirmButtonColor: '#4e97d8'
-          })
-    }else{
-      $.ajax({
-        type  : "post",
-        url : "./?ac=checkPostcode",
-        async : false,
-        data : {
-          cpostcode : data.postcode,
-          cstate : data.state,
-          dpostcode : '',
-          dstate : ''
-        },
-        success : function(result) {
-          if(result == true){
-            $.ajax({
-              type : "post",
-              url : "./?ac=doSaveBasicProfile",
-              data : data,
-              success : function(result){
-                message = "";
-                redirectOn = "";
-
-                if($.trim(result) == "pass")
-                {
-                  title = "Save Complete!";
-                  message+="Congratulations Your Profile Has Been Updated Successfully.<br>";
-                  redirectOn="Yes";
-                  swal({
-                    title: '' + title,
-                    type: 'success',
-                    html: '' + message,
-                    confirmButtonColor: '#4e97d8'
-                  }).then(function() {
-                    if(redirectOn == "Yes"){
-                      window.location.reload();
-                    }
-                  });
-                }
-                else if($.trim(result) == "mobile_fail")
-                {
-                  title = "Oops!";
-                  message+="Another User With This Mobile Number Already Exists. Maybe It's Your Evil Twin. Spooky.";
-                  message+="If It Wasn't You, Kindly Report To Our Customer Support At support@easyparcel.my.<br>";
-                  swal({
-                    title: '' + title,
-                    type: 'error',
-                    html: '' + message,
-                    confirmButtonColor: '#4e97d8'
-                  });
-                }
-                else
-                {
-                  title = "Oops!";
-                  message+="Something Went Wrong, Your Profile Failed To Be Updated. Please Try Again Later.";
-                  message+="Kindly Report To Our Customer Support At support@easyparcel.my If The Problem Persist<br>";
-                  swal({
-                    title: '' + title,
-                    type: 'error',
-                    html: '' + message,
-                    confirmButtonColor: '#4e97d8'
-                  });
-                }
-              }
-            });
-          }else{
-            swal({
-              title: 'Oops',
-              type: 'error',
-              html: result,
-              confirmButtonColor: '#4e97d8'
-            });
-            doFail($("[name=txt_postcode]"));
-            $("html, body").animate({ scrollTop: $("[name=txt_postcode]").offset().top - 70 }, 1000);
-              status=false;
-          }
-        },
-        fail : function(result){
-            message += "Something Went Wrong. Please Try Again. If Problem Persist, Please Contact Our Customer Service.<br>";
-            status=false;
-          }
-        });
-    }
-    
-    if(message!=""){
-      swal({
-        title: 'Missing Required Field',
-        type: 'error',
-        html: '' + message,
-        confirmButtonColor: '#4e97d8'
-      });
-    }
+	firebase.database().ref('User/' + userId).update({
+		email : email,
+		firstName : firstName,
+		lastName : lastName,
+		mobileNumber : mobileNumber,
+		profileAddress1 : profileAddress1,
+		profileAddress2 : profileAddress2,
+		profileAddress3 : profileAddress3,
+		profileCity : city,
+		profileState : state,
+		profilePostcode : postcode,
+		profileCountry :country
+	});
+        
   },
   
   SendVerify : function(){

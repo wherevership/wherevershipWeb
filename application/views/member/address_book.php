@@ -331,6 +331,83 @@
 <div id="dialogResult"></div>
 
 <script>
+firebase.auth().onAuthStateChanged( firebaseUser => {
+				if(firebaseUser) {
+					$("#userId").val(firebaseUser.uid);
+					const database2 = firebase.database().ref('User').child(firebaseUser.uid);
+					database2.on('value', snap => {
+						console.log(snap.val());
+						$("#welcome").text("Hi " + snap.val().firstName + " " + snap.val().lastName);
+						$("#name-title").text(snap.val().firstName + " " + snap.val().lastName);
+						
+					});
+					const database3 = firebase.database().ref('User/' + firebaseUser.uid + '/shippingAddress');
+					database3.on('value', snap => {
+						var object1 = snap.val();
+						var keys = Object.keys(object1);
+							
+						console.log(object1);
+						for (var i=0; i<keys.length; i++) {
+										
+								var k= keys[i];
+								const Addressdata = firebase.database().ref('Address/' + k);
+								$("#table1").empty();
+								Addressdata.once('value', snap=>{
+											
+								var object2 = snap.val();
+								var shipKey = snap.key;
+								var contact = object2.phoneNumber + '<br>' + object2.email;
+								var address = object2.address1 + '<br>' + object2.address2 + '<br>' + object2.address3 + '<br>' + object2.postcode + ' ' + object2.city
+
+								var tr = $("<tr>").html('<td width="2%"><input type=\'checkbox\' name=\'checkaddressdisabled\' value=\''+shipKey+'\' onclick="checknow()" disabled></td><td width="15%" class="hidden-xs">'+object2.contactPerson+'</td><td width="15%" class="hidden-xs">'+object2.companyName+'</td><td width="20%" class="hidden-xs">'+contact+'</td><td width="25%" class="hidden-xs">'+address+'</td><td width="15" class="hidden-xs">'+object2.state+'</td><td width="15" class="hidden-xs">'+object2.city+'</td><td width="10%" class="hidden-xs my-detail"><a class="btn btn-info btn-xs" href="javascript:showDetail(\''+shipKey+'\')"><i class="glyphicon glyphicon-pencil" aria-hidden="true"></i></a></td>');
+
+								$("#table1").append(tr);
+												
+												
+											
+											
+											
+											
+								});
+								
+								
+						}
+						
+					});
+					$(".login_top").hide();
+					$(".signUp_top").hide();
+					$(".logout_top").show();
+					$("#welcome").attr("href","<?=base_url("member/user_panel")?>");
+					$("#log_in_f").text("LogOut").attr("href","javascript:logout()");
+					$("#log_in_mobile").attr("href","<?=base_url("member/user_panel")?>");
+					$("#dashboard_f").attr("href","<?=base_url("member/user_panel")?>");
+					$("#edit_profile_f").attr("href","<?=base_url("member/personal_profile")?>");
+					$("#my_cart_f").attr("href","<?=base_url("member/actions_required")?>");
+					
+				
+				} else {
+					$(".login_top").show();
+					$(".signUp_top").show();
+					$(".logout_top").hide();
+					$("#welcome").text("Hi, Welcome");
+					$("#welcome").attr("href","<?=base_url("userLogin")?>");
+					$("#log_in_mobile").attr("href","<?=base_url("userLogin")?>");
+					$("#log_in_f").text("LogIn").attr("href","<?=base_url("userLogin")?>");
+					$("#dashboard_f").attr("href","<?=base_url("userLogin")?>");
+					$("#edit_profile_f").attr("href","<?=base_url("userLogin")?>");
+					$("#my_cart_f").attr("href","<?=base_url("userLogin")?>");
+					console.log('not logged in');
+				}
+			
+			});
+			
+		function showDetail(id) {
+			
+				
+				window.location.href = '<?=base_url('dtc_shipment/')?>' + id;
+					
+		}	
+
 function postGetState(obj){
   var str = $(obj).val();
   str = str.replace(/[^0-9]+/g,'');
@@ -580,26 +657,11 @@ $(document).ready(function () {
 								<th width="10%" class="hidden-xs"></th>
 							</tr>
 						</thead>
-						<tbody>
+						<tbody id="table1">
 							
 							
 							<tr>
-								<td class="hidden-xs"><input type='checkbox' name='checkaddressdisabled'  onclick='checknow()' value='7151189 ' disabled></td>
-								<td class="hidden-xs">Loh Chin Guan<br><span style="color:#fc2e88;"></span></td>
-								<td class="visible-xs">
-									Name: Loh Chin Guan <br> 
-									Address: 42, Jln Emas Merah,<br />Tmn Emas Merah,<br />81500 Pekan Nanas<br />Johor, Malaysia <br> 
-									Phone: +6017-7754956 <br> 
-									Email: lcg1989@hk3.com.my
-								</td>
-								<td class="hidden-xs"></td>
-								<td class="hidden-xs">+6017-7754956<br> lcg1989@hk3.com.my</td>
-								<td class="hidden-xs">42, Jln Emas Merah, Tmn Emas Merah,   81500 Pekan Nanas </td>
-								<td class="hidden-xs">Johor</td>
-								<td class="hidden-xs">Malaysia</td>
-								<td>
-									<a href="javascript:promptChangeProfile();" class="pull-right mini"><img src="https://secure.easyparcel.my/pass/application/source/Malaysia/img/icon-edit.png" title="Edit" width="16px" /></a>
-								</td>      
+								<td colspan='7'>No Record Found</td>     
 							</tr>
 							
 						</tbody>

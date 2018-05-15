@@ -53,7 +53,7 @@
 			$this->data['title'] = "Address Book";
 			$this->load->view("member/header", $this->data);
 			$this->load->view("member/address_book");
-			$this->load->view("member/footer");
+			$this->load->view("member/footer1");
 			
 		}
 		
