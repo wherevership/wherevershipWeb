@@ -330,6 +330,22 @@ var profile = {
 		profileState : state,
 		profilePostcode : postcode,
 		profileCountry :country
+	}).then(function(){
+		 swal({
+          title: 'Updated',
+          type: 'success',
+          html: 'Your profile was updated!',
+          confirmButtonColor: '#4e97d8'
+        });
+		
+	}).catch(function(error){
+		 swal({
+        title: 'Error',
+        type: 'error',
+        html: error,
+        confirmButtonColor: '#4e97d8'
+      });
+		
 	});
         
   },

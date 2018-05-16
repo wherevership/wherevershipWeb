@@ -97,6 +97,7 @@ $route['member/domestic_report'] = 'Member_manage/domestic_report';
 $route['member/international_report'] = 'Member_manage/international_report';
 $route['member/truck_report'] = 'Member_manage/truck_report';
 $route['member/address_book'] = 'Member_manage/address_book';
+$route['member/edit_address_book/(:any)'] = 'Member_manage/edit_address_book/$1';
 $route['member/courier'] = 'Member_manage/courier';
 $route['member/pending_items'] = 'Member_manage/pending_items';
 $route['member/actions_required'] = 'Member_manage/actions_required';

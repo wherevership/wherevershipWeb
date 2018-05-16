@@ -404,7 +404,7 @@ firebase.auth().onAuthStateChanged( firebaseUser => {
 		function showDetail(id) {
 			
 				
-				window.location.href = '<?=base_url('dtc_shipment/')?>' + id;
+				window.location.href = '<?=base_url('member/edit_address_book/')?>' + id;
 					
 		}	
 
