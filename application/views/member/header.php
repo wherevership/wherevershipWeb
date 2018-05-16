@@ -325,12 +325,12 @@ function logout() {
         <ul class="dropdown-menu" role="menu">
           <li><a href="<?=base_url('member/personal_profile')?>">Profile Setting</a></li>
           <li><a href="<?=base_url('member/address_book')?>">Address Book</a></li>
-          <li><a href="./?pg=MyAccount&tab=Referral">Referral</a></li>
+         <!-- <li><a href="./?pg=MyAccount&tab=Referral">Referral</a></li> -->
     		  
-              <li><a href="./?pg=MyAccount&tab=FlyerModule">Flyer Request</a></li>
+              <!--  <li><a href="./?pg=MyAccount&tab=FlyerModule">Flyer Request</a></li> -->
     		   
           
-              <li><a href="./?pg=MyAccount&tab=ParcelReport">Parcel Report</a></li>
+              <!--  <li><a href="./?pg=MyAccount&tab=ParcelReport">Parcel Report</a></li> -->
             
         </ul>
       </li>
@@ -750,15 +750,15 @@ span.tip {
 					<ul class="list-group">
 						<a href="<?=base_url('member/personal_profile')?>" class=" list-group-item" id="Profile_Setting">Profile Setting</a>
 						<a href="<?=base_url('member/address_book')?>" class=" list-group-item" id="Address_Book">Address Book</a>
-						<a href="" class=" list-group-item" id="Referral">Referral</a>
-						<a href="" class=" list-group-item" id="Flyer_Request">Flyer Request
-							<span class="badge" data-toggle="tooltip" data-original-title="Unclaim Flyer">0</span>  <!-- yz changes -->
-						</a>
+						<!--<a href="" class=" list-group-item" id="Referral">Referral</a> -->
+						<!--<a href="" class=" list-group-item" id="Flyer_Request">Flyer Request
+							<span class="badge" data-toggle="tooltip" data-original-title="Unclaim Flyer">0</span>  <!-- yz changes 
+						</a> -->
 	  
-						<a href="" class="[:ac_parcelreport:] list-group-item" id="Parcel_Report">
+						<!--<a href="" class="[:ac_parcelreport:] list-group-item" id="Parcel_Report">
 							Parcel Report
-							<span class="badge" data-toggle="tooltip" data-original-title="Unseen Message">0</span> <!-- yz changes -->
-						</a>
+							<span class="badge" data-toggle="tooltip" data-original-title="Unseen Message">0</span>  yz changes 
+						</a> -->
 	  
 					</ul>
 				</div>
