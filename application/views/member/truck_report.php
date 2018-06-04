@@ -283,16 +283,7 @@ z-index:10001;}
   
   <div class="clearfix"></div>
   <br>
-  <ol class="breadcrumb" style="font-size:11px; vertical-align:middle;">
-    <li><img src="https://secure.easyparcel.my/pass/application/source/Malaysia/img/label-icon-dashboard-new.png" style="vertical-align:middle;" /> Downloadable</li>
-    <li><span style="color: #428bca" class="glyphicon glyphicon-calendar"></span> Reschedule</li>
-    <li><span style="color: #428bca" class="glyphicon glyphicon-edit"></span> Change Address</li>
-    <li><span style="color: #FA6C6C" class="glyphicon glyphicon-remove-sign"></span> Request Cancel</li>
-    <li><span style="color: #f0ad4e" class="glyphicon glyphicon-exclamation-sign"></span> Report Missed Pick Up</li>
-    <li><span style="color: #FA6C6C" class="glyphicon glyphicon-exclamation-sign"></span> Report Late Delivery</li>
-    <li><span style="color: orange" class="glyphicon glyphicon-star"></span> Rating</li>
-    <li><img src="https://secure.easyparcel.my/pass/application/source/Malaysia/img/detail-icon-new.png" style="vertical-align:middle;" /> Detail</li>
-  </ol>
+  
   
   <div id="dialog"></div>
   <div class="requestremark" style="display:none;margin-top:10%;">

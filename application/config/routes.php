@@ -115,10 +115,21 @@ $route['int_shipment/(:any)'] = 'Shipment_manage/intDetail/$1';
 $route['home'] = 'Frontend/index';
 $route['default_controller'] = 'Frontend/index';
 
-$route['admin_test'] = 'Admin_manage/admin_test';
-$route['admin_login'] = 'Admin_manage/admin_login';
-
-$route['pru'] = 'Pru_manage/pontian';
+$route['admin/login'] = 'Admin_manage/admin_login';
+$route['admin/dashboard'] = 'Admin_manage/dashboard';
+$route['admin/add_requester'] = 'Admin_manage/add_requester';
+$route['admin/requester_list'] = 'Admin_manage/requester_list';
+$route['admin/add_driver'] = 'Admin_manage/add_driver';
+$route['admin/driver_list'] = 'Admin_manage/driver_list';
+$route['admin/add_admin'] = 'Admin_manage/add_admin';
+$route['admin/admin_list'] = 'Admin_manage/admin_list';
+$route['admin/domestic'] = 'Admin_manage/domestic';
+$route['admin/international'] = 'Admin_manage/international';
+$route['admin/trucking'] = 'Admin_manage/trucking';
+$route['admin/international_cost'] = 'Admin_manage/international_cost';
+$route['admin/domestic_cost'] = 'Admin_manage/domestic_cost';
+$route['admin/trucking_cost'] = 'Admin_manage/trucking_cost';
+$route['admin/profile_setting'] = 'Admin_manage/profile_setting';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

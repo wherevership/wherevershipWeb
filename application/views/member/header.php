@@ -288,16 +288,16 @@ function logout() {
         <ul class="dropdown-menu" role="menu">
          
 			  <li><a href="<?=base_url('courier')?>">Send A Parcel</a></li>
-              <li><a href="./?pg=MyAccount&tab=BulkUpload">Bulk Upload</a></li>
+             <!-- <li><a href="./?pg=MyAccount&tab=BulkUpload">Bulk Upload</a></li> -->
             
         </ul>
       </li>
-      <li class="site-nav-item dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span> My Cart <span class="caret"></span></span> <span class="side-menu-box"><i class="fas fa-shopping-cart"></i></span></a>
+    <!--  <li class="site-nav-item dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span> My Cart <span class="caret"></span></span> <span class="side-menu-box"><i class="fas fa-shopping-cart"></i></span></a>
         <ul class="dropdown-menu" role="menu">
           <li><a href="<?=base_url('member/pending_items')?>">Pending Items</a></li>
           <li><a href="<?=base_url('member/actions_required')?>">Action Required</a></li>
         </ul>
-      </li>
+      </li> -->
       <li class="site-nav-item dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span> My Orders <span class="caret"></span></span> <span class="side-menu-box"><i class="fas fa-shopping-basket"></i></span></a>
         <ul class="dropdown-menu" role="menu">
         	<li><a href="<?=base_url('member/unpaid_orders')?>">Unpaid Orders</a></li>
@@ -309,18 +309,18 @@ function logout() {
         <ul class="dropdown-menu" role="menu">
 			<li><a href="<?=base_url('member/domestic_report')?>">Domestic</a></li>
 			<li><a href="<?=base_url('member/international_report')?>">International</a></li>
-			<li><a href="<?=base_url('member/truck_report')?>">truck</a></li>
+			<li><a href="javascript:comingsoon();">truck</a></li>
 		  
         </ul>
       </li>
-      <li class="site-nav-item dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span> My Credits <span class="caret"></span></span> <span class="side-menu-box"><i class="far fa-money-bill-alt"></i></span></a>
+  <!--    <li class="site-nav-item dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span> My Credits <span class="caret"></span></span> <span class="side-menu-box"><i class="far fa-money-bill-alt"></i></span></a>
         <ul class="dropdown-menu" role="menu">
           <li><a href="<?=base_url('member/top_up')?>">Top Up</a></li>
           <li><a href="<?=base_url('member/credit_history')?>">Credit History</a></li>
           <li><a href="<?=base_url('member/top_up_history')?>">Top Up History</a></li>
         </ul>
       </li>
-      
+      -->
       <li class="site-nav-item dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span>My Account <span class="caret"></span></span> <span class="side-menu-box"><i class="fas fa-user"></i></span></a>
         <ul class="dropdown-menu" role="menu">
           <li><a href="<?=base_url('member/personal_profile')?>">Profile Setting</a></li>
@@ -663,14 +663,14 @@ span.tip {
 					<div class="collapse dropdown" id="SendParcel">
 						<ul class="list-group">
 							<a href="<?=base_url('member/courier')?>" class= "list-group-item" id="Send_A_Parcel">Courier</a>
-							<a href="" class= "list-group-item" id ="Truck">Trucking</a>
+							<a href="javascript:comingsoon();" class= "list-group-item" id ="Truck">Trucking</a>
   	
-							<a href="<?=base_url('member/bulk_upload')?>" class="[:ac_bulkupload:] list-group-item" id ="Bulk_Upload">Bulk Upload</a>
+						<!--	<a href="<?=base_url('member/bulk_upload')?>" class="[:ac_bulkupload:] list-group-item" id ="Bulk_Upload">Bulk Upload</a> -->
 						</ul>
 					</div>
 				</div>
 			</div>
-
+<!--
 			<div style="border-top: 1px solid #ddd;">	
 				<ul class="list-group btn" data-toggle="collapse" data-target="#MyBookings" aria-expanded="false" aria-controls="collapseExample">
 					<a class="list-group-item active">
@@ -685,7 +685,7 @@ span.tip {
 					</ul>
 				</div>
 			</div>
-			
+			-->
 			<div style="border-top: 1px solid #ddd;">
 				<ul class="list-group btn" data-toggle="collapse" data-target="#MyOrders" aria-expanded="false" aria-controls="collapseExample">
 					<a class="list-group-item active">
@@ -717,12 +717,12 @@ span.tip {
   	
 						<a href="<?=base_url('member/international_report')?>" class=" list-group-item" id="International">International</a>
 						
-						<a href="<?=base_url('member/truck_report')?>" class=" list-group-item" id="Trucking">Trucking</a>
+						<a href="javascript:comingsoon();" class=" list-group-item" id="Trucking">Trucking</a>
 	  	
 					</ul>
 				</div>
 			</div>
-			
+	<!--		
 			<div>
 				<ul class="list-group btn" data-toggle="collapse" data-target="#MyCredits" aria-expanded="false" aria-controls="collapseExample">
 					<a class="list-group-item active">
@@ -738,7 +738,7 @@ span.tip {
 					</ul>
 				</div>
 			</div>
-
+-->
 			<div style="border-top: 1px solid #ddd;">	
 				<ul class="list-group btn" data-toggle="collapse" data-target="#MyAccount" aria-expanded="false" aria-controls="collapseExample">
 					<a class="list-group-item active">
@@ -799,8 +799,8 @@ span.tip {
 	</div>
 	
 	<script>
-var sidebarstatus = '00000000';
-var userid = '188473';
+var sidebarstatus = '000000';
+
 
 
 $('.list-group-item').click(function (e) {
@@ -935,34 +935,34 @@ if(sidebarstatus.substring(0, 1) == 1){
 	$('#SendParcel').collapse();
 	$("ul[data-target='#SendParcel']").children().children().eq(1).removeClass('fa-plus').addClass('fa-minus');
 }
-if(sidebarstatus.substring(1, 2) == 1){
-	$('#MyBookings').collapse();
-	$("ul[data-target='#MyBookings']").children().children().eq(1).removeClass('fa-plus').addClass('fa-minus');
-}
+//if(sidebarstatus.substring(1, 2) == 1){
+	//$('#MyBookings').collapse();
+//	$("ul[data-target='#MyBookings']").children().children().eq(1).removeClass('fa-plus').addClass('fa-minus');
+//}
 
-if(sidebarstatus.substring(2, 3) == 1){
+if(sidebarstatus.substring(1, 2) == 1){
 	$('#MyOrders').collapse();
 	$("ul[data-target='#MyOrders']").children().children().eq(1).removeClass('fa-plus').addClass('fa-minus');
 }
 
-if(sidebarstatus.substring(3, 4) == 1){
+if(sidebarstatus.substring(2, 3) == 1){
 	$('#AllShipments').collapse();
 	$("ul[data-target='#AllShipments']").children().children().eq(1).removeClass('fa-plus').addClass('fa-minus');
 }
-if(sidebarstatus.substring(4, 5) == 1){
-	$('#MyCredits').collapse();
-	$("ul[data-target='#MyCredits']").children().children().eq(1).removeClass('fa-plus').addClass('fa-minus');
-}
+//if(sidebarstatus.substring(3, 4) == 1){
+//	$('#MyCredits').collapse();
+//	$("ul[data-target='#MyCredits']").children().children().eq(1).removeClass('fa-plus').addClass('fa-minus');
+//}
 
-if(sidebarstatus.substring(5, 6) == 1){
+if(sidebarstatus.substring(3, 4) == 1){
 	$('#MyAccount').collapse();
 	$("ul[data-target='#MyAccount']").children().children().eq(1).removeClass('fa-plus').addClass('fa-minus');
 }
-if(sidebarstatus.substring(6, 7) == 1){
+if(sidebarstatus.substring(4, 5) == 1){
 	$('#Tools').collapse();
 	$("ul[data-target='#Tools']").children().children().eq(1).removeClass('fa-plus').addClass('fa-minus');
 }
-if(sidebarstatus.substring(7, 8) == 1){
+if(sidebarstatus.substring(5, 6) == 1){
 	$('#HelpSupport').collapse();
 	$("ul[data-target='#HelpSupport']").children().children().eq(1).removeClass('fa-plus').addClass('fa-minus');
 }
@@ -974,53 +974,25 @@ $('#expandForm input').on('change', function() {
 		$(".collapse.dropdown:not(.in)").collapse('show');
 		$(".fas").removeClass('fa-plus');
 		$(".fas").addClass('fa-minus');
-		$.ajax({
-			type : "post",
-			url : "./?ac=updateAllStatus",
-			data : fullstatus,
-			success : function(result){
-				result = $.trim(result);
-			}
-		});
+		
 	}else if(status=="1"){
 		var fullstatus = {fullstatus : 0};
 		$(".collapse.in").collapse('hide');
 		$(".fas").removeClass('fa-plus');
 		$(".fas").addClass('fa-minus');
-		$.ajax({
-			type : "post",
-			url : "./?ac=updateAllStatus",
-			data : fullstatus,
-			success : function(result){
-				result = $.trim(result);
-			}
-		});
+		
 	}
 });
 
-if(sidebarstatus == 11111111 && userid != 0){
+if(sidebarstatus == 111111){
 	$('input:radio[name=acceptNotice][value="0"]').prop('checked', true);
 	$(".fas").removeClass('fa-plus');
 	$(".fas").addClass('fa-minus');
-}else if(sidebarstatus == 00000000 && userid != 0){
+}else if(sidebarstatus == 000000){
 	$('input:radio[name=acceptNotice][value="1"]').prop('checked', true);
 }
 
-function switchTemplate(version){
-	var data = {
-		version : version
-	};
-	$.ajax({
-		type : "post",
-		url : "./?ac=doChangeTemplate",
-		data : data,
-		success : function(result){
-			if(result == "pass"){
-				window.location.reload();
-			}
-		}
-	});
-}
+
 var bookDoneCount = false;
 var unpaidDoneCount = false;
 var bookCountAjax;
@@ -1038,6 +1010,18 @@ $(window).load(function(){
 		html: true
 	});
 });
+
+function comingsoon() {
+	swal({
+				title: 'Coming Soon!!',
+				type: 'error',
+				html: 'this function will coming soon',
+				confirmButtonColor: '#4e97d8'
+				})
+		
+	
+	
+}
 
 function getBookCount(){
 	<!-- yz changes -->
