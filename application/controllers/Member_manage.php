@@ -57,6 +57,15 @@
 			
 		}
 		
+		public function edit_address_book($id) {
+			$this->data['title'] = $id;
+			$this->data['id'] = $id;
+			$this->load->view("member/header", $this->data);
+			$this->load->view("member/edit_address-book",$this->data);
+			$this->load->view("member/footer1");
+			
+		}
+		
 		public function courier() {
 			$this->data['title'] = "courier";
 			$this->load->view("member/header", $this->data);

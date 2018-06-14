@@ -1,11 +1,12 @@
  <script>
-	$('#MyOrders').collapse();
-	$("ul[data-target='#MyOrders']").children().children().eq(1).removeClass('fa-plus').addClass('fa-minus');
-	$("#Order_Invoices").addClass('active selected');
+	$('#driver').collapse();
+	$("ul[data-target='#driver']").children().children().eq(1).removeClass('fa-plus').addClass('fa-minus');
+	$("#driver_list").addClass('active selected');
 
 </script>
-  <div class="col-md-10 col-xs-12 dashboard-wrapped padding-right-off">
-    <div class="row dashoboard-account">
+<div class="col-md-10 col-xs-12 dashboard-wrapped padding-right-off" >
+		
+		  <div class="row dashoboard-account">
     <div class="container-fluid space-small" style="padding-bottom: 15px;">
 	<style>
 .table>thead:first-child>tr:first-child>th {
@@ -47,7 +48,7 @@ button.close {
 </style>
 <div> 
   
-  <h2 class="dashboard-title">Order & Invoices
+  <h2 class="dashboard-title">Driver listing
     
   </h2>
   
@@ -116,7 +117,7 @@ button.close {
   
   <div class="well col-xs-12 col-sm-4">
 	<select class="form-control" id="OSSelect" name="OSSelect" onchange="orderlist.statussort('')">
-		<option value=''>Filter By Status</option><option value='1' >Unpaid (0)</option><option value='2' >Paid (0)</option><option value='3' >Partially Paid (0)</option>
+		<option value=''>Filter By Status</option><option value='1' Selected>Unpaid (0)</option><option value='2' >Paid (0)</option><option value='3' >Partially Paid (0)</option>
 	</select>
   </div>
    
@@ -148,14 +149,15 @@ button.close {
     <tr>
       <th width="5%" class="hidden-xs"><input type='checkbox' name='checkAllOrderOrder' id='checkAllOrder' onclick="checkAllOrderBox()"></th>
       <th width="15%">Order No</th>
-      <th class="hidden-xs" width="26%">Order Date</th>
-      <th class="hidden-xs" width="26%">Status</th>
+      <th class="hidden-xs" width="20%">Order Date</th>
+      <th class="hidden-xs" width="12%">Item(s)</th>
+      <th class="hidden-xs" width="20%">Status</th>
       <th class="hidden-xs" style="text-align:right" width="15%">Total (RM)</th>
       <th class="visible-xs" width="67%">Order Summary</th>
       <th width="18%"></th>
     </tr>
   </thead>
-  <tbody id='table1'>
+  <tbody id="table1">
     
   <tr><td colspan='7'>No Record Found.</td></tr>
     </tbody>
@@ -185,94 +187,37 @@ button.close {
   </select>
 </div>
 <div class="clearfix"></div>
-
+<ol class="breadcrumb" style="font-size:11px; vertical-align:middle;">
+  <li><img src="https://secure.easyparcel.my/pass/application/source/Malaysia/img/detail-icon-new.png" style="vertical-align:middle;" /> Detail</li>
+  <li><i class="epi-download" style="font-size: 14px;color: #B4B4B4;"></i> Download Statement</li>
+</ol>
 </div>
 <div id="dialog"></div>
 <script>
-firebase.auth().onAuthStateChanged( firebaseUser => {
-	if(firebaseUser) {
-					
-					const userDatebase = firebase.database().ref('User/' + firebaseUser.uid);
-					
-					userDatebase.on('value', snap => {
-						
-						$("#welcome").text("Hi " + snap.val().firstName + " " + snap.val().lastName);
-						
-					
-					
-					if (snap.hasChild('order')) {
-					const userShipDatebase = firebase.database().ref('User/' + firebaseUser.uid + '/order');
-					userShipDatebase.once('value', snap=> {
-							var object1 = snap.val();
-							var keys = Object.keys(object1);
-							
-								
-								for (var i=0; i<keys.length; i++) {
-										var k= keys[i];
-										const shipmentdata = firebase.database().ref('Order/' + k);
-										$("#table1").empty();
-										shipmentdata.once('value', snap=>{
-											
-											var object2 = snap.val();
-
-											var shipKey = snap.key;
-											
-											var tr = $("<tr>").html('<td width="2%"><input type=\'checkbox\' name=\'checkUsagedownload\' id=\'checkUsagedownload\' onclick="checknow(\''+shipKey+'\')"></td><td width="15%" class="hidden-xs">'+shipKey+'</td><td width="26%" class="hidden-xs">'+object2.orderDate+'</td><td width="26%" class="hidden-xs">'+object2.status+'</td><td width="15%" class="hidden-xs">'+object2.totalPrice.toFixed(2)+'</td><td width="6%" class="hidden-xs"><a class="btn btn-info btn-xs" href="javascript:showDetail(\''+shipKey+'\')"><i class="glyphicon glyphicon-triangle-right" aria-hidden="true"></i></a></td>');
-
-											$("#table1").append(tr);
-												
-												
-											
-											
-											
-											
-										});
-									
-									
-								}
-					
-					}); 	
-					} else {
-						$("#table1").empty();
-						var tr= $("<tr>").html('<td colspan=\'9\'>No Record Found.</td>');
-						$("#table1").append(tr);
-					}
-					
-					});
-					$(".login_top").hide();
-					$(".signUp_top").hide();
-					$(".logout_top").show();
-					$("#welcome").attr("href","<?=base_url("member/user_panel")?>");
-					$("#log_in_f").text("LogOut").attr("href","javascript:logout()");
-					$("#log_in_mobile").attr("href","<?=base_url("member/user_panel")?>");
-					$("#dashboard_f").attr("href","<?=base_url("member/user_panel")?>");
-					$("#edit_profile_f").attr("href","<?=base_url("member/personal_profile")?>");
-					$("#my_cart_f").attr("href","<?=base_url("member/actions_required")?>");
-				} else {
-					$(".login_top").show();
-					$(".signUp_top").show();
-					$(".logout_top").hide();
-					$("#welcome").text("Hi, Welcome");
-					$("#welcome").attr("href","<?=base_url("userLogin")?>");
-					$("#log_in_mobile").attr("href","<?=base_url("userLogin")?>");
-					$("#log_in_f").text("LogIn").attr("href","<?=base_url("userLogin")?>");
-					$("#dashboard_f").attr("href","<?=base_url("userLogin")?>");
-					$("#edit_profile_f").attr("href","<?=base_url("userLogin")?>");
-					$("#my_cart_f").attr("href","<?=base_url("userLogin")?>");
-					console.log('not logged in');
-				}
-			
-			});
-			
-				function showDetail(id) {
-			
-				
-				window.location.href = '<?=base_url('order/')?>' + id + '/3';
-					
-		}	
-
 <!-- checkbox usage START-->
 var lastChecked = null;
+const userDatabase = firebase.database().ref('User/');
+userDatabase.on('value', snap => {
+	$("#table1").empty();
+	var object1 = snap.val();
+	console.log(object1);
+	var keys = Object.keys(object1);
+	
+	for (var i=0; i<keys.length; i++) {
+		var k= keys[i];
+		
+		
+		if (object1[k].role == "deliver") {
+		var tr = $("<tr>").html('<td width="5%"><input type=\'checkbox\' name=\'checkUsagedownload\' id=\'checkUsagedownload\' onclick="checknow(\''+k+'\')"></td><td width="20%" class="hidden-xs">'+object1[k].firstName+'</td><td width="20%" class="hidden-xs">'+object1[k].lastName+'</td><td width="20%" class="hidden-xs">'+object1[k].email+'</td><td width="20%" class="hidden-xs">'+object1[k].mobileNumber+'</td><td width="5%" class="hidden-xs my-detail"><a class="btn btn-info btn-xs" href="javascript:showDetail(\''+k+'\')"><i class="glyphicon glyphicon-triangle-right" aria-hidden="true"></i></a></td>');
+		$("#table1").append(tr);
+		}
+		
+	}
+	
+	
+	
+	
+});
     
 $(document).ready(function() {
 	var $checkbox = $('input[name=checkUsagedownload]');

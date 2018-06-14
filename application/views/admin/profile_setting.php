@@ -44,7 +44,7 @@
         <form method="post">
 		  <input type="hidden" name="userid" id="userId" value=""/>
           <div class="col-md-6 col-xs-12 profile-pic text-center padding-off" style="position: relative;">
-            <div class="profile_picture"> <img src="https://secure.easyparcel.my/pass/application/APP_6.8/theme/easyparcel/images/easyparcel-avatar.png">
+            <div class="profile_picture"> <img src="<?=base_url('assets2/image/user.jpg')?>">
               <div id="logo" class="glyphicon glyphicon-camera camera"></div>
             </div>
             <input class="hidden" type="file" value="upload" id="upload"/>
@@ -59,20 +59,20 @@
             <div class="col-sm-6 col-xs-12 form-group">
               <label>First Name <span style="color:red;">*</span></label>
                 <div class="has-feedback">
-                  <input class="form-control required" type="text" name="txt_first" id="txt_first" value="Loh" required placeholder="First Name"/>
+                  <input class="form-control required" type="text" name="txt_first" id="txt_first" value="" required placeholder="First Name"/>
                   <span class="epi-info-circled form-control-feedback hide"  aria-hidden="true"></span> 
                 </div>
             </div>
             <div class="col-sm-6 col-xs-12 form-group">
               <label>Last Name <span style="color:red;">*</span></label>
               <div class="has-feedback">
-                <input class="form-control required" type="text" name="txt_last" id="txt_last" value="Chin Guan" required placeholder="Last Name"/>
+                <input class="form-control required" type="text" name="txt_last" id="txt_last" value="" required placeholder="Last Name"/>
                 <span class="epi-info-circled form-control-feedback hide"  aria-hidden="true"></span>
               </div> 
             </div>
             <div class="col-md-12 col-sm-6 col-xs-12 form-group">
               <label>Email</label>
-              <input disabled class="form-control required" type="text" name="txt_email" id="number" value="lcg1989@hk3.com.my">
+              <input disabled class="form-control required" type="text" name="txt_email" id="number" value="">
             </div>
             <div class="col-md-12 col-sm-6 col-xs-12 form-group">
               <label>Password</label>
@@ -108,14 +108,14 @@
             <div class="col-md-12 col-sm-6 col-xs-12 form-group">
               <label>Town/City<span style="color:red;">*</span></label>
               <div class="has-feedback">
-                <input class="form-control required" type="text" name="txt_city"  id="txt_city" value="Pekan Nanas" required placeholder="Town / City"/>
+                <input class="form-control required" type="text" name="txt_city"  id="txt_city" value="" required placeholder="Town / City"/>
                 <span class="epi-info-circled form-control-feedback hide"  aria-hidden="true"></span>
               </div>
             </div>
             <div class="col-md-12 col-sm-6 col-xs-12 form-group">
               <label>Zip/Postal Code<span style="color:red;">*</span></label>
               <div class="has-feedback">
-                <input class="form-control required" type="text" name="txt_postcode" id="txt_postcode" value="81500" onChange="postGetState(this)" required placeholder="Zip / Postal code"/>
+                <input class="form-control required" type="text" name="txt_postcode" id="txt_postcode" value="" onChange="postGetState(this)" required placeholder="Zip / Postal code"/>
                 <span class="epi-info-circled form-control-feedback hide"  aria-hidden="true"></span>
               </div>
             </div>
@@ -199,6 +199,7 @@
 <script>
 firebase.auth().onAuthStateChanged( firebaseUser => {
 				if(firebaseUser) {
+					
 					$("#userId").val(firebaseUser.uid);
 					const database2 = firebase.database().ref('User').child(firebaseUser.uid);
 					database2.on('value', snap => {
@@ -219,12 +220,7 @@ firebase.auth().onAuthStateChanged( firebaseUser => {
 					$(".login_top").hide();
 					$(".signUp_top").hide();
 					$(".logout_top").show();
-					$("#welcome").attr("href","<?=base_url("member/user_panel")?>");
-					$("#log_in_f").text("LogOut").attr("href","javascript:logout()");
-					$("#log_in_mobile").attr("href","<?=base_url("member/user_panel")?>");
-					$("#dashboard_f").attr("href","<?=base_url("member/user_panel")?>");
-					$("#edit_profile_f").attr("href","<?=base_url("member/personal_profile")?>");
-					$("#my_cart_f").attr("href","<?=base_url("member/actions_required")?>");
+					
 					
 				
 				} else {
@@ -232,12 +228,7 @@ firebase.auth().onAuthStateChanged( firebaseUser => {
 					$(".signUp_top").show();
 					$(".logout_top").hide();
 					$("#welcome").text("Hi, Welcome");
-					$("#welcome").attr("href","<?=base_url("userLogin")?>");
-					$("#log_in_mobile").attr("href","<?=base_url("userLogin")?>");
-					$("#log_in_f").text("LogIn").attr("href","<?=base_url("userLogin")?>");
-					$("#dashboard_f").attr("href","<?=base_url("userLogin")?>");
-					$("#edit_profile_f").attr("href","<?=base_url("userLogin")?>");
-					$("#my_cart_f").attr("href","<?=base_url("userLogin")?>");
+					
 					console.log('not logged in');
 				}
 			

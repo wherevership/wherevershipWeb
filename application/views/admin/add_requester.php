@@ -1,7 +1,7 @@
-<script>
-	$('#MyAccount').collapse();
-	$("ul[data-target='#MyAccount']").children().children().eq(1).removeClass('fa-plus').addClass('fa-minus');
-	$("#Profile_Setting").addClass('active selected');
+ <script>
+	$('#requester').collapse();
+	$("ul[data-target='#requester']").children().children().eq(1).removeClass('fa-plus').addClass('fa-minus');
+	$("#add_requester").addClass('active selected');
 
 </script>
 <div class="col-md-10 col-xs-12 dashboard-wrapped padding-right-off">
@@ -33,7 +33,7 @@
        </div>
    
     <div class="container-fluid space-small">
-      <h2 class="dashboard-title">Personal Profile</h2>
+      <h2 class="dashboard-title">Add New Requester</h2>
     <div class="dashboard-title">
       
     </div>
@@ -44,14 +44,12 @@
         <form method="post">
 		  <input type="hidden" name="userid" id="userId" value=""/>
           <div class="col-md-6 col-xs-12 profile-pic text-center padding-off" style="position: relative;">
-            <div class="profile_picture"> <img src="https://secure.easyparcel.my/pass/application/APP_6.8/theme/easyparcel/images/easyparcel-avatar.png">
+            <div class="profile_picture"> <img src="<?=base_url('assets2/image/user.jpg')?>">
               <div id="logo" class="glyphicon glyphicon-camera camera"></div>
             </div>
             <input class="hidden" type="file" value="upload" id="upload"/>
             <br>
-            <div class="row"> <span>Hello <b id="name-title"></b><br>
-            Welcome back, it's nice to see you!</span> 
-            </div>
+           
           </div>  
           <div class="clearfix visible-xs"></div>
           <hr class="visible-xs">
@@ -59,26 +57,25 @@
             <div class="col-sm-6 col-xs-12 form-group">
               <label>First Name <span style="color:red;">*</span></label>
                 <div class="has-feedback">
-                  <input class="form-control required" type="text" name="txt_first" id="txt_first" value="Loh" required placeholder="First Name"/>
+                  <input class="form-control required" type="text" name="txt_first" id="txt_first" value="" required placeholder="First Name"/>
                   <span class="epi-info-circled form-control-feedback hide"  aria-hidden="true"></span> 
                 </div>
             </div>
             <div class="col-sm-6 col-xs-12 form-group">
               <label>Last Name <span style="color:red;">*</span></label>
               <div class="has-feedback">
-                <input class="form-control required" type="text" name="txt_last" id="txt_last" value="Chin Guan" required placeholder="Last Name"/>
+                <input class="form-control required" type="text" name="txt_last" id="txt_last" value="" required placeholder="Last Name"/>
                 <span class="epi-info-circled form-control-feedback hide"  aria-hidden="true"></span>
               </div> 
             </div>
             <div class="col-md-12 col-sm-6 col-xs-12 form-group">
-              <label>Email</label>
-              <input disabled class="form-control required" type="text" name="txt_email" id="number" value="lcg1989@hk3.com.my">
+              <label>Email<span style="color:red;">*</span></label>
+              <input class="form-control required" type="text" name="txt_email" id="email" value="" placeholder="Email">
             </div>
             <div class="col-md-12 col-sm-6 col-xs-12 form-group">
-              <label>Password</label>
-                <small class="pull-right"><a href="./?pg=MyAccount&tab=Profile&do=ChangePassword"> Change</a></small>
+              <label>Password<span style="color:red;">*</span></label>
                 <div>
-                  <input disabled class="form-control required" type="text" name="txt_password" id="number" value="********">
+                  <input class="form-control required" type="password" name="txt_password" id="number" value="" placeholder="Password">
                  </div>
             </div>
           </div>
@@ -108,14 +105,14 @@
             <div class="col-md-12 col-sm-6 col-xs-12 form-group">
               <label>Town/City<span style="color:red;">*</span></label>
               <div class="has-feedback">
-                <input class="form-control required" type="text" name="txt_city"  id="txt_city" value="Pekan Nanas" required placeholder="Town / City"/>
+                <input class="form-control required" type="text" name="txt_city"  id="txt_city" value="" required placeholder="Town / City"/>
                 <span class="epi-info-circled form-control-feedback hide"  aria-hidden="true"></span>
               </div>
             </div>
             <div class="col-md-12 col-sm-6 col-xs-12 form-group">
               <label>Zip/Postal Code<span style="color:red;">*</span></label>
               <div class="has-feedback">
-                <input class="form-control required" type="text" name="txt_postcode" id="txt_postcode" value="81500" onChange="postGetState(this)" required placeholder="Zip / Postal code"/>
+                <input class="form-control required" type="text" name="txt_postcode" id="txt_postcode" value="" onChange="postGetState(this)" required placeholder="Zip / Postal code"/>
                 <span class="epi-info-circled form-control-feedback hide"  aria-hidden="true"></span>
               </div>
             </div>
@@ -176,9 +173,8 @@
                 <div class="clearfix"></div>
                      
                     
-                    <div class="col-sm-6">
-                      <input class="form-control required" type="text" name="txt_mobile" id="txt_mobile" value="" required placeholder="Contact Number" />
-                    </div>
+                     <input class="form-control required" type="text" name="txt_mobile" id="txt_mobile" value="" required placeholder="Contact Number (eg: +60171234567)" />
+                    
                   
               </div>
             </div>
@@ -205,26 +201,12 @@ firebase.auth().onAuthStateChanged( firebaseUser => {
 						console.log(snap.val());
 						$("#welcome").text("Hi " + snap.val().firstName + " " + snap.val().lastName);
 						$("#name-title").text(snap.val().firstName + " " + snap.val().lastName);
-						$("#txt_first").val(snap.val().firstName);
-						$("#txt_last").val(snap.val().lastName);
-						$("#txt_unit").val(snap.val().profileAddress1);
-						$("#txt_building").val(snap.val().profileAddress2);
-						$("#txt_street").val(snap.val().profileAddress3);
-						$("#txt_taman").val(snap.val().profileAddress4);
-						$("#txt_city").val(snap.val().profileCity);
-						$("#txt_postcode").val(snap.val().profilePostcode);
-						$("#txt_country").val(snap.val().profileCountry);
-						$("#txt_mobile").val(snap.val().mobileNumber);
+						
 					});
 					$(".login_top").hide();
 					$(".signUp_top").hide();
 					$(".logout_top").show();
-					$("#welcome").attr("href","<?=base_url("member/user_panel")?>");
-					$("#log_in_f").text("LogOut").attr("href","javascript:logout()");
-					$("#log_in_mobile").attr("href","<?=base_url("member/user_panel")?>");
-					$("#dashboard_f").attr("href","<?=base_url("member/user_panel")?>");
-					$("#edit_profile_f").attr("href","<?=base_url("member/personal_profile")?>");
-					$("#my_cart_f").attr("href","<?=base_url("member/actions_required")?>");
+					
 					
 				
 				} else {
@@ -232,12 +214,7 @@ firebase.auth().onAuthStateChanged( firebaseUser => {
 					$(".signUp_top").show();
 					$(".logout_top").hide();
 					$("#welcome").text("Hi, Welcome");
-					$("#welcome").attr("href","<?=base_url("userLogin")?>");
-					$("#log_in_mobile").attr("href","<?=base_url("userLogin")?>");
-					$("#log_in_f").text("LogIn").attr("href","<?=base_url("userLogin")?>");
-					$("#dashboard_f").attr("href","<?=base_url("userLogin")?>");
-					$("#edit_profile_f").attr("href","<?=base_url("userLogin")?>");
-					$("#my_cart_f").attr("href","<?=base_url("userLogin")?>");
+					
 					console.log('not logged in');
 				}
 			
