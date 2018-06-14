@@ -506,7 +506,7 @@ span.tip {
 <section>
   <div class="container space">
     <div class="col-xs-12 section-copy">
-      <h1>Sell Anywhere, Deliver Using EasyParcel</h1>
+      <h1>Sell Anywhere, Deliver Using Wherevership</h1>
       <h3>Get Orders From Your Online Shopping Cart Pushed to Us Auto-Magically</h3>
     </div>
     <div class="col-md-2 col-sm-4 col-xs-6 integration-bg fade-in-down"><a href="https://secure.easyparcel.my/pass/?pg=Integration&platform=zencart"><img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/integration/zencart.png" class="img-responsive"></a></div>
