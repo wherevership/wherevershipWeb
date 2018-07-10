@@ -385,7 +385,7 @@ function checkaddressint(){
 <section class="whyus-bg hidden-xs">
   <div class="container space">
     <div class="col-xs-12 section-copy">
-      <h1>Why EasyParcel?</h1>
+      <h1>Why Wherevership?</h1>
       <h3>These Are Why You'll Love Us</h3>
     </div>
     <div class="col-md-4 col-sm-6 col-xs-12">

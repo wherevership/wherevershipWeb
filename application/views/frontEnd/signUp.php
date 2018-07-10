@@ -43,7 +43,7 @@
 	<div class="col-md-6 col-md-offset-3 col-xs-12">
       <div class="SignupForm well">
         <h1>Register & <br> Start Sending Parcels</h1>
-        <p>New to EasyParcel? Sign up. It's free and simple!</p>
+        <p>New to Wherevership? Sign up. It's free and simple!</p>
 		<div class="has-feedback" style="margin-bottom: 10px;">
 		
 			<!-- TY-S EMAIL -->

@@ -182,156 +182,39 @@ span.tip {
   <ol class="carousel-indicators hidden-xs hidden-sm">
     <li data-target="#slider_carousel_points" data-slide-to="0" class="active"></li>
     <li data-target="#slider_carousel_points" data-slide-to="1"></li>
-    <li data-target="#slider_carousel_points" data-slide-to="2"></li>
-    <li data-target="#slider_carousel_points" data-slide-to="3"></li>
-	<li data-target="#slider_carousel_points" data-slide-to="4"></li>
-    <li data-target="#slider_carousel_points" data-slide-to="5"></li>
-    <li data-target="#slider_carousel_points" data-slide-to="6"></li>
-	<li data-target="#slider_carousel_points" data-slide-to="7"></li>
-	<li data-target="#slider_carousel_points" data-slide-to="8"></li>
-	<li data-target="#slider_carousel_points" data-slide-to="9"></li>
-	<li data-target="#slider_carousel_points" data-slide-to="10"></li>
+    
   </ol>
  <!-- <div class="visible-xs visible-sm slider-static hide"></div> -->
   
   <!-- Wrapper for slides -->
   <div class="carousel-inner hidden-xs hidden-sm">  
+
     <div class="item active">
-      <div class="sliders slider-12">
-        <div class="container carousel-caption hidden-sm hidden-xs">
-          <div class="col-xs-6 space" style="position: relative;z-index: 15;margin-top: 272px;margin-left: 200px;">
-            <a href="https://www.easyparcel.my/blog/announcement/limited-time-only-rm5-90-nett-for-parcel-up-to-5kg/" target="_blank" class="btn btn-primary btn-lg" style="z-index: 1;"><i class="epi-info" style="font-size: 18px;"></i> Find Out More </a>
-          </div>
-          <div class="col-xs-6 padding-left-off" style="margin-left: -690px;"><img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/slider/slider-adam-promo.png" height="415px"></div>
-        </div>
-      </div>
-    </div>
-    <!--end-->
-    <div class="item">
-      <div class="sliders slider-8">
-        <div class="container carousel-caption hidden-sm hidden-xs">
-          <div class="col-xs-6 space padding-right-off text-right" style="position: relative; z-index: 15;">
-            <a href="https://goo.gl/bJbAj4" target="_blank" class="btn btn-primary btn-lg" style="margin-top: 230px;"><i class="epi-info" style="font-size: 18px;"></i> Find Out More </a>
-          </div>
-          <div class="col-xs-6 padding-left-off" style="margin-top: 10px;margin-left: -530px;"> <img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/slider/Slider_translation.png" height="400px"></div>
-          
-        </div>
-      </div>
-    </div>
-  <div class="item">
-      <div class="sliders slider-6">
-        <div class="container carousel-caption hidden-sm hidden-xs">
-          <div class="col-xs-5 space padding-right-off text-center" style="position: relative; z-index: 15;">
-            <a href="https://goo.gl/gL11Nd" target="_blank" class="btn btn-primary btn-lg" style="margin-top: 85px;margin-left: 160px;"><i class="epi-info" style="font-size: 18px;"></i> Find Out More </a>
-          </div>
-          <div class="col-xs-7 padding-left-off" style="margin-top: 30px;margin-left: -520px;"> <img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/slider/Slider_version_5_3.png" height="400px"></div>
-          
-        </div>
-      </div>
-    </div>
-    <div class="item">
-	  <div class="sliders slider-6">
-        <div class="container carousel-caption hidden-sm hidden-xs">
-        <div class="col-xs-5 space padding-right-off" style="position: relative; z-index: 15;">
-            <a href="https://goo.gl/AX5hBu" target="_blank" class="btn btn-primary btn-lg" style="margin-top: 50px; margin-left: 195px;"><i class="epi-info" style="font-size: 18px;"></i> Find Out More </a>
-          </div>
-          <div class="col-xs-7 padding-left-off" style="margin-left: -380px;top: 20px;"> <img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/slider/poslaju_ply.png" height="500px"></div>
-        </div>
-      </div>
-    </div>
-    <div class="item">
-      <div class="sliders slider-5">
-        <div class="container carousel-caption hidden-sm hidden-xs">
-        <div class="col-xs-5 space padding-right-off" style="position: relative; z-index: 15; top: 30px;">
-          <h3 style="margin-bottom: 0px; color:#f69;">EasyParcel</h3> 
-            <h1 style="color:#f69;"><strong>InsurePlus</strong></h1>
-            <p>
-            <li style="color: #333;">RM50 coverage on all EasyParcel domestic shipments</li>
-            <li style="color: #333;">14 Days guaranteed reimbursement on lost parcels</li>
-            </p>
-            <br>
-            <a href="http://www.easyparcel.my/blog/announcement/easyparcel-insureplus-insurance-coverage-for-lost-parcels/" target="_blank" class="btn btn-primary btn-lg"><i class="epi-info" style="font-size: 18px;"></i> Learn More </a>
-          </div>
-          <div class="col-xs-7 padding-left-off" style="margin-left: -130px;top: 20px;"> <img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/slider/InsurePlus_adam.png" height="380px"></div>
-        </div>
-      </div>
-    </div>
-    <div class="item">
       <div class="sliders slider-7">
         <div class="container carousel-caption hidden-sm hidden-xs">
           <div class="col-xs-5 space padding-right-off" style="position: relative; z-index: 15;">
           <h3 style="margin-bottom: 0px; color:#4d4d4d;">Book For</h3>
             <h1 style="color:#4d4d4d;">INTERNATIONAL<br>DELIVERY TODAY!</h1>
-            <a href="http://www.easyparcel.my/blog/announcement/international-delivery-launched-today/" target="_blank" class="btn btn-primary btn-lg"><i class="epi-info" style="font-size: 18px;"></i> Find Out More </a>
+            <a href="<?=base_url('signUp')?>" target="_blank" class="btn btn-primary btn-lg"><i class="epi-info" style="font-size: 18px;"></i> Find Out More </a>
           </div>
-          <div class="col-xs-7 padding-left-off" style="margin-left: -375px;top: 120px;"> <img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/slider/international_city.png" height="430px"></div>
+          <div class="col-xs-7 padding-left-off" style="margin-left: -375px;top: 120px;"></div>
         </div> 
       </div>
     </div>
-    <div class="item">
-      <div class="sliders slider-6">
-        <div class="container carousel-caption hidden-sm hidden-xs">
-          <div class="col-xs-5 space padding-right-off" style="position: relative; z-index: 15;">
-            <h1 style="color: #f69; margin-bottom: 0px;">Send Faster <br> Send On-Demand</h1>
-			<img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/slider/On_demand_logo.png" width="390px">
-            <div class="clearfix"></div>
-            <br>
-            <h4>Get Shipments Delivered In Just Few Hours</h4>
-            <br>
-            <a href="http://www.easyparcel.my/blog/announcement/send-faster-send-demand/" target="_blank" class="btn btn-primary btn-lg"><i class="epi-info" style="font-size: 18px;"></i> Learn More </a>
-          </div>
-		  <div class="col-xs-7 padding-left-off" style="margin-left:-60px"> <img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/slider/On_demand_bg.png" height="450px"></div>
-        </div>
-      </div>
-    </div>  
-	  <div class="item">
-      <div class="sliders slider-1">
-        <div class="container carousel-caption hidden-sm hidden-xs">
-          <div class="col-xs-5 space padding-right-off" style="position: relative; z-index: 15;">
-            <h1>Have Something <br>
-              To Deliver?</h1>
-            <h4>Just book online, relax and your chosen courier will pick up from you!</h4>
-            <br>
-            <h3 style="color: #fff;"><i class="epi-cube" style="background-color: #4e97d8; border-radius: 50%; padding: 8px 6px; font-size: 18px;"></i> <a href="https://secure.easyparcel.my/pass/?pg=Quote" style="color: #fff;">Send A Parcel</a></h3>
-          </div>
-          <div class="col-xs-7 padding-left-off" style="margin-left:-210px"> <img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/slider/slider-adam2.png" height="415px"></div>
-        </div>
-      </div>
-    </div>
+  
+	
     <div class="item">
       <div class="sliders slider-2">
         <div class="container carousel-caption hidden-sm hidden-xs">
           <div class="col-xs-6 space padding-right-off" style="position: relative; z-index: 15;">
             <h1>Ship Within Malaysia <br> From <span style="color">RM5.90 </span> Nett </h1>
           </div>
-          <div class="col-xs-6 padding-left-off" style="margin-left:-570px"> <img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/slider/slider-adam3.png" height="415px"></div>
+          <div class="col-xs-6 padding-left-off" style="margin-left:-570px"></div>
         </div>
       </div>
     </div>
-    <div class="item">
-      <div class="sliders slider-3">
-        <div class="container carousel-caption hidden-sm hidden-xs">
-          <div class="col-xs-6 space padding-right-off" style="position: relative; z-index: 15;">
-            <h1>Let Us Come To You </h1>
-            <h4>We provide free pick up from your doorstep</h4>
-          </div>
-          <div class="col-xs-6 padding-left-off" style="margin-left:-570px"> <img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/slider/slider-adam4.png" height="415px"></div>
-        </div>
-      </div>
-    </div>
-    <div class="item">
-      <div class="sliders slider-4">
-        <div class="container carousel-caption hidden-sm hidden-xs">
-          <div class="col-xs-5 space padding-right-off" style="position: relative; z-index: 15;">
-            <h1>We're Compatible <br> With Your Online <br> Shopping Cart</h1>
-            <h4>Get orders from your online shopping cart pushed to us auto-magically.</h4>
-            <br>
-            <h3 style="color: #fff;"><i class="epi-link" style="background-color: #4e97d8; border-radius: 50%; padding: 8px 6px; font-size: 18px;"></i> <a href="https://secure.easyparcel.my/pass/?pg=BulkDeliveryTool" style="color: #fff;">Bulk Delivery Tool</a></h3>
-          </div>
-          <div class="col-xs-7 padding-left-off"> <img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/slider/slider-adam5.png" height="415px"></div>
-        </div>
-      </div>
-    </div>
+   
+   
   </div>
   
   <!-- Controls --> 
@@ -361,7 +244,7 @@ span.tip {
 <section class="steps-bg">
   <div class="container space-small">
     <div class="col-sm-4 col-xs-12 steps padding-off" >
-      <div class="col-md-4 col-sm-12 col-xs-4"><img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/compare.png" class="fade-in-down"></div>
+      <div class="col-md-4 col-sm-12 col-xs-4"><img src="<?=base_url('assets2/image/service/compare.png')?>" class="fade-in-down"></div>
       <div class="col-md-8 col-sm-12 col-xs-8">
         <h3><span style="color:##00a9b0; font-size:36px;">1.</span> Compare Prices</h3>
         <p>Use our price comparison engine to find the best prices today.</p>
@@ -371,7 +254,7 @@ span.tip {
       <p class="hr-home"></p>
     </div>
     <div class="col-sm-4 col-xs-12 steps padding-off">
-      <div class="col-md-4 col-sm-12 col-xs-4"><img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/send.png" class="fade-in-down"></div>
+      <div class="col-md-4 col-sm-12 col-xs-4"><img src="<?=base_url('assets2/image/service/send.png')?>" class="fade-in-down"></div>
       <div class="col-md-8 col-sm-12 col-xs-8">
         <h3><span style="color:##00a9b0; font-size:36px;">2.</span> Send Parcels</h3>
         <p>Send your parcel with our partners, we'll even come and collect it.</p>
@@ -381,7 +264,7 @@ span.tip {
       <p class="hr-home"></p>
     </div>
     <div class="col-sm-4 col-xs-12 steps-last padding-off">
-      <div class="col-md-4 col-sm-12 col-xs-4"><img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/save.png" class="fade-in-down"></div>
+      <div class="col-md-4 col-sm-12 col-xs-4"><img src="<?=base_url('assets2/image/service/save.png')?>" class="fade-in-down"></div>
       <div class="col-md-8 col-sm-12 col-xs-8">
         <h3><span style="color:##00a9b0; font-size:36px;">3.</span> Save Money</h3>
         <p>Our customers are saving money every time they use EasyParcel!</p>
@@ -392,13 +275,13 @@ span.tip {
 <section class="light-bg stats-bg">
   <div class="container space">
     <div class="container-fluid">
-      <div class="col-md-4 hidden-sm col-xs-12"><img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/quote-book.png" class="img-responsive"></div>
+      <div class="col-md-4 hidden-sm col-xs-12"><img src="<?=base_url('assets2/image/logo.png')?>" class="img-responsive"></div>
       <div class="col-md-8 col-sm-12 join-happy-members center-space-md">
         <h1>Total Number of Quotes</h1>
         <h3>Wohoo! No More Unknown Delivery Rates</h3>
         <p>Check out the magical numbers that motivate us to work harder and offer the best to our clients. Register an account today and start saving from every delivery you make.</p>
         <h1>
-          <div class="odometer odometer-auto-theme odometer-animating-up odometer-animating">0</div>
+          <div class="odometer odometer-auto-theme odometer-animating-up odometer-animating">10000</div>
         </h1>
       </div>
     </div>
@@ -407,52 +290,62 @@ span.tip {
 <section class="whyus-bg">
   <div class="container space">
     <div class="col-xs-12 section-copy">
-      <h1>Why EasyParcel?</h1>
+      <h1>Why Wherevership?</h1>
       <h3>These Are Why You'll Love Us</h3>
     </div>
     <div class="col-md-4 col-sm-6 col-xs-12">
-      <div class="whyus-point"> <span><img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/why/why-1.png" width="60px" class="fade-in-down"></span>
+      <div class="whyus-point"> <span><img src="<?=base_url('assets2/image/why/why-1.png')?>" width="60px" class="fade-in-down"></span>
         <h4>Fast Online Delivery Booking</h4>
       </div>
     </div>
     <div class="col-md-4 col-sm-6 col-xs-12">
-      <div class="whyus-point"> <span><img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/why/why-4.png" width="60px" class="fade-in-down"></span>
+      <div class="whyus-point"> <span><img src="<?=base_url('assets2/image/why/why-4.png')?>" width="60px" class="fade-in-down"></span>
         <h4>Multiple Courier Choices</h4>
       </div>
     </div>
     <div class="col-md-4 col-sm-6 col-xs-12">
-      <div class="whyus-point"> <span><img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/why/why-6.png" width="60px" class="fade-in-down"></span>
+      <div class="whyus-point"> <span><img src="<?=base_url('assets2/image/why/why-6.png')?>" width="60px" class="fade-in-down"></span>
         <h4>Save On Every Delivery</h4>
       </div>
     </div>
     <div class="col-md-4 col-sm-6 col-xs-12">
-      <div class="whyus-point"> <span><img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/why/why-2.png" width="60px" class="fade-in-down"></span>
+      <div class="whyus-point"> <span><img src="<?=base_url('assets2/image/why/why-2.png')?>" width="60px" class="fade-in-down"></span>
         <h4>Easy Online Tracking</h4>
       </div>
     </div>
     <div class="col-md-4 col-sm-6 col-xs-12">
-      <div class="whyus-point"> <span><img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/why/why-5.png" width="60px" class="fade-in-down"></span>
+      <div class="whyus-point"> <span><img src="<?=base_url('assets2/image/why/why-5.png')?>" width="60px" class="fade-in-down"></span>
         <h4>Free Door To Door Collection</h4>
       </div>
     </div>
     <div class="col-md-4 col-sm-6 col-xs-12">
-      <div class="whyus-point"> <span><img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/why/why-8.png" width="60px" class="fade-in-down"></span>
+      <div class="whyus-point"> <span><img src="<?=base_url('assets2/image/why/why-8.png')?>" width="60px" class="fade-in-down"></span>
         <h4>InsurePlus - RM50 Extra Coverage</h4>
       </div>
     </div>
     <div class="col-md-4 col-sm-6 col-xs-12">
-      <div class="whyus-point"> <span><img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/why/why-3.png" width="60px" class="fade-in-down"></span>
+      <div class="whyus-point"> <span><img src="<?=base_url('assets2/image/why/why-3.png')?>" width="60px" class="fade-in-down"></span>
         <h4>Auto-Generated Consignment Note</h4>
       </div>
     </div>
     <div class="col-md-4 col-sm-6 col-xs-12">
-      <div class="whyus-point"> <span><img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/why/why-7.png" width="60px" class="fade-in-down"></span>
+      <div class="whyus-point"> <span><img src="<?=base_url('assets2/image/why/why-7.png')?>" width="60px" class="fade-in-down"></span>
         <h4>No Volume Commitments Required</h4>
       </div>
     </div>
     <div class="col-md-4 col-sm-6 col-xs-12">
-      <div class="whyus-point"> <span><img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/why/why-9.png" width="60px" class="fade-in-down"></span>
+      <div class="whyus-point"> <span><img src="<?=base_url('assets2/image/why/why-9.png')?>" width="60px" class="fade-in-down"></span>
         <h4>E-Commerce Integration Ready</h4>
+      </div>
+    </div>
+	<div class="col-md-4 col-sm-6 col-xs-12">
+      <div class="whyus-point"> <span><img src="<?=base_url('assets2/image/why/why-7.png')?>" width="60px" class="fade-in-down"></span>
+        <h4>Logistics Integrated Solution & Consultant</h4>
+      </div>
+    </div>
+    <div class="col-md-4 col-sm-6 col-xs-12">
+      <div class="whyus-point"> <span><img src="<?=base_url('assets2/image/why/why-9.png')?>" width="60px" class="fade-in-down"></span>
+        <h4>E-Commerce total business solution (for new & exisitng Ecommerce seller in Domestic & International)</h4>
       </div>
     </div>
   </div>
@@ -509,29 +402,29 @@ span.tip {
       <h1>Sell Anywhere, Deliver Using Wherevership</h1>
       <h3>Get Orders From Your Online Shopping Cart Pushed to Us Auto-Magically</h3>
     </div>
-    <div class="col-md-2 col-sm-4 col-xs-6 integration-bg fade-in-down"><a href="https://secure.easyparcel.my/pass/?pg=Integration&platform=zencart"><img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/integration/zencart.png" class="img-responsive"></a></div>
-    <div class="col-md-2 col-sm-4 col-xs-6 integration-bg fade-in-down"><a href="https://secure.easyparcel.my/pass/?pg=Integration&platform=cubecart"><img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/integration/cubecart.png" class="img-responsive"></a></div>
-    <div class="col-md-2 col-sm-4 col-xs-6 integration-bg fade-in-down"><a href="https://secure.easyparcel.my/pass/?pg=Integration&platform=oscommerce"><img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/integration/oscommerce.png" class="img-responsive"></a></div>
-    <div class="col-md-2 col-sm-4 col-xs-6 integration-bg fade-in-down"><a href="https://secure.easyparcel.my/pass/?pg=Integration&platform=woocommerce"><img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/integration/woocommerce.png" class="img-responsive"></a></div>
-    <div class="col-md-2 col-sm-4 col-xs-6 integration-bg fade-in-down"><a href="https://secure.easyparcel.my/pass/?pg=Integration&platform=magento"><img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/integration/magento.png" class="img-responsive"></a></div>
+    <div class="col-md-2 col-sm-4 col-xs-6 integration-bg fade-in-down"><a href=""><img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/integration/zencart.png" class="img-responsive"></a></div>
+    <div class="col-md-2 col-sm-4 col-xs-6 integration-bg fade-in-down"><a href=""><img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/integration/cubecart.png" class="img-responsive"></a></div>
+    <div class="col-md-2 col-sm-4 col-xs-6 integration-bg fade-in-down"><a href=""><img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/integration/oscommerce.png" class="img-responsive"></a></div>
+    <div class="col-md-2 col-sm-4 col-xs-6 integration-bg fade-in-down"><a href=""><img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/integration/woocommerce.png" class="img-responsive"></a></div>
+    <div class="col-md-2 col-sm-4 col-xs-6 integration-bg fade-in-down"><a href=""><img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/integration/magento.png" class="img-responsive"></a></div>
     <!-- <div class="col-md-3 col-sm-4 col-xs-6 integration-bg fade-in-down"><a href="https://secure.easyparcel.my/pass/?pg=Integration&platform=lelong"><img src="/images/integration/lelong.png" class="img-responsive"></a></div> -->
-    <div class="col-md-2 col-sm-4 col-xs-6 integration-bg fade-in-down"><a href="https://secure.easyparcel.my/pass/?pg=Integration&platform=opencart"><img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/integration/opencart.png" class="img-responsive"></a></div>
-    <div class="col-md-2 col-sm-4 col-xs-6 integration-bg fade-in-down"><a href="https://secure.easyparcel.my/pass/?pg=Integration&platform=excel"><img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/integration/excel.png" class="img-responsive"></a></div>
-    <div class="col-md-2 col-sm-4 col-xs-6 integration-bg fade-in-down"><a href="https://secure.easyparcel.my/pass/?pg=Integration&platform=easystore"><img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/integration/easystore.png" class="img-responsive"></a></div>
-    <div class="col-md-2 col-sm-4 col-xs-6 integration-bg fade-in-down"><a href="https://secure.easyparcel.my/pass/?pg=Integration&platform=shopify"><img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/integration/shopify.png" class="img-responsive"></a></div>
-    <div class="col-md-2 col-sm-4 col-xs-6 integration-bg fade-in-down"><a href="https://secure.easyparcel.my/pass/?pg=Integration&platform=sitegiant"><img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/integration/sitegiant.png" class="img-responsive"></a></div>
+    <div class="col-md-2 col-sm-4 col-xs-6 integration-bg fade-in-down"><a href=""><img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/integration/opencart.png" class="img-responsive"></a></div>
+    <div class="col-md-2 col-sm-4 col-xs-6 integration-bg fade-in-down"><a href=""><img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/integration/excel.png" class="img-responsive"></a></div>
+    <div class="col-md-2 col-sm-4 col-xs-6 integration-bg fade-in-down"><a href=""><img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/integration/easystore.png" class="img-responsive"></a></div>
+    <div class="col-md-2 col-sm-4 col-xs-6 integration-bg fade-in-down"><a href=""><img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/integration/shopify.png" class="img-responsive"></a></div>
+    <div class="col-md-2 col-sm-4 col-xs-6 integration-bg fade-in-down"><a href=""><img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/integration/sitegiant.png" class="img-responsive"></a></div>
     <!--<div class="col-md-3 col-sm-4 col-xs-6 integration-bg fade-in-down"><a href="https://secure.easyparcel.my/pass/?pg=Integration&platform=lazada"><img src="/images/integration/lazada.png" class="img-responsive"></a></div>-->
-    <div class="col-md-2 col-sm-4 col-xs-6 integration-bg fade-in-down"><a href="https://secure.easyparcel.my/pass/?pg=Integration&platform=instantestore"><img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/integration/instantestore.png" class="img-responsive"></a></div>
-    <div class="col-md-2 col-sm-4 col-xs-6 integration-bg fade-in-down"><a href="https://secure.easyparcel.my/pass/?pg=Integration&platform=11street"><img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/integration/11street.png" class="img-responsive"></a></div>
-    <div class="col-md-2 col-sm-4 col-xs-6 integration-bg fade-in-down"><a href="https://secure.easyparcel.my/pass/?pg=Integration&platform=unicart"><img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/integration/unicart.png" class="img-responsive"></a></div>
-    <div class="col-md-2 col-sm-4 col-xs-6 integration-bg fade-in-down"><a href="https://secure.easyparcel.my/pass/?pg=Integration&platform=houseguru"><img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/integration/houseguru.png" class="img-responsive"></a></div>
-    <div class="col-md-2 col-sm-4 col-xs-6 integration-bg fade-in-down"><a href="https://secure.easyparcel.my/pass/?pg=Integration&platform=lazada"><img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/integration/lazada.png" class="img-responsive"></a></div>
-    <div class="col-md-2 col-sm-4 col-xs-6 integration-bg fade-in-down"><a href="https://secure.easyparcel.my/pass/?pg=Integration&platform=ebay"><img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/integration/eBay.png" class="img-responsive"></a></div>
+    <div class="col-md-2 col-sm-4 col-xs-6 integration-bg fade-in-down"><a href=""><img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/integration/instantestore.png" class="img-responsive"></a></div>
+    <div class="col-md-2 col-sm-4 col-xs-6 integration-bg fade-in-down"><a href=""><img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/integration/11street.png" class="img-responsive"></a></div>
+    <div class="col-md-2 col-sm-4 col-xs-6 integration-bg fade-in-down"><a href=""><img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/integration/unicart.png" class="img-responsive"></a></div>
+    <div class="col-md-2 col-sm-4 col-xs-6 integration-bg fade-in-down"><a href=""><img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/integration/houseguru.png" class="img-responsive"></a></div>
+    <div class="col-md-2 col-sm-4 col-xs-6 integration-bg fade-in-down"><a href=""><img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/integration/lazada.png" class="img-responsive"></a></div>
+    <div class="col-md-2 col-sm-4 col-xs-6 integration-bg fade-in-down"><a href=""><img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/integration/eBay.png" class="img-responsive"></a></div>
     <!--<div class="col-md-2 col-sm-4 col-xs-6 integration-bg fade-in-down"><a href="https://secure.easyparcel.my/pass/?pg=Integration&platform=dropee"><img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/integration/dropee.png" class="img-responsive"></a></div>-->
-    <div class="col-md-2 col-sm-4 col-xs-6 integration-bg fade-in-down"><a href="https://secure.easyparcel.my/pass/?pg=Integration&platform=netshop"><img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/integration/netshop.png" class="img-responsive"></a></div>
-    <div class="col-md-2 col-sm-4 col-xs-6 integration-bg fade-in-down"><a href="https://goo.gl/2wiSso"><img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/integration/semuts.png" class="img-responsive"></a></div>
-    <div class="col-md-2 col-sm-4 col-xs-6 integration-bg fade-in-down"><a href="https://goo.gl/rhFrHC"><img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/integration/onpay.png" class="img-responsive"></a></div>
-    <div class="col-md-2 col-md-offset-8 col-sm-4 col-xs-6 text-center integration-bg fade-in-down"><a href="https://secure.easyparcel.my/pass/?pg=BulkDeliveryTool#api"><img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/integration/more.png" class="img-responsive"></a></div>
+    <div class="col-md-2 col-sm-4 col-xs-6 integration-bg fade-in-down"><a href=""><img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/integration/netshop.png" class="img-responsive"></a></div>
+    <div class="col-md-2 col-sm-4 col-xs-6 integration-bg fade-in-down"><a href=""><img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/integration/semuts.png" class="img-responsive"></a></div>
+    <div class="col-md-2 col-sm-4 col-xs-6 integration-bg fade-in-down"><a href=""><img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/integration/onpay.png" class="img-responsive"></a></div>
+    <div class="col-md-2 col-md-offset-8 col-sm-4 col-xs-6 text-center integration-bg fade-in-down"><a href=""><img src="https://easyparcel.my/EPinclude/application/APP_6.8/theme/easyparcel/images/integration/more.png" class="img-responsive"></a></div>
   </div>
 </section>
 <div class="bottom-corner hidden-xs">

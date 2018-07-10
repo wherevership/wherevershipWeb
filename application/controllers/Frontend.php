@@ -109,6 +109,13 @@ class Frontend extends CI_Controller {
 			$this->load->view("frontEnd/forgotEmail");
 			$this->load->view("frontEnd/footer");
 	}
+	
+	public function price() {
+			$this->data['title'] = "Forgot Email";
+			$this->load->view("frontEnd/header", $this->data);
+			$this->load->view("frontEnd/pricing");
+			$this->load->view("frontEnd/footer");
+	}
 		
 }
 

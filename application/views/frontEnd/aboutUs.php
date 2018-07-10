@@ -1,15 +1,26 @@
 <div id="masterContent" >
 	<section class="light-bg aboutus">
   <div class="container space">
-    <div class="col-md-6 hidden-sm col-xs-12"> <a href="#" data-toggle="modal" data-target="#myModal"><img src="https://secure.easyparcel.my/pass/application/APP_6.8/theme/easyparcel/images/easyparcel-video.png" width="100%" style="" onmouseover="this.src='https://secure.easyparcel.my/pass/application/APP_6.8/theme/easyparcel/images/easyparcel-video-hover.png';" onmouseout="this.src='https://secure.easyparcel.my/pass/application/APP_6.8/theme/easyparcel/images/easyparcel-video.png';"></a> </div>
+    <div class="col-md-6 hidden-sm col-xs-12"> <a href="#" data-toggle="modal" data-target="#myModal"><img src="<?=base_url('assets2/image/logo.png')?>" width="60%" style="" ></a> </div>
     <div class="col-md-6 col-xs-12" style="text-align: justify;">
     <h1>About Us</h1>
-      <p>Wherevership as a whole is a web-based parcel consolidator and E-commerce shipping solutions provider, or to put it into simple words, we provide easy-access solution for delivery service bookings.</p>
+      <p>Wherevership as a whole is an integrated logistics business solution and E-commerce shipping solutions provider based on current market needs, or to put it into simple words, we provide easy-acess solution for delivery service bookings.</p>
+	  <p>Following is our current services to market and we will continue to integrate newly logistic solution timely.</p>
+	  <ol>
+		<li>Courier service (Domestic & International)</li>
+		<li>Trucking service (Domestic & Cross-border to Singapore & Thailand)</li>
+		<li>Air Freight</li>
+		<li>Ocean freight - Coming soon</li>
+		<li>Warehousing solution</li>
+		<li>E-fulfillment to USA</li>
+		<li> In bound Ecommerce from China (Taobao shipping solution)</li>
+		<li>Logistics solution platform for shating networking (new enhancement)</li>
+	</ol>
       <p>Established in September 2016, this company was formed with a mission in mind; that is to provide a simplified shipping platform where businesses could book any manner of consignment for delivery at prices they couldn't achieve themselves, backed up with the knowledge and expertise of an industry veteran (the Managing Director).</p>
       <p>Even though we have now developed an efficient and user-friendly online booking system, our ethos is to keep the small business mentality and treat each customer with the time and care they deserve.</p>
       <p>More than 50,000 people and businesses in Malaysia are using Wherevership. Our platform allows you to book for delivery from multiple established courier companies in Malaysia and of course, at an affordable rate.</p>
       
-      <a href="#" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-lg visible-sm"><i class="epi-play"></i> Watch Our Video</a>
+      
     </div>
     
     <!-- Modal -->
@@ -18,7 +29,22 @@
 			<div class="modal-header"></div>
 			<div class="modal-body">
 				<div class="embed-responsive embed-responsive-4by3">
-					<iframe class="embed-responsive-item" width="560" height="315" src="https://www.youtube.com/embed/NbHTHiRVr-o?rel=0&enablejsapi=1&version=3&playerapiid=ytplayer" allowscriptaccess="always" frameborder="0" allowfullscreen=""></iframe>
+					<p>Wherevership as a whole is an integrated logistics business solution and E-commerce shipping solutions provider based on current market needs, or to put it into simple words, we provide easy-acess solution for delivery service bookings.</p>
+	  <p>Following is our current services to market and we will continue to integrate newly logistic solution timely.</p>
+	  <ol>
+		<li>Courier service (Domestic & International)</li>
+		<li>Trucking service (Domestic & Cross-border to Singapore & Thailand)</li>
+		<li>Air Freight</li>
+		<li>Ocean freight - Coming soon</li>
+		<li>Warehousing solution</li>
+		<li>E-fulfillment to USA</li>
+		<li> In bound Ecommerce from China (Taobao shipping solution)</li>
+		<li>Logistics solution platform for shating networking (new enhancement)</li>
+	</ol>
+      <p>Established in September 2016, this company was formed with a mission in mind; that is to provide a simplified shipping platform where businesses could book any manner of consignment for delivery at prices they couldn't achieve themselves, backed up with the knowledge and expertise of an industry veteran (the Managing Director).</p>
+      <p>Even though we have now developed an efficient and user-friendly online booking system, our ethos is to keep the small business mentality and treat each customer with the time and care they deserve.</p>
+      <p>More than 50,000 people and businesses in Malaysia are using Wherevership. Our platform allows you to book for delivery from multiple established courier companies in Malaysia and of course, at an affordable rate.</p>
+					<!--<iframe class="embed-responsive-item" width="560" height="315" src="" allowscriptaccess="always" frameborder="0" allowfullscreen=""></iframe> -->
 				</div>
 			</div>
 			<div class="modal-footer">
@@ -78,6 +104,16 @@
     <div class="col-md-4 col-sm-6 col-xs-12">
       <div class="whyus-point"> <span><img src="<?=base_url('assets2/image/why/why-9.png')?>" width="60px" class="fade-in-down"></span>
         <h4>E-Commerce Integration Ready</h4>
+      </div>
+    </div>
+	<div class="col-md-4 col-sm-6 col-xs-12">
+      <div class="whyus-point"> <span><img src="<?=base_url('assets2/image/why/why-7.png')?>" width="60px" class="fade-in-down"></span>
+        <h4>Logistics Integrated Solution & Consultant</h4>
+      </div>
+    </div>
+    <div class="col-md-4 col-sm-6 col-xs-12">
+      <div class="whyus-point"> <span><img src="<?=base_url('assets2/image/why/why-9.png')?>" width="60px" class="fade-in-down"></span>
+        <h4>E-commerce total business solution (for new & existing Ecommerce seller in Domestic & International</h4>
       </div>
     </div>
   </div>

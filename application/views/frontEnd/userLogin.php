@@ -154,7 +154,7 @@
         <input type="checkbox" id="rememberme"/>Remember Me</label>
 		<button class="btn btn-primary btn-lg log-in" value="Login" onclick="Signin()" style="width:100%;" id="loginButton"> Log In </button>
         
-		<a href="<?=base_url('forgotPass')?>" class="span11">Forgot your password?</a> / <a href="<?=base_url('forgotEmail')?>" class="span11">Forgot your login email?</a>
+		<a href="<?=base_url('forgotPass')?>" class="span11">Forgot your password?</a>
         <div class="clearfix"></div>
        
         <br>
