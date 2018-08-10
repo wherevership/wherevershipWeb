@@ -7,7 +7,7 @@ class Shipment_Cost_Model extends CI_model {
 	
 	public function insert($insert_array=array()) {
 		
-		$this->db->insert("shipment_cost",$insert_array);
+		$this->db->insert("address_book",$insert_array);
 		return $this->db->insert_id();
 		
 	}

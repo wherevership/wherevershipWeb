@@ -1,7 +1,7 @@
 <?php
-class User_Model extends CI_model {
+class Domestic_Price_Model extends CI_model {
 	
-	private $table_name = "user";
+	private $table_name = "domestic_price";
 	
 	public function __construct() {
 		$this->load->database();

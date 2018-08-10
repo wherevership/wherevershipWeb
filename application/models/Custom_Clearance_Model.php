@@ -1,7 +1,7 @@
 <?php
-class User_Model extends CI_model {
+class Custom_Clearance_Model extends CI_model {
 	
-	private $table_name = "user";
+	private $table_name = "custom_clearance";
 	
 	public function __construct() {
 		$this->load->database();

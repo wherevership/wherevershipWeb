@@ -1,7 +1,7 @@
 <?php
-class User_Model extends CI_model {
+class Order_Table_Model extends CI_model {
 	
-	private $table_name = "user";
+	private $table_name = "order_table";
 	
 	public function __construct() {
 		$this->load->database();

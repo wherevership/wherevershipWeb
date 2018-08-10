@@ -1,7 +1,7 @@
 <?php
-class User_Model extends CI_model {
+class Credit_History_Model extends CI_model {
 	
-	private $table_name = "user";
+	private $table_name = "credit_history";
 	
 	public function __construct() {
 		$this->load->database();
