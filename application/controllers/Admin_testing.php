@@ -4,6 +4,7 @@
 		
 		public function __construct() {
 		parent::__construct();
+		$this->load->library('session');
 		$this->load->model('Admin_Model');
 	}
 		
@@ -20,8 +21,11 @@
 				echo('fail');
 				
 			} else {
-				
+				echo($dataList['firstname']);
+				$this->session->set_userdata('admin_logged_in',$dataList);
 				echo('pass');
+				
+				
 			}
 			
 		}
@@ -38,6 +42,30 @@
 			
 		}
 		
+		
+		public function test_session() {
+			if (isset($this->session->userdata['admin_logged_in'])) {
+					$username = ($this->session->userdata['admin_logged_in']['firstname']);
+					echo($username);
+					
+				}
+			
+			
+		}
+		
+		public function test_logout() {
+			$this->session->unset_userdata('admin_logged_in');
+			if (isset($this->session->userdata['admin_logged_in'])) {
+					$username = ($this->session->userdata['admin_logged_in']['firstname']);
+					echo($username);
+					
+			} else {
+				
+				echo('no login');
+			}
+			
+			
+		}
 		
 		
 		

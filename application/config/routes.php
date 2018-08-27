@@ -131,8 +131,11 @@ $route['admin/international_cost'] = 'Admin_manage/international_cost';
 $route['admin/domestic_cost'] = 'Admin_manage/domestic_cost';
 $route['admin/trucking_cost'] = 'Admin_manage/trucking_cost';
 $route['admin/profile_setting'] = 'Admin_manage/profile_setting';
+
 $route['admin/testOne'] = 'Admin_testing/test_get_one';
 $route['admin/testAll'] = 'Admin_testing/test_get_all';
+$route['admin/testSession'] = 'Admin_manage/test_session';
+$route['admin/testLogOut'] = 'Admin_testing/test_logout';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
