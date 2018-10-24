@@ -23,7 +23,7 @@
 				<hr class="visible-xs visible-sm">
 			</div>
 			<div class="col-md-6 col-sm-12">
-				<form method="POST" action="" class="form-horizontal">
+				<form method="POST"  class="form-horizontal">
 					<div class="row">
 						<h3>Leave us a message (Reply in 24 hours)</h3>
 						<div class ="form-group">
@@ -83,7 +83,8 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<input type="submit" value="Send" class="form-control btn btn-success"/>
+							<!--<input type="submit" value="Send" class="submit btn btn-success form-control"/> --> 
+							<input type="button" class="btn btn-success form-control send" value="Send"/>
 						</div>
 					
 					</div>
@@ -93,8 +94,60 @@
 			
 			</div>
 		</div>
+<script>
+
+	$(document).ready(function() {
+		$('.send').click(function(){
+		
+			var name = $('#name').val();
+			var email = $('#email').val();
+			var phone = $('#phone').val();
+			var subject = $('#subject').val();
+			var message = $('#message').val();
+			var url = "<?=base_url('contactSend')?>";
 	
+			$.ajax({
+				url: url,
+				type: "POST",
+				dataType: "text",
+				async: true,
+				data: {
+					name: name, 
+					email: email, 
+					phone: phone, 
+					subject: subject, 
+					message: message
+					},
+				
+				success: function(result) {
+					swal({
+						title: 'Email Sent!',
+						type: 'success',
+						html: 'Thank you for your inquiry, we will reply you in 24 hours',
+						confirmButtonColor: '#4e97d8'
+					})
+					window.location.reload();
+					
+				},
+				error: function(XMLHttpRequest,textStatus,textStatus){
+				console.log(XMLHttpRequest.responseText);
+				console.log(XMLHttpRequest.status);
+				console.log(XMLHttpRequest.readyState);
+				console.log(textStatus);
+				alert(XMLHttpRequest.responseText);
+			
+				}	
+			
+			});
+		});
+
+	});
+
+
+</script>
 	
 	
 	</div>
 </div>
+
+

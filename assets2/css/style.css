@@ -1,6 +1,6 @@
 html, body {
 	height: 100%;
-	font-family: 'Nunito', 'Arial', sans-serif, 'SimSun', 'STHeiti';
+	font-family: 'Karla', sans-serif, 'SimSun', 'STHeiti';
 	font-weight: 100;
 }
 /* ZY  */
@@ -73,8 +73,8 @@ li.pagi_Input a {
 	margin-bottom: 200px
 }
 .btn-primary {
-	background-color: #4e97d8;
-	border-color: #4e97d8;
+	background-color: #2cbeb7;
+	border-color: #2cbeb7;
 }
 .btn-info:hover {
 	background-color: #127AA7 !important;
@@ -182,7 +182,7 @@ li.pagi_Input a {
 }
 .table {
 	border: 1px solid #E4E4E4;
-	font-size: 12px;
+	font-size: 15px;
 }
 .table>thead:first-child>tr:first-child>th {
 	background-color: #00a9b0;
@@ -413,7 +413,7 @@ html, body {
 	-webkit-background-size: 53px;
 	-moz-background-size: 45px;
 	background-size: 53px;
-	width: 30%;
+	width: 20%;
 }
 .page-header {
 	padding-bottom: 0px;
@@ -5125,12 +5125,12 @@ form .rating span {
 	padding: 0px;
 }
 .space {
-	padding-top: 65px;
-	padding-bottom: 65px;
-}
-.space-small {
 	padding-top: 30px;
 	padding-bottom: 30px;
+}
+.space-small {
+	padding-top: 20px;
+	padding-bottom: 20px;
 }
 .res-email input.form-control, .SigninForm input.form-control, .SignupForm input#email1, .form-horizontal select#courier1, .form-group input#awb1 {
 	height: 45px;
@@ -5658,7 +5658,7 @@ i.fragile-download {float: none;}
 @media (min-width:768px) and (max-width:991px) {
 .logo-wrapper img.logo {
 	padding-top: 0px;
-	width: 50%;
+	width: 25%;
 }
 .top-bar-menu {
 	text-align: left;

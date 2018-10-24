@@ -57,54 +57,33 @@ button.close {
 </div>
 <div class="clearfix"> 
   
-  <div class="well col-xs-12 col-sm-8" onkeypress="return checkEnter(event)">
+  <div class="well col-xs-12 col-sm-12" onkeypress="return checkEnter(event)">
     <div class="hidden-xs">
       <div class="col-xs-3 padding-left-off">
         <select class="form-control" id="category" name="category" onchange="changeCategory()">    
-			<option class='hidden-xs' value='1' >Order Date</option><option value='0' >Order No</option>
+			<option value='1' >First Name</option>
+			<option value='2' >Last Name</option>
+			<option value='3' >Email</option>
+			<option value='4' >Last Name</option>
         </select>
       </div>
-      <div id="searchfield_normal" class="input-group col-xs-9" >
+      <div id="searchfield" class="input-group col-xs-9" >
 		<div class="has-feedback">
-        	<input class="form-control" type="text" name="search" placeholder="Order No"/>
+        	<input class="form-control" type="text" name="search"/>
 			<span class="epi-info-circled form-control-feedback hide"  aria-hidden="true"></span>
 		</div>
 
         <span class="input-group-btn">
         <button class="btn btn-primary" type="button" onclick="orderlist.search()">Search</button>
         </span> </div>
-      <div id="searchfield_calendar" class="input-group col-xs-9" style="display:none">
-        <div class="row">
-          <div class="col-xs-6 padding-off">
-            <div class="form-group" style="margin-bottom:0px">
-              <div class="input-group date">
-                <div class="input-group-addon">From </div>
-				<div class="has-feedback">
-                	<input data-date-format="yyyy-mm-dd" readonly type="text" class="form-control" name="dateFrom" id="fromDate" size="16" name="dateFrom"/>
-					<span class="epi-info-circled form-control-feedback hide"  aria-hidden="true"></span>
-				</div>
-			  </div>
-            </div>
-          </div>
-          <div class="col-xs-6 padding-right-off">
-            <div class="form-group" style="margin-bottom:0px">
-              <div class="input-group date">
-                <div class="input-group-addon">To </div>
-					<div class="has-feedback">
-	                	<input data-date-format="yyyy-mm-dd" readonly type="text" class="form-control" name="dateTo" id="toDate" size="16" name="dateTo"/>
-						<span class="epi-info-circled form-control-feedback hide"  aria-hidden="true"></span>
-					</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <span class="input-group-btn">
-        <button class="btn btn-primary" type="button" onclick="orderlist.search()">Search</button>
-        </span> </div>
+      
     </div>
     <div class="visible-xs">
       <select class="form-control col-xs-12" id="category" name="category" onchange="changeCategory()">
-		<option value='0' >Order No</option>
+		<option value='1' >First Name</option>
+			<option value='2' >Last Name</option>
+			<option value='3' >Email</option>
+			<option value='4' >Last Name</option>
       </select>
       <div class="input-group col-xs-12">
         <input class="form-control" type="text" name="search2" placeholder="Order No"/>
@@ -115,11 +94,7 @@ button.close {
   </div>
    
   
-  <div class="well col-xs-12 col-sm-4">
-	<select class="form-control" id="OSSelect" name="OSSelect" onchange="orderlist.statussort('')">
-		<option value=''>Filter By Status</option><option value='1' Selected>Unpaid (0)</option><option value='2' >Paid (0)</option><option value='3' >Partially Paid (0)</option>
-	</select>
-  </div>
+  
    
   <!-- /input-group --> 
   <!-- /.col-lg-6 --> 
@@ -127,7 +102,8 @@ button.close {
 <div class="container-fluid">
 <div class="form-inline pull-left hidden-xs" style="margin: 20px 0px;">
     <select class="form-control dashboard-bulk-action" id="bulkAction" name="bulkAction" style="width: 150px;">
-		<option value='UsageStatement' selected>Usage Statement</option>
+		<option value='-1' selected>Bluk Action</option>
+		<option value='delete'>Delete</option>
     </select>
     <button onclick='performBulkAction(bulkAction.value)' class="btn btn-default">Apply</button>
   </div>
@@ -139,41 +115,62 @@ button.close {
 </div>
 
 
-<div class="form-inline pull-right hidden-xs" style="margin: 20px 20px;"> Listing Per Page :
-  <select class="form-control" id="resultLimit" name="resultLimit" onchange="orderlist.resultLimit(this.value)">
-	<option value='10' Selected>10</option><option value='50' >50</option><option value='100' >100</option><option value='150' >150</option>
-  </select>
-</div>
+
 <table id="myTable" class="table table-striped" width="100%">
   <thead>
     <tr>
       <th width="5%" class="hidden-xs"><input type='checkbox' name='checkAllOrderOrder' id='checkAllOrder' onclick="checkAllOrderBox()"></th>
-      <th width="15%">Order No</th>
-      <th class="hidden-xs" width="20%">Order Date</th>
-      <th class="hidden-xs" width="12%">Item(s)</th>
+      <th class="hidden-xs" width="20%">First Name</th>
+      <th class="hidden-xs" width="20%">Last Name</th>
+      <th class="hidden-xs" width="20%">Email</th>
       <th class="hidden-xs" width="20%">Status</th>
-      <th class="hidden-xs" style="text-align:right" width="15%">Total (RM)</th>
-      <th class="visible-xs" width="67%">Order Summary</th>
-      <th width="18%"></th>
+      <th class="visible-xs" width="67%">Admin Summary</th>
+      <th width="15%"></th>
     </tr>
   </thead>
   <tbody id="table1">
+  <?php 
+  
+	if (!empty($adminList)) {
+		foreach ($adminList as $v) {
+   ?>
+	<tr>
+		<td width="5%" class="hidden-xs"><input type='checkbox' name="checkBluckAction"></td>
+		<td class="hidden-xs" width="20%"><?=$v['firstname']?></td>
+		<td class="hidden-xs" width="20%"><?=$v['lastname']?></td>
+		<td class="hidden-xs" width="20%"><?=$v['email']?></td>
+		<td class="hidden-xs" width="20%"><?=$v['status']?></td>
+		<td width="15%">
+		<a href="javascript:showDetail('<?=$v['id']?>');" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-expand"></i></a>
+		<a href="javascript:toDelete('<?=base_url('admin/admin_delete/'.$v['id'])?>');" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i></a>
+		</td>
+	</tr>
+  
+	<?php
+	}}
+	  else {
+		  
+    ?>
+	  <tr><td colspan='7'>No Record Found.</td></tr>
+	
+	<?php
+	  }
+	
+	?>
     
-  <tr><td colspan='7'>No Record Found.</td></tr>
+
     </tbody>
   
 </table>
 <div class="form-inline pull-left" style="margin: 20px 0px;">
     <select class="form-control dashboard-bulk-action" id="bulkAction2" name="bulkAction2" onchange="" style="width: 150px;">
-		<option value='UsageStatement' selected>Usage Statement</option>
+		<option value='-1' selected>Bulk Actions</option>
+		<option value='delete'>Delete</option>
+		
     </select>
     <button onclick='performBulkAction(bulkAction2.value)' class="btn btn-default">Apply</button>
   </div>
-  <div class="form-inline visible-xs pull-right"> Listing :
-   <select class="form-control" id="resultLimit" name="resultLimit" onchange="orderlist.resultLimit(this.value)">
-	<option value='10' Selected>10</option><option value='50' >50</option><option value='100' >100</option><option value='150' >150</option>
-   </select>
-  </div>
+  
 
 <div class="dashboard-pagination">
   <ul class="pagination">
@@ -181,44 +178,173 @@ button.close {
   </ul>
 </div>
 
-<div class="form-inline pull-right hidden-xs" style="margin: 20px 20px;"> Listing Per Page :
-  <select class="form-control" id="resultLimit" name="resultLimit" onchange="orderlist.resultLimit(this.value)">
-	<option value='10' Selected>10</option><option value='50' >50</option><option value='100' >100</option><option value='150' >150</option>
-  </select>
-</div>
+
 <div class="clearfix"></div>
-<ol class="breadcrumb" style="font-size:11px; vertical-align:middle;">
-  <li><img src="https://secure.easyparcel.my/pass/application/source/Malaysia/img/detail-icon-new.png" style="vertical-align:middle;" /> Detail</li>
-  <li><i class="epi-download" style="font-size: 14px;color: #B4B4B4;"></i> Download Statement</li>
-</ol>
+
 </div>
 <div id="dialog"></div>
+
+	<div class="modal fade" id="adminDetail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			
+			<div class="modal-dialog" role="document" id="services1">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h2 class="modal-title" id="name"></h2>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+							</button>
+					</div>
+					<div class="modal-body">
+						 <div class="col-md-6 col-xs-12 profile-pic text-center padding-off" style="position: relative;">
+							<div class="profile_picture"> <img src="<?=base_url('assets2/image/user.jpg')?>">
+              
+							</div>
+           
+								<br>
+            
+						</div>  
+					<div class="clearfix visible-xs"></div>
+					<hr class="visible-xs">
+					<div class="col-md-6 col-xs-12 padding-off">
+						<div class="col-sm-6 col-xs-12">
+							<label>First Name</label>
+							<div class="has-feedback">
+								<p id="first_name"></p>
+                  
+							</div>
+						</div>
+						<div class="col-sm-6 col-xs-12 form-group">
+							<label>Last Name</label>
+							<p id="last_name"></p>
+              
+						</div> 
+					</div>
+					<div class="col-md-12 col-sm-6 col-xs-12 form-group">
+						<label>Email <span style="color:red;">*</span></label>
+						<p id="email"></p>
+					</div>
+					<div class="col-md-12 col-sm-6 col-xs-12 form-group">
+					</div>
+       
+					<div class="clearfix"></div>
+						<hr />
+							<div>
+								<div class="col-md-6 col-xs-12 padding-off">
+									<div class="col-xs-12">
+										<label>Address</label>
+              
+											<p id="unit"></p>
+									</div>
+									<div class="col-xs-12 form-group">
+										<p id="building"></p>
+									</div>
+									<div class="col-xs-12 form-group">
+										<p  id="street"></p>
+									</div>
+             
+								</div>
+								<div class="col-md-6  col-xs-12 padding-off">
+									<div class="col-md-12 col-sm-6 col-xs-12 form-group">
+										<label>Town/City</label>
+										<p id="city"></p>
+               
+									</div>
+								</div>
+								<div class="col-md-12 col-sm-6 col-xs-12 form-group">
+									<label>Zip/Postal Code</label>
+              
+									<p  id="postcode"></p>
+                
+								</div>
+							</div>
+							<div class="col-md-12 col-sm-6 col-xs-12 form-group">
+								<label>State</label>
+								<p  id="state"></p>
+							</div>
+							<div class="col-md-12 col-sm-6 col-xs-12 form-group">
+								<label>Country </label>
+								<p  id="country"></p>
+							</div>
+					
+        
+					<div class="clearfix"></div>
+					<div class="col-md-6 col-xs-12 padding-off">
+						<div class="col-xs-12 form-group">
+							<label>Mobile No. </label>
+							<p  id="mobile"></p>
+                    
+                  
+						</div>
+					</div>
+            
+				</div>
+        <div class="clearfix"></div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+       
+					</div>
+				</div>
+			</div>
+			</div>
+
+
+
+
 <script>
 <!-- checkbox usage START-->
 var lastChecked = null;
-const userDatabase = firebase.database().ref('User/');
-userDatabase.on('value', snap => {
-	$("#table1").empty();
-	var object1 = snap.val();
-	console.log(object1);
-	var keys = Object.keys(object1);
-	
-	for (var i=0; i<keys.length; i++) {
-		var k= keys[i];
-		
-		
-		if (object1[k].role == "admin") {
-		var tr = $("<tr>").html('<td width="5%"><input type=\'checkbox\' name=\'checkUsagedownload\' id=\'checkUsagedownload\' onclick="checknow(\''+k+'\')"></td><td width="20%" class="hidden-xs">'+object1[k].firstName+'</td><td width="20%" class="hidden-xs">'+object1[k].lastName+'</td><td width="20%" class="hidden-xs">'+object1[k].email+'</td><td width="20%" class="hidden-xs">'+object1[k].mobileNumber+'</td><td width="5%" class="hidden-xs my-detail"><a class="btn btn-info btn-xs" href="javascript:showDetail(\''+k+'\')"><i class="glyphicon glyphicon-triangle-right" aria-hidden="true"></i></a></td>');
-		$("#table1").append(tr);
-		}
-		
+
+function toDelete(url) {
+	var c = confirm("Are you Sure?");
+	if(c) {
+		location.href=url;
 	}
 	
+}
+
+function showDetail(id) {
+	url = "<?=base_url('api/adminDetail/')?>" + id;
+	$.ajax({
+		method: "GET",
+		url: url,
+		dataType: "json"
+	}).done(function(response){
+		console.log(response);
+		setTimeout(function(){ 
+			
+				$("#name").text(response.firstname + " " + response.lastname);
+				$("#first_name").text(response.firstname);
+				$("#last_name").text(response.lastname);
+				$("#email").text(response.email);
+				$("#unit").text(response.address1);
+				$("#building").text(response.address2);
+				$("#street").text(response.address3);
+				$("#mobile").text(response.mobile);
+				$("#city").text(response.city);
+				$("#postcode").text(response.postcode);
+				$("#state").text(response.state);
+				$("#country").text(response.country);
+				
+			
+				$("#adminDetail").modal();
+		
+		},2000);
+		
+	}).fail(function(XMLHttpRequest,textStatus,textStatus){
+				console.log(XMLHttpRequest.responseText);
+				console.log(XMLHttpRequest.status);
+				console.log(XMLHttpRequest.readyState);
+				console.log(textStatus);
+				alert("something wrong");
+	
+	});
+	
+	//$("#name").text(id);
 	
 	
-	
-});
-    
+}
+
 $(document).ready(function() {
 	var $checkbox = $('input[name=checkUsagedownload]');
 	$checkbox.click(function(e) {
@@ -560,7 +686,7 @@ function RemoveDetail(){
 }
 
 function checkAllOrderBox(){
-	var checkboxes = document.getElementsByName('checkUsagedownload');
+	var checkboxes = document.getElementsByName('checkBluckAction');
 	if(document.getElementById('checkAllOrder').checked){
 		for(var i = 0; i < checkboxes.length; i++){
 			if(checkboxes[i].type == 'checkbox'){
@@ -581,7 +707,7 @@ function checknow(id){
 	if(document.getElementById('checkAllOrder').checked){
 		document.getElementById('checkAllOrder').checked=false;
 	}else{
-		var checkboxes = document.getElementsByName('checkUsagedownload');
+		var checkboxes = document.getElementsByName('checkBluckAction');
 		var allchecked=0;
 		for(var i = 0; i < checkboxes.length; i++){
 			if(checkboxes[i].type == 'checkbox'){

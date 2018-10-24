@@ -47,7 +47,7 @@
 		<div class="has-feedback" style="margin-bottom: 10px;">
 		
 			<!-- TY-S EMAIL -->
-	        <input class="form-control" type="text" placeholder="Email" id="email1" name="txt_email" onchange="checkEmail(this)" value="">
+	        <input class="form-control" type="text" placeholder="Email" id="email" name="txt_email" onchange="checkEmail(this)" value="">
 			<span class="far fa-times-circle form-control-feedback hide"  aria-hidden="true"></span>
 			<!-- TY-E EMAIL -->
 		</div>
@@ -62,7 +62,7 @@
 		
 		</div>
         <label class="checkbox">
-          <input type="checkbox" name="acceptTerm" id="termsCheck" onchange="checkvalid()">
+          <input type="checkbox" name="acceptTerm" id="acceptCheck">
           I accept the <a href="<?=base_url('term_and_condition')?>">Terms and Conditions</a></label>
         <button class="btn btn-primary btn-lg sign-up" value="Sign up" onclick="SignUp()" style="width:100%"> Sign Up </button>
 		<div class="clearfix"></div>
@@ -77,12 +77,8 @@
 <div id="dialog"></div>
 
 <script>
-var emailOutcome = "";
-var passOutcome = "";
-var confirmPassOutcome = "";
-var isLogin=false;
-var message="";
-var exist=0;
+
+
 var cookieStr = document.cookie;
 cookieStr = cookieStr.split('; ');
 var cookies = {};
@@ -96,48 +92,80 @@ if(cookies['username'] != ''){
 
 var parameter = '[:parameter:]';
 
-var url = window.location.href;
-if(url.indexOf("pg=ShopifyLanding") > -1){
-	$(".SigninForm h1").before('<p class="alert alert-danger">You are required to Login before proceed to Shopify Integration Installation.</p>');
-}
 
 function SignUp(){
-	ValidateResult = ValidateSignUp();
-		$(".sign-up").attr("disabled",true);
-		$(".sign-up").html("<i class='far fa-times-circle selector__glyph-inner animate-spin' style='font-size: 24px;'></i>");
-	if(ValidateResult==true){
-	    console.log("pass");
-		var email = $("#email1").val();
-		var pass = $("#cpass").val()
-		firebase.auth().createUserWithEmailAndPassword(email, pass)
-		.then(function(firebaseUser) {
-			window.location.href = '<?=base_url("member/user_panel")?>';
-		})
-		.catch(function(error) {
-			// Error Handling
-			var errorCode = error.code;
-			var errorMessage = error.message;
-			console.log("Error Msg"  + errorMessage);
-		});
-	}else{
-		window.exist = 0;
-		if(ValidateResult != ""){
+		var term=$("#acceptCheck");
+		
+		if (term.is(':checked')) {
+			var email = $('#email').val();
+			var password = $('#pass').val();
+			var repassword = $('#cpass').val();
+			var url =  "<?=base_url('member/signUp')?>";
+			if (email == "") {
+				swal({
+					title: 'Oops',
+					type: 'error',
+					html: 'Please enter your email.',
+					confirmButtonColor: '#4e97d8'
+				})
+		
+			} else if (password == "" || repassword == "") {
+					swal({
+						title: 'Oops',
+						type: 'error',
+						html: 'Please enter your password.',
+						confirmButtonColor: '#4e97d8'
+					})
+			} else if (password != repassword) {
+					console.log(password);
+					console.log(repassword);
+					swal({
+						title: 'Oops',
+						type: 'error',
+						html: 'Password and retype password not same.',
+						confirmButtonColor: '#4e97d8'
+					})
+			} else {
+				
+					console.log(email + password);
+					$.ajax({
+						type: "post",
+						url: url,
+						data: {
+							email: email,
+							password: password
+						},
+						dataType: "json",
+						async: true,
+						success: function(result){
+							window.location.href = '<?=base_url("member/user_panel")?>';
+			
+						},
+						error: function(XMLHttpRequest,textStatus,textStatus){
+							console.log(XMLHttpRequest.responseText);
+							console.log(XMLHttpRequest.status);
+							console.log(XMLHttpRequest.readyState);
+							console.log(textStatus);
+							alert("something wrong");
+			
+					}	
+				});
+			}
+		} else {
 			swal({
 				title: 'Oops',
 				type: 'error',
-				html: '' + ValidateResult,
+				html: 'Your must check the term and condition',
 				confirmButtonColor: '#4e97d8'
 				})
-			$(".sign-up").removeClass("disabled");
-			$(".sign-up").html("Sign Up");
-			isLogin = false;
+
+		
 		}
-	}
 }
 
 function checkEmail(obj){
 	$(".alert.alert-danger").text("").removeClass();
-	$(".sign-up").attr("disabled", true);
+	//$(".sign-up").attr("disabled", true);
 	$(obj).parent().children().eq(1).removeClass("fas fa-info-circle hide");
 	$(obj).parent().children().children().eq(0).removeClass("fas fa-genderless");
     $(obj).parent().children().eq(1).html("<i class='far fa-times-circle selector__glyph-inner animate-spin' style='font-size: 18px;'></i>");
@@ -148,11 +176,11 @@ function checkEmail(obj){
 	if(General.isTextEmpty($(obj))){
 		doEmpty(obj);
 		window.emailOutcome = 0;
-		$(".sign-up").attr("disabled", true);
+	//	$(".sign-up").attr("disabled", true);
 	}else if(!General.validateEmail(email)){
 		doFail(obj);
 		window.emailOutcome = 1;
-		$(".sign-up").attr("disabled", true);
+	//	$(".sign-up").attr("disabled", true);
 	}else{
 		
 		doPass(obj);

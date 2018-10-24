@@ -2,67 +2,54 @@
 		<div class="container top1">
 			<div class="row">
 				<div class="container-fluid">
-					<div class="col-lg-6 col-md-4 col-sm-12 logo-wrapper">
+					<div class="col-lg-2 col-md-4 col-sm-12 logo-wrapper">
 						<a href="<?=base_url('')?>" class="logo-wrapper">
 							<img src="<?=base_url('assets2/image/logo.png')?>" class="logo hidden-xs" width="50%">
 						</a>
 					</div>
-					<div class="col-lg-6 col-md-8 col-sm-12 padding-off">
-						<div class="row">
-							<ol class="breadcrumb-body">
-								<li class="past">
-									<a href="javascript:history.go(-1)">
-										<div class="breadcrumb-statge-container">
-										
-											<div class="breadcrumb-stage">1</div>
-											<div class="breadcrumb-stage">Shipment <br/>Info</div>
-										</div>
-									</a>
-								</li>
-								<li class="current">
-									
-										<div class="breadcrumb-statge-container">
-										
-											<div class="breadcrumb-stage">2</div>
-											<div class="breadcrumb-stage">Custom <br/>Clearance </div>
-									
-										</div>
-									
-								</li>
-								<li class="future">
-									
-										<div class="breadcrumb-statge-container">
-										
-											<div class="breadcrumb-stage">3</div>
-											<div class="breadcrumb-stage">Overview <br/>Sumary</div>
-										
-										</div>
-									
-								</li>
-								<li class="future">
-										
-										<div class="breadcrumb-statge-container">
-									
-											<div class="breadcrumb-stage">4</div>
-											<div class="breadcrumb-stage">payment <br/>Option</span></div>
-										
-										</div>
-									
-								</li>
-							
-						
-							</ol>
+					<div class="col-lg-10 col-md-8 col-sm-12 padding-off">
+						<div class="row bs-wizard" style="border-bottom:0;">
+							<div class="col-xs-3 bs-wizard-step complete">
+								<div class="text-center bs-wizard-stepnum hidden-sm hidden-xs">Shipment Details</div>
+								<div class="text-center bs-wizard-stepnum visible-sm visible-xs">Shipment <br> Details</div>
+								<div class="progress" >
+									<div class="progress-bar" style="width:100%"></div>
+								</div>
+								<a  class="bs-wizard-dot" href="javascript:history.go(-1)"></a>
+							</div>
+							<div class="col-xs-3 bs-wizard-step complete">
+								<div class="text-center bs-wizard-stepnum hidden-sm hidden-xs">Custom Cleaner</div>
+								<div class="text-center bs-wizard-stepnum visible-sm visible-xs">Custom <br> Cleaner</div>
+								<div class="progress">
+									<div class="progress-bar"></div>
+								</div>
+								<a  class="bs-wizard-dot"></a>
+							</div>
+							<div class="col-xs-3 bs-wizard-step disabled">
+								<div class="text-center bs-wizard-stepnum hidden-sm hidden-xs">Order Summary</div>
+								<div class="text-center bs-wizard-stepnum visible-sm visible-xs">Order <br> Summary</div>
+								<div class="progress">
+									<div class="progress-bar"></div>
+								</div>
+								<a  class="bs-wizard-dot"></a>
+							</div>
+							<div class="col-xs-3 bs-wizard-step disabled">
+								<div class="text-center bs-wizard-stepnum hidden-sm hidden-xs">Payment Options</div>
+								<div class="text-center bs-wizard-stepnum visible-sm visible-xs">Payment <br> Options</div>
+								<div class="progress">
+									<div class="progress-bar"></div>
+								</div>
+								<a  class="bs-wizard-dot"></a>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	
-		<div class="row title-bar">
-			<h1>Custom Clearance</h1>
-		</div>
+		
 		<div class="container-fluid space">
-		<form method="POST" action="<?=base_url('int_product_detail')?>" class="form-horizontal">
+		<form method="POST" action="<?=base_url('int_product_detail_Process')?>" class="form-horizontal">
 			<div class="row">
 				<input type="hidden" name="weight" value="<?=$weight?>"/>
 				<input type="hidden" name="height" value="<?=$height?>"/>
@@ -72,6 +59,9 @@
 				<input type="hidden" name="cost" value="<?=$cost?>"/>
 				<input type="hidden" name="fromState" value="<?=$fromState?>"/>
 				<input type="hidden" name="toCountry" value="<?=$toCountry?>"/>
+				<input type="hidden" id="userId"  name="userId" value="<?=$id?>"/>
+				<input type="hidden" id="type"  name="type" value="<?=$type?>"/>
+				<input type="hidden" id="fuelCharge"  name="fuelCharge" value="<?=$fuelCharge?>"/>
 				
 				<input type="hidden" name="shipper_company_name" value="<?=$shipper_company_name?>"/>
 				<input type="hidden" name="shipper_country" value="<?=$shipper_country?>"/>
@@ -219,13 +209,18 @@
 								</div>
 							</div>
 							<div class="row">
+								<div class="col-md-12">
+									<label><input type="checkbox" name="acceptCheck" style="margin-top:11px;" id="acceptCheck"/> &nbsp; I agree & have acknowledged on the <a href="<?=base_url('term_and_condition')?>" target="_blank">Terms & Conditions </a> . </label>
+								</div>
+							</div>
+							<div class="row">
 								<div class = "form-group">		
 									<div class="col-md-6">
 										<a type="button" class="form-control btn" href="javascript:history.go(-1)">Back</a>
 									</div>
 									<div class="col-md-6">
 										
-										<input type="submit" value="Next" id="next" class="form-control btn btn-success"/>
+										<input type="submit" value="Next" id="next" class="form-control btn btn-primary" onclick="return checkvalid()"/>
 										
 									</div>
 								</div>
@@ -312,5 +307,28 @@
 				}
 			
 		}
+		
+		
+		
+		function checkvalid() {
+		var term=$("#acceptCheck");
+		
+		if (term.is(':checked')) {
+			var id = createId();
+			console.log(id);
+		 	
+		  return true;	
+		} else {
+			swal({
+				title: 'Oops',
+				type: 'error',
+				html: 'Your must check the term and condition',
+				confirmButtonColor: '#4e97d8'
+				})
+
+			return false;
+		}
+		
+	}
 	
 	</script>

@@ -1,59 +1,196 @@
 <?php
 	class Cost_preview_manage extends CI_Controller {
+	public function __construct() {
+		parent::__construct();
+		$this->load->library('session');
+		$this->load->model('Domestic_Price_Model');
+		$this->load->model('International_Price_Model');
+		$this->load->model('Config_Model');
+	}
+		
 		
 		public function costPreview() {
-			$this->data['title'] = "Cost Preview For Internatioanl Courier";
-			$this->data['frState'] = $this->input->post("c", true);
-			$this->data['tCountry'] = $this->input->post("d", true);
-			$weight = $this->input->post("w", true);
-			$height = $this->input->post("h", true);
-			$width = $this->input->post("wi", true);
-			$length = $this->input->post("l", true);
-			$this->data['frPostcode'] = $this->input->post("cp", true);
-			$this->data['toPostCode'] = $this->input->post("dp", true);
-			$this->data['fromState'] = $this->state_name($this->data['frState']);
-			$this->data['toCountry'] = $this->countryCode($this->data['tCountry']);
-			$this->data['toCountryZone'] = $this->countryZone($this->data['tCountry']);
-			$this->data['weight_f'] = $this->compareWeight($weight, $height, $width, $length);
-			$this->data['v_weight'] = ($length * $width * $height) / 5000;
-			$this->data['weight'] = $weight;
-			$this->data['length'] = $length;
-			$this->data['width'] = $width;
-			$this->data['height'] = $height;
-			$this->data['weightClass'] = $this->detemineInternationalWeight($this->data['weight_f']);
+			if (isset($this->session->userdata['user_logged_in'])) {
+				
+				$this->data['id'] = ($this->session->userdata['user_logged_in']['id']);
+				$this->data['username'] = ($this->session->userdata['user_logged_in']['firstname']) .' '. ($this->session->userdata['user_logged_in']['lastname']);
+				
+				
+			} else {
+				$this->data['id'] = "";
+				$this->data['username'] = "";
+				
+				
+			}
+			$fuelCharge = $this->Config_Model->getOne(array(
+				'description' => 'Fuel Charge',
+				'is_deleted' => 0,
+			));
+			
+			print_r($fuelCharge);
+			echo($fuelCharge['value']);
+				
+				$this->data['fuelCharge'] = $fuelCharge['value'];
+				
+				echo($this->data['fuelCharge']);
+				$this->data['title'] = "Cost Preview For Internatioanl Courier";
+				$this->data['frState'] = ($this->session->userdata['InternatioanlPreview']['frState']);
+				$this->data['tCountry'] = ($this->session->userdata['InternatioanlPreview']['tCountry']);
+				$this->data['frPostcode'] = ($this->session->userdata['InternatioanlPreview']['frPostcode']);
+				$this->data['toPostCode'] = ($this->session->userdata['InternatioanlPreview']['toPostCode']);
+				$this->data['fromState'] = ($this->session->userdata['InternatioanlPreview']['fromState']);
+				$this->data['toCountry'] = ($this->session->userdata['InternatioanlPreview']['toCountry']);
+				$this->data['toCountryZone'] = ($this->session->userdata['InternatioanlPreview']['toCountryZone']);
+				$this->data['weight_f'] = ($this->session->userdata['InternatioanlPreview']['weight_f']);
+				$this->data['v_weight'] = ($this->session->userdata['InternatioanlPreview']['v_weight']);
+				$this->data['weight'] = ($this->session->userdata['InternatioanlPreview']['weight']);
+				$this->data['length'] = ($this->session->userdata['InternatioanlPreview']['length']);
+				$this->data['width'] = ($this->session->userdata['InternatioanlPreview']['width']);
+				$this->data['height'] = ($this->session->userdata['InternatioanlPreview']['height']);
+				$this->data['weightClass'] = ($this->session->userdata['InternatioanlPreview']['weightClass']);
+			
+			
+			
+		
+			
 			$this->load->view("frontEnd/header",$this->data);
 			$this->load->view("frontEnd/cost_preview", $this->data);
 			$this->load->view("frontEnd/footer");
 			}
 			
-		public function dtcCostPreview() {
-			$this->data['title'] = "Cost Preview For Domestic Courier";
-			$this->data['frState'] = $this->input->post("c", true);
-			$this->data['tState'] = $this->input->post("d", true);
 			
-			$this->data['fromState'] = $this->state_name($this->data['frState']);
-			$this->data['fromStateZone'] = $this->location($this->data['frState']);
+			
+			public function costPreviewProcess() {
+				$frState = $this->input->post("c", true);
+				$tCountry = $this->input->post("d", true);
+				$weight = $this->input->post("w", true);
+				$height = $this->input->post("h", true);
+				$width = $this->input->post("wi", true);
+				$length = $this->input->post("l", true);
+				$frPostcode = $this->input->post("cp", true);
+				$toPostcode = $this->input->post("dp", true);
+				$fromState = $this->state_name($frState);
+				$toCountry = $this->countryCode($tCountry);
+				$toCountryZone = $this->countryZone($tCountry);
+				$weight_f = $this->compareWeight($weight, $height, $width, $length);
+				$v_weight = ($length * $width * $height) / 5000;
+				$weightClass = $this->detemineInternationalWeight($weight_f);
+				
+				$saveData = array(
+				"frState" => $frState,
+				"tCountry" => $tCountry,
+				"weight" => $weight,
+				"height" => $height,
+				"width" => $width,
+				"length" => $length,
+				"frPostcode" => $frPostcode,
+				"toPostCode" => $toPostCode,
+				"fromState" => $fromState,
+				"toCountry" => $toCountry,
+				"toCountryZone" => $toCountryZone,
+				"weight_f" => $weight_f,
+				"v_weight" => $v_weight,
+				"weightClass" => $weightClass,
+			);
+				
+				$this->session->set_userdata('InternatioanlPreview', $saveData);
+			
+		
+				redirect(base_url('cost_preview'));
+			}
+		
+
+
+			public function dtcCostPreview() {
+			if (isset($this->session->userdata['user_logged_in'])) {
+				
+				$this->data['id'] = ($this->session->userdata['user_logged_in']['id']);
+				$this->data['username'] = ($this->session->userdata['user_logged_in']['firstname']) .' '. ($this->session->userdata['user_logged_in']['lastname']);
+				
+				
+			} else {
+				$this->data['id'] = "";
+				$this->data['username'] = "";
+				
+				
+			}
+			
+			
+				
+				$this->data['title'] = "Cost Preview Dosmetic Courier";
+				$this->data['frState'] = ($this->session->userdata['domesticPreview']['frState']);
+				$this->data['frPostcode'] = ($this->session->userdata['domesticPreview']['frPostcode']);
+				$this->data['toPostCode'] = ($this->session->userdata['domesticPreview']['toPostCode']);
+				$this->data['fromState'] = ($this->session->userdata['domesticPreview']['fromState']);
+				$this->data['toState'] = ($this->session->userdata['domesticPreview']['toState']);
+				$this->data['toStateZone'] = ($this->session->userdata['domesticPreview']['toStateZone']);
+				$this->data['fromStateZone'] = ($this->session->userdata['domesticPreview']['fromStateZone']);
+				$this->data['zone'] = ($this->session->userdata['domesticPreview']['zone']);
+				$this->data['weight_f'] = ($this->session->userdata['domesticPreview']['weight_f']);
+				$this->data['v_weight'] = ($this->session->userdata['domesticPreview']['v_weight']);
+				$this->data['weight'] = ($this->session->userdata['domesticPreview']['weight']);
+				$this->data['length'] = ($this->session->userdata['domesticPreview']['length']);
+				$this->data['width'] = ($this->session->userdata['domesticPreview']['width']);
+				$this->data['height'] = ($this->session->userdata['domesticPreview']['height']);
+				$this->data['weightClass'] = ($this->session->userdata['domesticPreview']['weightClass']);
+				
+			
+			
+			
+		
+			$this->load->view("frontEnd/header",$this->data);
+			$this->load->view("frontEnd/dt_cost_preview", $this->data);
+			$this->load->view("frontEnd/footer");
+			}
+			
+			
+		
+		public function dtcCostPreviewProcess() {
+			
+			$frState = $this->input->post("c", true);
+			$tState = $this->input->post("d", true);
+			
+			$fromState = $this->state_name($frState);
+			$fromStateZone = $this->location($frState);
 			
 			$weight = $this->input->post("w", true);
 			$height = $this->input->post("h", true);
 			$width = $this->input->post("wi", true);
 			$length = $this->input->post("l", true);
-			$this->data['frPostcode'] = $this->input->post("cp", true);
-			$this->data['toPostCode'] = $this->input->post("dp", true);
-			$this->data['toState'] = $this->state_name($this->data['tState']);
-			$this->data['toStateZone'] = $this->location($this->data['tState']);
-			$this->data['zone'] = $this->detemineZone($this->data['fromStateZone'],$this->data['toStateZone']);
-			$this->data['weight_f'] = $this->compareWeight($weight, $height, $width, $length);
-			$this->data['v_weight'] = ($length * $width * $height) / 5000;
-			$this->data['weight'] = $weight;
-			$this->data['length'] = $length;
-			$this->data['width'] = $width;
-			$this->data['height'] = $height;
-			$this->data['weightClass'] = $this->detemineDemesticWeight($this->data['weight_f']);
-			$this->load->view("frontEnd/header", $this->data);
-			$this->load->view("frontEnd/dt_cost_preview", $this->data);
-			$this->load->view("frontEnd/footer2");
-			}
+			$frPostcode = $this->input->post("cp", true);
+			$toPostCode = $this->input->post("dp", true);
+			$toState = $this->state_name($tState);
+			$toStateZone = $this->location($tState);
+			$zone = $this->detemineZone($fromStateZone,$toStateZone);
+			$weight_f = $this->compareWeight($weight, $height, $width, $length);
+			$v_weight = ($length * $width * $height) / 5000;
+			$weightClass = $this->detemineDemesticWeight($weight_f);
+			
+			$saveData = array(
+				"frState" => $frState,
+				"tState" => $tState,
+				"fromState" => $fromState,
+				"fromStateZone" => $fromStateZone,
+				"weight" => $weight,
+				"height" => $height,
+				"width" => $width,
+				"length" => $length,
+				"frPostcode" => $frPostcode,
+				"toPostCode" => $toPostCode,
+				"toState" => $toState,
+				"toStateZone" => $toStateZone,
+				"zone" => $zone,
+				"weight_f" => $weight_f,
+				"v_weight" => $v_weight,
+				"weightClass" => $weightClass,
+			);
+			
+			$this->session->set_userdata('domesticPreview', $saveData);
+			
+		//print_r($this->session->userdata['domesticPreview']);
+			redirect(base_url('dtc_cost_preview'));
+			
+		}
 			
 			
 		function state_name($state) {

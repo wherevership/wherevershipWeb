@@ -22,7 +22,7 @@
 
 <link href="<?=base_url('assets2/css/animation.css')?>" rel="stylesheet">
 
-<link href="<?=base_url('assets2/css/nunito.css')?>" rel="stylesheet">
+<link href="<?=base_url('assets2/css/karla.css')?>" rel="stylesheet">
 
 <link href="<?=base_url('assets2/css/animate.css')?>" rel="stylesheet">
 

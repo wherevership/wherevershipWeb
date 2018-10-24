@@ -57,11 +57,12 @@ button.close {
 </div>
 <div class="clearfix"> 
   
-  <div class="well col-xs-12 col-sm-8" onkeypress="return checkEnter(event)">
+  <div class="well col-xs-12 col-sm-12" onkeypress="return checkEnter(event)">
     <div class="hidden-xs">
       <div class="col-xs-3 padding-left-off">
         <select class="form-control" id="category" name="category" onchange="changeCategory()">    
-			<option class='hidden-xs' value='1' >Order Date</option><option value='0' >Order No</option>
+			<option class='hidden-xs' value='1' >Collection Date</option>
+			<option value='2' >Tracking Number</option>
         </select>
       </div>
       <div id="searchfield_normal" class="input-group col-xs-9" >
@@ -104,7 +105,7 @@ button.close {
     </div>
     <div class="visible-xs">
       <select class="form-control col-xs-12" id="category" name="category" onchange="changeCategory()">
-		<option value='0' >Order No</option>
+		<option value='2' >Tracking No</option>
       </select>
       <div class="input-group col-xs-12">
         <input class="form-control" type="text" name="search2" placeholder="Order No"/>
@@ -115,11 +116,7 @@ button.close {
   </div>
    
   
-  <div class="well col-xs-12 col-sm-4">
-	<select class="form-control" id="OSSelect" name="OSSelect" onchange="orderlist.statussort('')">
-		<option value=''>Filter By Status</option><option value='1' Selected>Unpaid (0)</option><option value='2' >Paid (0)</option><option value='3' >Partially Paid (0)</option>
-	</select>
-  </div>
+ 
    
   <!-- /input-group --> 
   <!-- /.col-lg-6 --> 
@@ -127,7 +124,8 @@ button.close {
 <div class="container-fluid">
 <div class="form-inline pull-left hidden-xs" style="margin: 20px 0px;">
     <select class="form-control dashboard-bulk-action" id="bulkAction" name="bulkAction" style="width: 150px;">
-		<option value='UsageStatement' selected>Usage Statement</option>
+		<option value='-1' selected>Bluk Action</option>
+		<option value='delete'>Delete</option>
     </select>
     <button onclick='performBulkAction(bulkAction.value)' class="btn btn-default">Apply</button>
   </div>
@@ -147,25 +145,52 @@ button.close {
 <table id="myTable" class="table table-striped" width="100%">
   <thead>
     <tr>
-      <th width="5%" class="hidden-xs"><input type='checkbox' name='checkAllOrderOrder' id='checkAllOrder' onclick="checkAllOrderBox()"></th>
-      <th width="15%">Order No</th>
-      <th class="hidden-xs" width="20%">Order Date</th>
-      <th class="hidden-xs" width="12%">Item(s)</th>
-      <th class="hidden-xs" width="20%">Status</th>
-      <th class="hidden-xs" style="text-align:right" width="15%">Total (RM)</th>
+      <th width="2%" class="hidden-xs"><input type='checkbox' name='checkAllOrderOrder' id='checkAllOrder' onclick="checkAllOrderBox()"></th>
+      <th class="hidden-xs" width="15%">Tracking Number</th>
+      <th class="hidden-xs" width="25%">Deliver To</th>
+      <th class="hidden-xs" width="16%">Collection Date</th>
+      <th class="hidden-xs" style="text-align:right" width="20%">Status</th>
       <th class="visible-xs" width="67%">Order Summary</th>
-      <th width="18%"></th>
+      <th width="22%"></th>
     </tr>
   </thead>
   <tbody>
-    
-  <tr><td colspan='7'>No Record Found.</td></tr>
+  <?php
+		if (!empty($shipmentList)) {
+		foreach ($shipmentList as $v) {
+   ?>
+	<tr>
+		<td width="2%" class="hidden-xs"><input type='checkbox'></td>
+		<td class="hidden-xs" width="15%"><?=$v['tracking_number']?></td>
+		<td class="hidden-xs" width="25%"><?=$v['recevier_postcode'].'<br/>'.$v['receiver_state'].'<br/>'.$v['receiver_country']?></td>
+		<td class="hidden-xs" width="16%"><?=$v['collection_date']?></td>
+		<td class="hidden-xs" width="20%"><?=$v['status']?></td>
+		
+		<td width="22%">
+		<a href="" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-expand"></i></a>
+		<a href="" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i></a>
+		</td>
+	</tr>
+  
+	<?php
+	}}
+	  else {
+		  
+    ?>
+	  <tr><td colspan='6'>No Record Found.</td></tr>
+	
+	<?php
+	  }
+	
+	?>  
+  
     </tbody>
   
 </table>
 <div class="form-inline pull-left" style="margin: 20px 0px;">
     <select class="form-control dashboard-bulk-action" id="bulkAction2" name="bulkAction2" onchange="" style="width: 150px;">
-		<option value='UsageStatement' selected>Usage Statement</option>
+		<option value='-1' selected>Bluk Action</option>
+		<option value='delete'>Delete</option>
     </select>
     <button onclick='performBulkAction(bulkAction2.value)' class="btn btn-default">Apply</button>
   </div>
@@ -187,10 +212,7 @@ button.close {
   </select>
 </div>
 <div class="clearfix"></div>
-<ol class="breadcrumb" style="font-size:11px; vertical-align:middle;">
-  <li><img src="https://secure.easyparcel.my/pass/application/source/Malaysia/img/detail-icon-new.png" style="vertical-align:middle;" /> Detail</li>
-  <li><i class="epi-download" style="font-size: 14px;color: #B4B4B4;"></i> Download Statement</li>
-</ol>
+
 </div>
 <div id="dialog"></div>
 <script>

@@ -20,7 +20,7 @@
 
 <link href="<?=base_url('assets2/css/animation.css')?>" rel="stylesheet">
 
-<link href="<?=base_url('assets2/css/nunito.css')?>" rel="stylesheet">
+<link href="<?=base_url('assets2/css/karla.css')?>" rel="stylesheet">
 
 <link href="<?=base_url('assets2/css/animate.css')?>" rel="stylesheet">
 
@@ -222,5 +222,89 @@ $(function () {
 			.required {
 				color: #FF0000;
 			}
+			
+			.logo-wrapper img.logo {
+					width: 50%; !important
+				}
+				.bs-wizard > .bs-wizard-step {
+					padding: 0;
+					position: relative; 
+				}
+				.bs-wizard > .bs-wizard-step .bs-wizard-stepnum {
+					color: #595959;
+					margin-bottom: 5px;
+				}
+				.bs-wizard > .bs-wizard-step:first-child > .progress {
+					/*  left: 50%;
+					width: 50%; */
+				}
+				.bs-wizard > .bs-wizard-step > .progress {
+					position: relative;
+					border-radius: 0px;
+					height: 8px;
+					box-shadow: none;
+					margin: 20px 0;
+				}
+				.bs-wizard > .bs-wizard-step.complete > .progress > .progress-bar {
+					width: 50%;
+				}
+				.bs-wizard > .bs-wizard-step:last-child > .progress {
+					/*  width: 50%;*/
+				}
+				.bs-wizard > .bs-wizard-step > .progress > .progress-bar {
+					width: 0px;
+					box-shadow: none;
+					background: #c1f0ee;
+				}
+				.bs-wizard > .bs-wizard-step > .bs-wizard-dot {
+					position: absolute;
+					width: 30px;
+					height: 30px;
+					display: block;
+					background: #c1f0ee;
+					top: 45px;
+					left: 50%;
+					margin-top: -15px;
+					margin-left: -15px;
+					border-radius: 50%;
+				}
+				.bs-wizard > .bs-wizard-step > .bs-wizard-dot {
+					position: absolute;
+					width: 30px;
+					height: 30px;
+					display: block;
+					background: #c1f0ee;
+					top: 45px;
+					left: 50%;
+					margin-top: -15px;
+					margin-left: -15px;
+					border-radius: 50%;
+				}
+				.bs-wizard > .bs-wizard-step > .bs-wizard-dot:after {
+					content: ' ';
+					width: 14px;
+					height: 14px;
+					background: #2cbeb7;
+					border-radius: 50px;
+					position: absolute;
+					top: 8px;
+					left: 8px;
+				}
+				.bs-wizard > .bs-wizard-step.disabled > .bs-wizard-dot {
+					background-color: #f5f5f5;
+				}
+				.bs-wizard > .bs-wizard-step.disabled > .bs-wizard-dot:after {
+					opacity: 0;
+				}
+
+				@media screen and (max-width: 991px) {
+					.bs-wizard > .bs-wizard-step > .bs-wizard-dot {
+					margin-top: 5px;
+					}
+				}
+
+				@media screen and (max-width: 767px) {
+
+				}
 		
 		</style>

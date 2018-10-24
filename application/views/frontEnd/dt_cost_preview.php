@@ -1,83 +1,55 @@
+
 	<div id="masterContent" >
-			<div class="container">
 		
-				<form method="POST" action="<?=base_url('dtc_shipper')?>" class="form-horizontal">
-					<input type="hidden" id="wt" name="weight" value="<?=$weight?>" />
-					<input type="hidden" id="l" name="length" value="<?=$length?>"/>
-					<input type="hidden" id="w" name="width" value="<?=$width?>"/>
-					<input type="hidden" id="h" name="height" value="<?=$height?>"/>
-					<input type="hidden" id="vwt" name="v_weight" value="<?=$v_weight?>"/>
-					<input type="hidden" id="frm" name="fromState" value="<?=$fromState?>"/>
-					<input type="hidden" id="frm" name="fromStateZone" value="<?=$fromStateZone?>"/>
-					<input type="hidden" id="frm" name="toStateZone" value="<?=$toStateZone?>"/>
-					<input type="hidden" id="to" name="toState" value="<?=$toState?>"/>
-					<input type="hidden" id="cp" name="fromPostcode" value="<?=$frPostcode?>"/>
-					<input type="hidden" id="dp" name="toPostcode" value="<?=$toPostCode?>"/>
-					<input type="hidden" id="cost1" name="cost" value=""/>
-					
-					<div class="space">
-						<div class="row">
-							<div class="panel panel-default">
-								<div class="panel panel-title-bar">
-									<img src="<?=base_url('assets2/image/poslaju.png')?>" width="20%">
-								</div>
-								<div class="panel-body">
-									<div class="col-md-3">
-										<h3>From:</h3>
-										<p><?=$fromState?></p>
-										<p><?=$frPostcode?></p>
-										<p><?=$fromStateZone?> Malaysia</p>
-										<hr class="visible-sm visible-xs">
-									</div>
-									<div class="col-md-3">
-										<h3>To:</h3>
-										<p><?=$toState?></p>
-										<p><?=$toPostCode?></p>
-										<p><?=$toStateZone?> Malaysia</p>
-										<hr class="visible-sm visible-xs">
-									</div>
-									<div class="col-md-3">
-										<h3>Parcel Info</h3>
-										
-										<p>Length: <?=$length?>cm</p>
-										<p>Width: <?=$width?>cm</p>
-										<p>Height: <?=$height?>cm</p>
-										<p>Weight: <?=$weight?>Kg</p>
-										<p>Volumetic Weight: <?=$v_weight?>Kg<p>
-																		
-										<hr class="visible-sm visible-xs">
-									</div>
-									<div class="col-md-3">
-										<div>
-											<h3>Price</h3>
-										
-											<p style="color: #00a9b0;"><b>RM<span id="cost"></span></b></p>
-										</div>
-										<div class="form-group">
-											<input type="submit" value="Continue >>" id="next" class="form-control btn btn-success"/>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					
+			<div class="container space">
+			
+			
+				<table id="myTable" class="table table-striped" width="100%">
+					<thead class>
+						<tr>
+							<th width="5%" class="hidden-xs">No</th>
+							<th width="15%" class="hidden-xs">Courier Company</th>
+							<th width="25%" class="hidden-xs">Delivery Duration</th>
+							<th width="16%" class="hidden-xs">Service Type</th>
+							<th width="20%" class="hidden-xs">Your Price</th>
+							<th class="visible-xs"></th>
+ 
+							<th width="19%" style="padding:4px;"></th>
+						</tr>
+					</thead>
+					<tbody id="table1">
+						<form method="POST" action="<?=base_url('dtc_shipment_process')?>" class="form-horizontal">
+							<input type="hidden" id="wt" name="weight" value="<?=$weight?>" />
+							<input type="hidden" id="l" name="length" value="<?=$length?>"/>
+							<input type="hidden" id="w" name="width" value="<?=$width?>"/>
+							<input type="hidden" id="h" name="height" value="<?=$height?>"/>
+							<input type="hidden" id="vwt" name="v_weight" value="<?=$v_weight?>"/>
+							<input type="hidden" id="frm" name="fromState" value="<?=$fromState?>"/>
+							<input type="hidden" id="frz" name="fromStateZone" value="<?=$fromStateZone?>"/>
+							<input type="hidden" id="tsz" name="toStateZone" value="<?=$toStateZone?>"/>
+							<input type="hidden" id="to" name="toState" value="<?=$toState?>"/>
+							<input type="hidden" id="cp" name="fromPostcode" value="<?=$frPostcode?>"/>
+							<input type="hidden" id="dp" name="toPostcode" value="<?=$toPostCode?>"/>
+							<input type="hidden" id="cost1" name="cost" value=""/>
 						
-					<div class="row">
-						<div class="form-group">
-							<div class="col-md-6">
-								<a type="button" class="form-control btn" href="javascript:history.go(-1)">Cancel</a>
-							</div>
+							<tr>
+								<td width="5%" class="hidden-xs">1</td>
+								<td class="hidden-xs" width="15%"><img src="<?=base_url('assets2/image/poslaju.png')?>" width="60%"></td>
+								<td class="hidden-xs" width="25%">1 working day(s)</td>
+								<td class="hidden-xs" width="16%"><i class="fas fa-truck"></i>Pick Up</td>
+								<td class="hidden-xs" width="20%"><span id="price"></span></td>
+								<td width="22%"><input type="submit" value="Book Now" id="next" class="form-control btn btn-primary"/></td>
+							</tr>
+						</form>	
+					</tbody>
+				</table>
+		
 				
-							<div class="col-md-6">
-							</div>
-						</div>
-					</div>
-				</div>
-				</form>
+					
+					
 				
-				
-       
 		</div>
+	
 	</div>
 	
 	
@@ -85,15 +57,50 @@
 	<script>
 		var zone = "<?=$zone?>";
 		var weightClass = "<?=$weightClass?>";
+		var url = "<?=base_url('api/domesticCost')?>"+'/'+ zone + '/' + weightClass;
 		
-		//console.log(weight);
-		const database = firebase.database().ref('domestic_fare/'+ zone + '/' + weightClass);
-		database.on('value', snap => {
-			var object1 = snap.val();
-			console.log(object1);
-			$("#cost").text(object1.toFixed(2));
-			$("#cost1").val(object1.toFixed(2));
+		$.ajax({
+			method: "GET",
+			url: url,
+			dataType: "text" 
+		}).done(function(response){
+			$("#price").text("RM" + response);
+			$("#cost1").val(parseFloat(response).toFixed(2));
+			
+			
 		});
+	/*	//console.log(weight);
+		function submitTo() {
+			var weight = $('#wt').val();
+			var lg = $('#l').val();
+			var width = $('#w').val();
+			var height = $('#h').val();
+			var v_weight = $('#vwt').val();
+			var fromState = $('#frm').val();
+			var fromStateZone = $('#frz').val();
+			var toStateZone = $('#tsz').val();
+			var toState = $('#to').val();
+			var fromPostcode = $('#cp').val();
+			var toPostCode = $('#dp').val();
+			var cost1 = $('#cost1').val();
+			
+			$.ajax({
+				url : '<?=base_url('dtc_shipper')?>',
+				type : 'POST',
+				data : {weight: weight, length: lg, height: height, width: width, v_weight: v_weight, fromPostCode: fromPostcode, toPostCode: toPostCode, fromState: fromState, toState: toState, cost: cost1},
+				error : function() {
+					alert('something is wrong');
+				},
+				success : function(data) {
+					
+				}
+				
+			});
+		
+		*/
+		
+	
+		
 		
 		
 		

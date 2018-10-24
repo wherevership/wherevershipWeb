@@ -78,8 +78,7 @@
 
 <script type="text/javascript" src="<?=base_url('assets2/js/quote.js')?>"></script>
 
-<script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
-<script src="<?=base_url('assets2/js/firConfig.js')?>"></script>
+
 <!--
 <script type="text/javascript" src="https://www.googleadservices.com/pagead/conversion.js"></script>
 <script>
@@ -164,12 +163,12 @@
 						
 					</a>
 				</h1>
-				<form name="loginform" id="loginform" action="javascript:login();" method="post ">
+				<form name="loginform" id="loginform" action="<?=base_url('admin/login_process')?>" method="post">
 					<p>
 						<label for="user_login">
 							Username or Email Address
 							<br>
-							<input type="text" name="log" id="user_login" class="input" value size="20">
+							<input type="text" name="user_login" id="user_login" class="input" value size="20">
 						</label>
 					</p>
 					
@@ -182,52 +181,109 @@
 					</p>
 					
 					</p>
-						<input type="submit" name="submit" id="submit" class="btn btn-primary button-large" value="Log In">
+						<input type="submit" class="btn btn-primary btn-lg log-in" value="Log In" style="width:100%;" id="submit">
 					</p>
 				</form>
 			</div>
 		</div>
 		
 	<script>
-			function login() {
-				const username = document.getElementById('user_login').value;
-				const password = document.getElementById('user_pass').value;
-				const auth = firebase.auth();
-				console.log(auth);
-				auth.signInWithEmailAndPassword(username,password).then(function(firebaseUser) {
-					const database2 = firebase.database().ref('User').child(firebaseUser.uid);
-					console.log(database2);
-					database2.on('value', snap => {
-						console.log(snap.val());
-						if (snap.val().role == 'admin') {
-							window.location.href = "<?=base_url('admin/dashboard')?>";
-						}
-						else {
-							
-							firebase.auth().signOut().then(function() {
-								$("#user_login").val("");
-								$("#user_pass").val("");
-								
-								alert('You not permis to access');
-								
-								
-							}).catch(function(error) {
-									console.log(error);
+			function returnValidate() {
+				var user_login = document.getElementById('user_login');
+				var password = document.getElementById('password');
 				
-						});
-						
-						}
-							
-					});
+				if (user_login.value == '') {
+					alert("User Id can't empty");
+					return false;
+				}
 				
-				})
-				.catch(function(error) {
-				   alert(error.message);
-				
-				});
-				
+				if (password.value == '') {
+					alert("Password can't empty");
+					return false;
+				}
 			}
 	
+	
+	function Signin(){
+	
+
+		if($('#user_login').val() == "" || $("#user_pass").val() == ""){
+		
+			swal({
+				title: 'Oops',
+				type: 'error',
+				html: 'Please enter your email and password.',
+				confirmButtonColor: '#4e97d8'
+			})
+		
+		}else
+		{
+			$("#submit").prop('disabled', true);
+			$("#submit").html("<i class='fas fa-spinner selector__glyph-inner animate-spin' style='font-size: 24px;'></i>");
+			var username = $('#user_login').val();
+			var password = $('#user_pass').val();
+			var url="<?=base_url('admin/login_process')?>";
+		
+			$.ajax({
+				url: url,
+				type: 'POST',
+				data: {user_login: username, user_Pass: password},
+				dataType: "text",
+				async: true,
+				error: function(XMLHttpRequest,textStatus,textStatus) {
+					console.log(XMLHttpRequest.responseText);
+					console.log(XMLHttpRequest.status);
+					console.log(XMLHttpRequest.readyState);
+					console.log(textStatus);
+					alert("something wrong");
+				
+				},
+				success: function(data) {
+					//alert(data);
+					if (data=='pass') {
+						window.location.href = '<?=base_url("admin/dashboard")?>';
+					} else {
+					
+				   swal({
+						title: 'Oops',
+						type: 'error',
+						html: "Email or Password is incorrect",
+						confirmButtonColor: '#4e97d8'
+						});
+				   
+					
+				} 
+			} 
+		});
+		
+	/**	auth.signInWithEmailAndPassword(username,password).then(function(firebaseUser) {
+			
+			window.location.href = '<?=base_url("member/user_panel")?>';
+		}).catch(function(error) {
+				   isLogin = false;
+				   swal({
+						title: 'Oops',
+						type: 'error',
+						html: error.message,
+						confirmButtonColor: '#4e97d8'
+						});
+				   
+					buttonNotInProcess()
+				
+		});
+	**/
+		
+		
+		
+	}
+			}
+	
+	function buttonNotInProcess(){
+		$("#submit").prop('disabled', false);
+		$("#submit").html('Log In');
+		
+	
+}
 	
 	</script>	
 	

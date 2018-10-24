@@ -38,6 +38,11 @@ class Admin_Model extends CI_model {
 		));
 	
 	}
+	
+	public function update($where=array(),$update_array=array()) {
+		$this->db->where($where);
+		$this->db->update($this->table_name, $update_array);
+	}
 
 	public function get($where=array()) {
 		$this->db->where($where);

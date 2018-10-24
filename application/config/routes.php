@@ -52,10 +52,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['user_signup_form'] = 'Form_manage/userSignupForm';
 
-$route['dtc_shipper'] = 'Domestic_shipment_manage/domesticShipperForm';
-$route['dtc_receiver'] = 'Domestic_shipment_manage/domesticReceiverForm';
-$route['dtc_product_detail'] = 'Domestic_shipment_manage/domesticProductDetailForm';
+$route['dtc_shipment'] = 'Domestic_shipment_manage/domesticShipmentForm';
+$route['dtc_shipment_process'] = 'Domestic_shipment_manage/domesticShipmentFormProcess';
+$route['dtc_shipment_overview_process'] = 'Domestic_shipment_manage/domesticShipmentOverviewProcess';
 $route['dtc_shipment_overview'] = 'Domestic_shipment_manage/domesticShipmentOverview';
+$route['dtc_payment_process'] = 'Domestic_shipment_manage/domesticPaymentProcess';
+$route['dtc_payment'] = 'Domestic_shipment_manage/domesticPayment';
+$route['dtc_cost_preview'] = 'Cost_preview_manage/dtcCostPreview';
+$route['dtc_cost_preview_process'] = 'Cost_preview_manage/dtcCostPreviewProcess';
 
 $route['tk_shipper'] = 'Trucking_shipment_manage/tkShipperForm';
 $route['tk_receiver'] = 'Trucking_shipment_manage/tkReceiverForm';
@@ -63,9 +67,13 @@ $route['tk_product_detail'] = 'Trucking_shipment_manage/tkProductDetailForm';
 
 
 $route['int_shipper'] = 'International_shipment_manage/shipperForm';
-$route['int_receiver'] = 'International_shipment_manage/receiverForm';
+$route['int_shipper_process'] = 'International_shipment_manage/shipperFormProcess';
+$route['int_custom_process'] = 'International_shipment_manage/customProcess';
+$route['int_custom'] = 'International_shipment_manage/custom';
 $route['int_product_detail'] = 'International_shipment_manage/productDetailForm';
-$route['int_agreement'] = 'International_shipment_manage/agreementForm';
+$route['int_product_detail_Process'] = 'International_shipment_manage/productDetailFormProcess';
+$route['to_int_payment'] = 'International_shipment_manage/toIntPayment';
+$route['to_int_payment_Process'] = 'International_shipment_manage/toIntPaymentProcess';
 
 $route['internatinal_quote'] = 'Cost_manage/international_quote';
 $route['test'] = 'Cost_manage/test_get';
@@ -87,7 +95,8 @@ $route['prohibited_item_list'] = 'Frontend/prohibitedItemList';
 $route['term_and_condition'] = 'Frontend/tos';
 $route['privacy_policy'] = 'Frontend/privacyPolicy';
 $route['cost_preview'] = 'Cost_preview_manage/costPreview';
-$route['dtc_cost_preview'] = 'Cost_preview_manage/dtcCostPreview';
+$route['cost_preview_process'] = 'Cost_preview_manage/costPreviewProcess';
+
 $route['tracking'] = 'track_manage/track';
 $route['price'] = 'Frontend/price';
 
@@ -108,6 +117,10 @@ $route['member/credit_history'] = 'Member_manage/credit_history';
 $route['member/top_up_history'] = 'Member_manage/top_up_history';
 $route['member/top_up'] = 'Member_manage/top_up';
 $route['member/bulk_upload'] = 'Member_manage/bulk_upload';
+$route['member/login_process'] = 'User_manage/login_process';
+$route['member/logOut'] = 'User_manage/logout';
+$route['member/signUp'] = 'User_manage/signUpProcess';
+$route['member/updateMemberProfile/(:num)'] = 'User_manage/updateMemberProfile/$1';
 
 $route['order/(:any)/(:num)'] = 'Order_manage/detail/$1/$2';
 $route['dtc_shipment/(:any)'] = 'Shipment_manage/dtcDetail/$1';
@@ -131,11 +144,38 @@ $route['admin/international_cost'] = 'Admin_manage/international_cost';
 $route['admin/domestic_cost'] = 'Admin_manage/domestic_cost';
 $route['admin/trucking_cost'] = 'Admin_manage/trucking_cost';
 $route['admin/profile_setting'] = 'Admin_manage/profile_setting';
+$route['admin/login_process'] = 'Admin_manage/login_process';
+$route['admin/LogOut'] = 'Admin_manage/logout';
+$route['admin/admin_delete/(:num)'] = 'Admin_process_manage/admin_delete/$1';
+$route['admin/requester_delete/(:num)'] = 'Admin_process_manage/requester_delete/$1';
+$route['admin/driver_delete/(:num)'] = 'Admin_process_manage/driver_delete/$1';
+$route['api/adminDetail/(:num)'] = 'User_api_manage/adminDetail/$1';
+$route['api/userDetail/(:num)'] = 'User_api_manage/userDetail/$1';
+$route['admin/update_profile/(:num)'] = 'User_manage/updateAdminProfile/$1';
+
+$route['internatinal/fuel_charge_update'] = 'International_shipment_manage/fuel_charge_update';
+$route['internatinal/internatinal_price/(:any)'] = 'International_shipment_manage/internatinal_price/$1';
+$route['internatinal/internatinal_price_update/(:any)/(:num)'] = 'International_shipment_manage/international_price_update/$1/$2';
+
+$route['domestic/domestic_price/(:any)'] = 'Domestic_shipment_manage/domestic_price/$1';
+$route['domestic/domestic_price_update/(:any)/(:num)'] = 'Domestic_shipment_manage/domestic_price_update/$1/$2';
 
 $route['admin/testOne'] = 'Admin_testing/test_get_one';
 $route['admin/testAll'] = 'Admin_testing/test_get_all';
+$route['admin/testSession1'] = 'Admin_testing/test_session';
 $route['admin/testSession'] = 'Admin_manage/test_session';
 $route['admin/testLogOut'] = 'Admin_testing/test_logout';
+
+
+
+$route['testEmail'] = 'Email_manage/testEmail';
+$route['contactSend'] = 'Email_manage/sendContactUs';
+
+$route['api/domesticCost/(:any)/(:any)'] = 'Price_api_manage/domestic_price/$1/$2';
+$route['api/intCost/(:any)/(:any)'] = 'Price_api_manage/int_price/$1/$2';
+$route['api/add_admin'] = 'User_manage/addAdmin'; 
+$route['api/add_driver'] = 'User_manage/addDriver'; 
+$route['api/add_requester'] = 'User_manage/addRequester'; 
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

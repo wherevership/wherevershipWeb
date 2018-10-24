@@ -75,7 +75,8 @@
             <div class="col-md-12 col-sm-6 col-xs-12 form-group">
               <label>Password <span style="color:red;">*</span></label>
                 <div>
-                  <input class="form-control required" type="password" name="txt_password" id="number" value="" placeholder="Password">
+                  <input class="form-control required" type="password" name="txt_password" id="txt_pass" value="" placeholder="Password">
+				  <input class="form-control required" type="password" name="txt_repassword" id="txt_repass" value="" placeholder="Retype Password">
                  </div>
             </div>
           </div>
@@ -118,7 +119,7 @@
             </div>
             <div class="col-md-12 col-sm-6 col-xs-12 form-group">
               <label>State<span style="color:red;">*</span></label>
-              <select class="form-control" name="txt_state">
+              <select class="form-control" name="txt_state" id="txt_state">
                 
                 <option value="Johor" selected>Johor</option>
                 
@@ -185,7 +186,7 @@
         <div class="clearfix"></div>
         
         <div class="clearfix">
-          <input type="button" class="btn btn-primary pull-right" value="Save Profile" onclick="profile.SaveProfile();">
+          <input type="button" class="btn btn-primary pull-right" value="Save Profile" onclick="SaveDriver();">
           </form>
         </div>
       </div>
@@ -194,6 +195,113 @@
 </div>
 <div id="dialog"></div>
 <script>
+function SaveDriver() {
+	var firstName = $('#txt_first').val();
+	var lastName = $('#txt_last').val();
+	var email = $('#email').val();
+	var password = $('#txt_pass').val();
+	var repassword = $('#txt_repass').val();
+	var address1 = $('#txt_unit').val();
+	var address2 = $('#txt_building').val();
+	var address3 = $('#txt_street').val();
+	var city = $('#txt_city').val();
+	var postcode = $('#txt_postcode').val();
+	var state = $('#txt_state').val();
+	var country = $('#txt_country').val();
+	var mobile = $('#txt_mobile').val();
+	var url = "<?=base_url('api/add_driver')?>";
+	
+	if (firstName == "" || lastName == "") {
+		swal({
+			title: 'Oops',
+			type: 'error',
+			html: 'Please enter your name.',
+			confirmButtonColor: '#4e97d8'
+			})
+		
+	} else if (email == "") {
+		swal({
+			title: 'Oops',
+			type: 'error',
+			html: 'Please enter your email.',
+			confirmButtonColor: '#4e97d8'
+			})
+		
+	} else if (password == "" || repassword == "") {
+		swal({
+			title: 'Oops',
+			type: 'error',
+			html: 'Please enter your password.',
+			confirmButtonColor: '#4e97d8'
+			})
+	} else if (address1 == "" || city == "" || postcode == "" || state == "" || country == "") {
+		swal({
+			title: 'Oops',
+			type: 'error',
+			html: 'Please enter your address',
+			confirmButtonColor: '#4e97d8'
+			})
+	} else if (mobile == "") {
+		swal({
+			title: 'Oops',
+			type: 'error',
+			html: 'Please enter your mobile number',
+			confirmButtonColor: '#4e97d8'
+			})
+	
+	} else if (password != repassword) {
+		console.log(password);
+		console.log(repassword);
+		swal({
+			title: 'Oops',
+			type: 'error',
+			html: 'Password and retype password not same.',
+			confirmButtonColor: '#4e97d8'
+			})
+	} else {
+	
+		$.ajax({
+			type: "post",
+			url: url,
+			data: {
+				firstName: firstName,
+				lastName: lastName,
+				email: email,
+				password: password,
+				address1: address1,
+				address2: address2,
+				address3: address3,
+				city: city,
+				postcode: postcode,
+				state: state,
+				country: country,
+				mobile: mobile
+			},
+			dataType: "json",
+			async: true,
+			success: function(result){
+					swal({
+						title: 'Saved',
+						type: 'success',
+						html: result.result,
+						confirmButtonColor: '#4e97d8'
+					})
+					window.location.reload();
+			
+			},
+			error: function(XMLHttpRequest,textStatus,textStatus){
+				console.log(XMLHttpRequest.responseText);
+				console.log(XMLHttpRequest.status);
+				console.log(XMLHttpRequest.readyState);
+				console.log(textStatus);
+				alert("something wrong");
+			
+			}	
+		});
+	}
+	
+}
+
 firebase.auth().onAuthStateChanged( firebaseUser => {
 				if(firebaseUser) {
 					$("#userId").val(firebaseUser.uid);

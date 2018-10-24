@@ -29,6 +29,7 @@
 		function bindcardnow() 
 		{ document.getElementById("instantpay").submit(); }  
 	</script>
+	<!--
 	<div class="profile-bg bindCard">
 		<form name="ePayment" id='instantpay' method="post" action="https://www.mobile88.com/ePayment/entry.asp">
 			<input type="hidden" name="MerchantCode" value="M02625_S0001">
@@ -47,15 +48,10 @@
 			<input type="hidden" name="TokenId" value="">
 			<p><i class="epi-credit-card"></i> &nbsp;  Register Your Credit Card And Start Shipping Internationally<a href="#" class="btn btn-default btn-xs pull-right" onclick='bindcardnow()'>Register Now</a> <span class="pull-right" data-toggle="tooltip" data-original-title="Registration is free. The RM1 registration fee will be credited back to your EasyParcel account in 24 hours."><i class="epi-info-circled"></i></span></p>
 		</form>
-	</div>          		
+	</div> -->          		
 
        
-    <div class="row"> 
-		<div class="row">
-			 <div class="alert alert-warning alert-dismissible" role="alert"> <strong>ALERT:</strong> Your account is not verified. Please verify your account using the mobile confirmation sent. <a class="btn btn-warning" onclick="SendVerify()"> Verify My Account Now</a> </div>
-		</div>
-	</div>
-	
+   
 	<div class="row dashoboard-account">
 		<div class="row space">
 			<div class="col-md-3 col-md-offset-1 col-sm-4 col-xs-5 profile-pic text-center" style="position: relative;"> 
@@ -67,16 +63,13 @@
 			</div>
 			<div class="col-xs-7 visible-xs">
 				<h3 class="profile-name"></h3>
-				<span data-toggle="tooltip" data-original-title="Your account is not updated yet. Kindly update your profile under Profile Settings." data-placement="bottom" >
-				<span class="label label-warning">Pending Activation</span> </span>
-				<span data-toggle="tooltip" data-original-title="You are currently enjoying benefits from this package." data-placement="bottom" > <span class="label label-success"></span> </span> 
-				<br>
+				
 			</div>
 			<div class="col-md-7 col-sm-8 col-xs-12 my-details">
 				<div class="row hidden-xs">
-					<h3 class="profile-name">Loh Chin Guan</h3>
-					<span class="label label-warning">Pending Activation</span>
-					<span data-toggle="tooltip" data-original-title="You are currently enjoying benefits from this package. Expired on: -0001-11-30 " data-placement="bottom" > <span class="label label-success"></span> </span> 
+					<h3 class="profile-name"><?=!empty($username)?$username:'Unknown'?></h3>
+					<span class="label">Activation User</span>
+					
 					<br>
 				</div>
 				<br />
@@ -155,94 +148,8 @@
 					</div>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-lg-8 col-sm-12 col-xs-6">
-					<div class="panel panel-default">
-						<div class="panel-heading text-center">
-							<h4><i class="epi-box"></i> Pending For Collection </h4>
-						</div>
-						<div class="panel-body booking-summary">
-							<div class="row">
-								<h5 class="text-center">
-									<strong><a href="./?pg=MyAccount&tab=Shipment&ss=2" target="_blank"><h1><span>0</span></h1></a></strong>
-								</h5>
-                                <br class="hidden-xs">
-                                <table class="booking-summary-tb text-center hidden-xs" width="100%" border="0">
-									<tbody>
-										<tr>
-											<th>Courier Company</th>
-											<th width="15%"><strong>Today</strong></th>
-											<th width="15%"><strong>Tomorrow</strong></th>
-											<th width="15%"><strong>3-7 Days</strong></th>
-											<th width="15%"><strong>7 Days +</strong></th>
-										</tr>
-											
-										<tr><td>No Orders.</td></tr>
-											
-									</tbody>
-								</table>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-sm-12 col-xs-6">
-					<div class="panel panel-default">
-						<div class="panel-heading text-center">
-							<h4><i class="epi-box"></i> Delivery In Transit </h4>
-						</div>
-						<div class="panel-body booking-summary">
-							<div class="row">
-								<h5 class="text-center">
-									<strong><a href="./?pg=MyAccount&tab=Shipment&ss=4" target="_blank"><h1><span>0</span></h1></a></strong>
-								</h5>
-                                <br class="hidden-xs">
-								<div class="col-xs-6 hidden-xs">
-									<table class="booking-summary-tb text-center hidden-xs" width="100%" border="0">
-										<tbody>
-											<tr>
-											  <th colspan="2">Domestic</th>
-											</tr>
-											<tr><td>No Orders.</td></tr>
-										</tbody>
-									</table>
-								</div>
-								<div class="col-xs-6 hidden-xs">
-									<table class="booking-summary-tb text-center hidden-xs" width="100%" border="0">
-										<tbody>
-											<tr>
-											  <th colspan="2">International</th>
-											</tr>
-											
-											<tr><td>No Orders.</td></tr>
-											
-										</tbody>
-									</table>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<br>
-			<div class="col-md-8">
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<h4>Latest Announcement &nbsp;&nbsp;<small class="pull-right"><a href="http://www.easyparcel.my/blog/category/announcement/" target="_blank">More Announcement &raquo;</a></small></h4>
-					</div>
-					<div class="panel-body"><small class="hidden-xs">[Thu, 10 Aug 2017]</small> 
-						<a href="https://www.easyparcel.my/blog/announcement/say-hi-to-abx-express/" target="_blank"><span style="font-size:14px;">Say Hi To ABX Express!</span></a>
-						<a href="https://www.easyparcel.my/blog/announcement/say-hi-to-abx-express/" target="_blank" class="hidden-xs" style="float:right;font-size:12px;">More &raquo;</a><br><br><small class="hidden-xs">[Wed, 9 Aug 2017]</small>
-						<a href="https://www.easyparcel.my/blog/announcement/penang-only-24-xpress-just-became-a-pgeon-point/" target="_blank"><span style="font-size:14px;">*PENANG ONLY* 24 Xpress Just Became A Pgeon Point!</span></a>
-						<a href="https://www.easyparcel.my/blog/announcement/penang-only-24-xpress-just-became-a-pgeon-point/" target="_blank" class="hidden-xs" style="float:right;font-size:12px;">More &raquo;</a><br><br><small class="hidden-xs">[Tue, 8 Aug 2017]</small>
-						<a href="https://www.easyparcel.my/blog/announcement/aneka-diy-is-now-a-pgeon-point/" target="_blank"><span style="font-size:14px;">Aneka DIY Is Now A Pgeon Point!</span></a>
-						<a href="https://www.easyparcel.my/blog/announcement/aneka-diy-is-now-a-pgeon-point/" target="_blank" class="hidden-xs" style="float:right;font-size:12px;">More &raquo;</a><br><br></div>
-					</div>
-				</div>
+			
 				
-            <div class="col-md-4 hidden-sm hidden-xs">
-				<div class="fb-page" data-href="https://www.facebook.com/easyParcel.my/" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/easyParcel.my/"><a href="https://www.facebook.com/easyParcel.my/">easyParcel.my</a></blockquote></div></div>
-			</div>
-		</div>
 	</div>
 </div>
 

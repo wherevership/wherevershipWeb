@@ -136,29 +136,31 @@
 <div class="container space">
   <div class="row">
 	  
-	<div id="LoginForm" class="col-md-6 col-xs-12">							   
-      <div class="SigninForm well" onkeypress="return checkEnter(event)">
-        <h1>Log In</h1>
-        <p>Welcome back! Access your account and manage your bookings.</p>
-		<div class="has-feedback">
-       <input class="form-control" type="text" placeholder="Sign in Email" id="login_email" name="txt_user"><span class="glyphicon glyphicon-info-sign form-control-feedback hide"  aria-hidden="true"></span>
-        <br>
-		</div>
-		<div class="has-feedback">
-       <input class="form-control" type="password" placeholder="Sign in Password" id="login_pass" name="txt_pass"><span class="glyphicon glyphicon-info-sign form-control-feedback hide"  aria-hidden="true"></span>
-        </div>
-        <input type="hidden" name="txt_wechatID" value="">
-        <br>
+	<div class="col-md-6 col-md-offset-3 col-xs-12">							   
+		<div class="SigninForm well" >
+			<form name="loginform" id="loginform" method="post" action="">
+				<h1>Log In</h1>
+				<p>Welcome back! Access your account and manage your bookings.</p>
+					<div class="has-feedback">
+						<input class="form-control" type="text" placeholder="Sign in Email" id="user_login" name="user_login"><span class="glyphicon glyphicon-info-sign form-control-feedback hide"  aria-hidden="true"></span>
+						<br>
+					</div>
+					<div class="has-feedback">
+						<input class="form-control" type="password" placeholder="Sign in Password" id="user_pass" name="user_pass"><span class="glyphicon glyphicon-info-sign form-control-feedback hide"  aria-hidden="true"></span>
+					</div>
+					
+					<br>
         
-		<label class="checkbox">
-        <input type="checkbox" id="rememberme"/>Remember Me</label>
-		<button class="btn btn-primary btn-lg log-in" value="Login" onclick="Signin()" style="width:100%;" id="loginButton"> Log In </button>
+					<label class="checkbox">
+						<input type="checkbox" id="rememberme"/>Remember Me</label>
+						<input type="submit" class="btn btn-primary btn-lg log-in" value="Log In" style="width:100%;" id="submit" onclick="Signin()">
         
-		<a href="<?=base_url('forgotPass')?>" class="span11">Forgot your password?</a>
-        <div class="clearfix"></div>
+						<a href="<?=base_url('forgotPass')?>" class="span11">Forgot your password?</a>
+						<div class="clearfix"></div>
        
-        <br>
-        No account? Start here! <strong> <a href="<?=base_url('signUp')?>">Register Now</a> </strong>
+						<br>
+						No account? Start here! <strong> <a href="<?=base_url('signUp')?>">Register Now</a> </strong>
+			</form>
         </div>
     </div>
   </div>
@@ -189,14 +191,14 @@ if(url.indexOf("pg=ShopifyLanding") > -1){
 function Signin(){
 	
 	if(document.getElementById('rememberme').checked){
-		rememberme = $(".SigninForm [name=txt_user]").val();
+		rememberme = $(".SigninForm [name=user_login]").val();
 		var d = new Date();
 		d.setTime(d.getTime() + (1825*24*60*60*1000));
 		var expires = "expires="+d.toUTCString();
 		document.cookie = 'username = '+rememberme+ "; " + expires;
 	}
-	if($(".SigninForm [name=txt_user]").val() == "" || $(".SigninForm [name=txt_pass]").val() == ""){
-		CheckNull($(".SigninForm [name=txt_user]"),$(".SigninForm [name=txt_pass]"));
+	if($(".SigninForm [name=user_login]").val() == "" || $(".SigninForm [name=user_pass]").val() == ""){
+		CheckNull($(".SigninForm [name=user_login]"),$(".SigninForm [name=user_pass]"));
 		swal({
 			title: 'Oops',
 			type: 'error',
@@ -207,13 +209,37 @@ function Signin(){
 	}else
 	{
 		CheckNull($(".SigninForm [name=txt_user]"),$(".SigninForm [name=txt_pass]"));
-		$(".log-in").prop('disabled', true);
-		$(".log-in").html("<i class='fas fa-spinner selector__glyph-inner animate-spin' style='font-size: 24px;'></i>");
-		const username = $('#login_email').val();
-		const password = $('#login_pass').val();
-		const auth = firebase.auth();
-		console.log(username);
-		auth.signInWithEmailAndPassword(username,password).then(function(firebaseUser) {
+		$("#submit").prop('disabled', true);
+		$("#submit").html("<i class='fas fa-spinner selector__glyph-inner animate-spin' style='font-size: 24px;'></i>");
+		const username = $('#user_login').val();
+		const password = $('#user_pass').val();
+		
+		$.ajax({
+			url: '<?=base_url('member/login_process')?>',
+			type: 'POST',
+			data: {email: username, pass: password},
+			error: function() {
+				alert('something is wrong');
+			},
+			success: function(data) {
+				//alert(data);
+				if (data=='pass') {
+					window.location.href = '<?=base_url("member/user_panel")?>';
+				} else {
+					 isLogin = false;
+				   swal({
+						title: 'Oops',
+						type: 'error',
+						html: "Email or Password is uncorrect",
+						confirmButtonColor: '#4e97d8'
+						});
+				   
+					buttonNotInProcess()
+				} 
+			} 
+		});
+		
+	/**	auth.signInWithEmailAndPassword(username,password).then(function(firebaseUser) {
 			
 			window.location.href = '<?=base_url("member/user_panel")?>';
 		}).catch(function(error) {
@@ -228,7 +254,7 @@ function Signin(){
 					buttonNotInProcess()
 				
 		});
-	
+	**/
 		if(!isLogin){
 			isLogin = true;
 		
@@ -237,8 +263,8 @@ function Signin(){
 }
 
 function buttonNotInProcess(){
-		$("#loginButton").prop('disabled', false);
-		$("#loginButton").html('Log In');
+		$("#submit").prop('disabled', false);
+		$("#submit").html('Log In');
 		
 	}
 /*function UpdateQuoteRedirectId(){
@@ -562,25 +588,25 @@ $('.swal2-modal').keypress(function (e) {
 });
 
 $(document).ready(function(){ 
-	if(0<=0){
-		$('#recentLogin').addClass('hiddenClass');
-		$('#LoginForm').addClass('col-md-offset-3');
-	}else{
-		$('#recentLogin').removeClass('hiddenClass');
-		$('#LoginForm').removeClass('col-md-offset-3');
-	}
+	//if(0<=0){
+		//$('#recentLogin').addClass('hiddenClass');
+	//	$('#LoginForm').addClass('col-md-offset-3');
+//	}else{
+//		$('#recentLogin').removeClass('hiddenClass');
+//		$('#LoginForm').removeClass('col-md-offset-3');
+//	}
 	
-	if(0===1){
-		$('#userLogin').addClass('col-md-offset-4 col-xs-offset-4');
-	}else{
-		$('#userLogin').removeClass('col-md-offset-4 col-xs-offset-4');
-	}
+//	if(0===1){
+	//	$('#userLogin').addClass('col-md-offset-4 col-xs-offset-4');
+//	}else{
+//		$('#userLogin').removeClass('col-md-offset-4 col-xs-offset-4');
+//	}
 	
-	if(0===2){
-		$('#userLogin').addClass('col-md-offset-2 col-xs-offset-2');
-	}else{
-		$('#userLogin').removeClass('col-md-offset-2 col-xs-offset-2');
-	}
+//	if(0===2){
+//		$('#userLogin').addClass('col-md-offset-2 col-xs-offset-2');
+//	}else{
+//		$('#userLogin').removeClass('col-md-offset-2 col-xs-offset-2');
+//	}
 });
 </script> 
 

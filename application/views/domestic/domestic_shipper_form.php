@@ -2,47 +2,37 @@
 		<div class="container top1">
 			<div class="row">
 				<div class="container-fluid">
-					<div class="col-lg-6 col-md-4 col-sm-12 logo-wrapper">
+					<div class="col-lg-3 col-md-4 col-sm-12 logo-wrapper">
 						<a href="<?=base_url('')?>" class="logo-wrapper">
 							<img src="<?=base_url('assets2/image/logo.png')?>" class="logo hidden-xs" width="50%">
 						</a>
 					</div>
-					<div class="col-lg-6 col-md-8 col-sm-12 padding-off">
-						<div class="row">
-							<ol class="breadcrumb-body">
-								<li class="current">
-									
-										<div class="breadcrumb-statge-container">
-										
-											<div class="breadcrumb-stage">1</div>
-											<div class="breadcrumb-stage">Shipment <br/>Detail</div>
-										</div>
-										
-								</li>
-								<li class="future">
-									
-										<div class="breadcrumb-statge-container">
-										
-											<div class="breadcrumb-stage">2</div>
-											<div class="breadcrumb-stage">Shipment <br/>Overview </div>
-									
-										</div>
-									
-								</li>
-								<li class="future">
-									
-										<div class="breadcrumb-statge-container">
-										
-											<div class="breadcrumb-stage">3</div>
-											<div class="breadcrumb-stage">Payment <br/>Option</div>
-										
-										</div>
-									
-								</li>
-								
-							
-						
-							</ol>
+					<div class="col-lg-9 col-md-8 col-sm-12 padding-off">
+						<div class="row bs-wizard" style="border-bottom:0;">
+							<div class="col-xs-4 bs-wizard-step complete">
+								<div class="text-center bs-wizard-stepnum hidden-sm hidden-xs">Shipment Details</div>
+								<div class="text-center bs-wizard-stepnum visible-sm visible-xs">Shipment <br> Details</div>
+								<div class="progress">
+									<div class="progress-bar"></div>
+								</div>
+								<a  class="bs-wizard-dot"></a>
+							</div>
+							<div class="col-xs-4 bs-wizard-step disabled">
+								<div class="text-center bs-wizard-stepnum hidden-sm hidden-xs">Order Summary</div>
+								<div class="text-center bs-wizard-stepnum visible-sm visible-xs">Order <br> Summary</div>
+								<div class="progress">
+									<div class="progress-bar"></div>
+								</div>
+								<a  class="bs-wizard-dot"></a>
+							</div>
+							<div class="col-xs-4 bs-wizard-step disabled">
+								<div class="text-center bs-wizard-stepnum hidden-sm hidden-xs">Payment Options</div>
+								<div class="text-center bs-wizard-stepnum visible-sm visible-xs">Payment <br> Options</div>
+								<div class="progress">
+									<div class="progress-bar"></div>
+								</div>
+								<a  class="bs-wizard-dot"></a>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -60,11 +50,9 @@
 	
 	</style>
 
-		<div class="row title-bar">
-			<h1 class="title">Shipment Detail</h1>
-		</div>
+	
 		<div class="container-fluid space">
-			<form method="POST" action="<?=base_url('dtc_receiver')?>" class="form-horizontal">
+			<form method="POST" action="<?=base_url('dtc_shipment_overview_process')?>" class="form-horizontal">
 					<input type="hidden" name="weight" value="<?=$weight?>"/>
 					<input type="hidden" name="height" value="<?=$height?>"/>
 					<input type="hidden" name="width" value="<?=$width?>"/>
@@ -75,7 +63,7 @@
 					<input type="hidden" name="toState" value="<?=$toState?>"/>
 					<input type="hidden" name="shipper_postcode" value="<?=$fromPostcode?>"/>
 					<input type="hidden" name="receiver_postcode" value="<?=$toPostcode?>"/>
-					<input type="hidden" id="userId"  name="userId" value=""/>
+					<input type="hidden" id="userId"  name="userId" value="<?=$id?>" />
 					
 				<div class="row">
 					<div class="col-md-9  col-xs-12">
@@ -379,7 +367,7 @@
 								</div>
 				
 								<div class="col-md-6">
-									<input type="submit" value="Next" id="next" class="form-control btn btn-success" onclick="return checkvalid()"/>
+									<input type="submit" value="Next" id="next" class="form-control btn btn-primary" onclick="return checkvalid()"/>
 					
 								</div>
 							</div>
@@ -473,7 +461,7 @@
                 <input type="checkbox" id="rememberme">Remember Me
               </label>
               <button class="btn btn-primary btn-lg log-in" id="loginPay" onclick="Signin()" style="width:100%;"> Log In and Continue</button>
-              <a href="<?=base_url('forgotPass')?>" class="span11" target="_blank">Forgot your password?</a> / <a href="<?=base_url('forgotEmail')?>" class="span11" target="_blank">Forgot your login email?</a>
+              <a href="<?=base_url('forgotPass')?>" class="span11" target="_blank">Forgot your password?</a> 
               <div class="clearfix"></div>
               <br>  
               
@@ -482,15 +470,13 @@
           <div class="visible-xs space"></div>    
         </div>
       </div>
-      <div class="modal-footer">
-        
-      </div>
+     
   </div>
 </div>	
 		
 		
 	<script>
-	firebase.auth().onAuthStateChanged( firebaseUser => {
+	/*firebase.auth().onAuthStateChanged( firebaseUser => {
 	if(firebaseUser) {
 		
 		$("#userId").val(firebaseUser.uid);
@@ -504,7 +490,18 @@
 		
 	}
 
-	});	
+	});  */
+
+	 var id = '<?=$id?>';
+	 
+	if (id == '') {
+		$("#myModal").modal({
+			show: 'false',
+			backdrop: 'static', 
+			keyboard: false
+		});
+		
+	}
 	
 	function checkvalid() {
 		var term=$("#acceptCheck");
@@ -552,7 +549,32 @@
 			CheckNull($("#username"),$("#password"));
 			const username = $('#username').val();
 			const password = $('#password').val();
-			const auth = firebase.auth();
+			
+		$.ajax({
+			url: '<?=base_url('member/login_process')?>',
+			type: 'POST',
+			data: {email: username, pass: password},
+			error: function() {
+				alert('something is wrong');
+			},
+			success: function(data) {
+				//alert(data);
+				if (data=='pass') {
+					window.location.reload();
+				} else {
+					 
+				   swal({
+						title: 'Oops',
+						type: 'error',
+						html: "Email or Password is uncorrect",
+						confirmButtonColor: '#4e97d8'
+						});
+				   
+					buttonNotInProcess()
+				} 
+			}
+		});
+	/**		const auth = firebase.auth();
 			console.log(username);
 			auth.signInWithEmailAndPassword(username,password).then(function(firebaseUser) {
 				 window.location.reload();
@@ -569,7 +591,7 @@
 				buttonNotInProcess();
 				
 			});
-	
+	**/
 		}
 	}
 	

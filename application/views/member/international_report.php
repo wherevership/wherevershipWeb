@@ -234,8 +234,7 @@ z-index:10001;}
       <tr>
         <th width="2%"><input type='checkbox' name='checkall' id='checkall' onclick="AwbCheckAll()"></th>
         <th width="15%" class="hidden-xs">Tracking No</th>
-        <th width="15%" class="hidden-xs">Order No</th>
-        <th width="26%" class="hidden-xs">Deliver To</th>
+        <th width="25%" class="hidden-xs">Deliver To</th>
         <th width="16%" class="hidden-xs">Collection Date</th>
         <th width="20%" class="hidden-xs">Status</th>
         <th class="visible-xs">Shipment Summary</th>
@@ -244,9 +243,34 @@ z-index:10001;}
       </tr>
     </thead>
     <tbody id="table1">
-      <tr>
-		<td colspan='9'>No Record Found.</td>
-      </tr>
+      <?php
+		if (!empty($shipmentList)) {
+		foreach ($shipmentList as $v) {
+   ?>
+	<tr>
+		<td width="2%" class="hidden-xs"><input type='checkbox'></td>
+		<td class="hidden-xs" width="15%"><?=$v['tracking_number']?></td>
+		<td class="hidden-xs" width="25%"><?=$v['recevier_postcode'].'<br/>'.$v['receiver_state'].'<br/>'.$v['receiver_country']?></td>
+		<td class="hidden-xs" width="16%"><?=$v['collection_date']?></td>
+		<td class="hidden-xs" width="20%"><?=$v['status']?></td>
+		
+		<td width="22%">
+			<a href="javascript:showDetail('<?=$v['id']?>');" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-expand"></i></a>
+			<a href="javascript:toDelete('<?=base_url('member/shipment_delete/'.$v['id'])?>');" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i></a>
+		</td>
+	</tr>
+  
+	<?php
+	}}
+	  else {
+		  
+    ?>
+	  <tr><td colspan='6'>No Record Found.</td></tr>
+	
+	<?php
+	  }
+	
+	?>
 	  </tbody>
     
   </table>

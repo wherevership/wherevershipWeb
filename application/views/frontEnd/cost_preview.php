@@ -1,116 +1,160 @@
+
+<div id="masterContent" >
 	
-	
-	<div id="masterContent" >
-		<div class="container">
-			<form method="POST" action="<?=base_url('int_shipper')?>" class="form-horizontal">
-				<input type="hidden" id="wt" name="weight" value="<?=$weight?>" />
-				<input type="hidden" id="l" name="length" value="<?=$length?>" />
-				<input type="hidden" id="w" name="width" value="<?=$width?>" />
-				<input type="hidden" id="h" name="height" value="<?=$height?>" />
-				<input type="hidden" id="vwt" name="v_weight" value="<?=$v_weight?>"/>
-				<input type="hidden"  id="frm" name="fromState" value="<?=$fromState?>"/>
-				<input type="hidden" id="to" name="toCountry" value="<?=$toCountry?>" />
-				<input type="hidden" id="toCountryZone" name="toCountryZone" value="<?=$toCountryZone?>" />
-				<input type="hidden" id="cost" name="cost" value=""/>
-				<input type="hidden" id="type1" name="type" value=""/>
-				<input type="hidden" id="icp" name="fromPostcode" value="<?=$frPostcode?>"/>
-				<input type="hidden" id="idp" name="toPostcode" value="<?=$toPostCode?>"/>
-				<div class="space">
-						<div class="row">
-							<div class="panel panel-default">
-								<div class="panel panel-title-bar">
-									<img src="<?=base_url('assets2/image/DHL.jpg')?>" width="20%">
-								</div>
-								<div class="panel-body">
-									<div class="col-md-3">
-										<h3>From:</h3>
-										<p><?=$fromState?></p>
-										<p><?=$frPostcode?></p>
-										<hr class="visible-sm visible-xs">
-							
-									</div>
-									<div class="col-md-3">
-										<h3>To:</h3>
-										<p><?=$toCountry?></p>
-										<p><?=$toPostCode?></p>
-										<p><?=$toCountryZone?></p>
-										<hr class="visible-sm visible-xs">
-									</div>
-									<div class="col-md-3">
-										<h3>Parcel Info</h3>
-										<p>Length: <?=$length?>cm</p>
-										<p>Width: <?=$width?>cm</p>
-										<p>Height: <?=$height?>cm</p>
-										<p>Weight: <?=$weight?>Kg</p>
-										<p>Volumetic Weight: <?=$v_weight?>Kg</p>
-										
-										<hr class="visible-sm visible-xs">
-									</div>
-									<div class="col-md-3">
-										<div>
-											<div class="form-group">
-												<label for="type">Parcel Type:</label>
-												<select class="selectpicker form-control" data-show-subtext="true" id="type" onchange="showPrice()" required>
-													<option value="" readonly>Select Type</option>
-													<option value="nonDocuments">Non Document</option>
-													<option value="Documents">Document</option>
-											
-												</select>
-											</div>
-											<hr class="visible-sm visible-xs">
-											<h3 id="priceTitle" class="hide">Price</h3>
-										
-											<p style="color: #00a9b0;" class="hide" id="price"><b>RM<span id="cost1"></span></b></p>
-										</div>
-										<div class="form-group">
-											<input type="submit" value="Continue >>" id="next" class="form-control btn btn-success hide"/>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="form-group">
-								<div class="col-md-6">
-									<a type="button" class="form-control btn" href="javascript:history.go(-1)">Cancel</a>
-								</div>
-				
-								<div class="col-md-6">
-						
-					
-								</div>
-							</div>
-					   </div>
-					</div>
-				</form>
-     
-		</div>
+		<div class="container space">
 		
+		
+		
+			<table id="myTable" class="table table-striped" width="100%">
+					<thead class>
+						<tr>
+							<th width="5%" class="hidden-xs">No</th>
+							<th width="14%" class="hidden-xs">Courier Company</th>
+							<th width="20%" class="hidden-xs">Delivery Duration</th>
+							<th width="14%" class="hidden-xs">Service Type</th>
+							<th width="17%" class="hidden-xs">Document Type</th>
+							<th width="14%" class="hidden-xs">Your Price</th>
+							<th class="visible-xs"></th>
+ 
+							<th width="16%" style="padding:4px;"></th>
+						</tr>
+					</thead>
+					<tbody id="table1">
+						<tr>
+							<form method="POST" action="<?=base_url('int_shipper_process')?>" class="form-horizontal">
+							
+								<input type="hidden" id="wt" name="weight" value="<?=$weight?>" />
+								<input type="hidden" id="l" name="length" value="<?=$length?>" />
+								<input type="hidden" id="w" name="width" value="<?=$width?>" />
+								<input type="hidden" id="h" name="height" value="<?=$height?>" />
+								<input type="hidden" id="vwt" name="v_weight" value="<?=$v_weight?>"/>
+								<input type="hidden"  id="frm" name="fromState" value="<?=$fromState?>"/>
+								<input type="hidden" id="to" name="toCountry" value="<?=$toCountry?>" />
+								<input type="hidden" id="toCountryZone" name="toCountryZone" value="<?=$toCountryZone?>" />
+								<input type="hidden" id="cost1" name="cost" value=""/>
+								<input type="hidden" id="fuelCharge1" name="fuelCharge" value="<?=$fuelCharge?>"/>
+								<input type="hidden" id="type1" name="type" value=""/>
+								<input type="hidden" id="icp" name="fromPostcode" value="<?=$frPostcode?>"/>
+								<input type="hidden" id="idp" name="toPostcode" value="<?=$toPostCode?>"/>
+						
+							
+								<td width="5%" class="hidden-xs">1</td>
+								<td class="hidden-xs" width="14%"><img src="<?=base_url('assets2/image/DHL.jpg')?>" width="60%"></td>
+								<td class="hidden-xs" width="20%">7 working day(s)</td>
+								<td class="hidden-xs" width="14%"><i class="fas fa-truck"></i>Pick Up</td>
+								<td class="hidden-xs" width="17">Documents</td>
+								<td class="hidden-xs" width="14%"><span id="price1"></span></td>
+								<td width="16%"><input type="submit" value="Continue" id="next" class="form-control btn btn-primary"/></td>
+							
+							</form>
+						</tr>
+						<tr>
+							<form method="POST" action="<?=base_url('int_shipper_process')?>" class="form-horizontal">
+							
+								<input type="hidden" id="wt" name="weight" value="<?=$weight?>" />
+								<input type="hidden" id="l" name="length" value="<?=$length?>" />
+								<input type="hidden" id="w" name="width" value="<?=$width?>" />
+								<input type="hidden" id="h" name="height" value="<?=$height?>" />
+								<input type="hidden" id="vwt" name="v_weight" value="<?=$v_weight?>"/>
+								<input type="hidden"  id="frm" name="fromState" value="<?=$fromState?>"/>
+								<input type="hidden" id="to" name="toCountry" value="<?=$toCountry?>" />
+								<input type="hidden" id="toCountryZone" name="toCountryZone" value="<?=$toCountryZone?>" />
+								<input type="hidden" id="cost2" name="cost" value=""/>
+								<input type="hidden" id="fuelCharge1" name="fuelCharge" value="<?=$fuelCharge?>"/>
+								<input type="hidden" id="type2" name="type" value=""/>
+								<input type="hidden" id="icp" name="fromPostcode" value="<?=$frPostcode?>"/>
+								<input type="hidden" id="idp" name="toPostcode" value="<?=$toPostCode?>"/>
+						
+							
+								<td width="5%" class="hidden-xs">2</td>
+								<td class="hidden-xs" width="14%"><img src="<?=base_url('assets2/image/DHL.jpg')?>" width="60%"></td>
+								<td class="hidden-xs" width="20%">7 working day(s)</td>
+								<td class="hidden-xs" width="14%"><i class="fas fa-truck"></i>Pick Up</td>
+								<td class="hidden-xs" width="17">Non Documents</td>
+								<td class="hidden-xs" width="14%"><span id="price2"></span></td>
+								<td width="22%"><input type="submit" value="Continue" id="next" class="form-control btn btn-primary"/></td>
+							
+							</form>
+						</tr>
+					</tbody>
+				</table>
+			
+		</div>
+	
+		
+					 
+		</div>
 		<script>
 		
-		function showPrice() {
-		var weightClass = "<?=$weightClass?>";
-		var toCountryZone = "<?=$toCountryZone?>";
-		var finalWeight = <?=$weight_f?>;
-		var documentType = "";
+		$(document).ready(function(){
+			var weightClass = "<?=$weightClass?>";
+			var toCountryZone = "<?=$toCountryZone?>";
+			var finalWeight = <?=$weight_f?>;
+			var fuelCharge = <?=$fuelCharge?>;
+			var documentType = $("#type").val();
+			var url = "<?=base_url('api/intCost/')?>" + toCountryZone + '/'  + weightClass;
+			var fuelChargeInPer = fuelCharge / 100;
+			var totalPrice = 0;
 		
-		console.log(typeof(finalWeight));
-		console.log($("#type").val());
-		if ($("#type").val() == "Documents") {
-				if (finalWeight <= 2) {
-						documentType = "documents";
-						$("#type1").val("Documents");
-				} else {
-						documentType = "nonDocuments";
-						$("#type1").val("Non Documents");
+				console.log(url);
+			$.ajax({
+				method: "GET",
+				url: url,
+				dataTypr: "json" 
+			}).done(function(response){
+				var json = JSON.parse(response);
+			console.log(json);
+				if (json.length > 0) {
+					
+					for (var i=0; i < json.length; i++) {
+						var fuelChargeinRM = json[i].price * fuelChargeInPer;
+						totalPrice = parseFloat(json[i].price) + parseFloat(fuelChargeinRM);
+						var total = parseFloat(totalPrice).toFixed(2);
+						if (json[i].type == "documents") {
+							
+							$("#price1").text(total);
+							$("#cost1").val(total);
+							$("#type1").val(json[i].type);
+							
+							
+						} else if (json[i].type == "nonDocuments") {
+							
+							$("#price2").text(total);
+							$("#cost2").val(total);
+							$("#type2").val(json[i].type);
+							
+						}
+						
+					
+						
+					}
+					
+					
 				}
-		} else {
-			documentType = "nonDocuments";
-			$("#type1").val("Non Documents");
-		}
+				
+			//var fuelChargeinRM = response * fuelChargeInPer;
+			
+		//	totalPrice = parseFloat(response) +  parseFloat(fuelChargeinRM);
+			
+		//	$("#price").text("RM" + response);
+		//	$("#cost").val(parseFloat(totalPrice).toFixed(2));
+		//	$("#fuelCharge").text("Fuel Charge"+fuelCharge+"%");
+		//	$("#fuelCharge1").val(fuelCharge);
+		//	$("#totalPrice").text("RM" + parseFloat(totalPrice).toFixed(2));
+			//$("#priceTitle").removeClass("hide");
+	//		$("#price").removeClass("hide");
+		//	$("#fuelCharge").removeClass("hide");
+			//$("#totalPrice").removeClass("hide");
+			//$("#next").removeClass("hide");
+			
+			}).fail(function(jqXHR,textStatus,errorThrown){
+					alert("textStatus:" + textStatus + " " + jqXHR.responseText + " "+ jqXHR.status + " " + jqXHR.readyState);
+
+			
+			});
 		
 		
-		
+	/*
 		const database = firebase.database().ref('international_fare/'+ documentType + '/' + toCountryZone + '/' + weightClass);
 		database.on('value', snap => {
 			var object1 = snap.val();
@@ -123,8 +167,8 @@
 			
 		});
 			
-			
-		}
+	*/		
+		});
 		
 	</script>
 	</div>

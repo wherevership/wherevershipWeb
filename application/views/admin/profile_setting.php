@@ -4,6 +4,7 @@
 	$("#Profile_Setting").addClass('active selected');
 
 </script>
+
 <div class="col-md-10 col-xs-12 dashboard-wrapped padding-right-off">
     <div class="row dashoboard-account">
   <div class="hidden-xs"><style>
@@ -34,7 +35,8 @@
    
     <div class="container-fluid space-small">
       <h2 class="dashboard-title">Personal Profile</h2>
-    <div class="dashboard-title">
+    
+	<div class="dashboard-title">
       
     </div>
     <div class="clearfix"></div>
@@ -49,9 +51,7 @@
             </div>
             <input class="hidden" type="file" value="upload" id="upload"/>
             <br>
-            <div class="row"> <span>Hello <b id="name-title"></b><br>
-            Welcome back, it's nice to see you!</span> 
-            </div>
+            
           </div>  
           <div class="clearfix visible-xs"></div>
           <hr class="visible-xs">
@@ -59,26 +59,26 @@
             <div class="col-sm-6 col-xs-12 form-group">
               <label>First Name <span style="color:red;">*</span></label>
                 <div class="has-feedback">
-                  <input class="form-control required" type="text" name="txt_first" id="txt_first" value="" required placeholder="First Name"/>
+                  <input class="form-control required" type="text" name="txt_first" id="txt_first" value="<?=!empty($userData['firstname'])?$userData['firstname']:''?>" required placeholder="First Name"/>
                   <span class="epi-info-circled form-control-feedback hide"  aria-hidden="true"></span> 
                 </div>
             </div>
             <div class="col-sm-6 col-xs-12 form-group">
               <label>Last Name <span style="color:red;">*</span></label>
               <div class="has-feedback">
-                <input class="form-control required" type="text" name="txt_last" id="txt_last" value="" required placeholder="Last Name"/>
+                <input class="form-control required" type="text" name="txt_last" id="txt_last" value="<?=!empty($userData['lastname'])?$userData['lastname']:''?>" required placeholder="Last Name"/>
                 <span class="epi-info-circled form-control-feedback hide"  aria-hidden="true"></span>
               </div> 
             </div>
             <div class="col-md-12 col-sm-6 col-xs-12 form-group">
               <label>Email</label>
-              <input disabled class="form-control required" type="text" name="txt_email" id="number" value="">
+              <input disabled class="form-control required" type="text" name="txt_email" id="number" value="<?=!empty($userData['email'])?$userData['email']:''?>">
             </div>
             <div class="col-md-12 col-sm-6 col-xs-12 form-group">
               <label>Password</label>
                 <small class="pull-right"><a href="./?pg=MyAccount&tab=Profile&do=ChangePassword"> Change</a></small>
                 <div>
-                  <input disabled class="form-control required" type="text" name="txt_password" id="number" value="********">
+                  <input disabled class="form-control required" type="password" name="txt_password" id="number" value="<?=!empty($userData['password'])?$userData['password']:''?>">
                  </div>
             </div>
           </div>
@@ -92,15 +92,15 @@
             <div class="col-xs-12 form-group">
               <label>Address <span style="color:red;">*</span></label>
               <div class="has-feedback">
-                <input class="form-control required" type="text" name="txt_unit" value=""  id="txt_unit" maxlength="40" required placeholder="Address Line 1">
+                <input class="form-control required" type="text" name="txt_unit" value="<?=!empty($userData['address1'])?$userData['address1']:''?>"  id="txt_unit" maxlength="40" required placeholder="Address Line 1">
                 <span class="epi-info-circled form-control-feedback hide"  aria-hidden="true"></span>
               </div>
             </div>
             <div class="col-xs-12 form-group">
-                <input class="form-control required" type="text" name="txt_building" value="" id="txt_building" maxlength="35" required placeholder="Address Line 2 (optional)">
+                <input class="form-control required" type="text" name="txt_building" value="<?=!empty($userData['address2'])?$userData['address2']:''?>" id="txt_building" maxlength="35" required placeholder="Address Line 2 (optional)">
             </div>
             <div class="col-xs-12 form-group">
-                <input class="form-control required" type="text" name="txt_street" value="" id="txt_street" maxlength="35" required placeholder="Address Line 3 (optional)"/>
+                <input class="form-control required" type="text" name="txt_street" value="<?=!empty($userData['address3'])?$userData['address3']:''?>" id="txt_street" maxlength="35" required placeholder="Address Line 3 (optional)"/>
             </div>
              
           </div>
@@ -108,59 +108,59 @@
             <div class="col-md-12 col-sm-6 col-xs-12 form-group">
               <label>Town/City<span style="color:red;">*</span></label>
               <div class="has-feedback">
-                <input class="form-control required" type="text" name="txt_city"  id="txt_city" value="" required placeholder="Town / City"/>
+                <input class="form-control required" type="text" name="txt_city"  id="txt_city" value="<?=!empty($userData['city'])?$userData['city']:''?>" required placeholder="Town / City"/>
                 <span class="epi-info-circled form-control-feedback hide"  aria-hidden="true"></span>
               </div>
             </div>
             <div class="col-md-12 col-sm-6 col-xs-12 form-group">
               <label>Zip/Postal Code<span style="color:red;">*</span></label>
               <div class="has-feedback">
-                <input class="form-control required" type="text" name="txt_postcode" id="txt_postcode" value="" onChange="postGetState(this)" required placeholder="Zip / Postal code"/>
+                <input class="form-control required" type="text" name="txt_postcode" id="txt_postcode"  onChange="postGetState(this)" required placeholder="Zip / Postal code" value="<?=!empty($userData['postcode'])?$userData['postcode']:''?>"/>
                 <span class="epi-info-circled form-control-feedback hide"  aria-hidden="true"></span>
               </div>
             </div>
             <div class="col-md-12 col-sm-6 col-xs-12 form-group">
               <label>State<span style="color:red;">*</span></label>
-              <select class="form-control" name="txt_state">
+              <select class="form-control" name="txt_state" value="<?=!empty($userData['state'])?$userData['state']:''?>">
                 
-                <option value="Johor" selected>Johor</option>
+                <option value="Johor" <?php if($userData['state']== 'Johor'){echo("selected");}?>>Johor</option>
                 
-                <option value="Kedah" >Kedah</option>
+                <option value="Kedah" <?php if($userData['state']== 'Kedah'){echo("selected");}?> >Kedah</option>
                 
-                <option value="Kelantan" >Kelantan</option>
+                <option value="Kelantan" <?php if($userData['state']== 'Kelantan'){echo("selected");}?>>Kelantan</option>
                 
-                <option value="Melaka" >Melaka</option>
+                <option value="Melaka" <?php if($userData['state']== 'Melaka'){echo("selected");}?> >Melaka</option>
                 
-                <option value="Negeri Sembilan" >Negeri Sembilan</option>
+                <option value="Negeri Sembilan" <?php if($userData['state']== 'Negeri Sembilan'){echo("selected");}?>>Negeri Sembilan</option>
                 
-                <option value="Pahang" >Pahang</option>
+                <option value="Pahang" <?php if($userData['state']== 'Pahang'){echo("selected");}?>>Pahang</option>
                 
-                <option value="Perak" >Perak</option>
+                <option value="Perak" <?php if($userData['state']== 'Perak'){echo("selected");}?>>Perak</option>
                 
-                <option value="Perlis" >Perlis</option>
+                <option value="Perlis" <?php if($userData['state']== 'Perlis'){echo("selected");}?>>Perlis</option>
                 
-                <option value="Penang" >Pulau Pinang</option>
+                <option value="Penang" <?php if($userData['state']== 'Penang'){echo("selected");}?>>Pulau Pinang</option>
                 
-                <option value="Selangor" >Selangor</option>
+                <option value="Selangor" <?php if($userData['state']== 'Selangor'){echo("selected");}?>>Selangor</option>
                 
-                <option value="Terengganu" >Terengganu</option>
+                <option value="Terengganu" <?php if($userData['state']== 'Terengganu'){echo("selected");}?>>Terengganu</option>
                 
-                <option value="Kuala Lumpur" >Kuala Lumpur</option>
+                <option value="Kuala Lumpur" <?php if($userData['state']== 'Kuala Lumpur'){echo("selected");}?>>Kuala Lumpur</option>
                 
-                <option value="Putra Jaya" >Putra Jaya</option>
+                <option value="Putra Jaya" <?php if($userData['state']== 'Putra Jaya'){echo("selected");}?>>Putra Jaya</option>
                 
-                <option value="Sarawak" >Sarawak</option>
+                <option value="Sarawak" <?php if($userData['state']== 'Sarawak'){echo("selected");}?>>Sarawak</option>
                 
-                <option value="Sabah" >Sabah</option>
+                <option value="Sabah" <?php if($userData['state']== 'Sabah'){echo("selected");}?>>Sabah</option>
                 
-                <option value="Labuan" >Labuan</option>
+                <option value="Labuan" <?php if($userData['state']== 'Labuan'){echo("selected");}?>>Labuan</option>
                 
               </select>
             </div>
             <div class="col-md-12 col-sm-6 col-xs-12 form-group">
               <label>Country <span style="color:red;">*</span></label>
-              <select class="form-control" name="txt_country" id="txt_country">
-                <option value="Malaysia">Malaysia</option>
+              <select class="form-control" name="txt_country" id="txt_country" >
+                <option value="Malaysia" <?php if($userData['country']== 'Malaysia'){echo("selected");}?>>Malaysia</option>
                 <!--<option value="Singapore">Singapore</option>-->
               </select>
             </div>
@@ -177,7 +177,7 @@
                      
                     
                     <div class="col-sm-6">
-                      <input class="form-control required" type="text" name="txt_mobile" id="txt_mobile" value="" required placeholder="Contact Number" />
+                      <input class="form-control required" type="text" name="txt_mobile" id="txt_mobile" value="<?=!empty($userData['mobile'])?$userData['mobile']:''?>" required placeholder="Contact Number" />
                     </div>
                   
               </div>
@@ -188,7 +188,7 @@
         <div class="clearfix"></div>
         
         <div class="clearfix">
-          <input type="button" class="btn btn-primary pull-right" value="Save Profile" onclick="profile.SaveProfile();">
+          <input type="button" class="btn btn-primary pull-right" value="update" onclick="updateProfile()">
           </form>
         </div>
       </div>
@@ -197,6 +197,89 @@
 </div>
 <div id="dialog"></div>
 <script>
+function updateProfile() {
+	var firstName = $('#txt_first').val();
+	var lastName = $('#txt_last').val();
+	
+	var address1 = $('#txt_unit').val();
+	var address2 = $('#txt_building').val();
+	var address3 = $('#txt_street').val();
+	var city = $('#txt_city').val();
+	var postcode = $('#txt_postcode').val();
+	var state = $('#txt_state').val();
+	var country = $('#txt_country').val();
+	var mobile = $('#txt_mobile').val();
+	var id = <?=$id?>;
+	var url = "<?=base_url('admin/update_profile/').$id?>";
+	
+	if (firstName == "" || lastName == "") {
+		swal({
+			title: 'Oops',
+			type: 'error',
+			html: 'Please enter your name.',
+			confirmButtonColor: '#4e97d8'
+			})
+		
+	
+	} else if (address1 == "" || city == "" || postcode == "" || state == "" || country == "") {
+		swal({
+			title: 'Oops',
+			type: 'error',
+			html: 'Please enter your address',
+			confirmButtonColor: '#4e97d8'
+			})
+	} else if (mobile == "") {
+		swal({
+			title: 'Oops',
+			type: 'error',
+			html: 'Please enter your mobile number',
+			confirmButtonColor: '#4e97d8'
+			})
+	
+	
+	} else {
+	
+		$.ajax({
+			type: "post",
+			url: url,
+			data: {
+				firstName: firstName,
+				lastName: lastName,
+				address1: address1,
+				address2: address2,
+				address3: address3,
+				city: city,
+				postcode: postcode,
+				state: state,
+				country: country,
+				mobile: mobile
+			},
+			dataType: "json",
+			async: true,
+			success: function(result){
+					swal({
+						title: 'Saved',
+						type: 'success',
+						html: result.result,
+						confirmButtonColor: '#4e97d8'
+					})
+			window.location.reload();
+			
+			},
+			error: function(XMLHttpRequest,textStatus,textStatus){
+				console.log(XMLHttpRequest.responseText);
+				console.log(XMLHttpRequest.status);
+				console.log(XMLHttpRequest.readyState);
+				console.log(textStatus);
+				alert("something wrong");
+			
+			}	
+		});
+	}
+	
+}
+
+
 firebase.auth().onAuthStateChanged( firebaseUser => {
 				if(firebaseUser) {
 					

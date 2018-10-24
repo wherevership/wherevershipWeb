@@ -16,15 +16,16 @@
 			
 			
 			print_r($dataList);
+			$data1 = array('id' => $dataList['id'],'firstname' => $dataList['firstname'], 'lastname' => $dataList['lastname'], 'email' => $dataList['email']);
 			echo('<br>');
-			if (empty($dataList)) {
+			if (empty($data1)) {
 				echo('fail');
 				
 			} else {
-				echo($dataList['firstname']);
-				$this->session->set_userdata('admin_logged_in',$dataList);
+				echo($data1['firstname']);
+				$this->session->set_userdata('admin_logged_in',$data1);
 				echo('pass');
-				
+				print_r($this->session->userdata['admin_logged_in']); 
 				
 			}
 			
@@ -34,7 +35,7 @@
 		public function test_get_all() {
 			
 			$dataList = $this->Admin_Model->get(array(
-			'is_deleted' => 0,
+			
 			));
 
 			print_r($dataList);
@@ -45,9 +46,29 @@
 		
 		public function test_session() {
 			if (isset($this->session->userdata['admin_logged_in'])) {
-					$username = ($this->session->userdata['admin_logged_in']['firstname']);
+					$username = ($this->session->userdata['admin_logged_in']['firstname']) .' '. ($this->session->userdata['admin_logged_in']['lastname']);
+					$id = ($this->session->userdata['admin_logged_in']['id']);
 					echo($username);
+					echo('<br/>');
+					echo($id);
+					$userData = $this->Admin_Model->getOne(array(
+						'id' => $id,
+					));
+					$user1 = $this->Admin_Model->get(array(
+						'is_deleted' => 0,
+					));
+					echo('<br/>');
+					print_r($userData);
+					echo('<br/>');
+					print_r($user1);
+					echo('<br/>');
+					print_r($this->session->all_userdata());
+					echo('<br/>');
+					print_r($this->session->userdata['admin_logged_in']); 
+				} else {
 					
+					
+					print_r($this->session->userdata['admin_logged_in']); 
 				}
 			
 			
@@ -58,8 +79,9 @@
 			if (isset($this->session->userdata['admin_logged_in'])) {
 					$username = ($this->session->userdata['admin_logged_in']['firstname']);
 					echo($username);
-					
+					print_r($this->session->userdata['admin_logged_in']); 
 			} else {
+				//print_r($this->session->userdata['admin_logged_in']); 
 				
 				echo('no login');
 			}

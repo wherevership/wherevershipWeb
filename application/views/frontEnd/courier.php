@@ -2,7 +2,7 @@
 	<section class="quotebook">
 <div class="container space">
 <div class="row">
-	<div class="col-md-6 hidden-sm hidden-xs" style="height: 292px;"><img src="https://secure.easyparcel.my/pass/application/APP_6.8/theme/easyparcel/images/book.jpg" style="text-align: center; width: 100%; bottom: 0px; height: 100%;"></div>
+	<div class="col-md-6 hidden-sm hidden-xs" style="height: 292px;"></div>
 	<div class="col-md-6">
 	   <style>
 .qnb-wrapped .nav-tabs>li>a {
@@ -66,7 +66,7 @@ span.tip {
 <div role="tabpanel" class="tab-pane active clearfix QuickQuote domestic" style="z-index:999999;padding:0px"  id="domestic">
    
   <div class="container-fluid quote-book domestic-body"> 
-    <form method="POST" onsubmit="return checkaddress()" action="<?=base_url('dtc_cost_preview')?>">
+    <form method="POST" onsubmit="return checkaddress()" action="<?=base_url('dtc_cost_preview_process')?>">
 	<div class="col-xs-12">
 		<h2>Get Instant Quotes</h2>
 		<h5>FROM:</h5>
@@ -204,7 +204,7 @@ span.tip {
 <!--international tab start-->
 <div role="tabpanel" class="tab-pane   clearfix QuickQuote international" style="z-index:999999;padding:0px"  id="international">
   <div class="container-fluid quote-book international-body"> 
-    <form method="POST" onsubmit="return checkaddressint()" action="<?=base_url('cost_preview')?>">
+    <form method="POST" onsubmit="return checkaddressint()" action="<?=base_url('cost_preview_process')?>">
 	<div class="col-xs-12">
 		<h2>Get Instant Quotes</h2>
 		<h5>FROM:</h5>
@@ -896,59 +896,7 @@ function isNumberKey(evt){
   </div>
 </section>
 
-<section class="whyus-bg hidden-xs">
-  <div class="container space">
-    <div class="col-xs-12 section-copy">
-      <h1>Why Wherevership?</h1>
-      <h3>These Are Why You'll Love Us</h3>
-    </div>
-    <div class="col-md-4 col-sm-6 col-xs-12">
-      <div class="whyus-point"> <span><img src="<?=base_url('assets2/image/why/why-1.png')?>" width="60px" class="fade-in-down"></span>
-        <h4>Fast Online Delivery Booking</h4>
-      </div>
-    </div>
-    <div class="col-md-4 col-sm-6 col-xs-12">
-      <div class="whyus-point"> <span><img src="<?=base_url('assets2/image/why/why-4.png')?>" width="60px" class="fade-in-down"></span>
-        <h4>Multiple Courier Choices</h4>
-      </div>
-    </div>
-    <div class="col-md-4 col-sm-6 col-xs-12">
-      <div class="whyus-point"> <span><img src="<?=base_url('assets2/image/why/why-6.png')?>" width="60px" class="fade-in-down"></span>
-        <h4>Save On Every Delivery</h4>
-      </div>
-    </div>
-    <div class="col-md-4 col-sm-6 col-xs-12">
-      <div class="whyus-point"> <span><img src="<?=base_url('assets2/image/why/why-2.png')?>" width="60px" class="fade-in-down"></span>
-        <h4>Easy Online Tracking</h4>
-      </div>
-    </div>
-    <div class="col-md-4 col-sm-6 col-xs-12">
-      <div class="whyus-point"> <span><img src="<?=base_url('assets2/image/why/why-5.png')?>" width="60px" class="fade-in-down"></span>
-        <h4>Free Door To Door Collection</h4>
-      </div>
-    </div>
-    <div class="col-md-4 col-sm-6 col-xs-12">
-      <div class="whyus-point"> <span><img src="<?=base_url('assets2/image/why/why-8.png')?>" width="60px" class="fade-in-down"></span>
-        <h4>InsurePlus - RM50 Extra Coverage</h4>
-      </div>
-    </div>
-    <div class="col-md-4 col-sm-6 col-xs-12">
-      <div class="whyus-point"> <span><img src="<?=base_url('assets2/image/why/why-3.png')?>" width="60px" class="fade-in-down"></span>
-        <h4>Auto-Generated Consignment Note</h4>
-      </div>
-    </div>
-    <div class="col-md-4 col-sm-6 col-xs-12">
-      <div class="whyus-point"> <span><img src="<?=base_url('assets2/image/why/why-7.png')?>" width="60px" class="fade-in-down"></span>
-        <h4>No Volume Commitments Required</h4>
-      </div>
-    </div>
-    <div class="col-md-4 col-sm-6 col-xs-12">
-      <div class="whyus-point"> <span><img src="<?=base_url('assets2/image/why/why-9.png')?>" width="60px" class="fade-in-down"></span>
-        <h4>E-Commerce Integration Ready</h4>
-      </div>
-    </div>
-  </div>
-</section>
+
 
 <style>
 .qnb-wrapped .nav-tabs>li.active>a, .qnb-wrapped .nav-tabs>li.active>a:focus, .qnb-wrapped .nav-tabs>li.active>a:hover {

@@ -20,7 +20,7 @@
 
 <link href="<?=base_url('assets2/css/animation.css')?>" rel="stylesheet">
 
-<link href="<?=base_url('assets2/css/nunito.css')?>" rel="stylesheet">
+<link href="<?=base_url('assets2/css/karla.css')?>" rel="stylesheet">
 
 <link href="<?=base_url('assets2/css/animate.css')?>" rel="stylesheet">
 
@@ -79,7 +79,7 @@
 
 <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
 
-<script src="<?=base_url('assets2/js/firConfig.js')?>"></script>
+<!--<script src="<?=base_url('assets2/js/firConfig.js')?>"></script>  -->
 <script>
 
 </script>
@@ -103,7 +103,7 @@
 	</style>
  
 	<div class="welcomelabel">
-		<h4 id="welcome"></h4>
+		<h4><?=isset($username)?$username:'unknown user'?></h4>
 	</div>
 		<div class="container-fluid space-small">
 	
@@ -217,7 +217,7 @@
 				</div>
 				<div style="border-top: 1px solid #ddd;">	
 					<ul class="list-group">
-						<a href="<?=base_url('admin/dashboard')?>" class="active selected list-group-item">
+						<a href="<?=base_url('admin/dashboard')?>" class="list-group-item">
 							<i class="fas fa-home"></i> Dashboard
 					</a>
 				</ul>
@@ -318,7 +318,7 @@
 				<div class="collapse dropdown" id="MyAccount">
 					<ul class="list-group">
 						<a href="<?=base_url('admin/profile_setting')?>" class=" list-group-item" id="Profile_Setting">Profile Setting</a>
-						<a href="" class=" list-group-item" id="Profile_Setting">Log Out</a>
+						<a href="<?=base_url('admin/LogOut')?>" class=" list-group-item" id="Profile_Setting">Log Out</a>
 						
 					</ul>
 				</div>

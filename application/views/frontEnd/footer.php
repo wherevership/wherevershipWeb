@@ -1,7 +1,7 @@
 <footer id="masterFooter" class="page-footer">
 	<div class="container">
 		<div class="footer-inner">
-			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-2 footer-link-height">
+			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 footer-link-height">
 				<ul class="links">
 				<li class="title-link">Overview</li>
 				<li><a href="<?=base_url('aboutUs')?>">About Us</a></li>
@@ -15,27 +15,26 @@
 				</ul>
 			</div>
 			
-			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-3 footer-link-height">
+			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 footer-link-height">
 				<ul class="links">
 				<li class="title-link">My Account</li>
-				<li><a id="log_in_f">Log In</a></li>
-				<li><a id="dashboard_f">Dashboard</a></li>
-				<li><a id="edit_profile_f">Edit Your Profile</a></li>
-				<li><a id="my_cart_f">My Cart</a></li>
+				<li><a id="log_in_f" href="<?=!empty($id)?base_url('member/logOut'):base_url('userLogin')?>"><?=!empty($id)?'Log Out':'Log In'?></a></li>
+				<li><a id="dashboard_f" href="<?=!empty($id)?base_url('member/user_panel'):base_url('userLogin')?>">Dashboard</a></li>
+				<li><a id="edit_profile_f" href="<?=!empty($id)?base_url('member/personal_profile'):base_url('userLogin')?>">Edit Your Profile</a></li>
+				<li><a id="my_cart_f" href="<?=!empty($id)?base_url('member/actions_required'):base_url('userLogin')?>">My Cart</a></li>
 			</ul>
 			</div>
-			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-3 footer-link-height">
+			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 footer-link-height">
 				<ul class="links">
 				<li class="title-link">Tools</li>
-				<li><a data-toggle="modal" data-target="#services>"Send A Parcel</a></li>
+				<li><a data-toggle="modal" data-target="#services">Send A Parcel</a></li>
 				<li><a href="#">Trace & Track</a></li>
-				<li><a onclick = "#">Volumetric Calculator</a></li>
-				<li><a href="#">Widgets</a></li>
+				<li><a href = "<?=base_url('volumetricCalcualator')?>">Volumetric Calculator</a></li>
 				
-		            <li><a href="#">Bulk Delivery Tool</a></li>
 		          
 				</ul>
 			</div>
+			<!--
 			<div class="col-xs-12 col-sm-6 col-md-4 footer-link-height social-links">
 				<ul class="links" style="padding-bottom: 5px;">
 					<li class="title-link">Follow Us</li>
@@ -59,11 +58,11 @@
 					<div class="clearfix"></div>
                 	<br>
 				</ul>
-					<ul class="links">
+				<ul class="links">
 	   
-	</ul>
-			</div>
-		</div>
+				</ul>
+			</div>  -->
+		</div> 
 	</div>
 </footer>
 <div class="page-copyright">

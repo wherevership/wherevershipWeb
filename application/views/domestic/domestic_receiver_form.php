@@ -1,47 +1,49 @@
+	<style>
+		.panel-title-bar-white {
+				text-align: center;
+				padding: 10px auto;
+				color: #fff;
+				margin-bottom: 0px;
+			}
+	
+	</style>
+	
+	
 	<div id="sticky-anchor"></div>
-	<div class="container top1">
+	<div class="container top1 space-small">
 			<div class="row">
 				<div class="container-fluid">
-					<div class="col-lg-6 col-md-4 col-sm-12 logo-wrapper">
+					<div class="col-lg-3 col-md-4 col-sm-12 logo-wrapper">
 						<a href="<?=base_url('')?>" class="logo-wrapper">
 							<img src="<?=base_url('assets2/image/logo.png')?>" class="logo hidden-xs" width="50%">
 						</a>
 					</div>
-					<div class="col-lg-6 col-md-8 col-sm-12 padding-off">
-						<div class="row">
-							<ol class="breadcrumb-body">
-								<li class="past">
-									<a href="javascript:history.go(-1)">
-										<div class="breadcrumb-statge-container">
-										
-											<div class="breadcrumb-stage">1</div>
-											<div class="breadcrumb-stage">Shipment <br/>Detail</div>
-										</div>
-									</a>	
-								</li>
-								<li class="current">
-									
-										<div class="breadcrumb-statge-container">
-										
-											<div class="breadcrumb-stage">2</div>
-											<div class="breadcrumb-stage">Shipment <br/>Overview </div>
-									
-										</div>
-								
-								</li>
-								<li class="future">
-									
-										<div class="breadcrumb-statge-container">
-										
-											<div class="breadcrumb-stage">3</div>
-											<div class="breadcrumb-stage">Payment <br/>Option</div>
-										
-										</div>
-									
-								</li>
-								
-						
-							</ol>
+					<div class="col-lg-9 col-md-8 col-sm-12 padding-off">
+						<div class="row bs-wizard" style="border-bottom:0;">
+							<div class="col-xs-4 bs-wizard-step complete">
+								<div class="text-center bs-wizard-stepnum hidden-sm hidden-xs">Shipment Details</div>
+								<div class="text-center bs-wizard-stepnum visible-sm visible-xs">Shipment <br> Details</div>
+								<div class="progress">
+									<div class="progress-bar" style="width:100%"></div>
+								</div>
+								<a  class="bs-wizard-dot" href="javascript:history.go(-1)"></a>
+							</div>
+							<div class="col-xs-4 bs-wizard-step complete">
+								<div class="text-center bs-wizard-stepnum hidden-sm hidden-xs">Order Summary</div>
+								<div class="text-center bs-wizard-stepnum visible-sm visible-xs">Order <br> Summary</div>
+								<div class="progress">
+									<div class="progress-bar"></div>
+								</div>
+								<a  class="bs-wizard-dot"></a>
+							</div>
+							<div class="col-xs-4 bs-wizard-step disabled">
+								<div class="text-center bs-wizard-stepnum hidden-sm hidden-xs">Payment Options</div>
+								<div class="text-center bs-wizard-stepnum visible-sm visible-xs">Payment <br> Options</div>
+								<div class="progress">
+									<div class="progress-bar"></div>
+								</div>
+								<a  class="bs-wizard-dot"></a>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -49,11 +51,9 @@
 		</div>
 
 	
-		<div class="row title-bar">
-			<h1 class="title">Shipment Overview</h1>
-		</div>
+		
 	<div class="container">
-		<form method="POST" action="" class="form-horizontal">
+		<form method="POST" action="<?=base_url('dtc_payment_process')?>" class="form-horizontal">
 			<div class="row">
 				<input type="hidden" name="weight" value="<?=$weight?>"/>
 				<input type="hidden" name="height" value="<?=$height?>"/>
@@ -61,7 +61,7 @@
 				<input type="hidden" name="length" value="<?=$length?>"/>
 				<input type="hidden" name="v_weight" value="<?=$v_weight?>"/>
 				<input type="hidden" name="cost" value="<?=$cost?>"/>
-				<input type="hidden" name="userId" value="<?=$useId?>"/>
+				<input type="hidden" name="userId" value="<?=$userId?>"/>
 				
 				<input type="hidden" name="shipper_company_name" value="<?=$shipper_company_name?>"/>
 				<input type="hidden" name="shipper_country" value="<?=$shipper_country?>"/>
@@ -98,7 +98,7 @@
 			
 			<div class="row">
 				<div class="panel panel-default">
-					<div class="panel-title-bar">
+					<div class="panel-title-bar-white">
 						<div class="title">
 							<img src="<?=base_url('assets2/image/poslaju.png')?>" width="20%">
 						</div>
@@ -190,8 +190,7 @@
 					</div>
 				
 					<div class="col-md-6">
-						<input type="submit" value="Next" id="next" class="form-control btn btn-success"/>
-					
+						<input type="submit" value="Next" id="next" class="form-control btn btn-primary">
 					</div>
 				</div>
 			</div>

@@ -29,6 +29,11 @@ class Domestic_Price_Model extends CI_model {
 		return $this->db->insert_id();
 	}
 	
+	public function update($where=array(),$update_array=array()) {
+		$this->db->where($where);
+		$this->db->update($this->table_name,$update_array);
+	}
+	
 	public function delete($delete_array=array()) {
 	
 		$this->db->where($delete_array);

@@ -20,7 +20,7 @@
 
 <link href="<?=base_url('assets2/css/animation.css')?>" rel="stylesheet">
 
-<link href="<?=base_url('assets2/css/nunito.css')?>" rel="stylesheet">
+<link href="<?=base_url('assets2/css/karla.css')?>" rel="stylesheet">
 
 <link href="<?=base_url('assets2/css/animate.css')?>" rel="stylesheet">
 
@@ -77,9 +77,11 @@
 
 <script type="text/javascript" src="<?=base_url('assets2/js/quote.js')?>"></script>
 
-<script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
-
+<!--<script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+-->
+<!--
 <script src="<?=base_url('assets2/js/firConfig.js')?>"></script>
+-->
 <!--<script type="text/javascript" src="https://www.googleadservices.com/pagead/conversion.js"></script> -->
 <script>
 
@@ -100,8 +102,8 @@
       
 					<nav id="nav-toggle-menu" class="hidden-xs">
 						<ul class="nav-list">
-							<li><i class="fas fa-user"></i> <a id="welcome">Hi, Welcome</a></li>
-							<li><i class="fas fa-truck"></i> <a data-toggle="modal" data-target="#services">Send A Parcel</a></li>
+							<li><i class="fas fa-user"></i> <a id="welcome" <?=!empty($id)?base_url('member/user_panel'):base_url('userLogin')?>><?=!empty($id)?'Hi,'.' '.$username:'Hi, Welcome'?></a></li>
+						<!--	<li><i class="fas fa-truck"></i> <a data-toggle="modal" data-target="#services">Send A Parcel</a></li> -->
 							<li><i class="far fa-question-circle"></i><a href="<?=base_url('contactUs')?>"> Help</a></li>
               
 						</ul>
@@ -118,12 +120,12 @@
 					<div class="col-lg-6 col-md-4 col-sm-6 logo-wrapper"> <a href="<?=base_url('')?>" class="logo-wrapper"><img src="<?=base_url('assets2/image/logo.png')?>" class="logo hidden-xs"></a> </div>
 				
 						<ul class="nav navbar-nav navbar-right visible-sm">
-							<li class="login-menu login_top"><a href="<?=base_url('userLogin')?>"><i class="fas fa-user"></i>Log In</a></li>
-							<li class="login-menu signUp_top" style="border-left: 2px solid #fff;"><a href="<?=base_url('signUp')?>">Sign Up</a></li>
-							<li class="login-menu logout_top" style="border-left: 2px solid #fff;"><a onclick='logout()'>Log Out</a></li>
+							<li class="login-menu login_top" <?=!empty($id)? 'style="display:none;"':''?>><a href="<?=base_url('userLogin')?>"><i class="fas fa-user"></i>Log In</a></li>
+							<li class="login-menu signUp_top" style="border-left: 2px solid #fff;" <?=!empty($id)? 'style="display:none;"':''?>><a href="<?=base_url('signUp')?>">Sign Up</a></li>
+							<li class="login-menu logout_top" style="border-left: 2px solid #fff;" <?=!empty($id)? '':'style="display:none;"'?>><a href='<?=base_url('member/logOut')?>'>Log Out</a></li>
 						</ul>
 				
-					<div class="col-lg-6 col-md-8 padding-off hidden-sm">
+				<!--	<div class="col-lg-6 col-md-8 padding-off hidden-sm">
 						<div class="row">
 							<form class="myform" onsubmit="return false;">
 								<div class="col-xs-12" style="
@@ -215,7 +217,7 @@ function logout() {
 
 </script>
 					</div>
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</div>
@@ -230,20 +232,20 @@ function logout() {
         <nav id="bs-navbar" class="collapse navbar-collapse hidden-xs">
           <ul class="nav navbar-nav">
             <li><a href="<?=base_url('')?>" style="padding-left: 0px;"><span class="glyphicon glyphicon-home hidden-sm hidden-md"></span> Home</a></li>
-			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Services <span class="caret"></span></a>
+			<!--<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Services <span class="caret"></span></a>
             	<ul class="dropdown-menu" role="menu">
                 	<li><a href="<?=base_url('courier')?>">Courier</a></li>
                 	<li><a href="<?=base_url('truck')?>">Trucking</a></li>
                 </ul>
-            </li>
+            </li> -->
 			 <li><a href="<?=base_url('aboutUs')?>">About Us</a>
 			 </li>
             
 		</ul>
           <ul class="nav navbar-nav navbar-right hidden-sm">
-             <li class="login-menu login_top"><a href="<?=base_url('userLogin')?>"><i class="fas fa-user"></i> Log In</a></li>
-            <li class="login-menu signUp_top"><a href="<?=base_url('signUp')?>" style="border-left: 1px solid rgba(255, 255, 255, 0.5);">Sign Up</a></li>
-			<li class="login-menu logout_top"><a onclick='logout()'>Log Out</a></li>
+             <li class="login-menu login_top" <?=!empty($id)? 'style="display:none;"':''?>><a href="<?=base_url('userLogin')?>"><i class="fas fa-user"></i> Log In</a></li>
+            <li class="login-menu signUp_top" <?=!empty($id)? 'style="display:none;"':''?>><a href="<?=base_url('signUp')?>" style="border-left: 1px solid rgba(255, 255, 255, 0.5);">Sign Up</a></li>
+			<li class="login-menu logout_top" <?=!empty($id)? '':'style="display:none;"'?>><a href='<?=base_url('member/logOut')?>'>Log Out</a></li>
           </ul>
         </nav>
       </div>
@@ -263,9 +265,9 @@ function logout() {
     <div class="mobile-menu pull-right"> 
       <a  class="navbar-toggle collapsed" id="log_in_mobile"><i class="fas fa-user"></i></a>
     </div>
-    <div class="mobile-menu pull-right">
+   <!-- <div class="mobile-menu pull-right">
       <a class="navbar-toggle collapsed" data-toggle="modal" data-target="#services"><i class="fas fa-truck"></i></a>
-    </div>
+    </div> -->
 </div>
 </div>
 <!--END OF MOBILE TOP MENU--> 
@@ -276,9 +278,9 @@ function logout() {
     
     <h3 class="site-nav-title">PROFILE</h3>
     <ul class="nav navbar-nav site-nav-group">
-      <li class="site-nav-item login_top"> <a href="<?=base_url('userLogin')?>"><span>Log In</span> <span class="side-menu-box"><i class="fas fa-user"></i></span></a> </li>
-      <li class="site-nav-item signUp_top"> <a href="<?=base_url('signUp')?>"><span>Sign Up</span> <span class="side-menu-box"><i class="fas fa-user"></i></span></a> </li>
-	  <li class="site-nav-item logout_top"> <a onclick='logout()'><span>Log Out</span> <span class="side-menu-box"><i class="fas fa-user"></i></span></a> </li>
+      <li class="site-nav-item login_top" <?=!empty($id)? 'style="display:none;"':''?> > <a href="<?=base_url('userLogin')?>"><span>Log In</span> <span class="side-menu-box"><i class="fas fa-user"></i></span></a> </li>
+      <li class="site-nav-item signUp_top" <?=!empty($id)? 'style="display:none;"':''?>> <a href="<?=base_url('signUp')?>"><span>Sign Up</span> <span class="side-menu-box"><i class="fas fa-user"></i></span></a> </li>
+	  <li class="site-nav-item logout_top" <?=!empty($id)? '':'style="display:none;"'?>> <a onclick='logout()'><span>Log Out</span> <span class="side-menu-box"><i class="fas fa-user"></i></span></a> </li>
     </ul>
     <h3 class="site-nav-title">USEFUL LINKS</h3>
     <ul class="nav navbar-nav site-nav-group">
@@ -309,7 +311,7 @@ function logout() {
         <ul class="dropdown-menu" role="menu">
 			<li><a href="<?=base_url('member/domestic_report')?>">Domestic</a></li>
 			<li><a href="<?=base_url('member/international_report')?>">International</a></li>
-			<li><a href="javascript:comingsoon();">truck</a></li>
+		<!--	<li><a href="javascript:comingsoon();">truck</a></li>  -->
 		  
         </ul>
       </li>
@@ -663,7 +665,7 @@ span.tip {
 					<div class="collapse dropdown" id="SendParcel">
 						<ul class="list-group">
 							<a href="<?=base_url('member/courier')?>" class= "list-group-item" id="Send_A_Parcel">Courier</a>
-							<a href="javascript:comingsoon();" class= "list-group-item" id ="Truck">Trucking</a>
+					<!--		<a href="javascript:comingsoon();" class= "list-group-item" id ="Truck">Trucking</a> -->
   	
 						<!--	<a href="<?=base_url('member/bulk_upload')?>" class="[:ac_bulkupload:] list-group-item" id ="Bulk_Upload">Bulk Upload</a> -->
 						</ul>
@@ -717,7 +719,7 @@ span.tip {
   	
 						<a href="<?=base_url('member/international_report')?>" class=" list-group-item" id="International">International</a>
 						
-						<a href="javascript:comingsoon();" class=" list-group-item" id="Trucking">Trucking</a>
+					<!-- <a href="javascript:comingsoon();" class=" list-group-item" id="Trucking">Trucking</a>  -->
 	  	
 					</ul>
 				</div>
