@@ -61,18 +61,18 @@ button.close {
     <div class="hidden-xs">
       <div class="col-xs-3 padding-left-off">
         <select class="form-control" id="category" name="category" onchange="changeCategory()">    
-			<option class='hidden-xs' value='1' >Collection Date</option>
-			<option value='2' >Tracking Number</option>
+			<option value='collection_date' >Collection Date</option>
+			<option value='tracking_number' >Tracking Number</option>
         </select>
       </div>
       <div id="searchfield_normal" class="input-group col-xs-9" >
 		<div class="has-feedback">
-        	<input class="form-control" type="text" name="search" placeholder="Order No"/>
+        	<input class="form-control" type="text" name="search2" placeholder="search"/>
 			<span class="epi-info-circled form-control-feedback hide"  aria-hidden="true"></span>
 		</div>
 
         <span class="input-group-btn">
-        <button class="btn btn-primary" type="button" onclick="orderlist.search()">Search</button>
+        <button class="btn btn-primary" type="button" onclick="orderlist.searchbyother()">Search</button>
         </span> </div>
       <div id="searchfield_calendar" class="input-group col-xs-9" style="display:none">
         <div class="row">
@@ -100,7 +100,7 @@ button.close {
           </div>
         </div>
         <span class="input-group-btn">
-        <button class="btn btn-primary" type="button" onclick="orderlist.search()">Search</button>
+        <button class="btn btn-primary" type="button" onclick="orderlist.searchbydate()">Search</button>
         </span> </div>
     </div>
     <div class="visible-xs">
@@ -108,9 +108,9 @@ button.close {
 		<option value='2' >Tracking No</option>
       </select>
       <div class="input-group col-xs-12">
-        <input class="form-control" type="text" name="search2" placeholder="Order No"/>
+        <input class="form-control" type="text" name="search2" placeholder="Search"/>
         <span class="input-group-btn ">
-        <button class="btn btn-primary" type="button" onclick="orderlist.search()">Search</button>
+        <button class="btn btn-primary" type="button" onclick="orderlist.searchbyother()">Search</button>
         </span> </div>
     </div>
   </div>
@@ -135,13 +135,13 @@ button.close {
     
   </ul>
 </div>
-
+<!--
 
 <div class="form-inline pull-right hidden-xs" style="margin: 20px 20px;"> Listing Per Page :
   <select class="form-control" id="resultLimit" name="resultLimit" onchange="orderlist.resultLimit(this.value)">
 	<option value='10' Selected>10</option><option value='50' >50</option><option value='100' >100</option><option value='150' >150</option>
   </select>
-</div>
+</div> -->
 <table id="myTable" class="table table-striped" width="100%">
   <thead>
     <tr>
@@ -154,21 +154,21 @@ button.close {
       <th width="22%"></th>
     </tr>
   </thead>
-  <tbody>
+  <tbody id="table1">
   <?php
 		if (!empty($shipmentList)) {
 		foreach ($shipmentList as $v) {
    ?>
 	<tr>
-		<td width="2%" class="hidden-xs"><input type='checkbox'></td>
+		<td width="2%" class="hidden-xs"><input type='checkbox' name="checkBluckAction" id="checkBluck-<?=$v['id']?>" onclick="checknow();" value="<?=$v['id']?>" /></td>
 		<td class="hidden-xs" width="15%"><?=$v['tracking_number']?></td>
 		<td class="hidden-xs" width="25%"><?=$v['recevier_postcode'].'<br/>'.$v['receiver_state'].'<br/>'.$v['receiver_country']?></td>
 		<td class="hidden-xs" width="16%"><?=$v['collection_date']?></td>
 		<td class="hidden-xs" width="20%"><?=$v['status']?></td>
 		
 		<td width="22%">
-		<a href="" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-expand"></i></a>
-		<a href="" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i></a>
+		<a href="javascript:showDetail('<?=$v['id']?>');" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-expand"></i></a>
+		
 		</td>
 	</tr>
   
@@ -215,12 +215,94 @@ button.close {
 
 </div>
 <div id="dialog"></div>
+
+<div class="modal fade modal-fullscreen" id="shipmentDetail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			
+	<div class="modal-dialog" role="document" id="services1">
+		<div class="modal-content">
+				<div class="modal-header">
+					<h2 class="modal-title" id="tracking_number"></h2>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="col-md-6 col-md-12 padding-off">
+						<h3><b><span id="status"></span></b></h3>
+					</div>
+					<div class="col-md-6 col-md-12 padding-off">
+						<h4>Created by: <span id="user"></span></h4>
+					</div>
+					<div class="clearfix"></div>
+					<hr/>
+					<div class="col-md-6 col-xs-12 padding-off">
+						<h3>From</h3>
+						<p>
+						 <span id="shipper_company_name"></span>
+						 <span id="shipper_name"></span><br/>
+						 <span id="shipper_address"></span>
+						 <span id="shipper_city"></span>
+						 <span id="shipper_postcode"></span>
+						 <span id="shipper_state"></span>
+						 <span id="shipper_country"></span> <br/>
+						 <span id="shipper_phone_number"></span> <br/>
+						 <span id="shipper_email"></span>
+						</p>
+					  </div>  
+					
+					  <div class="col-md-6 col-xs-12 padding-off">
+						<h3>To</h3>	
+						<p>
+						 <span id="recevier_company_name"></span>
+						 <span id="recevier_name"></span><br/>
+						 <span id="recevier_address"></span>
+						 <span id="recevier_city"></span>
+						 <span id="recevier_postcode"></span>
+						 <span id="recevier_state"></span>
+						 <span id="recevier_country"></span> <br/>
+						 <span id="recevier_phone_number"></span> <br/>
+						 <span id="recevier_email"></span>
+						</p>
+					  </div>
+       
+					   <div class="clearfix"></div>
+						<hr />
+						<div>
+							<div class="col-md-6 col-xs-12 padding-off">
+								<h3>Parcel Detail</h3>
+								<p>Parcel Content: <span id="parcel_content"></span></p>
+								<p>Value of Content: <span id="value_of_content"></span></p>
+								<p>Pickup Required: <span id="pickup_required"></span></p>
+								<p>Collection Date: <span id="collection_date"></span></p>
+								
+							</div>
+							<div class="col-md-6  col-xs-12 padding-off">
+								<h3>Parcel Demension</h3>
+								<p>Weight: <span id="weight"></span></p>
+								<p>length: <span id="length"></span></p>
+								<p>Width: <span id="width"></span></p>
+								<p>Height: <span id="height"></span></p>
+							</div>
+								
+					
+        
+					</div>
+					<div class="clearfix"></div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+       
+					</div>
+				</div>
+			</div>
+			</div>
+
 <script>
 <!-- checkbox usage START-->
 var lastChecked = null;
     
 $(document).ready(function() {
-	var $checkbox = $('input[name=checkUsagedownload]');
+	var $checkbox = $('input[name=checkBluckAction]');
 	$checkbox.click(function(e) {
 		if(!lastChecked) {
 			lastChecked = this;
@@ -239,6 +321,68 @@ $(document).ready(function() {
 	});
 });
 <!-- checkbox usage END -->
+
+function showDetail(id) {
+	url = "<?=base_url('admin/shipmentDetail/')?>" + id;
+	console.log(url);
+	
+	$.ajax({
+		method: "GET",
+		url: url,
+		dataType: "json"
+	}).done(function(response){
+		console.log(response);
+		setTimeout(function(){ 
+				
+			$("#shipper_company_name").text(response.shipper_company_name);
+			$("#shipper_address").text(response.shipper_address);
+			$("#shipper_city").text(response.shipper_city);
+			$("#shipper_postcode").text(response.shipper_postcode);
+			$("#shipper_state").text(response.shipper_state);
+			$("#shipper_country").text(response.shipper_country);
+			$("#shipper_contact_person").text(response.shipper_contact_person);
+			$("#shipper_phone_number").text(response.shipper_phone_number);
+			$("#shipper_email").text(response.shipper_email);
+			$("#recevier_company_name").text(response.recevier_company_name);
+			$("#recevier_address").text(response.recevier_address);
+			$("#recevier_city").text(response.recevier_city);
+			$("#recevier_postcode").text(response.recevier_postcode);
+			$("#recevier_state").text(response.recevier_state);
+			$("#recevier_country").text(response.recevier_country);
+			$("#recevier_contact_person").text(response.recevier_contact_person);
+			$("#recevier_phone_number").text(response.recevier_phone_number);
+			$("#recevier_email").text(response.recevier_email);
+			$("#weight").text(response.weight);
+			$("#length").text(response.length);
+			$("#width").text(response.width);
+			$("#height").text(response.height);
+			$("#volumentric_weight").text(response.volumentric_weight);
+			$("#price").text(response.price);
+			$("#parcel_content").text(response.parcel_content);
+			$("#value_of_content").text(response.value_of_content);
+			$("#pickup_required").text(response.pickup_required);
+			$("#tracking_number").text(response.tracking_number);
+			$("#status").text(response.status);
+			$("#collection_date").text(response.collection_date);
+			$("#user").text(response.userid +" "+ response.user_name);
+			
+			$("#shipmentDetail").modal();
+		
+		},2000);
+		
+	}).fail(function(XMLHttpRequest,textStatus,textStatus){
+				console.log(XMLHttpRequest.responseText);
+				console.log(XMLHttpRequest.status);
+				console.log(XMLHttpRequest.readyState);
+				console.log(textStatus);
+				alert("something wrong");
+	
+	});
+	
+	
+	//$("#shipmentDetail").modal();
+}
+
 
 var orderlist = {
 	Detail : function(ref_id){
@@ -298,48 +442,120 @@ var orderlist = {
 		window.location.href = url.link + "?" + qs + (rl.length > 0 ? "&rl=" + rl : "");
 	},
 	
-	search : function(){
-		var message = "";
-		var url = QueryString(window.location.href);
-		var sc = $("[name=search]").val();
-		if(sc == ""){
-			sc = ($("[name=search2]").val().trim());
-		}
-		var sf = ($("[name=category]").val().trim());
-		if (sf == '1'){
-			if($("[name=dateFrom]").val().trim() != "" && $("[name=dateTo]").val().trim() != ""){
-				sc = 'From-'+($("[name=dateFrom]").val().trim())+'To-'+($("[name=dateTo]").val().trim());
-			}else{
-				message+="Please Select The From & To Date.";
-				CheckNull($("[name=dateFrom]"),$("[name=dateTo]"),"0");
-				sc = "fail";
-			}
-		}
-		
-		if(sc == ""){
-			message+="No Search Key Is Inserted.</br>";
-			CheckNull("0","0",$("[name=search]"));
-		}
-		
-		if(message != ""){
-			swal({
-				title: 'Oops',
-				type: 'error',
-				html: '' + message,
-				confirmButtonColor: '#4e97d8'
-				})
-			return false;
-		}else{
-			clearClass();
-			var qs = "";
-			for(p in url.qs){
-				if(p != "sc" && p != "sf" && p != "os" && p != "lpg"){
-					if(qs.length > 0) qs += "&";
-					qs += p + "=" + url.qs[p]
-				};
-			}
-			window.location.href = url.link + "?" + qs + (sc.length > 0 ? "&sc=" + sc : "")+ (sf.length > 0 ? "&sf=" + sf : "");
-		}
+	searchbyother : function(){
+		url = "<?=base_url('admin/searchShipmentByOther/do')?>";
+		var category = ($("[name=category]").val().trim());
+		var search = ($("[name=search2]").val().trim());
+			$.ajax({
+				url: url,
+				type: "POST",
+				dataType: "text",
+				async: true,
+				data: {
+					category: category, 
+					search: search
+				},
+				
+				success: function(result) {
+					console.log(result);
+					var json = JSON.parse(result);
+					var x = 0;
+					$("#table1").html("");
+					console.log(json.length);
+					if (json.length > 0) {
+						for (var i=0; i < json.length; i++) {
+							if (json[i].result != 'empty') { 
+							
+								
+								
+									var tr = $("<tr>").html('<td width="2%" class="hidden-xs"><input type=\'checkbox\' name="checkBluckAction" id="checkBluck-'+json[i].id+'" onclick="checknow();" value="'+json[i].id+'"></td><td class="hidden-xs" width="15%">'+json[i].tracking_number+'</td><td class="hidden-xs" width="25%">'+json[i].recevier_postcode+'<br/>'+json[i].recevier_state+'<br/>'+json[i].recevier_country+'</td><td class="hidden-xs" width="16%">'+json[i].collection_date+'</td><td class="hidden-xs" width="20%">'+json[i].status+'</td><td width="22%"><a href="javascript:showDetail(\''+json[i].id+'\');" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-expand"></i></a></td>');
+									
+									$("#table1").append(tr);
+								
+								
+							} else {
+								var tr = $("<tr>").html('<td colspan=\'6\'>No Record Found.</td>');
+								$("#table1").append(tr);
+							}
+						}
+						
+					} else {
+						
+							var tr = $("<tr>").html('<tr><td colspan=\'6\'>No Record Found.</td></tr>');
+							$("#table1").append(tr);
+					}
+					//console.log(result);
+					
+					
+				},
+				error: function(XMLHttpRequest,textStatus,textStatus){
+					console.log(XMLHttpRequest.responseText);
+					console.log(XMLHttpRequest.status);
+					console.log(XMLHttpRequest.readyState);
+					console.log(textStatus);
+					alert(XMLHttpRequest.responseText);
+			
+				} 
+			
+			});
+	},
+	
+	searchbydate :function() {
+		url = "<?=base_url('admin/searchShipmentByDate/do')?>";
+		var dateFrom = ($("[name=dateFrom]").val().trim());
+		var dateTo = ($("[name=dateTo]").val().trim());
+			$.ajax({
+				url: url,
+				type: "POST",
+				dataType: "text",
+				async: true,
+				data: {
+					dateFrom: dateFrom, 
+					dateTo: dateTo
+				},
+				
+				success: function(result) {
+					console.log(result);
+					var json = JSON.parse(result);
+					var x = 0;
+					$("#table1").html("");
+					console.log(json.length);
+					if (json.length > 0) {
+						for (var i=0; i < json.length; i++) {
+							if (json[i].result != 'empty') { 
+							
+								
+								
+									var tr = $("<tr>").html('<td width="2%" class="hidden-xs"><input type=\'checkbox\' name="checkBluckAction" id="checkBluck-'+json[i].id+'" onclick="checknow();" value="'+json[i].id+'"></td><td class="hidden-xs" width="15%">'+json[i].tracking_number+'</td><td class="hidden-xs" width="25%">'+json[i].recevier_postcode+'<br/>'+json[i].recevier_state+'<br/>'+json[i].recevier_country+'</td><td class="hidden-xs" width="16%">'+json[i].collection_date+'</td><td class="hidden-xs" width="20%">'+json[i].status+'</td><td width="22%"><a href="javascript:showDetail(\''+json[i].id+'\');" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-expand"></i></a></td>');
+									
+									$("#table1").append(tr);
+								
+								
+							} else {
+								var tr = $("<tr>").html('<td colspan=\'6\'>No Record Found.</td>');
+								$("#table1").append(tr);
+							}
+						}
+						
+					} else {
+						
+							var tr = $("<tr>").html('<tr><td colspan=\'6\'>No Record Found.</td></tr>');
+							$("#table1").append(tr);
+					}
+					//console.log(result);
+					
+					
+				},
+				error: function(XMLHttpRequest,textStatus,textStatus){
+					console.log(XMLHttpRequest.responseText);
+					console.log(XMLHttpRequest.status);
+					console.log(XMLHttpRequest.readyState);
+					console.log(textStatus);
+					alert(XMLHttpRequest.responseText);
+			
+				} 
+			
+			});
 	},
 	
 	Del :function(obj) {
@@ -560,7 +776,7 @@ function RemoveDetail(){
 }
 
 function checkAllOrderBox(){
-	var checkboxes = document.getElementsByName('checkUsagedownload');
+	var checkboxes = document.getElementsByName('checkBluckAction');
 	if(document.getElementById('checkAllOrder').checked){
 		for(var i = 0; i < checkboxes.length; i++){
 			if(checkboxes[i].type == 'checkbox'){
@@ -581,7 +797,7 @@ function checknow(id){
 	if(document.getElementById('checkAllOrder').checked){
 		document.getElementById('checkAllOrder').checked=false;
 	}else{
-		var checkboxes = document.getElementsByName('checkUsagedownload');
+		var checkboxes = document.getElementsByName('checkBluckAction');
 		var allchecked=0;
 		for(var i = 0; i < checkboxes.length; i++){
 			if(checkboxes[i].type == 'checkbox'){
@@ -599,7 +815,7 @@ function checknow(id){
 
 function changeCategory(){
 	var sf = ($("[name=category]").val().trim());
-	if(sf == 1){
+	if(sf == 'collection_date'){
 		$('#searchfield_normal').attr('style','display: none');
 		$('#searchfield_calendar').attr('style','display: ""');
 	}else{
@@ -608,35 +824,76 @@ function changeCategory(){
 	}
 }
 
-function UsageStatement(){
-	var checkboxes = document.getElementsByName('checkUsagedownload');
-	id="";
+
+function bulkDelete(){
+var checkboxes = document.getElementsByName('checkBluckAction');
+	id=[];
 	count=0;
 	
 	for(var i = 0; i < checkboxes.length; i++){
 		if(checkboxes[i].checked == true){
 			var myElem = document.getElementById((checkboxes[i].id));
 			if (myElem != null){
-				if(id!=""){
-					id=id+","+document.getElementById((checkboxes[i].id)).value;
-				}else{
-					id=document.getElementById((checkboxes[i].id)).value;
-				}
+				
+				id[count] = document.getElementById((checkboxes[i].id)).value;
+				
 				count++;
 			}
 		}
 	}
+	
+	console.log(id);
    	
 	if(id==""){
 		swal({
 			title: 'Oops',
 			type: 'error',
-			html: 'Please select the order invoices which you would like to download.',
+			html: 'error',
 			confirmButtonColor: '#4e97d8'
 			})
 	}else{
-		window.open("?ac=UsageStatement&id="+id);
+		swal({
+        title: 'Delete Admin',
+        text: 'Are you sure want to remove the ('+id.length+') selected admin?',
+        type: 'warning',
+        confirmButtonColor: '#4e97d8',
+        showCancelButton: true
+      }).then(function() {
+          bulkDeleteFunc(id);
+      });
+		
+		//bulkDeleteFunc(id);
 	}
+}
+
+function bulkDeleteFunc(id) {
+	url = "<?=base_url('')?>";
+		
+			$.ajax({
+				url: url,
+				type: "POST",
+				dataType: "text",
+				async: true,
+				data: {
+					id: id,  
+				},
+				
+				success: function(result) {
+					console.log(result);
+					window.location.href = '<?=base_url("admin/domestic")?>';
+					  
+				},
+				error: function(XMLHttpRequest,textStatus,textStatus){
+					console.log(XMLHttpRequest.responseText);
+					console.log(XMLHttpRequest.status);
+					console.log(XMLHttpRequest.readyState);
+					console.log(textStatus);
+					alert(XMLHttpRequest.responseText);
+			
+				}	
+			
+			});
+	
 }
 
 $(function(){
@@ -647,13 +904,19 @@ $(function(){
 
 function checkEnter(e) {
     if(e.keyCode == 13) {
-		orderlist.search();
+		var sf = ($("[name=category]").val().trim());
+		if(sf == 'collection_date'){
+			
+		} else {
+			orderlist.searchbyother();
+		}
+		
     }
 }
 
 function performBulkAction(value){
 	switch(value){
-		case "UsageStatement" : UsageStatement(); break;
+		case "delete" : Bulkdelete(); break;
 		default : alert("Please select a valid action."); break;
 	}
 }

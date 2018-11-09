@@ -43,6 +43,32 @@
 		
 	}
 	
+	public function bulk_delete() {
+		$id = $this->input->post("id", true);
+		
+		for ($i = 0; $i < sizeof($id); $i++) {
+			$this->Admin_Model->delete(array(
+				'id' => $id[$i],
+			
+			)); 
+			
+		}
+		echo("pass");
+	}
+	
+	public function userBulkDelete() {
+		$id = $this->input->post("id", true);
+		
+		for ($i = 0; $i < sizeof($id); $i++) {
+			$this->User_Model->delete(array(
+				'id' => $id[$i],
+			
+			)); 
+			
+		}
+		echo("pass");
+	}
+	
 	
 	
 	}

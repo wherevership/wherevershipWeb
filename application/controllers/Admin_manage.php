@@ -258,6 +258,46 @@
 			}
 		}
 		
+		public function search_admin() {
+			$category = $this->input->post("category", true);
+			$value = $this->input->post("search", true);
+			$dataList = $this->Admin_Model->search(array(
+				'is_deleted' => 0,
+			),array(
+				$category => $value,
+			));
+			if (!empty($dataList)) {
+				foreach ($dataList as $v) {
+					$json[] = array(
+					'result' => 'pass',
+					'id' => $v['id'],
+					'firstname' => $v['firstname'],
+					'lastname' => $v['lastname'],
+					'email' => $v['email'],
+					'address1' => $v['address1'],
+					'address2' => $v['address2'],
+					'address3' => $v['address3'],
+					'mobile' => $v['mobile'],
+					'city' => $v['city'],
+					'postcode' => $v['postcode'],
+					'state' => $v['state'],
+					'country' => $v['country'],
+					'status' => $v['status'],
+					'is_deleted' => $v['is_deleted'],
+					);
+					
+				}
+				
+			} else {
+				$json[] = array(
+					'result' => 'empty',
+				);
+			
+			} 
+			echo json_encode($json);
+			
+		}
+		
 		
 		public function login_process() {
 			
@@ -267,6 +307,8 @@
 			$dataList = $this->Admin_Model->getOne(array(
 			'email' => $email,
 			'password' => $pass,
+			'status' => 'active',
+			'is_deleted' => 0,
 			));
 	
 

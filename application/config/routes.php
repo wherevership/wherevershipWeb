@@ -122,6 +122,7 @@ $route['member/logOut'] = 'User_manage/logout';
 $route['member/signUp'] = 'User_manage/signUpProcess';
 $route['member/updateMemberProfile/(:num)'] = 'User_manage/updateMemberProfile/$1';
 
+
 $route['order/(:any)/(:num)'] = 'Order_manage/detail/$1/$2';
 $route['dtc_shipment/(:any)'] = 'Shipment_manage/dtcDetail/$1';
 $route['int_shipment/(:any)'] = 'Shipment_manage/intDetail/$1';
@@ -152,6 +153,14 @@ $route['admin/driver_delete/(:num)'] = 'Admin_process_manage/driver_delete/$1';
 $route['api/adminDetail/(:num)'] = 'User_api_manage/adminDetail/$1';
 $route['api/userDetail/(:num)'] = 'User_api_manage/userDetail/$1';
 $route['admin/update_profile/(:num)'] = 'User_manage/updateAdminProfile/$1';
+$route['admin/searchAdmin'] = 'Admin_manage/search_admin';
+$route['admin/searchRequster'] = 'User_manage/searchRequester';
+$route['admin/searchDriver'] = 'User_manage/searchDriver';
+$route['admin/adminBulkDelete'] = 'Admin_process_manage/bulk_delete';
+$route['admin/userBulkDelete'] = 'Admin_process_manage/userBulkDelete';
+$route['admin/shipmentDetail/(:any)'] = 'Shipment_api_manage/shipmentDetail/$1';
+$route['admin/searchShipmentByOther/(:any)'] = 'Shipment_api_manage/search_shipment/$1';
+$route['admin/searchShipmentByDate/(:any)'] = 'Shipment_api_manage/search_shipment_by_date/$1';
 
 $route['internatinal/fuel_charge_update'] = 'International_shipment_manage/fuel_charge_update';
 $route['internatinal/internatinal_price/(:any)'] = 'International_shipment_manage/internatinal_price/$1';

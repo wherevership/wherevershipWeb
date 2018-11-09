@@ -121,7 +121,7 @@
 			}
 			
 			.login h1 a {
-				background-image: url(http://wherevership.com/assets2/image/logo.png);
+				background-image: url(<?=base_url('assets2/image/logo.png')?>);
 				background-size: 140px;
 				background-position: center top;
 				background-repeat: no-repeat;
@@ -159,7 +159,7 @@
 		<div class="login">
 			<div id="login">
 				<h1>
-					<a  href="http://wherevership.com/" title="Powerd by Wherevership" tabindex="-1">
+					<a  href="<?=base_url()?>" title="Powerd by Wherevership" tabindex="-1">
 						
 					</a>
 				</h1>

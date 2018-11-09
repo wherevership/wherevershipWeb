@@ -34,6 +34,8 @@
 
 <link href="<?=base_url('assets2/css/fontawesome-all.css')?>" rel="stylesheet">
 
+<link href="<?=base_url('assets2/css/fs-model.css')?>" rel="stylesheet">
+
 <!-- original javascript-->
 <script type="text/javascript" src="<?=base_url('assets2/js/jquery-1.12.1.min.js')?>"></script>
 
@@ -76,6 +78,8 @@
 <script type="text/javascript" src="<?=base_url('assets2/js/jquery.dataTables.js')?>"></script>
 
 <script type="text/javascript" src="<?=base_url('assets2/js/quote.js')?>"></script>
+
+<script type="text/javascript" src="<?=base_url('assets2/js/fs-model.js')?>"></script>
 
 <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
 
@@ -212,7 +216,7 @@
 			<div class="row">
 				<div style="margin-bottom: 10px;">
 				<a href="<?=base_url()?>">
-					<img src="http://wherevership.com/assets2/image/logo.png" class="logo hidden-xs" style="text-align:center;">
+					<img src="<?=base_url('assets2/image/logo.png')?>" class="logo hidden-xs" style="text-align:center;">
 				</a>
 				</div>
 				<div style="border-top: 1px solid #ddd;">	

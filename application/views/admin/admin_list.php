@@ -61,15 +61,15 @@ button.close {
     <div class="hidden-xs">
       <div class="col-xs-3 padding-left-off">
         <select class="form-control" id="category" name="category" onchange="changeCategory()">    
-			<option value='1' >First Name</option>
-			<option value='2' >Last Name</option>
-			<option value='3' >Email</option>
-			<option value='4' >Last Name</option>
+			<option value='firstname' >First Name</option>
+			<option value='lastname' >Last Name</option>
+			<option value='email' >Email</option>
+			<option value='status' >status</option>
         </select>
       </div>
       <div id="searchfield" class="input-group col-xs-9" >
 		<div class="has-feedback">
-        	<input class="form-control" type="text" name="search"/>
+        	<input class="form-control" type="text" name="search2" placeholder="Search"/>
 			<span class="epi-info-circled form-control-feedback hide"  aria-hidden="true"></span>
 		</div>
 
@@ -80,13 +80,13 @@ button.close {
     </div>
     <div class="visible-xs">
       <select class="form-control col-xs-12" id="category" name="category" onchange="changeCategory()">
-		<option value='1' >First Name</option>
-			<option value='2' >Last Name</option>
-			<option value='3' >Email</option>
-			<option value='4' >Last Name</option>
+			<option value='firstname' >First Name</option>
+			<option value='lastname' >Last Name</option>
+			<option value='email' >Email</option>
+			<option value='status' >status</option>
       </select>
       <div class="input-group col-xs-12">
-        <input class="form-control" type="text" name="search2" placeholder="Order No"/>
+        <input class="form-control" type="text" name="search2" placeholder="Serach"/>
         <span class="input-group-btn ">
         <button class="btn btn-primary" type="button" onclick="orderlist.search()">Search</button>
         </span> </div>
@@ -135,7 +135,7 @@ button.close {
 		foreach ($adminList as $v) {
    ?>
 	<tr>
-		<td width="5%" class="hidden-xs"><input type='checkbox' name="checkBluckAction"></td>
+		<td width="5%" class="hidden-xs"><input type='checkbox' name="checkBluckAction" id="checkBluck-<?=$v['id']?>" onclick="checknow('<?=$v['id']?>')" value="<?=$v['id']?>"></td>
 		<td class="hidden-xs" width="20%"><?=$v['firstname']?></td>
 		<td class="hidden-xs" width="20%"><?=$v['lastname']?></td>
 		<td class="hidden-xs" width="20%"><?=$v['email']?></td>
@@ -295,11 +295,38 @@ button.close {
 <!-- checkbox usage START-->
 var lastChecked = null;
 
+$(document).ready(function() {
+	var $checkbox = $('input[name=checkBluckAction]');
+	$checkbox.click(function(e) {
+		if(!lastChecked) {
+			lastChecked = this;
+			return;
+		}
+
+		if(e.shiftKey) {
+			var start = $checkbox.index(this);
+			var end = $checkbox.index(lastChecked);
+
+			$checkbox.slice(Math.min(start,end), Math.max(start,end)+ 1).prop('checked', lastChecked.checked);
+
+		}
+
+		lastChecked = this;
+	});
+});
+<!-- checkbox usage END -->
+
 function toDelete(url) {
-	var c = confirm("Are you Sure?");
-	if(c) {
-		location.href=url;
-	}
+		swal({
+        title: 'Delete Admin',
+        text: 'Are you sure want to remove the this?',
+        type: 'warning',
+        confirmButtonColor: '#4e97d8',
+        showCancelButton: true
+      }).then(function() {
+         location.href=url;
+      });
+	
 	
 }
 
@@ -345,26 +372,7 @@ function showDetail(id) {
 	
 }
 
-$(document).ready(function() {
-	var $checkbox = $('input[name=checkUsagedownload]');
-	$checkbox.click(function(e) {
-		if(!lastChecked) {
-			lastChecked = this;
-			return;
-		}
 
-		if(e.shiftKey) {
-			var start = $checkbox.index(this);
-			var end = $checkbox.index(lastChecked);
-
-			$checkbox.slice(Math.min(start,end), Math.max(start,end)+ 1).prop('checked', lastChecked.checked);
-
-		}
-
-		lastChecked = this;
-	});
-});
-<!-- checkbox usage END -->
 
 var orderlist = {
 	Detail : function(ref_id){
@@ -425,47 +433,64 @@ var orderlist = {
 	},
 	
 	search : function(){
-		var message = "";
-		var url = QueryString(window.location.href);
-		var sc = $("[name=search]").val();
-		if(sc == ""){
-			sc = ($("[name=search2]").val().trim());
-		}
-		var sf = ($("[name=category]").val().trim());
-		if (sf == '1'){
-			if($("[name=dateFrom]").val().trim() != "" && $("[name=dateTo]").val().trim() != ""){
-				sc = 'From-'+($("[name=dateFrom]").val().trim())+'To-'+($("[name=dateTo]").val().trim());
-			}else{
-				message+="Please Select The From & To Date.";
-				CheckNull($("[name=dateFrom]"),$("[name=dateTo]"),"0");
-				sc = "fail";
-			}
-		}
-		
-		if(sc == ""){
-			message+="No Search Key Is Inserted.</br>";
-			CheckNull("0","0",$("[name=search]"));
-		}
-		
-		if(message != ""){
-			swal({
-				title: 'Oops',
-				type: 'error',
-				html: '' + message,
-				confirmButtonColor: '#4e97d8'
-				})
-			return false;
-		}else{
-			clearClass();
-			var qs = "";
-			for(p in url.qs){
-				if(p != "sc" && p != "sf" && p != "os" && p != "lpg"){
-					if(qs.length > 0) qs += "&";
-					qs += p + "=" + url.qs[p]
-				};
-			}
-			window.location.href = url.link + "?" + qs + (sc.length > 0 ? "&sc=" + sc : "")+ (sf.length > 0 ? "&sf=" + sf : "");
-		}
+		url = "<?=base_url('admin/searchAdmin')?>";
+		var category = ($("[name=category]").val().trim());
+		var search = ($("[name=search2]").val().trim());
+			$.ajax({
+				url: url,
+				type: "POST",
+				dataType: "text",
+				async: true,
+				data: {
+					category: category, 
+					search: search
+				},
+				
+				success: function(result) {
+					console.log(result);
+					var json = JSON.parse(result);
+					var x = 0;
+					$("#table1").html("");
+					console.log(json.length);
+					if (json.length > 0) {
+						for (var i=0; i < json.length; i++) {
+							if (json[i].result != 'empty') { 
+						
+								//	var deleteurl = '<??>'
+								if (json[i].is_deleted == 0) {
+									var tr = $("<tr>").html('<td width="5%" class="hidden-xs"><input type=\'checkbox\' name="checkBluckAction" id="checkBluck-'+json[i].id+'" onclick="checknow(\''+json[i].id+'\')" value="'+json[i].id+'"></td><td class="hidden-xs" width="20%">'+json[i].firstname+'</td><td class="hidden-xs" width="20%">'+json[i].lastname+'</td><td class="hidden-xs" width="20%">'+json[i].email+'</td><td class="hidden-xs" width="20%">'+json[i].status+'</td><td width="15%"><a href="javascript:showDetail(\''+json[i].id+'\');" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-expand"></i></a><a href="javascript:toDelete(\'<?=base_url('admin/admin_delete/')?>'+json[i].id+'\');" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i></a></td>');
+									$("#table1").append(tr);
+								} else {
+									x += 1;
+									console.log(x);
+									if (x == json.length) {
+										var tr = $("<tr>").html('<td colspan=\'7\'>No Record Found.</td>');
+										$("#table1").append(tr);
+									}
+								} 
+							} else {
+								var tr = $("<tr>").html('<td colspan=\'7\'>No Record Found.</td>');
+								$("#table1").append(tr);
+							}
+						}
+						
+					} else {
+						
+							var tr = $("<tr>").html('<tr><td colspan=\'7\'>No Record Found.</td></tr>');
+							$("#table1").append(tr);
+					}
+					//console.log(result);
+				},
+				error: function(XMLHttpRequest,textStatus,textStatus){
+					console.log(XMLHttpRequest.responseText);
+					console.log(XMLHttpRequest.status);
+					console.log(XMLHttpRequest.readyState);
+					console.log(textStatus);
+					alert(XMLHttpRequest.responseText);
+			
+				}	
+			
+			});
 	},
 	
 	Del :function(obj) {
@@ -734,35 +759,75 @@ function changeCategory(){
 	}
 }
 
-function UsageStatement(){
-	var checkboxes = document.getElementsByName('checkUsagedownload');
-	id="";
+function bulkDelete(){
+	var checkboxes = document.getElementsByName('checkBluckAction');
+	id=[];
 	count=0;
 	
 	for(var i = 0; i < checkboxes.length; i++){
 		if(checkboxes[i].checked == true){
 			var myElem = document.getElementById((checkboxes[i].id));
 			if (myElem != null){
-				if(id!=""){
-					id=id+","+document.getElementById((checkboxes[i].id)).value;
-				}else{
-					id=document.getElementById((checkboxes[i].id)).value;
-				}
+				
+				id[count] = document.getElementById((checkboxes[i].id)).value;
+				
 				count++;
 			}
 		}
 	}
+	
+	console.log(id);
    	
 	if(id==""){
 		swal({
 			title: 'Oops',
 			type: 'error',
-			html: 'Please select the order invoices which you would like to download.',
+			html: 'error',
 			confirmButtonColor: '#4e97d8'
 			})
 	}else{
-		window.open("?ac=UsageStatement&id="+id);
+		swal({
+        title: 'Delete Admin',
+        text: 'Are you sure want to remove the ('+id.length+') selected admin?',
+        type: 'warning',
+        confirmButtonColor: '#4e97d8',
+        showCancelButton: true
+      }).then(function() {
+          bulkDeleteFunc(id);
+      });
+		
+		//bulkDeleteFunc(id);
 	}
+}
+
+function bulkDeleteFunc(id) {
+	url = "<?=base_url('admin/adminBulkDelete')?>";
+		
+			$.ajax({
+				url: url,
+				type: "POST",
+				dataType: "text",
+				async: true,
+				data: {
+					id: id,  
+				},
+				
+				success: function(result) {
+					console.log(result);
+					window.location.href = '<?=base_url("admin/admin_list")?>';
+					  
+				},
+				error: function(XMLHttpRequest,textStatus,textStatus){
+					console.log(XMLHttpRequest.responseText);
+					console.log(XMLHttpRequest.status);
+					console.log(XMLHttpRequest.readyState);
+					console.log(textStatus);
+					alert(XMLHttpRequest.responseText);
+			
+				}	
+			
+			});
+	
 }
 
 $(function(){
@@ -779,7 +844,7 @@ function checkEnter(e) {
 
 function performBulkAction(value){
 	switch(value){
-		case "UsageStatement" : UsageStatement(); break;
+		case "delete" : bulkDelete(); break;
 		default : alert("Please select a valid action."); break;
 	}
 }

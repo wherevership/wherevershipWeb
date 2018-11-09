@@ -43,7 +43,14 @@ class User_Model extends CI_model {
 		$this->db->where($where);
 		$this->db->update($this->table_name, $update_array);
 	}
-
+	
+	public function search($where=array(),$like=array()) {
+		$this->db->where($where);
+		$this->db->like($like);
+		$query = $this->db->get($this->table_name);
+		return $query->result_array();
+	}
+	
 	public function get($where=array()) {
 		$this->db->where($where);
 		$query = $this->db->get($this->table_name);

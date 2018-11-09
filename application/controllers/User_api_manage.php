@@ -50,41 +50,7 @@
 		}
 		
 		
-		public function userDetail($id) {
-			
-			$user = $this->User_Model->getOne(array(
-				'id' => $id,
-			));
-			$json = array();
-			//print_r($admin);
-			if(!empty($user)) {
-				
-				$json = array(	
-					'id' => $user['id'],
-					'firstname' => $user['firstname'],
-					'lastname' => $user['lastname'],
-					'email' => $user['email'],
-					'address1' => $user['address1'],
-					'address2' => $user['address2'],
-					'address3' => $user['address3'],
-					'mobile' => $user['mobile'],
-					'city' => $user['city'],
-					'postcode' => $user['postcode'],
-					'state' => $user['state'],
-					'country' => $user['country'],
-					'status' => $user['status'],
-					'created_date' => $user['created_date'],
-					'modified_date' => $user['modified_date'],
-					);
-					
-				
-			}
-				
-			echo json_encode($json);	
-				
-			
-			
-		}
+		
 		
 		
 		
