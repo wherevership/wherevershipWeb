@@ -6,6 +6,7 @@ class International_shipment_manage extends CI_Controller {
 		$this->load->library('session');
 		$this->load->model('Config_Model');
 		$this->load->model('International_Price_Model');
+		$this->load->model('Custom_Clearance_Model');
 		
 	}
 	private $data = array();
@@ -660,18 +661,121 @@ class International_shipment_manage extends CI_Controller {
 		
 	}
 	
-	public function international_price_update($zone,$id) {
-		$tagName= 'price'.$id;
-		$input1 = $this->input->post($tagName, true);
+	public function international_price_update() {
+		//$tagName= 'price'.$id;
+		$id = $this->input->post("id", true);
+		$price = $this->input->post("price", true);
 		$whereArray = array(
 						"id" => $id,
 						);
 		$updateArray = array(
-						"price" => $input1,
+						"price" => $price,
 						"modified_date" => date("Y-m-d H:i:s"),
 						);
 		$this->International_Price_Model->update($whereArray, $updateArray);
-		redirect(base_url('internatinal/internatinal_price/').$zone);
+		//redirect(base_url('internatinal/internatinal_price/').$zone);
+		
+		echo("pass");
+	}
+	
+	public function bulk_internatinal_price_update() {
+		//$tagName= 'price'.$id;
+		$id = $this->input->post("id", true);
+		$price = $this->input->post("price", true);
+		
+		
+		
+		for ($i = 0; $i < sizeof($id); $i++) {
+			$whereArray = array(
+							"id" => $id[$i],
+							);
+			$updateArray = array(
+							"price" => $price[$i],
+							"modified_date" => date("Y-m-d H:i:s"),
+							);
+							
+			$this->International_Price_Model->update($whereArray, $updateArray);
+		}
+		
+		//redirect(base_url('domestic/domestic_price/').$zone);
+		
+		echo("pass");
+	}
+	
+	public function search_shipment_price() {
+			$category = $this->input->post("category", true);
+			$value = $this->input->post("search", true);
+			$zone = $this->input->post("zone", true);
+			$type = $this->input->post("type", true);
+			
+			$priceList = $this->International_Price_Model->search(array(
+				'is_deleted' => 0,
+				'zone' => $zone,
+				'type' => $type,
+			),array(
+				$category => $value,
+			));
+			if (!empty($priceList)) {
+				foreach ($priceList as $v) {
+					
+					
+					$json[] = array(
+					'c1' => $category,
+					'va' => $value,
+					'id' => $v['id'],
+					'zone' => $v['zone'],
+					'type' => $v['type'],
+					'weight_category' => $v['weight_category'],
+					'max_weight' => $v['max_weight'],
+					'min_weight' => $v['min_weight'],
+					'price' => $v['price'],
+					);
+					
+				}
+				
+			} else {
+				$json[] = array(
+					'result' => 'empty',
+				);
+			
+			} 
+			echo json_encode($json);
+			
+		}
+		
+	public function custom_detail() {
+		$id = $this->input->post("id", true);
+		$clearance_detail = $this->Custom_Clearance_Model->getOne(array(
+			'shipment_id' => $id,
+		
+		));
+		
+		if (!empty($clearance_detail)) {
+			//$json[] = $clearance_detail;
+		
+				//$json[] = $v;
+				$json = array(
+					'id' => $clearance_detail['id'],
+					'shipment_id' => $clearance_detail['shipment_id'],
+					'shippers_vat_gst' => $clearance_detail['shippers_vat_gst'],
+					'receivers_vat_gst' => $clearance_detail['receivers_vat_gst'],
+					'declared_value' => $clearance_detail['declared_value'],
+					'declared_value_currency' => $clearance_detail['declared_value_currency'],
+					'harmonised_commodity_code' => $clearance_detail['harmonised_commodity_code'],
+					'exemtion' => $clearance_detail['exemtion'],
+					'type_of_export' => $clearance_detail['type_of_export'],
+					'itn' => $clearance_detail['itn'],
+					'destination_duties_taxes' => $clearance_detail['destination_duties_taxes'],
+					
+				); 
+			
+			
+		} else {
+			$json[] = array(
+					'result' => 'empty',
+				);
+		}
+		echo json_encode($json);
 	}
 	
 }

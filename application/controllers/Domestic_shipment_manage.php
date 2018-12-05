@@ -444,19 +444,85 @@ class Domestic_shipment_manage extends CI_Controller {
 		
 	}
 	
-	public function domestic_price_update($zone,$id) {
-		$tagName= 'price'.$id;
-		$input1 = $this->input->post($tagName, true);
+	public function domestic_price_update() {
+		//$tagName= 'price'.$id;
+		$id = $this->input->post("id", true);
+		$price = $this->input->post("price", true);
 		$whereArray = array(
 						"id" => $id,
 						);
 		$updateArray = array(
-						"price" => $input1,
+						"price" => $price,
 						"modified_date" => date("Y-m-d H:i:s"),
 						);
 		$this->Domestic_Price_Model->update($whereArray, $updateArray);
-		redirect(base_url('domestic/domestic_price/').$zone);
+		//redirect(base_url('domestic/domestic_price/').$zone);
+		
+		echo("pass");
 	}
+	
+	public function bulk_domestic_price_update() {
+		//$tagName= 'price'.$id;
+		$id = $this->input->post("id", true);
+		$price = $this->input->post("price", true);
+		
+		
+		
+		for ($i = 0; $i < sizeof($id); $i++) {
+			$whereArray = array(
+							"id" => $id[$i],
+							);
+			$updateArray = array(
+							"price" => $price[$i],
+							"modified_date" => date("Y-m-d H:i:s"),
+							);
+							
+			$this->Domestic_Price_Model->update($whereArray, $updateArray);
+		}
+		
+		//redirect(base_url('domestic/domestic_price/').$zone);
+		
+		echo("pass");
+	}
+	
+	public function search_shipment_price() {
+			$category = $this->input->post("category", true);
+			$value = $this->input->post("search", true);
+			$zone = $this->input->post("zone", true);
+		
+			
+			$priceList = $this->Domestic_Price_Model->search(array(
+				'is_deleted' => 0,
+				'zone' => $zone,
+			),array(
+				$category => $value,
+			));
+			if (!empty($priceList)) {
+				foreach ($priceList as $v) {
+					
+					
+					$json[] = array(
+					'c1' => $category,
+					'va' => $value,
+					'id' => $v['id'],
+					'zone' => $v['zone'],
+					'weight_category' => $v['weight_category'],
+					'max_weight' => $v['max_weight'],
+					'min_weight' => $v['min_weight'],
+					'price' => $v['price'],
+					);
+					
+				}
+				
+			} else {
+				$json[] = array(
+					'result' => 'empty',
+				);
+			
+			} 
+			echo json_encode($json);
+			
+		}
 	
 	
 	

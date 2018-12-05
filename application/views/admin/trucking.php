@@ -140,7 +140,7 @@ button.close {
 </div>
 
 
-<div class="form-inline pull-right hidden-xs" style="margin: 20px 20px;"> Listing Per Page :
+<div class="form-inline pull-right hidden-xs" "> Listing Per Page :
   <select class="form-control" id="resultLimit" name="resultLimit" onchange="orderlist.resultLimit(this.value)">
 	<option value='10' Selected>10</option><option value='50' >50</option><option value='100' >100</option><option value='150' >150</option>
   </select>

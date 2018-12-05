@@ -161,13 +161,25 @@ $route['admin/userBulkDelete'] = 'Admin_process_manage/userBulkDelete';
 $route['admin/shipmentDetail/(:any)'] = 'Shipment_api_manage/shipmentDetail/$1';
 $route['admin/searchShipmentByOther/(:any)'] = 'Shipment_api_manage/search_shipment/$1';
 $route['admin/searchShipmentByDate/(:any)'] = 'Shipment_api_manage/search_shipment_by_date/$1';
+$route['admin/updateStatus/(:any)/(:any)'] = 'Shipment_api_manage/updateStatus/$1/$2';
+$route['admin/updateDomesticStatus/(:any)/(:any)'] = 'Shipment_api_manage/updateDomesticStatus/$1/$2';
+$route['admin/bulkUpdateStatus'] = 'Shipment_api_manage/bulkUpdateStatus';
+$route['admin/updateAdminStatus'] = 'User_api_manage/updateAdmin';
+$route['admin/bulkUpdateAdminStatus'] = 'User_api_manage/bulkUpdateAdmin';
+$route['admin/UpdateUserStatus'] = 'User_api_manage/updateUser';
+$route['admin/bulkUpdateUserStatus'] = 'User_api_manage/bulkUpdateUser';
 
 $route['internatinal/fuel_charge_update'] = 'International_shipment_manage/fuel_charge_update';
 $route['internatinal/internatinal_price/(:any)'] = 'International_shipment_manage/internatinal_price/$1';
-$route['internatinal/internatinal_price_update/(:any)/(:num)'] = 'International_shipment_manage/international_price_update/$1/$2';
+$route['internatinal/internatinal_price_update'] = 'International_shipment_manage/international_price_update';
+$route['internatinal/search_price'] = 'International_shipment_manage/search_shipment_price'; 
+$route['internatinal/bulk_international_price_update'] = 'International_shipment_manage/bulk_internatinal_price_update'; 
+$route['internatinal/cleareanceDetail'] = 'International_shipment_manage/custom_detail';
 
 $route['domestic/domestic_price/(:any)'] = 'Domestic_shipment_manage/domestic_price/$1';
-$route['domestic/domestic_price_update/(:any)/(:num)'] = 'Domestic_shipment_manage/domestic_price_update/$1/$2';
+$route['domestic/domestic_price_update'] = 'Domestic_shipment_manage/domestic_price_update';
+$route['domestic/search_price'] = 'Domestic_shipment_manage/search_shipment_price';
+$route['domestic/bulk_domestic_price_update'] = 'Domestic_shipment_manage/bulk_domestic_price_update';
 
 $route['admin/testOne'] = 'Admin_testing/test_get_one';
 $route['admin/testAll'] = 'Admin_testing/test_get_all';

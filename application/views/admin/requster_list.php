@@ -104,10 +104,14 @@ button.close {
     <select class="form-control dashboard-bulk-action" id="bulkAction" name="bulkAction" style="width: 150px;">
 		<option value='-1' selected>Bluk Action</option>
 		<option value='delete'>Delete</option>
+		<option value='active'>Active</option>
+		<option value='freeze'>Freeze</option>
     </select>
     <button onclick='performBulkAction(bulkAction.value)' class="btn btn-default">Apply</button>
   </div>
-
+<div class="form-inline pull-right" style="margin: 20px 20px;"> 
+	<button class="btn btn-primary" onclick='addRequest()' >Add</button>
+</div>
 <div class="pull-right hidden-xs">
   <ul class="pagination">
     
@@ -143,8 +147,10 @@ button.close {
 		<td class="hidden-xs" width="20%"><?=$v['email']?></td>
 		<td class="hidden-xs" width="20%"><?=$v['status']?></td>
 		<td width="15%">
-			<a href="javascript:showDetail('<?=$v['id']?>');" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-expand"></i></a>
-			<a href="javascript:toDelete('<?=base_url('admin/requester_delete/'.$v['id'])?>');" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i></a>
+			<a href="javascript:showDetail('<?=$v['id']?>');" class="btn btn-success btn-xs">See More</a>
+			<a href="javascript:toDelete('<?=base_url('admin/requester_delete/'.$v['id'])?>');" class="btn btn-danger btn-xs">Delete</a>
+			<a  href="javascript:updateStatus('<?=$v['id']?>','Active');" class="btn btn-info btn-xs <?php if ($v['status']=='Active') {?>disabled<?php }?>">Active</a>
+			<a  href="javascript:updateStatus('<?=$v['id']?>','Freeze');" class="btn btn-info btn-xs <?php if ($v['status']=='Freeze') {?>disabled<?php }?>">Freeze</a>
 		</td>
 	</tr>
   
@@ -168,6 +174,8 @@ button.close {
     <select class="form-control dashboard-bulk-action" id="bulkAction2" name="bulkAction2" onchange="" style="width: 150px;">
 		<option value='-1' selected>Bluk Action</option>
 		<option value='delete'>Delete</option>
+		<option value='active'>Active</option>
+		<option value='freeze'>Freeze</option>
     </select>
     <button onclick='performBulkAction(bulkAction2.value)' class="btn btn-default">Apply</button>
   </div>
@@ -301,6 +309,10 @@ function toDelete(url) {
 	
 }
 
+function addRequest() {
+	window.location.href = '<?=base_url("admin/add_requester")?>';
+}
+
 function showDetail(id) {
 	url = "<?=base_url('api/userDetail/')?>" + id;
 	$.ajax({
@@ -345,6 +357,37 @@ function showDetail(id) {
 	
 	
 }
+
+function updateStatus(id,status) {
+	url = "<?=base_url('admin/UpdateUserStatus')?>";
+		
+			$.ajax({
+				url: url,
+				type: "POST",
+				dataType: "text",
+				async: true,
+				data: {
+					id: id,
+					status: status
+				},
+				
+				success: function(result) {
+					console.log(result);
+					window.location.href = '<?=base_url("admin/requester_list")?>';
+					  
+				},
+				error: function(XMLHttpRequest,textStatus,textStatus){
+					console.log(XMLHttpRequest.responseText);
+					console.log(XMLHttpRequest.status);
+					console.log(XMLHttpRequest.readyState);
+					console.log(textStatus);
+					alert(XMLHttpRequest.responseText);
+			
+				}	
+			
+			});
+}
+
 
     
 $(document).ready(function() {
@@ -452,8 +495,13 @@ var orderlist = {
 						
 								//	var deleteurl = '<??>'
 								if (json[i].is_deleted == 0) {
-									var tr = $("<tr>").html('<td width="5%" class="hidden-xs"><input type=\'checkbox\' name="checkBluckAction" id="checkBluck-'+json[i].id+'" onclick="checknow(\''+json[i].id+'\')" value="'+json[i].id+'"></td><td class="hidden-xs" width="20%">'+json[i].firstname+'</td><td class="hidden-xs" width="20%">'+json[i].lastname+'</td><td class="hidden-xs" width="20%">'+json[i].email+'</td><td class="hidden-xs" width="20%">'+json[i].status+'</td><td width="15%"><a href="javascript:showDetail(\''+json[i].id+'\');" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-expand"></i></a><a href="javascript:toDelete(\'<?=base_url('admin/admin_delete/')?>'+json[i].id+'\');" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i></a></td>');
+									var checkActive = ((json[i].status == 'Active') ? 'disabled' : '');
+									var checkFreeze = ((json[i].status == 'Freeze') ? 'disabled' : '');
+									
+									var tr = $("<tr>").html('<td width="5%" class="hidden-xs"><input type=\'checkbox\' name="checkBluckAction" id="checkBluck-'+json[i].id+'" onclick="checknow(\''+json[i].id+'\')" value="'+json[i].id+'"></td><td class="hidden-xs" width="20%">'+json[i].firstname+'</td><td class="hidden-xs" width="20%">'+json[i].lastname+'</td><td class="hidden-xs" width="20%">'+json[i].email+'</td><td class="hidden-xs" width="20%">'+json[i].status+'</td><td width="15%"><a href="javascript:showDetail(\''+json[i].id+'\');" class="btn btn-success btn-xs">See More</a><a href="javascript:toDelete(\'<?=base_url('admin/admin_delete/')?>'+json[i].id+'\');" class="btn btn-danger btn-xs">Delete</a><a  href="javascript:updateStatus(\''+json[i].id+'\',\'Active\');" class="btn btn-info btn-xs '+checkActive+'">Active</a><a  href="javascript:updateStatus(\''+json[i].id+'\',\'Freeze\');" class="btn btn-info btn-xs '+checkFreeze+'">Freeze</a></td>');
 									$("#table1").append(tr);
+									
+									
 								} else {
 									x += 1;
 									console.log(x);
@@ -824,6 +872,78 @@ function bulkDeleteFunc(id) {
 	
 }
 
+function bulkUpdateStatus(status){
+	var checkboxes = document.getElementsByName('checkBluckAction');
+	id=[];
+	count=0;
+	
+	for(var i = 0; i < checkboxes.length; i++){
+		if(checkboxes[i].checked == true){
+			var myElem = document.getElementById((checkboxes[i].id));
+			if (myElem != null){
+				
+				id[count] = document.getElementById((checkboxes[i].id)).value;
+				
+				count++;
+			}
+		}
+	}
+	
+	console.log(id);
+   	
+	if(id==""){
+		swal({
+			title: 'Oops',
+			type: 'error',
+			html: 'error',
+			confirmButtonColor: '#4e97d8'
+			})
+	}else{
+		swal({
+        title: 'Delete Admin',
+        text: 'Are you sure want to remove the ('+id.length+') selected admin?',
+        type: 'warning',
+        confirmButtonColor: '#4e97d8',
+        showCancelButton: true
+      }).then(function() {
+          bulkUpdateFunc(id,status);
+      });
+		
+		//bulkDeleteFunc(id);
+	}
+}
+
+function bulkUpdateFunc(id,status) {
+	url = "<?=base_url('admin/bulkUpdateUserStatus')?>";
+		
+			$.ajax({
+				url: url,
+				type: "POST",
+				dataType: "text",
+				async: true,
+				data: {
+					id: id,
+					status: status
+				},
+				
+				success: function(result) {
+					console.log(result);
+					window.location.href = '<?=base_url("admin/requester_list")?>';
+					  
+				},
+				error: function(XMLHttpRequest,textStatus,textStatus){
+					console.log(XMLHttpRequest.responseText);
+					console.log(XMLHttpRequest.status);
+					console.log(XMLHttpRequest.readyState);
+					console.log(textStatus);
+					alert(XMLHttpRequest.responseText);
+			
+				}	
+			
+			});
+	
+}
+
 $(function(){
 	$( "#fromDate" ).datepicker({dateFormat: 'yy-mm-dd', maxDate: '+0d'});
     $( "#toDate" ).datepicker({dateFormat: 'yy-mm-dd', maxDate: '+0d'});
@@ -839,6 +959,8 @@ function checkEnter(e) {
 function performBulkAction(value){
 	switch(value){
 		case "delete" : bulkDelete(); break;
+		case "freeze" : bulkUpdateStatus('Freeze'); break;
+		case "active" : bulkUpdateStatus('Active'); break;
 		default : alert("Please select a valid action."); break;
 	}
 }

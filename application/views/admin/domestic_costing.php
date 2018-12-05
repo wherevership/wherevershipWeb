@@ -56,7 +56,8 @@ button.close {
 </div>
 
 	<div class="clearfix"> 
-		<div class="container-fluid space">
+	</div>
+	<div class="container-fluid">
 			<?php
 				if (!empty($zoneList)) {
 					foreach ($zoneList as $v) {
@@ -79,7 +80,7 @@ button.close {
 	
 			?>  
 		</div>
-	</div>
+	
 </div>
 </div>
 </div>

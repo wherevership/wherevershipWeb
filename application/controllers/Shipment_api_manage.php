@@ -221,8 +221,51 @@
 			
 		}
 	
+		Public function updateStatus($id, $status){
+			$this->Shipment_Model->update(array(
+			'id' => $id,
+			
+			), array(
+			 'status' => $status,
+			 'modified_date' => date("Y-m-d H:i:S"),
+			));
 		
+		redirect(base_url('admin/international'));
+			
+			
+		}
 		
+		Public function updateDomesticStatus($id, $status){
+			$this->Shipment_Model->update(array(
+			'id' => $id,
+			
+			), array(
+			 'status' => $status,
+			 'modified_date' => date("Y-m-d H:i:S"),
+			));
+		
+		redirect(base_url('admin/domestic'));
+			
+			
+		}
+		
+		Public function bulkUpdateStatus() {
+		$id = $this->input->post("id", true);
+		$status = $this->input->post("status",true);
+		
+		for ($i = 0; $i < sizeof($id); $i++) {
+			$this->Shipment_Model->update(array(
+			'id' => $id[$i],
+			
+			), array(
+			 'status' => $status,
+			 'modified_date' => date("Y-m-d H:i:S"),
+			));
+		}
+		
+		echo("Pass");
+		
+		}
 		
 		
 	}
