@@ -69,7 +69,7 @@
 </footer>
 <div class="page-copyright">
 	<div class="container">
-		<p class="text-center small">Created & Powered By Wherevership Sdn Bhd ().<br>
+		<p class="text-center small">Created & Powered By Wherevership Sdn Bhd (1201025-W).<br>
 		All Copyrights Reserved &copy; 2018</p>
 	</div>
 </div>
@@ -95,39 +95,7 @@
 
 
 <script>
-		firebase.auth().onAuthStateChanged( firebaseUser => {
-				if(firebaseUser) {
-					
-					const database2 = firebase.database().ref('User').child(firebaseUser.uid);
-					database2.on('value', snap => {
-						$("#welcome").text("Hi " + snap.val().firstName + " " + snap.val().lastName);
-					});
-					$(".login_top").hide();
-					$(".signUp_top").hide();
-					$(".logout_top").show();
-					$("#welcome").attr("href","<?=base_url("member/user_panel")?>");
-					$("#log_in_f").text("LogOut").attr("href","javascript:logout()");
-					$("#log_in_mobile").attr("href","<?=base_url("member/user_panel")?>");
-					$("#dashboard_f").attr("href","<?=base_url("member/user_panel")?>");
-					$("#edit_profile_f").attr("href","<?=base_url("member/personal_profile")?>");
-					$("#my_cart_f").attr("href","<?=base_url("member/actions_required")?>");
-					
-				
-				} else {
-					$(".login_top").show();
-					$(".signUp_top").show();
-					$(".logout_top").hide();
-					$("#welcome").text("Hi, Welcome");
-					$("#welcome").attr("href","<?=base_url("userLogin")?>");
-					$("#log_in_mobile").attr("href","<?=base_url("userLogin")?>");
-					$("#log_in_f").text("LogIn").attr("href","<?=base_url("userLogin")?>");
-					$("#dashboard_f").attr("href","<?=base_url("userLogin")?>");
-					$("#edit_profile_f").attr("href","<?=base_url("userLogin")?>");
-					$("#my_cart_f").attr("href","<?=base_url("userLogin")?>");
-					console.log('not logged in');
-				}
-			
-			});
+		
 
 
 $(function () {
@@ -135,13 +103,12 @@ $(function () {
 		spacing: "color: #336699",
 		title: "color: #f69; font-weight: bold",
 		image: function(parameter) {
-			return "background-image: '<?=base_url("assets2/image/footer-background.jpeg")?>'; background-size: cover";
+			return "background-image: url(\"<?=base_url('assets2/image/favicon.ico')?>\"); background-size: cover";
 		},
 		wording : "color:white",
 	};
-	setTimeout(console.log.bind(console, "%c  %c Welcome To Wherevership %c  %cCreated & Powered By Wherevership Sdn Bhd (1028666-H) All Copyrights Reserved © 2017", console_styles.image(""), console_styles.title, console_styles.image(""),console_styles.wording));
-	setTimeout(console.log.bind(console, "%c%s","color: white; background: #f69; font-size: 26px;"," ᶘ ᵒᴥᵒᶅ < Hello There! Are you lost?"));
-    setTimeout(console.log.bind(console, "%c%s","color: black; background: #f69; font-size: 26px;"," (ಠ ּ͜೦) < Did you know human can drink Lava but only once?"));
+	setTimeout(console.log.bind(console, "%c  %c Welcome To Wherevership %c  %cCreated & Powered By Wherevership Sdn Bhd (1201025-W) All Copyrights Reserved © 2017", console_styles.image(""), console_styles.title, console_styles.image(""),console_styles.wording));
+	
 	$('[data-toggle="tooltip"]').tooltip();
 	});
 

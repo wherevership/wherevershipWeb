@@ -315,13 +315,33 @@ button.close {
 				</div>
 				<div class="modal-body">
 					<div class="col-md-6 col-md-12 padding-off">
-						<p>Shippers Vat Gst<span id="status"></span></p>
+						<p>Shippers VAT/GST : <span id="shippers_vat_gst"></span></p>
 					</div>
 					<div class="col-md-6 col-md-12 padding-off">
-						<p>Receivers Vat Gst<span id="user"></span></p>
+						<p>Receivers VAT/GST : <span id="receiver_vat_gst"></span></p>
 					</div>
 					<div class="clearfix"></div>
-					<hr/>
+					<div class="col-md-6 col-md-12 padding-off">
+						<p>Declared Value : <span id="declared_value"></span><span id="declared_value_currency"></p>
+					</div>
+					<div class="col-md-6 col-md-12 padding-off">
+						<p>Hormonised Commodity Code : <span id="harmonised_commodity_code"></span></p>
+					</div>
+					<div class="clearfix"></div>
+					<div class="col-md-6 col-md-12 padding-off">
+						<p>Exemtion : <span id="exemtion"></span></p>
+					</div>
+					<div class="col-md-6 col-md-12 padding-off">
+						<p>Type of Export : <span id="type_of_export"></span></p>
+					</div>
+					<div class="clearfix"></div>
+					<div class="col-md-6 col-md-12 padding-off">
+						<p>Itn : <span id="itn"></span></p>
+					</div>
+					<div class="col-md-6 col-md-12 padding-off">
+						<p>Destination Duties Taxes : <span id="destination_duties_taxes"></span></p>
+					</div>
+					<div class="clearfix"></div>
 				</div>
 				
 				<div class="modal-footer">
@@ -438,7 +458,20 @@ var shipmentList = {
 				},
 				
 				success: function(result) {
-					
+					setTimeout(function(){ 
+						$("#shipment_id").text(result.shipment_id);
+						$("#shippers_vat_gst").text(result.shippers_vat_gst);
+						$("#receiver_vat_gst").text(result.receivers_vat_gst);
+						$("#declared_value").text(result.declared_value);
+						$("#declared_value_currency").text(result.declared_value_currency);
+						$("#harmonised_commodity_code").text(result.harmonised_commodity_code);
+						$("#exemtion").text(result.exemtion);
+						$("#type_of_export").text(result.type_of_export);
+						$("#itn").text(result.itn);
+						$("#destination_duties_taxes").text(result.destination_duties_taxes);
+						
+						$("#custom-detail").modal();
+					},2000);
 					console.log(result);	
 						
 					
@@ -513,7 +546,7 @@ var shipmentList = {
 									var checkShipped = ((json[i].status == 'Shipped') ? 'disabled' : '');
 								
 								
-									var tr = $("<tr>").html('<td width="2%" class="hidden-xs"><input type=\'checkbox\' name="checkBluckAction" id="checkBluck-'+json[i].id+'" onclick="checknow();" value="'+json[i].id+'"></td><td class="hidden-xs" width="15%">'+json[i].tracking_number+'</td><td class="hidden-xs" width="25%">'+json[i].recevier_postcode+'<br/>'+json[i].recevier_state+'<br/>'+json[i].recevier_country+'</td><td class="hidden-xs" width="16%">'+json[i].collection_date+'</td><td class="hidden-xs" width="20%">'+json[i].status+'</td><td class="visible-xs"><p>'+json[i].tracking_number+'</p><p>'+json[i].recevier_postcode+'<br/>'+json[i].recevier_state+'<br/>'+json[i].recevier_country+'</p><p>'+json[i].collection_date+'</p><p>'+json[i].status+'</p></td><td width="22%"><a href="javascript:showDetail(\''+json[i].id+'\');" class="btn btn-info btn-xs">See More</a><a href="javascript:shipmentList.Custom(\''+json[i].id+'\');" class="btn btn-warning btn-xs">Custom Detail</a><a href="javascript:shipmentList.ChangeStatus(\'<?=base_url('admin/updateStatus/')?>'+json[i].id+'/Prepare_to_ship\',\'Prepare To Ship\');" class="btn btn-primary btn-xs '+checkPrepare+'">Prepare to ship</i></a><a href="javascript:shipmentList.ChangeStatus(\'<?=base_url('admin/updateStatus/')?>'+json[i].id+'/Shipping\',\'Shipping\');" class="btn btn-success btn-xs '+checkShipping+'">Shipping</i></a><a href="javascript:shipmentList.ChangeStatus(\'<?=base_url('admin/updateStatus/')?>'+json[i].id+'/Shipped\',\'Shipped\');" class="btn btn-success btn-xs '+checkShipped+'">Shipped</i></a></td>');
+									var tr = $("<tr>").html('<td width="2%" class="hidden-xs"><input type=\'checkbox\' name="checkBluckAction" id="checkBluck-'+json[i].id+'" onclick="checknow();" value="'+json[i].id+'"></td><td class="hidden-xs" width="15%">'+json[i].tracking_number+'</td><td class="hidden-xs" width="25%">'+json[i].recevier_postcode+'<br/>'+json[i].recevier_state+'<br/>'+json[i].recevier_country+'</td><td class="hidden-xs" width="16%">'+json[i].collection_date+'</td><td class="hidden-xs" width="20%">'+json[i].status+'</td><td class="visible-xs"><p>'+json[i].tracking_number+'</p><p>'+json[i].recevier_postcode+'<br/>'+json[i].recevier_state+'<br/>'+json[i].recevier_country+'</p><p>'+json[i].collection_date+'</p><p>'+json[i].status+'</p></td><td width="22%"><a href="javascript:shipmentList.Detail(\''+json[i].id+'\');" class="btn btn-info btn-xs">See More</a><a href="javascript:shipmentList.Custom(\''+json[i].id+'\');" class="btn btn-warning btn-xs">Custom Detail</a><a href="javascript:shipmentList.ChangeStatus(\'<?=base_url('admin/updateStatus/')?>'+json[i].id+'/Prepare_to_ship\',\'Prepare To Ship\');" class="btn btn-primary btn-xs '+checkPrepare+'">Prepare to ship</i></a><a href="javascript:shipmentList.ChangeStatus(\'<?=base_url('admin/updateStatus/')?>'+json[i].id+'/Shipping\',\'Shipping\');" class="btn btn-success btn-xs '+checkShipping+'">Shipping</i></a><a href="javascript:shipmentList.ChangeStatus(\'<?=base_url('admin/updateStatus/')?>'+json[i].id+'/Shipped\',\'Shipped\');" class="btn btn-success btn-xs '+checkShipped+'">Shipped</i></a></td>');
 									
 									$("#table1").append(tr);
 								
@@ -573,7 +606,7 @@ var shipmentList = {
 									var checkShipping = ((json[i].status == 'Shipping') ? 'disabled' : '');
 									var checkShipped = ((json[i].status == 'Shipped') ? 'disabled' : '');
 								
-									var tr = $("<tr>").html('<td width="2%" class="hidden-xs"><input type=\'checkbox\' name="checkBluckAction" id="checkBluck-'+json[i].id+'" onclick="checknow();" value="'+json[i].id+'"></td><td class="hidden-xs" width="15%">'+json[i].tracking_number+'</td><td class="hidden-xs" width="25%">'+json[i].recevier_postcode+'<br/>'+json[i].recevier_state+'<br/>'+json[i].recevier_country+'</td><td class="hidden-xs" width="16%">'+json[i].collection_date+'</td><td class="hidden-xs" width="20%">'+json[i].status+'</td><td class="visible-xs"><p>'+json[i].tracking_number+'</p><p>'+json[i].recevier_postcode+'<br/>'+json[i].recevier_state+'<br/>'+json[i].recevier_country+'</p><p>'+json[i].collection_date+'</p><p>'+json[i].status+'</p></td><td width="22%"><a href="javascript:showDetail(\''+json[i].id+'\');" class="btn btn-info btn-xs">See More</a><a href="javascript:shipmentList.Custom(\''+json[i].id+'\');" class="btn btn-warning btn-xs">Custom Detail</a><a href="javascript:shipmentList.ChangeStatus(\'<?=base_url('admin/updateStatus/')?>'+json[i].id+'/Prepare_to_ship\',\'Prepare To Ship\');" class="btn btn-primary btn-xs '+checkPrepare+'">Prepare to ship</i></a><a href="javascript:shipmentList.ChangeStatus(\'<?=base_url('admin/updateStatus/')?>'+json[i].id+'/Shipping\',\'Shipping\');" class="btn btn-success btn-xs '+checkShipping+'">Shipping</i></a><a href="javascript:shipmentList.ChangeStatus(\'<?=base_url('admin/updateStatus/')?>'+json[i].id+'/Shipped\',\'Shipped\');" class="btn btn-success btn-xs '+checkShipped+'">Shipped</i></a></td>');
+									var tr = $("<tr>").html('<td width="2%" class="hidden-xs"><input type=\'checkbox\' name="checkBluckAction" id="checkBluck-'+json[i].id+'" onclick="checknow();" value="'+json[i].id+'"></td><td class="hidden-xs" width="15%">'+json[i].tracking_number+'</td><td class="hidden-xs" width="25%">'+json[i].recevier_postcode+'<br/>'+json[i].recevier_state+'<br/>'+json[i].recevier_country+'</td><td class="hidden-xs" width="16%">'+json[i].collection_date+'</td><td class="hidden-xs" width="20%">'+json[i].status+'</td><td class="visible-xs"><p>'+json[i].tracking_number+'</p><p>'+json[i].recevier_postcode+'<br/>'+json[i].recevier_state+'<br/>'+json[i].recevier_country+'</p><p>'+json[i].collection_date+'</p><p>'+json[i].status+'</p></td><td width="22%"><a href="javascript:shipmentList.Detail(\''+json[i].id+'\');" class="btn btn-info btn-xs">See More</a><a href="javascript:shipmentList.Custom(\''+json[i].id+'\');" class="btn btn-warning btn-xs">Custom Detail</a><a href="javascript:shipmentList.ChangeStatus(\'<?=base_url('admin/updateStatus/')?>'+json[i].id+'/Prepare_to_ship\',\'Prepare To Ship\');" class="btn btn-primary btn-xs '+checkPrepare+'">Prepare to ship</i></a><a href="javascript:shipmentList.ChangeStatus(\'<?=base_url('admin/updateStatus/')?>'+json[i].id+'/Shipping\',\'Shipping\');" class="btn btn-success btn-xs '+checkShipping+'">Shipping</i></a><a href="javascript:shipmentList.ChangeStatus(\'<?=base_url('admin/updateStatus/')?>'+json[i].id+'/Shipped\',\'Shipped\');" class="btn btn-success btn-xs '+checkShipped+'">Shipped</i></a></td>');
 									
 									
 		

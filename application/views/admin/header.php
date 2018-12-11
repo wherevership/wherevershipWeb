@@ -26,7 +26,7 @@
 
 <link href="<?=base_url('assets2/css/sweetalert2.min.css')?>" rel="stylesheet">
 
-<link href="<?=base_url('assets2/css/style.css')?>" rel="stylesheet">
+<link href="<?=base_url('assets2/css/style.css?v=1.1')?>" rel="stylesheet">
 
 <link href="<?=base_url('assets2/css/jquery.dataTables.css')?>" rel="stylesheet">
 
@@ -294,7 +294,20 @@
 				</div>
 			</div>
 
-			
+			<div style="border-top: 1px solid #ddd;">	
+				<ul class="list-group btn" data-toggle="collapse" data-target="#credit" aria-expanded="false" aria-controls="collapseExample">
+					<a class="list-group-item active">
+						<i class="fas fa-gift"></i> Credit<i class="fas fa-plus epi pull-right"></i>
+					</a>
+				</ul>
+
+				<div class="collapse dropdown" id="credit">
+					<ul class="list-group">
+						<a href="<?=base_url('admin/credit_history')?>" class="list-group-item" id="credit_history">Credit History</a>
+						
+					</ul>
+				</div>
+			</div>
 
 			<div style="border-top: 1px solid #ddd;">	
 				<ul class="list-group btn" data-toggle="collapse" data-target="#costing" aria-expanded="false" aria-controls="collapseExample">
@@ -333,7 +346,7 @@
 	
 	</div>
 <script>
-var sidebarstatus = '000000';
+var sidebarstatus = '0000000';
 
 
 
@@ -493,10 +506,14 @@ if(sidebarstatus.substring(3, 4) == 1){
 	$("ul[data-target='#AllShipment']").children().children().eq(1).removeClass('fa-plus').addClass('fa-minus');
 }
 if(sidebarstatus.substring(4, 5) == 1){
+	$('#AllShipment').collapse();
+	$("ul[data-target='#credit']").children().children().eq(1).removeClass('fa-plus').addClass('fa-minus');
+}
+if(sidebarstatus.substring(5,6) == 1){
 	$('#Coasting').collapse();
 	$("ul[data-target='#Coasting']").children().children().eq(1).removeClass('fa-plus').addClass('fa-minus');
 }
-if(sidebarstatus.substring(5, 6) == 1){
+if(sidebarstatus.substring(7,8) == 1){
 	$('#MyAccount').collapse();
 	$("ul[data-target='#MyAccount']").children().children().eq(1).removeClass('fa-plus').addClass('fa-minus');
 }

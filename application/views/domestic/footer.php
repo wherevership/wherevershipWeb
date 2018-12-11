@@ -1,6 +1,6 @@
 <div class="page-copyright">
 	<div class="container">
-		<p class="text-center small">Created & Powered By Wherevership Sdn Bhd ().<br>
+		<p class="text-center small">Created & Powered By Wherevership Sdn Bhd (1201025-W).<br>
 		All Copyrights Reserved &copy; 2018</p>
 	</div>
 </div>
@@ -33,13 +33,12 @@ $(function () {
 		spacing: "color: #336699",
 		title: "color: #f69; font-weight: bold",
 		image: function(parameter) {
-			return "background-image: url(\"https://secure.easyparcel.my/pass/application/APP_6.8/theme/easyparcel/images/favicon.ico\"); background-size: cover";
+			return "background-image: url(\"<?=base_url('assets2/image/favicon.ico')?>\"); background-size: cover";
 		},
 		wording : "color:white",
 	};
-	setTimeout(console.log.bind(console, "%c  %c Welcome To Wherevership %c  %cCreated & Powered By Wherevership Sdn Bhd (1028666-H) All Copyrights Reserved © 2017", console_styles.image(""), console_styles.title, console_styles.image(""),console_styles.wording));
-	setTimeout(console.log.bind(console, "%c%s","color: white; background: #f69; font-size: 26px;"," ᶘ ᵒᴥᵒᶅ < Hello There! Are you lost?"));
-    setTimeout(console.log.bind(console, "%c%s","color: black; background: #f69; font-size: 26px;"," (ಠ ּ͜೦) < Did you know human can drink Lava but only once?"));
+	setTimeout(console.log.bind(console, "%c  %c Welcome To Wherevership %c  %cCreated & Powered By Wherevership Sdn Bhd (1201025-W) All Copyrights Reserved © 2017", console_styles.image(""), console_styles.title, console_styles.image(""),console_styles.wording));
+	
 	$('[data-toggle="tooltip"]').tooltip();
 	});
 

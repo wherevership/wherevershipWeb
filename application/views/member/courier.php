@@ -74,7 +74,7 @@ span.tip {
 <div role="tabpanel" class="tab-pane active clearfix QuickQuote domestic" style="z-index:999999;padding:0px"  id="domestic">
    
   <div class="container-fluid quote-book domestic-body"> 
-    <form method="POST" onsubmit="return checkaddress()" action="<?=base_url('dtc_cost_preview')?>">
+    <form method="POST" onsubmit="return checkaddress()" action="<?=base_url('dtc_cost_preview_process')?>">
 	<div class="col-xs-12">
 		<h2>Get Instant Quotes</h2>
 		<h5>FROM:</h5>
@@ -212,7 +212,7 @@ span.tip {
 <!--international tab start-->
 <div role="tabpanel" class="tab-pane   clearfix QuickQuote international" style="z-index:999999;padding:0px"  id="international">
   <div class="container-fluid quote-book international-body"> 
-     <form method="POST" onsubmit="return checkaddressint()" action="<?=base_url('cost_preview')?>">
+     <form method="POST" onsubmit="return checkaddressint()" action="<?=base_url('cost_preview_process')?>">
 	<div class="col-xs-12">
 		<h2>Get Instant Quotes</h2>
 		<h5>FROM:</h5>

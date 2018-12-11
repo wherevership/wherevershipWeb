@@ -55,7 +55,7 @@
 	<div class="row dashoboard-account">
 		<div class="row space">
 			<div class="col-md-3 col-md-offset-1 col-sm-4 col-xs-5 profile-pic text-center" style="position: relative;"> 
-				<div class="profile_picture"> <img src="https://secure.easyparcel.my/pass/application/APP_6.8/theme/easyparcel/images/easyparcel-avatar.png">
+				<div class="profile_picture"> <img src="<?=base_url('assets2/image/user.jpg')?>">
 						<div id="logo" class="glyphicon glyphicon-camera camera"></div>
 				</div>
 				<input class="hidden" type="file" value="upload" id="upload"/>
@@ -155,41 +155,7 @@
 
 <div id="result"></div>
 <script>
-	firebase.auth().onAuthStateChanged( firebaseUser => {
-				if(firebaseUser) {
-					
-					const database2 = firebase.database().ref('User').child(firebaseUser.uid);
-					database2.on('value', snap => {
-						console.log(snap.val().firstName);
-						$("#welcome").text("Hi " + snap.val().firstName + " " + snap.val().lastName);
-						$(".profile-name").text(snap.val().firstName + " " + snap.val().lastName);
-					});
-					$(".login_top").hide();
-					$(".signUp_top").hide();
-					$(".logout_top").show();
-					$("#welcome").attr("href","<?=base_url("member/user_panel")?>");
-					$("#log_in_f").text("LogOut").attr("href","javascript:logout()");
-					$("#log_in_mobile").attr("href","<?=base_url("member/user_panel")?>");
-					$("#dashboard_f").attr("href","<?=base_url("member/user_panel")?>");
-					$("#edit_profile_f").attr("href","<?=base_url("member/personal_profile")?>");
-					$("#my_cart_f").attr("href","<?=base_url("member/actions_required")?>");
-					
-				
-				} else {
-					$(".login_top").show();
-					$(".signUp_top").show();
-					$(".logout_top").hide();
-					$("#welcome").text("Hi, Welcome");
-					$("#welcome").attr("href","<?=base_url("userLogin")?>");
-					$("#log_in_mobile").attr("href","<?=base_url("userLogin")?>");
-					$("#log_in_f").text("LogIn").attr("href","<?=base_url("userLogin")?>");
-					$("#dashboard_f").attr("href","<?=base_url("userLogin")?>");
-					$("#edit_profile_f").attr("href","<?=base_url("userLogin")?>");
-					$("#my_cart_f").attr("href","<?=base_url("userLogin")?>");
-					console.log('not logged in');
-				}
-			
-			});
+	
 	
 	
 	function registerCoupon(){

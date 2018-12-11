@@ -9,6 +9,7 @@
 		$this->load->model('International_Zone_Model');
 		$this->load->model('Domestic_Zone_Model');
 		$this->load->model('Config_Model');
+		$this->load->model('Credit_History_Model');
 	}
 	
 	
@@ -205,6 +206,24 @@
 			} else {
 				redirect(base_url('admin/login'));
 				
+			}
+		}
+		
+		
+		public function credit_history() {
+			if (isset($this->session->userdata['admin_logged_in'])) {
+			$this->data['title'] = "Credit History";
+			$this->data['id'] = ($this->session->userdata['admin_logged_in']['id']);
+			$this->data['username'] = ($this->session->userdata['admin_logged_in']['firstname']) .' '. ($this->session->userdata['admin_logged_in']['lastname']);
+			$credit_history = $this->Credit_History_Model->get(array(
+				'is_deleted' => 0,
+			));
+			$this->data['creditHistory'] = $credit_history;
+			$this->load->view("admin/header", $this->data);
+			$this->load->view("admin/credit_history",$this->data);
+			$this->load->view("admin/footer");
+			} else {
+				redirect(base_url('admin/login'));
 			}
 		}
 		

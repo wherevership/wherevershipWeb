@@ -55,7 +55,7 @@ button.close {
 		
 		<div class="row space">
 			<div class="col-md-3 col-sm-4 col-xs-12 profile-pic"> 
-				<div class="profile_picture"> <img src="https://secure.easyparcel.my/pass/application/APP_6.8/theme/easyparcel/images/easyparcel-avatar.png">
+				<div class="profile_picture"> <img src="<?=base_url('assets2/image/user.jpg')?>">
 						<div id="logo" class="glyphicon glyphicon-camera camera"></div>
 				</div>
 				<input class="hidden" type="file" value="upload" id="upload"/>

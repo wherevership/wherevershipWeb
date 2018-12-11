@@ -6,7 +6,7 @@
 		
 			<div class="page-copyright">
 				<div class="container">
-					<p class="text-center small">Created & Powered By Wherevership Sdn Bhd ().<br>
+					<p class="text-center small">Created & Powered By Wherevership Sdn Bhd (1201025-W).<br>
 						All Copyrights Reserved &copy; 2018</p>
 				</div>
 			</div>

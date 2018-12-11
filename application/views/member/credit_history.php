@@ -1,6 +1,6 @@
  <script>
-	$('#MyCredits').collapse();
-	$("ul[data-target='#MyCredits']").children().children().eq(1).removeClass('fa-plus').addClass('fa-minus');
+	$('#MyOrders').collapse();
+	$("ul[data-target='#MyOrders']").children().children().eq(1).removeClass('fa-plus').addClass('fa-minus');
 	$("#Credit_History").addClass('active selected');
 
 </script>

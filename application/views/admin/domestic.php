@@ -120,7 +120,7 @@ button.close {
    
   <!-- /input-group --> 
   <!-- /.col-lg-6 --> 
-  <div class="visible-xs">&nbsp;</div>
+  <div >&nbsp;</div>
 <div class="container-fluid">
 <div class="form-inline pull-left hidden-xs" style="margin: 20px 0px;">
     <select class="form-control dashboard-bulk-action" id="bulkAction" name="bulkAction" style="width: 150px;">
@@ -169,8 +169,8 @@ button.close {
 		<td class="hidden-xs" width="20%"><?=$v['status']?></td>
 		
 		<td width="22%">
-			<a href="javascript:showDetail('<?=$v['id']?>');" class="btn btn-success btn-xs">See More</a>
-			<a href="javascript:shipmentList.ChangeStatus('<?=base_url('admin/updateDomesticStatus/'.$v['id'].'/Prepare_to_ship')?>','Prepare To Ship');" class="btn btn-success btn-xs <?php if ($v['status']=='Prepare_to_ship') {?>disabled<?php }?>">Prepare to ship</i></a>
+			<a href="javascript:showDetail('<?=$v['id']?>');" class="btn btn-info btn-xs">See More</a>
+			<a href="javascript:shipmentList.ChangeStatus('<?=base_url('admin/updateDomesticStatus/'.$v['id'].'/Prepare_to_ship')?>','Prepare To Ship');" class="btn btn-primary btn-xs <?php if ($v['status']=='Prepare_to_ship') {?>disabled<?php }?>">Prepare to ship</i></a>
 			<a href="javascript:shipmentList.ChangeStatus('<?=base_url('admin/updateDomesticStatus/'.$v['id'].'/Shipping')?>','Shipping');" class="btn btn-success btn-xs <?php if ($v['status']=='Shipping') {?>disabled<?php }?>">Shipping</i></a>
 			<a href="javascript:shipmentList.ChangeStatus('<?=base_url('admin/updateDomesticStatus/'.$v['id'].'/Shipped')?>','Shipped');" class="btn btn-success btn-xs <?php if ($v['status']=='Shipped') {?>disabled<?php }?>">Shipped</i></a>
 		
@@ -469,7 +469,7 @@ var shipmentList = {
 									var checkShipped = ((json[i].status == 'Shipped') ? 'disabled' : '');
 								
 								
-									var tr = $("<tr>").html('<td width="2%" class="hidden-xs"><input type=\'checkbox\' name="checkBluckAction" id="checkBluck-'+json[i].id+'" onclick="checknow();" value="'+json[i].id+'"></td><td class="hidden-xs" width="15%">'+json[i].tracking_number+'</td><td class="hidden-xs" width="25%">'+json[i].recevier_postcode+'<br/>'+json[i].recevier_state+'<br/>'+json[i].recevier_country+'</td><td class="hidden-xs" width="16%">'+json[i].collection_date+'</td><td class="hidden-xs" width="20%">'+json[i].status+'</td><td class="visible-xs"><p>'+json[i].tracking_number+'</p><p>'+json[i].recevier_postcode+'<br/>'+json[i].recevier_state+'<br/>'+json[i].recevier_country+'</p><p>'+json[i].collection_date+'</p><p>'+json[i].status+'</p></td><td width="22%"><a href="javascript:showDetail(\''+json[i].id+'\');" class="btn btn-success btn-xs">See More</a><a href="javascript:shipmentList.ChangeStatus(\'<?=base_url('admin/updateDomesticStatus/')?>'+json[i].id+'/Prepare_to_ship\',\'Prepare To Ship\');" class="btn btn-success btn-xs '+checkPrepare+'">Prepare to ship</a><a href="javascript:shipmentList.ChangeStatus(\'<?=base_url('admin/updateDomesticStatus/')?>'+json[i].id+'/Shipping\',\'Shipping\');" class="btn btn-success btn-xs '+checkShipping+'">Shipping</a><a href="javascript:shipmentList.ChangeStatus(\'<?=base_url('admin/updateDomesticStatus/')?>'+json[i].id+'/Shipped\',\'Shipped\');" class="btn btn-success btn-xs '+checkShipped+'">Shipped</a></td>');
+									var tr = $("<tr>").html('<td width="2%" class="hidden-xs"><input type=\'checkbox\' name="checkBluckAction" id="checkBluck-'+json[i].id+'" onclick="checknow();" value="'+json[i].id+'"></td><td class="hidden-xs" width="15%">'+json[i].tracking_number+'</td><td class="hidden-xs" width="25%">'+json[i].recevier_postcode+'<br/>'+json[i].recevier_state+'<br/>'+json[i].recevier_country+'</td><td class="hidden-xs" width="16%">'+json[i].collection_date+'</td><td class="hidden-xs" width="20%">'+json[i].status+'</td><td class="visible-xs"><p>'+json[i].tracking_number+'</p><p>'+json[i].recevier_postcode+'<br/>'+json[i].recevier_state+'<br/>'+json[i].recevier_country+'</p><p>'+json[i].collection_date+'</p><p>'+json[i].status+'</p></td><td width="22%"><a href="javascript:showDetail(\''+json[i].id+'\');" class="btn btn-info btn-xs">See More</a><a href="javascript:shipmentList.ChangeStatus(\'<?=base_url('admin/updateDomesticStatus/')?>'+json[i].id+'/Prepare_to_ship\',\'Prepare To Ship\');" class="btn btn-primary btn-xs '+checkPrepare+'">Prepare to ship</a><a href="javascript:shipmentList.ChangeStatus(\'<?=base_url('admin/updateDomesticStatus/')?>'+json[i].id+'/Shipping\',\'Shipping\');" class="btn btn-success btn-xs '+checkShipping+'">Shipping</a><a href="javascript:shipmentList.ChangeStatus(\'<?=base_url('admin/updateDomesticStatus/')?>'+json[i].id+'/Shipped\',\'Shipped\');" class="btn btn-success btn-xs '+checkShipped+'">Shipped</a></td>');
 									
 									$("#table1").append(tr);
 								
@@ -529,7 +529,49 @@ var shipmentList = {
 									var checkShipped = ((json[i].status == 'Shipped') ? 'disabled' : '');
 								
 								
-									var tr = $("<tr>").html('<td width="2%" class="hidden-xs"><input type=\'checkbox\' name="checkBluckAction" id="checkBluck-'+json[i].id+'" onclick="checknow();" value="'+json[i].id+'"></td><td class="hidden-xs" width="15%">'+json[i].tracking_number+'</td><td class="hidden-xs" width="25%">'+json[i].recevier_postcode+'<br/>'+json[i].recevier_state+'<br/>'+json[i].recevier_country+'</td><td class="hidden-xs" width="16%">'+json[i].collection_date+'</td><td class="hidden-xs" width="20%">'+json[i].status+'</td><td class="visible-xs"><p>'+json[i].tracking_number+'</p><p>'+json[i].recevier_postcode+'<br/>'+json[i].recevier_state+'<br/>'+json[i].recevier_country+'</p><p>'+json[i].collection_date+'</p><p>'+json[i].status+'</p></td><td width="22%"><a href="javascript:showDetail(\''+json[i].id+'\');" class="btn btn-success btn-xs">See More</a><a href="javascript:shipmentList.ChangeStatus(\'<?=base_url('admin/updateDomesticStatus/')?>'+json[i].id+'/Prepare_to_ship\',\'Prepare To Ship\');" class="btn btn-success btn-xs '+checkPrepare+'">Prepare to ship</a><a href="javascript:shipmentList.ChangeStatus(\'<?=base_url('admin/updateDomesticStatus/')?>'+json[i].id+'/Shipping\',\'Shipping\');" class="btn btn-success btn-xs '+checkShipping+'">Shipping</a><a href="javascript:shipmentList.ChangeStatus(\'<?=base_url('admin/updateDomesticStatus/')?>'+json[i].id+'/Shipped\',\'Shipped\');" class="btn btn-success btn-xs '+checkShipped+'">Shipped</a></td>');
+									url = "<?=base_url('admin/searchShipmentByDate/do')?>";
+		var dateFrom = ($("[name=dateFrom]").val().trim());
+		var dateTo = ($("[name=dateTo]").val().trim());
+			$.ajax({
+				url: url,
+				type: "POST",
+				dataType: "text",
+				async: true,
+				data: {
+					dateFrom: dateFrom, 
+					dateTo: dateTo
+				},
+				
+				success: function(result) {
+					console.log(result);
+					var json = JSON.parse(result);
+					var x = 0;
+					$("#table1").html("");
+					console.log(json.length);
+					if (json.length > 0) {
+						for (var i=0; i < json.length; i++) {
+							if (json[i].result != 'empty') { 
+									var checkPrepare = ((json[i].status == 'Prepare_to_ship') ? 'disabled' : '');
+									var checkShipping = ((json[i].status == 'Shipping') ? 'disabled' : '');
+									var checkShipped = ((json[i].status == 'Shipped') ? 'disabled' : '');
+								
+								
+									var tr = $("<tr>").html('<td width="2%" class="hidden-xs"><input type=\'checkbox\' name="checkBluckAction" id="checkBluck-'+json[i].id+'" onclick="checknow();" value="'+json[i].id+'"></td><td class="hidden-xs" width="15%">'+json[i].tracking_number+'</td><td class="hidden-xs" width="25%">'+json[i].recevier_postcode+'<br/>'+json[i].recevier_state+'<br/>'+json[i].recevier_country+'</td><td class="hidden-xs" width="16%">'+json[i].collection_date+'</td><td class="hidden-xs" width="20%">'+json[i].status+'</td><td class="visible-xs"><p>'+json[i].tracking_number+'</p><p>'+json[i].recevier_postcode+'<br/>'+json[i].recevier_state+'<br/>'+json[i].recevier_country+'</p><p>'+json[i].collection_date+'</p><p>'+json[i].status+'</p></td><td width="22%"><a href="javascript:showDetail(\''+json[i].id+'\');" class="btn btn-info btn-xs">See More</a><a href="javascript:shipmentList.ChangeStatus(\'<?=base_url('admin/updateDomesticStatus/')?>'+json[i].id+'/Prepare_to_ship\',\'Prepare To Ship\');" class="btn btn-primary btn-xs '+checkPrepare+'">Prepare to ship</a><a href="javascript:shipmentList.ChangeStatus(\'<?=base_url('admin/updateDomesticStatus/')?>'+json[i].id+'/Shipping\',\'Shipping\');" class="btn btn-success btn-xs '+checkShipping+'">Shipping</a><a href="javascript:shipmentList.ChangeStatus(\'<?=base_url('admin/updateDomesticStatus/')?>'+json[i].id+'/Shipped\',\'Shipped\');" class="btn btn-success btn-xs '+checkShipped+'">Shipped</a></td>');
+									
+									$("#table1").append(tr);
+								
+								
+							} else {
+								var tr = $("<tr>").html('<td colspan=\'6\'>No Record Found.</td>');
+								$("#table1").append(tr);
+							}
+						}
+						
+					} else {
+						
+							var tr = $("<tr>").html('<tr><td colspan=\'6\'>No Record Found.</td></tr>');
+							$("#table1").append(tr);
+					}
 									
 									$("#table1").append(tr);
 								

@@ -146,6 +146,7 @@ $route['admin/domestic_cost'] = 'Admin_manage/domestic_cost';
 $route['admin/trucking_cost'] = 'Admin_manage/trucking_cost';
 $route['admin/profile_setting'] = 'Admin_manage/profile_setting';
 $route['admin/login_process'] = 'Admin_manage/login_process';
+$route['admin/credit_history'] = 'Admin_manage/credit_history';
 $route['admin/LogOut'] = 'Admin_manage/logout';
 $route['admin/admin_delete/(:num)'] = 'Admin_process_manage/admin_delete/$1';
 $route['admin/requester_delete/(:num)'] = 'Admin_process_manage/requester_delete/$1';
@@ -180,6 +181,8 @@ $route['domestic/domestic_price/(:any)'] = 'Domestic_shipment_manage/domestic_pr
 $route['domestic/domestic_price_update'] = 'Domestic_shipment_manage/domestic_price_update';
 $route['domestic/search_price'] = 'Domestic_shipment_manage/search_shipment_price';
 $route['domestic/bulk_domestic_price_update'] = 'Domestic_shipment_manage/bulk_domestic_price_update';
+
+$route['credit/search_by_date'] = 'Credit_api_manage/creditSearchByDate';
 
 $route['admin/testOne'] = 'Admin_testing/test_get_one';
 $route['admin/testAll'] = 'Admin_testing/test_get_all';

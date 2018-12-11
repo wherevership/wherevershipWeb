@@ -300,11 +300,10 @@ function logout() {
           <li><a href="<?=base_url('member/actions_required')?>">Action Required</a></li>
         </ul>
       </li> -->
-      <li class="site-nav-item dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span> My Orders <span class="caret"></span></span> <span class="side-menu-box"><i class="fas fa-shopping-basket"></i></span></a>
+      <li class="site-nav-item dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span> My Credit <span class="caret"></span></span> <span class="side-menu-box"><i class="fas fa-shopping-basket"></i></span></a>
         <ul class="dropdown-menu" role="menu">
-        	<li><a href="<?=base_url('member/unpaid_orders')?>">Unpaid Orders</a></li>
-        	<li><a href="<?=base_url('member/partial_paid_order')?>">Partial Paid Orders</a></li>
-			<li><a href="<?=base_url('member/invoice')?>">Invoices</a></li>
+        	<li><a href="<?=base_url('member/credit_history')?>">Credit History</a></li>
+        	<li><a href="<?=base_url('member/invoice')?>">Invoices</a></li>
         </ul>
       </li>
       <li class="site-nav-item dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span> All Shipments <span class="caret"></span></span> <span class="side-menu-box"><i class="fas fa-truck"></i></span></a>
@@ -554,7 +553,7 @@ span.tip {
 }
 </style>
 
-<div class="QuickQuoteHighlight3 text-center" style="display:none" onclick="unfocusQuickQuote();"><img src="https://secure.easyparcel.my/pass/application/APP_6.8/theme/easyparcel/images/quote-book-adam.png" width="40%"></div>
+
 <div id="dialog"></div>
 
 <div class="col-md-2 padding-off hidden-xs hidden-sm">
@@ -691,16 +690,13 @@ span.tip {
 			<div style="border-top: 1px solid #ddd;">
 				<ul class="list-group btn" data-toggle="collapse" data-target="#MyOrders" aria-expanded="false" aria-controls="collapseExample">
 					<a class="list-group-item active">
-					<i class="fas fa-shopping-basket"></i> My Orders<i class="fas fa-plus pull-right"></i>
+					<i class="fas fa-shopping-basket"></i> My Credit<i class="fas fa-plus pull-right"></i>
 					</a>
 				</ul>	
 			 
 				<div class="collapse dropdown" id="MyOrders">
 					<ul class="list-group">
-					<a href="<?=base_url('member/unpaid_orders')?>" class="list-group-item" id="Unpaid_Order_Invoices" >Unpaid Orders<span class="badge" id="unpaid">0</span>
-					</a>
-					<a href="<?=base_url('member/partial_paid_order')?>" class=" list-group-item" id="Partialpaid_Order_Invoices" >Partial Paid Orders <span class="badge" id="partialpaid">0</span>
-					</a>
+					<a href="<?=base_url('member/credit_history')?>" class="list-group-item" id="Credit_History" >Credit History</a>
 					<a href="<?=base_url('member/invoice')?>" class=" list-group-item" id="Order_Invoices">Invoices</a>
 				</ul>
 				</div>
