@@ -121,8 +121,10 @@
 				
 						<ul class="nav navbar-nav navbar-right visible-sm">
 							<li class="login-menu login_top" <?=!empty($id)? 'style="display:none;"':''?>><a href="<?=base_url('userLogin')?>"><i class="fas fa-user"></i>Log In</a></li>
-							<li class="login-menu signUp_top" style="border-left: 2px solid #fff;" <?=!empty($id)? 'style="display:none;"':''?>><a href="<?=base_url('signUp')?>">Sign Up</a></li>
-							<li class="login-menu logout_top" style="border-left: 2px solid #fff;" <?=!empty($id)? '':'style="display:none;"'?>><a href='<?=base_url('member/logOut')?>'>Log Out</a></li>
+							<li class="login-menu signUp_top" style="border-left: 2px solid #fff; <?=!empty($id)? 'display:none;':''?>"><a href="<?=base_url('signUp')?>">Sign Up</a></li>
+	
+							<li class="login-menu logout_top" style="border-left: 2px solid #fff; <?=!empty($id)? '':'display:none;'?>"><a href='<?=base_url('member/logOut')?>'>Log Out</a></li>
+							<li class="login-menu" style="border-left: 2px solid #fff; <?=!empty($id)? '':'display:none;'?>"><a class="navbar-toggle collapsed" onclick="displayMainMenu()"><i class="fas fa-bars"></i></a></li>
 						</ul>
 				
 				<!--	<div class="col-lg-6 col-md-8 padding-off hidden-sm">
@@ -278,7 +280,7 @@ function logout() {
     
     <h3 class="site-nav-title">PROFILE</h3>
     <ul class="nav navbar-nav site-nav-group">
-      <li class="site-nav-item login_top" <?=!empty($id)? 'style="display:none;"':''?> > <a href="<?=base_url('userLogin')?>"><span>Log In</span> <span class="side-menu-box"><i class="fas fa-user"></i></span></a> </li>
+       <li class="site-nav-item login_top" <?=!empty($id)? 'style="display:none;"':''?> > <a href="<?=base_url('userLogin')?>"><span>Log In</span> <span class="side-menu-box"><i class="fas fa-user"></i></span></a> </li>
       <li class="site-nav-item signUp_top" <?=!empty($id)? 'style="display:none;"':''?>> <a href="<?=base_url('signUp')?>"><span>Sign Up</span> <span class="side-menu-box"><i class="fas fa-user"></i></span></a> </li>
 	  <li class="site-nav-item logout_top" <?=!empty($id)? '':'style="display:none;"'?>> <a onclick='logout()'><span>Log Out</span> <span class="side-menu-box"><i class="fas fa-user"></i></span></a> </li>
     </ul>

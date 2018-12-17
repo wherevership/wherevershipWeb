@@ -3,32 +3,32 @@
 </script>
 
 	<div class="col-md-10 col-xs-12 dashboard-wrapped padding-right-off">
-    <style>
-		.profile-bg {
-			padding: 20px;
-			border-width: 1px;
-			border-color: #ddd;
-			border-style: solid;
-			background: #eee;
-		}
+		<style>
+			.profile-bg {
+				padding: 20px;
+				border-width: 1px;
+				border-color: #ddd;
+				border-style: solid;
+				background: #eee;
+			}
 
-		.profile-bg.bindCard {
-			background-color: #B3003C;
-		}
+			.profile-bg.bindCard {
+				background-color: #B3003C;
+			}
 
-		.bindCard p, .bindCard_successful p {
-			margin: 0px; color:#fff;
-		}
+			.bindCard p, .bindCard_successful p {
+				margin: 0px; color:#fff;
+			}
 
-		.profile-bg.bindCard_successful {
-			background-color: #666;
-		}
-	</style>
+			.profile-bg.bindCard_successful {
+				background-color: #666;
+			}
+		</style>
 
-	<script>
-		function bindcardnow() 
-		{ document.getElementById("instantpay").submit(); }  
-	</script>
+		<script>
+			function bindcardnow() 
+				{ document.getElementById("instantpay").submit(); }  
+		</script>
 	<!--
 	<div class="profile-bg bindCard">
 		<form name="ePayment" id='instantpay' method="post" action="https://www.mobile88.com/ePayment/entry.asp">
@@ -52,12 +52,12 @@
 
        
    
-	<div class="row dashoboard-account">
-		<div class="row space">
-			<div class="col-md-3 col-md-offset-1 col-sm-4 col-xs-5 profile-pic text-center" style="position: relative;"> 
-				<div class="profile_picture"> <img src="<?=base_url('assets2/image/user.jpg')?>">
+		<div class="row dashoboard-account">
+			<div class="row space">
+				<div class="col-md-3 col-md-offset-1 col-sm-4 col-xs-5 profile-pic text-center" style="position: relative;"> 
+					<div class="profile_picture"> <img src="<?=base_url('assets2/image/user.jpg')?>">
 						<div id="logo" class="glyphicon glyphicon-camera camera"></div>
-				</div>
+					</div>
 				<input class="hidden" type="file" value="upload" id="upload"/>
 
 			</div>
@@ -65,37 +65,25 @@
 				<h3 class="profile-name"></h3>
 				
 			</div>
-			<div class="col-md-7 col-sm-8 col-xs-12 my-details">
+			<div class="col-md-7 col-sm-8 col-xs-12">
 				<div class="row hidden-xs">
 					<h3 class="profile-name"><?=!empty($username)?$username:'Unknown'?></h3>
-					<span class="label">Activation User</span>
+					
 					
 					<br>
 				</div>
 				<br />
 				<table width="100%">
 					<tbody>
-						<tr>
-							<td class="labels">Referral Commission Earned:</td>
-							<td class="values"><strong><a href="./?pg=MyAccount&tab=Referral">RM 0.00</a></strong></td>
-						</tr>
-						
+
 						<tr>
 							<td class="labels">My Credits:</td>
-						<td class="values"><strong><a href="./?pg=MyAccount">RM 25.00 </a> <div class="pull-right" style="position: relative;"><a href="./?pg=MyAccount&tab=Profile&do=Topup" class="btn top_up hidden-xs btn-box-shadow"><i class="epi-up-circled"></i> Top Up</a></div></strong></td> 
+						<td class="values"><strong><a href="">RM 0.00 </a> <div class="pull-right" style="position: relative;"><a href="<?=base_url('member/top_up')?>" class="btn btn-primary hidden-xs"><i class="epi-up-circled"></i> Top Up</a></div></strong></td> 
 						</tr>
 					</tbody>
 				</table>
 				<br>
-				<div class="input-group dashboard-coupon">
-					<div class="has-feedback">
-						<input class="form-control" type="text" name="couponSearch" placeholder="Coupon code"/>
-						<span class="epi-info-circled form-control-feedback hide"  aria-hidden="true"></span>
-					</div>
-					<span class="input-group-btn">
-					<button class="btn btn-primary" type="button" onclick="registerCoupon()" style="height: 34px;"><i class="epi-right"></i></button>
-					</span>
-				</div>
+				
 			</div>
 		</div>
 		<div class="row" style="display: none;">
@@ -120,29 +108,78 @@
 					<div class="panel-body padding-off total-summary_wrap">
 						<div class="col-xs-4 padding-off total-saving">
 							<div class="col-sm-4 col-xs-12">
-								<h1 class="total-icon-size"><i class="epi-insurance"></i></h1>
+								<h1 class="total-icon-size"><i class="fas fa-truck-pickup"></i></h1>
 							</div>
 							<div class="col-sm-8 col-xs-12">
-								<h5>Total Saving</h5>
-								<h3><span class="hidden-xs">RM</span> 0.00</h3>
+								<h2>Domestic Shipment </h2>
+								<table width="100%">
+									<tbody>
+
+										<tr>
+											<td class="labels">Prepare to ship</td>
+											<td class="values"> <div class="pull-right" style="position: relative;"><?=!empty($docPrepareNum)?$docPrepareNum:"0"?></div></strong></td> 
+										</tr>
+										<tr>
+											<td class="labels">Shiping</td>
+											<td class="values"> <div class="pull-right" style="position: relative;"><?=!empty($docShippingNum)?$docShippingNum:"0"?></div></strong></td> 
+										</tr>
+										<tr>
+											<td class="labels">Shipped</td>
+											<td class="values"> <div class="pull-right" style="position: relative;"><?=!empty($docShippedNum)?$docShippedNum:"0"?></div></strong></td> 
+										</tr>
+									</tbody>
+								</table>
 							</div>
 						</div>
 						<div class="col-xs-4 padding-off total-delivered">
 							<div class="col-sm-4 col-xs-12">
-								<h1 class="total-icon-size"><i class="epi-delivery36"></i></h1>
+								<h1 class="total-icon-size"><i class="fas fa-truck-moving"></i></h1>
 							</div>
 							<div class="col-sm-8 col-xs-12">
-								<h5>Total Delivered</h5>
-								<h3>0</h3>
+								<h2>Internatinal Shipment</h2>
+								<table width="100%">
+									<tbody>
+
+										<tr>
+											<td class="labels">Prepare to ship</td>
+											<td class="values"> <div class="pull-right" style="position: relative;"><?=!empty($intPrepareNum)?$intPrepareNum:"0"?></div></strong></td> 
+										</tr>
+										<tr>
+											<td class="labels">Shiping</td>
+											<td class="values"> <div class="pull-right" style="position: relative;"><?=!empty($intShippingNum)?$intShippingNum:"0"?></div></strong></td> 
+										</tr>
+										<tr>
+											<td class="labels">Shipped</td>
+											<td class="values"> <div class="pull-right" style="position: relative;"><?=!empty($intShippedNum)?$intShippedNum:"0"?></div></strong></td> 
+										</tr>
+									</tbody>
+								</table>
 							</div>
+							
 						</div>
 						<div class="col-xs-4 padding-off total-referral">
 							<div class="col-sm-4 col-xs-12">
-								<h1 class="total-icon-size"><i class="epi-share-1"></i></h1>
+								<h1 class="total-icon-size"><i class="fas fa-truck-moving"></i></i></h1>
 							</div>
 							<div class="col-sm-8 col-xs-12">
-								<h5>Total Referral</h5>
-								<h3>0</h3>
+								<h2>Truck Shipment</h2>
+								<table width="100%">
+									<tbody>
+
+										<tr>
+											<td class="labels">Prepare to ship</td>
+											<td class="values"> <div class="pull-right" style="position: relative;">0</div></strong></td> 
+										</tr>
+										<tr>
+											<td class="labels">Shiping</td>
+											<td class="values"> <div class="pull-right" style="position: relative;">0</div></strong></td> 
+										</tr>
+										<tr>
+											<td class="labels">Shipped</td>
+											<td class="values"> <div class="pull-right" style="position: relative;">0</div></strong></td> 
+										</tr>
+									</tbody>
+								</table>
 							</div>
 						</div>
 					</div>
@@ -155,7 +192,7 @@
 
 <div id="result"></div>
 <script>
-	
+
 	
 	
 	function registerCoupon(){

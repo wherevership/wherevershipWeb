@@ -1,91 +1,127 @@
-<script>
-	$('#MyCredits').collapse();
-	$("ul[data-target='#MyCredits']").children().children().eq(1).removeClass('fa-plus').addClass('fa-minus');
-	$("#Top_Up").addClass('active selected');
+	<style>
+.btn-default2 {
+  color: #333;
+  background-color: #ccc;
+  border-color: #fff;
+}
+.table>thead:first-child>tr:first-child>th {
+  text-align: center;
+  border-right: 1px solid;
+}
+.table>tbody>tr>td {
+  text-align: center;
+  border-right: 1px solid #ddd;
+}
+tr#DetailRow>td {
+  text-align: left;
+}
+.well {
+  background-color: #ddd;
+  margin-bottom: 0px;
+}
+.table>thead.domestic:first-child>tr:first-child>th {
+    background-color: #f69;
+}
+.table>thead.international:first-child>tr:first-child>th {
+    background-color: #5cb85c;
+}
+.dashboard-title span.domestic-title {
+  background-color: #f69;
+  vertical-align: super;
+  font-size: 16px;
+}
 
-</script>
+.dashboard-title span.international-title {
+  vertical-align: super;
+  font-size: 16px;
+}
+.form-control-feedback.epi-info-circled { 
+  position: absolute;
+  padding-top: 8px;
+  color: #d82b1f ;
+  font-size: 18px;
+}
+.sweet-overlay, .sweet-alert{
+    position: absolute!important;
+}
+
+.swal2-modal{
+z-index:10001;}
+
+.glyphicon-remove {
+  display:none;
+  position: absolute;
+  cursor: pointer;
+  background-color: rgba(113,110,110, 0.66);
+  height: 50px;
+  width: 60px;
+  padding: 15px 18px;
+  color: black;
+  font-size: 20px;
+}
+
+#photo div:hover span, #photo div:hover span, #invoice div:hover span, #photo div:hover span{
+  display:block;
+}
+
+</style>
+
 <div class="col-md-10 col-xs-12 dashboard-wrapped padding-right-off">
 		
-		<!--<div class="row dashoboard-account"> <img  width="100%" src="https://secure.easyparcel.my/pass/application/APP_6.15/theme/easyparcel/images/Top-Up-Banner.jpg">
-		<br>
-		<br>
-		<img width="100%" src="https://secure.easyparcel.my/pass/application/APP_6.15/theme/easyparcel/images/1154x200_-_(logo)_MyCyberSale_2017.jpg"></div>-->
-		
 	<div class="row dashoboard-account">
-    <div class="container-fluid space-small"> 
+		<div class="container-fluid space-small"> 
+			<div>
+				<h2 class="dashboard-title">
+				Top Up
+				</h2>
+			</div>
+			<div class="clearfix"></div>
+			<table id="myTable" class="table table-striped" width="100%">
+    <thead>
+      <tr>
+        <th width="25%" class="hidden-xs">Package</th>
+        <th width="25%" class="hidden-xs">Credit (RM)</th>
+        <th width="25%" class="hidden-xs">You need pay (RM)</th>
+        
+        <th class="visible-xs">Shipment Summary</th>
+		<th width="25%" style="padding:4px;"></th>
+			
+      </tr>
+    </thead>
+    <tbody id="table1">
+	<?php
+		if (!empty($creditList)) {
+		foreach ($creditList as $v) {
+   ?>
+	<tr>
+		<td class="hidden-xs" width="25%"><?=$v['package']?></td>
+		<td class="hidden-xs" width="25%"><?=$v['credit_value']?></td>
+		<td class="hidden-xs" width="25"><?=$v['amount']?></td>
+		<td width="25%">
+			<button class="btn btn-primary" data-toggle="modal" data-target="#payment_method" id="<?=$v['id']?>-><?=$v['package']?>-><?=$v['amount']?>">Get It Now</button>
+			
+		</td>
+	</tr>
+  
+	<?php
+	}}
+	  else {
+		  
+    ?>
+	  <tr><td colspan='6'>No Record Found.</td></tr>
 	
-	<div class="row">
+	<?php
+	  }
+	
+	?>
+
+      </tbody>
+    
+  </table>
 		
-		<div class="alert alert-warning alert-dismissible text-center" role="alert"> 
-		<img src= "https://secure.easyparcel.my/pass/application/APP_6.15/theme/easyparcel/images/300x300_-_adam_INFO_1.png" class="img-responsive center-block info_img" alt="alert">
-		You will be able to view the top up package and make top up once your account is verified. This would help us to identify where the top up come from. <br> <a class="btn btn-warning" onclick="SendVerify()"> Verify My Account Now</a> </div>
-		 
-      </div>
-    </div>
 		
-		<!--QUESTIONS AND ANSWERS SECTION START-->
-		<hr>
-		<div class="col-xs-12 section-copy">
-			<h1>Questions and Answers</h1>
 		</div>
-		<div class="clearfix"></div>
-		<div class="col-md-6">
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h4 class="panel-title"> + What is EasyParcel credit? </h4>
-				</div>
-				<div class="panel-body"> Think of credits as EasyParcel’s very own currency. Simply load your account with credits to book deliveries as you go. </div>
-			</div>
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h4 class="panel-title"> + How much credits do I need? </h4>
-				</div>
-				<div class="panel-body"> The credit cost of a delivery will depend on its size, weight, destination and quality. The majority of our most delivered parcels cost between RM6 - RM10. </div>
-			</div>
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h4 class="panel-title"> + Do I have to use EasyParcel credits to pay for my delivery order? </h4>
-				</div>
-				<div class="panel-body"> It is best to pay using EasyParcel credits to save time and enjoy lower delivery rate. Otherwise, you may pay for each individual orders using “<a href="http://bit.ly/EPinstantpay">Instant Pay</a>” but at a higher rate charges. </div>
-			</div>
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h4 class="panel-title"> + What happens if I still have remaining credits after the promotion period/validity date. </h4>
-				</div>
-				<div class="panel-body"> Your credits is valid for (1) year from your top up date. You can activate back your remaining credit by topping up again. </div>
-			</div>
-		</div>
-		<div class="col-md-6">
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h4 class="panel-title"> + How long are my credits good for? </h4>
-				</div>
-				<div class="panel-body"> Credits are valid for (1) year from your latest top up date. We'll send you an email notification before your credits expire. Sign in to see your credit balance at the top right corner of the page. </div>
-			</div>
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h4 class="panel-title">+ Can I get a refund on unused credits? </h4>
-				</div>
-				<div class="panel-body"> Unfortunately, no refunds will be offered. </div>
-			</div>
-			
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h4 class="panel-title"> + Are the package price shown above inclusive of GST charges? </h4>
-				</div>
-				<div class="panel-body"> Yes, prices shown above are inclusive of GST charges. For eg, customer top up for EP2000 package by paying RM2120 (RM2000 EasyParcel credit + RM120 6% GST). </div>
-				</div>
-			
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h4 class="panel-title"> + Can I top up EasyParcel Credits via offline? (etc atm transfer, cheque deposit) </h4>
-				</div>
-				<div class="panel-body"> Yes, we accept credit top up via offline. However, your top up credit, all discounts and promotional benefit in the top up package will only be visible within 3 working days. </div>
-			</div>
-		</div>
-		<!--QUESTIONS AND ANSWERS SECTION END-->
 	</div>
-</div>
 <div id="dialog"></div>
 <div id="TopupDialog"></div>
 <!-- candy -> get optional form -->
@@ -95,7 +131,7 @@
     <div class="modal-header" >
       <div class="row" style="padding: 15px 15px 0px">
         <h3>Select your preferred payment method</h3>
-        <p>Total amount <span style="color: #f69; font-weight: bold; font-size: 20px;" >RM<span id="tamt"></span></span> <small>include GST.</small></p>
+        <p>Total amount <span style="color: #2cbeb7; font-weight: bold; font-size: 20px;" >RM<span id="tamt"></span></span> <small></small></p>
         <p><input type='hidden' id='tid' >
         <input type='hidden' id='tname'></p>
       </div>
@@ -138,54 +174,25 @@
         </div>
       </div>
       
-      <div class="panel panel-deafult " style="background-color: #f5f5f5;" >
-        <div class="panel-body">
-          <div class="col-md-12">
-            <h4><strong>Cash Payment Over-the-Counter</strong></h4>
-            <p><small>Select your preferred shop for payment. No extra charges.</small></p>
-          </div>
-          <div class="row">
-          
-            <div class="col-md-3 col-sm-4">
-              <div class="well">
-                <div class="radio">
-                   <label style="display: block;">
-                    <input type="radio" name="optradio" id="optradio" value="7eleven" >
-                    <img src="https://secure.easyparcel.my/pass/application/APP_6.15/theme/easyparcel/images/payment_gateway/7_eleven_logo.png" width="100px" ></label>
-                </div>
-              </div>
-            </div>
-            
-          </div>
-        </div>
-      </div>
       
-      <div class="panel panel-deafult additional_info" style="background-color: #f5f5f5;" >
+      
+      <div class="panel panel-deafult" style="background-color: #f5f5f5;" >
         <div class="panel-body">
           <div class="col-md-12">
-            <h4><strong>Offline Payment: ATM Transfer / Bank Transfer</strong></h4>
-        <p><small>Get additional <strong style="color: #f69;">RM100</strong> when you pay offline! Offline payment processing will take 1-3 working days.</small></p> 
-             <p><strong>Company Name: EASYPARCEL SDN. BHD. <br>
-              Bank Name : CIMB <br>
-         Account No : 8003936338</strong> </p>
-        <p><small><i class="epi-info-circled blink"></i> Kindly email the e-statement slip after top up to <a href="#">support@easyparcel.my</a></small></p>
+			<div class="radio">
+				<input type="radio" name="optradio" id="optradio" value="offline" >
+				<h4><strong>Offline Payment: ATM Transfer / Bank Transfer</strong></h4>
+        <p><small> Offline payment processing will take 1-3 working days.</small></p> 
+				<p><strong>Company Name: WHEREVERSHIP SDN BHD <br>
+					Bank Name : MAYBANK <br>
+					Account No : 5511 5510 6852</strong> </p>
+				<p><small><i class="fas fa-info-circle blink"></i> Kindly email the e-statement slip after top up to <a href="mailto:business@wherevership.com">business@wherevership.com</a></small></p>
           </div>
+		  </div>
           <div class="row"> </div>
         </div>
       </div>
-      <div class="panel panel-deafult additional_info2" style="background-color: #f5f5f5;" >
-        <div class="panel-body">
-          <div class="col-md-12">
-            <h4><strong>Offline Payment: ATM Transfer / Bank Transfer</strong></h4>
-        <p><small>Get additional <strong style="color: #f69;">RM200</strong> when you pay offline! Offline payment processing will take 1-3 working days.</small></p> 
-             <p><strong>Company Name: EASYPARCEL SDN. BHD. <br>
-              Bank Name : CIMB <br>
-         Account No : 8003936338</strong> </p>
-        <p><small><i class="epi-info-circled blink"></i> Kindly email the e-statement slip after top up to <a href="#">support@easyparcel.my</a></small></p>
-          </div>
-          <div class="row"> </div>
-        </div>
-      </div>
+     
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-default" data-dismiss="modal" id="cancel">Cancel</button>
@@ -219,24 +226,14 @@ function starter(ep) {
     var $modal = $(this),
      	topupinfo = e.relatedTarget.id;   
      	info = topupinfo.split("->");
-     	topup_id = info[0];topup_name = info[1];
+     	topup_id = info[0];
+		topup_name = info[1];
      	topup_amt = info[2];
      $modal.find('#tid').html(topup_id);
      $modal.find('#tname').html(topup_name);
      $modal.find('#tamt').html(topup_amt);
    
-     if(topup_amt < 10000 ){
-     	$(".additional_info").hide();
-	    $(".additional_info2").hide();
-     }else{
-     	if(topup_amt == 21200){
-	     	$(".additional_info2").show();
-	     	$(".additional_info").hide();
-	    }else{
-	    	$(".additional_info").show();
-	    	$(".additional_info2").hide();
-	    }
-     }
+    
      
  });
 

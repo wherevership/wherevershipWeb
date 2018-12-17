@@ -29,6 +29,42 @@
 			$this->data['title'] = "Welcome to wherevership admin";
 			$this->data['id'] = ($this->session->userdata['admin_logged_in']['id']);
 			$this->data['username'] = ($this->session->userdata['admin_logged_in']['firstname']) .' '. ($this->session->userdata['admin_logged_in']['lastname']);
+			$docPrepareNumber = $this->Shipment_Model->record_count(array(
+				'is_deleted' => 0,
+				'status' => 'Prepare_to_ship',
+				'type' => 'Domestic',
+			));
+			$docShippingNumber = $this->Shipment_Model->record_count(array(
+				'is_deleted' => 0,
+				'status' => 'Shipping',
+				'type' => 'Domestic',
+			));
+			$docShippedNumber = $this->Shipment_Model->record_count(array(
+				'is_deleted' => 0,
+				'status' => 'Shipped',
+				'type' => 'Domestic',
+			));
+			$intPrepareNumber = $this->Shipment_Model->record_count(array(
+				'is_deleted' => 0,
+				'status' => 'Prepare_to_ship',
+				'type' => 'International',
+			));
+			$intShippingNumber = $this->Shipment_Model->record_count(array(
+				'is_deleted' => 0,
+				'status' => 'Shipping',
+				'type' => 'International',
+			));
+			$intShippedNumber = $this->Shipment_Model->record_count(array(
+				'is_deleted' => 0,
+				'status' => 'Shipped',
+				'type' => 'International',
+			));
+			$this->data['docPrepareNum'] = $docPrepareNumber;
+			$this->data['docShippingNum'] = $docShippingNumber;
+			$this->data['docShippedNum'] = $docShippedNumber;
+			$this->data['intPrepareNum'] = $intPrepareNumber;
+			$this->data['intShippingNum'] = $intShippingNumber;
+			$this->data['intShippedNum'] = $intShippedNumber;
 			$this->load->view("admin/header", $this->data);
 			$this->load->view("admin/dashboard",$this->data);
 			$this->load->view("admin/footer");

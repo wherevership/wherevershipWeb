@@ -126,8 +126,8 @@
 				
 						<ul class="nav navbar-nav navbar-right visible-sm">
 							<li class="login-menu login_top" <?=!empty($id)? 'style="display:none;"':''?>><a href="<?=base_url('userLogin')?>"><i class="fas fa-user"></i>Log In</a></li>
-							<li class="login-menu signUp_top" style="border-left: 2px solid #fff;" <?=!empty($id)? 'style="display:none;"':''?>><a href="<?=base_url('signUp')?>">Sign Up</a></li>
-							<li class="login-menu logout_top" style="border-left: 2px solid #fff;"><a href='<?=base_url('member/logOut')?>'<?=!empty($id)? '':'style="display:none;"'?>>Log Out</a></li>
+							<li class="login-menu signUp_top" style="border-left: 2px solid #fff; <?=!empty($id)? 'display:none;':''?>"><a href="<?=base_url('signUp')?>">Sign Up</a></li>
+							<li class="login-menu logout_top" style="border-left: 2px solid #fff; <?=!empty($id)? '':'display:none;'?>"><a href="<?=base_url('member/logOut')?>">Log Out</a></li>
 						</ul>
 				
 			<!--		<div class="col-lg-6 col-md-8 padding-off hidden-sm">
@@ -248,7 +248,7 @@
             
 		</ul>
           <ul class="nav navbar-nav navbar-right hidden-sm">
-            <li class="login-menu login_top" <?=!empty($id)? 'style="display:none;"':''?>><a href="<?=base_url('userLogin')?>"><i class="fas fa-user"></i> Log In</a></li>
+             <li class="login-menu login_top" <?=!empty($id)? 'style="display:none;"':''?>><a href="<?=base_url('userLogin')?>"><i class="fas fa-user"></i> Log In</a></li>
             <li class="login-menu signUp_top" <?=!empty($id)? 'style="display:none;"':''?>><a href="<?=base_url('signUp')?>" style="border-left: 1px solid rgba(255, 255, 255, 0.5);">Sign Up</a></li>
 			<li class="login-menu logout_top" <?=!empty($id)? '':'style="display:none;"'?>><a href='<?=base_url('member/logOut')?>'>Log Out</a></li>
           </ul>
@@ -270,7 +270,7 @@
       <a class="navbar-toggle collapsed" onclick="displayMainMenu()"><i class="fas fa-bars"></i></a>
     </div>
     <div class="mobile-menu pull-right"> 
-      <a  class="navbar-toggle collapsed" id="log_in_mobile"><i class="fas fa-user"></i></a>
+      <a  class="navbar-toggle collapsed" id="log_in_mobile" href="<?=base_url('member/user_panel')?>"><i class="fas fa-user"></i></a>
     </div>
    <!-- <div class="mobile-menu pull-right">
       <a class="navbar-toggle collapsed" data-toggle="modal" data-target="#services"><i class="fas fa-truck"></i></a>
@@ -285,9 +285,9 @@
     
     <h3 class="site-nav-title">PROFILE</h3>
     <ul class="nav navbar-nav site-nav-group">
-      <li class="site-nav-item login_top" <?=!empty($id)? '':'style="display:none;"'?>> <a href="<?=base_url('userLogin')?>" class="login_mobile"><span>Log In</span> <span class="side-menu-box"><i class="fas fa-user"></i></span></a> </li>
-      <li class="site-nav-item signUp_top" <?=!empty($id)? '':'style="display:none;"'?>> <a href="<?=base_url('signUp')?>" ><span>Sign Up</span> <span class="side-menu-box"><i class="fas fa-user"></i></span></a> </li>
-	  <li class="site-nav-item logout_top" <?=!empty($id)? 'style="display:none;"':''?>> <a href='<?=base_url('member/logOut')?>'><span>Log Out</span> <span class="side-menu-box"><i class="fas fa-user"></i></span></a> </li>
+      <li class="site-nav-item login_top" <?=!empty($id)? 'style="display:none;"':''?>> <a href="<?=base_url('userLogin')?>" class="login_mobile"><span>Log In</span> <span class="side-menu-box"><i class="fas fa-user"></i></span></a> </li>
+      <li class="site-nav-item signUp_top" <?=!empty($id)? 'style="display:none;"':''?>> <a href="<?=base_url('signUp')?>" ><span>Sign Up</span> <span class="side-menu-box"><i class="fas fa-user"></i></span></a> </li>
+	  <li class="site-nav-item logout_top" <?=!empty($id)? '':'style="display:none;"'?>> <a href='<?=base_url('member/logOut')?>'><span>Log Out</span> <span class="side-menu-box"><i class="fas fa-user"></i></span></a> </li>
     </ul>
     <h3 class="site-nav-title">USEFUL LINKS</h3>
     <ul class="nav navbar-nav site-nav-group">

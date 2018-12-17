@@ -108,8 +108,87 @@
  
 	<div class="welcomelabel">
 		<h4><?=isset($username)?$username:'unknown user'?></h4>
+		<div id="sticky" class="mobile-navbar navbar-header visible-xs">
+		<div class="mobile-menu pull-right">
+			<a class="navbar-toggle collapsed" onclick="displayMainMenu()"><i class="fas fa-bars"></i></a>
+		</div>
+		</div>
 	</div>
-		<div class="container-fluid space-small">
+	
+	
+		<ul class="nav navbar-nav navbar-right visible-sm">
+			<li><a class="navbar-toggle collapsed" onclick="displayMainMenu()"><i class="fas fa-bars"></i></a></li>
+		</ul>
+		
+		
+	<!--START OF MOBILE DROP DOWN MENU-->
+<div id="MasterMobileMenu" style="display:none; background-color: rgba(0,169,176,0.1);">
+  <div class="container"> 
+	<ul class="nav navbar-nav site-nav-group">
+      <li class="site-nav-item"> <a href="<?=base_url()?>"><span>Home</span> <span class="side-menu-box"><i class="fas fa-home"></i></span></a> </li>
+      <li class="site-nav-item"> <a href="<?=base_url('admin/dashboard')?>"><span>Dashboard</span> <span class="side-menu-box"><i class="fas fa-home"></i></span></a> </li>
+      <li class="site-nav-item dropdown"> 
+		<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span>Requester <span class="caret"></span></span> <span class="side-menu-box"><i class="fas fa-truck"></i></span></a>
+        <ul class="dropdown-menu" role="menu">
+         
+			  <li><a href="<?=base_url('admin/add_requester')?>">Add Requester</a></li>
+			  <li><a href="<?=base_url('admin/requester_list')?>">Requester List</a></li>
+             
+           </ul>
+      </li>
+	 <li class="site-nav-item dropdown"> 
+		<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span>Driver <span class="caret"></span></span> <span class="side-menu-box"><i class="fas fa-truck"></i></span></a>
+        <ul class="dropdown-menu" role="menu">
+         
+			  <li><a href="<?=base_url('admin/add_driver')?>">Add Driver</a></li>
+			  <li><a href="<?=base_url('admin/driver_list')?>">Driver List</a></li>
+             
+           </ul>
+      </li>
+	<li class="site-nav-item dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span>Admin <span class="caret"></span></span> <span class="side-menu-box"><i class="fas fa-shopping-basket"></i></span></a>
+        <ul class="dropdown-menu" role="menu">
+        	<li><a href="<?=base_url('admin/add_admin')?>">Add Admin</a></li>
+        	<li><a href="<?=base_url('admin/admin_list')?>">Admin List</a></li>
+        </ul>
+      </li>
+      <li class="site-nav-item dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span> All Shipments <span class="caret"></span></span> <span class="side-menu-box"><i class="fas fa-truck"></i></span></a>
+        <ul class="dropdown-menu" role="menu">
+			<li><a href="<?=base_url('admin/domestic')?>">Domestic</a></li>
+			<li><a href="<?=base_url('admin/international')?>">International</a></li>
+			<li><a href="<?=base_url('admin/trucking')?>">truck</a></li>
+		  
+        </ul>
+      </li>
+		<li class="site-nav-item dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span>Credits <span class="caret"></span></span> <span class="side-menu-box"><i class="far fa-money-bill-alt"></i></span></a>
+        <ul class="dropdown-menu" role="menu">
+          <!--<li><a href="<?=base_url('member/top_up')?>">Top Up</a></li> -->
+          <li><a href="<?=base_url('admin/credit_history')?>">Credit History</a></li>
+          <!--<li><a href="<?=base_url('member/top_up_history')?>">Top Up History</a></li> -->
+        </ul>
+      </li>
+     <li class="site-nav-item dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span>Costing <span class="caret"></span></span> <span class="side-menu-box"><i class="far fa-money-bill-alt"></i></span></a>
+        <ul class="dropdown-menu" role="menu">
+			<li><a href="<?=base_url('admin/international_cost')?>">International Costing</a></li>
+			<li><a href="<?=base_url('admin/domestic_cost')?>">Domestic Costing</a></li>
+			<li><a href="<?=base_url('admin/trucking_cost')?>">Trucking Costing</a></li>
+        </ul>
+      </li>
+      <li class="site-nav-item dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span>My Account <span class="caret"></span></span> <span class="side-menu-box"><i class="fas fa-user"></i></span></a>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="<?=base_url('admin/profile_setting')?>">Profile Setting</a></li>
+          <li><a href="<?=base_url('admin/logOut')?>">Log Out</a></li>
+        
+         </ul>
+      </li>
+      
+    </ul>
+    
+  	
+   </div>
+</div>
+<!--END OF MOBILE DROP DOWN MENU--> 
+		
+		<div class="container-fluid space-small" id="masterContent">
 	
 			<div class="col-md-2 padding-off hidden-xs hidden-sm">
 				<style>
@@ -348,7 +427,17 @@
 <script>
 var sidebarstatus = '0000000';
 
-
+function displayMainMenu(){
+	var currentStyle = document.getElementById("masterContent").style.display;
+	if(currentStyle == "none"){
+		document.getElementById("masterContent").style.display = "";
+		document.getElementById("MasterMobileMenu").style.display = "none";
+	}else{
+		document.getElementById("masterContent").style.display = "none";
+		document.getElementById("MasterMobileMenu").style.display = "";
+	}
+	$('html,body').scrollTop(0);
+}
 
 $('.list-group-item').click(function (e) {
 	var data = $(e.target).parent().parent().attr('data-target');

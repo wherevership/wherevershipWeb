@@ -92,14 +92,15 @@ z-index:10001;}
   <div class="well col-xs-12 col-sm-8" onkeypress="return checkEnter(event)">
     <div class="hidden-xs">
       <div class="col-xs-5 padding-left-off">
-        <select class="form-control" id="category" name="category" onchange="changeCategory()">
-      <option value='0' >All Category</option><option value='1' >Tracking No</option><option value='2' >Parcel No</option><option value='3' >Order No</option><option value='4' >Receiver Name</option><option value='5' >Receiver Mobile No</option><option class='hidden-xs' value='6' >Collection Date</option><option class='hidden-xs' value='7' >Courier Company</option><option value='8' >Sender Name</option><option value='9' >Sender Mobile No</option>
+        <select class="form-control" id="category" name="category" onchange="changeCategory()">    
+			<option value='collection_date' class='hidden-xs' >Collection Date</option>
+			<option value='tracking_number' >Tracking Number</option>
         </select>
       </div>
       <div id="searchfield_normal" class="input-group col-xs-7">
     <div class="has-feedback">
         <input class="form-control" type="text" name="search" placeholder=""/>
-    <span class="epi-info-circled form-control-feedback hide"  aria-hidden="true"></span>
+    <span class="fas fa-info-circle form-control-feedback hide"  aria-hidden="true"></span>
     </div>
         <span class="input-group-btn">
         <button class="btn btn-primary" type="button" onclick="shipmentlist.search()">Search</button>
@@ -132,53 +133,7 @@ z-index:10001;}
         <span class="input-group-btn">
         <button class="btn btn-primary" type="button" onclick="shipmentlist.search()">Search</button>
         </span> </div>
-      <div id="searchfield_drop" class="input-group col-xs-7" style="display: none">
-        <select class="form-control" style="width:100%" name="courier" id="courier">
-          
-          <option value="1">POSLAJU NATIONAL COURIER</option>
-          
-          <option value="2">AIRPAK EXPRESS</option>
-          
-          <option value="5">DHL Express</option>
-          
-          <option value="6">Skynet Express (M) Sdn. Bhd.</option>
-          
-          <option value="8">Nationwide Express Courier Services Berhad</option>
-          
-          <option value="12">SnT Global</option>
-          
-          <option value="14">Zepto Express</option>
-          
-          <option value="17">SF Global Express</option>
-          
-          <option value="18">Clement Express</option>
-          
-          <option value="19">Pos Malaysia Berhad</option>
-          
-          <option value="20">TNT Express Worldwide (M) Sdn Bhd</option>
-          
-          <option value="21">TNT Economy Express Worldwide (M) Sdn Bhd</option>
-          
-          <option value="22">DHL eCommerce</option>
-          
-          <option value="23">Aramex</option>
-          
-          <option value="24">Aramex International</option>
-          
-          <option value="25">Pgeon</option>
-          
-          <option value="26">ABX Express (M) Sdn Bhd</option>
-          
-          <option value="27">UTS Logistics Sdn Bhd</option>
-          
-          <option value="28">Courier2U Services</option>
-          
-          <option value="29">Ultimate Consolidators Sdn Bhd</option>
-          
-        </select>
-        <span class="input-group-btn">
-        <button class="btn btn-primary" type="button" onclick="shipmentlist.search()">Search</button>
-        </span> </div>
+      
     </div>
     <div class="visible-xs">
       <div class="col-xs-12 padding-off">
@@ -227,10 +182,8 @@ z-index:10001;}
   </div>
   
   
-  <div class="form-inline pull-right hidden-xs" style="margin: 20px 20px;"> Listing Per Page :
-    <select class="form-control" id="resultLimit" name="resultLimit" onchange="shipmentlist.resultLimit(this.value)">
-    <option value='10' Selected>10</option><option value='50' >50</option><option value='100' >100</option><option value='150' >150</option>
-    </select>
+  <div class="form-inline pull-right hidden-xs" style="margin: 20px 20px;">
+    
   </div>
   
   
