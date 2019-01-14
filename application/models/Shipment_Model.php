@@ -61,6 +61,21 @@ class Shipment_Model extends CI_model {
 		$query = $this->db->get($this->table_name);
 		return $query->row_array();
 	}
-
+	
+	
+	public function getLastId() {
+		$this->db->select("*");
+		$this->db->from($this->table_name);
+		$this->db->limit(1);
+		$this->db->order_by('id',"DESC");
+		$query = $this->db->get();
+		if ($query->num_rows() >0) {
+			$category['row'] = $query->num_rows();
+			return $query->result();
+			
+		} else {
+			return $query->result();
+		}
+	}
 }
 ?>

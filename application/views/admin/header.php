@@ -26,7 +26,7 @@
 
 <link href="<?=base_url('assets2/css/sweetalert2.min.css')?>" rel="stylesheet">
 
-<link href="<?=base_url('assets2/css/style.css?v=1.1')?>" rel="stylesheet">
+<link href="<?=base_url('assets2/css/style.css?v=1.2')?>" rel="stylesheet">
 
 <link href="<?=base_url('assets2/css/jquery.dataTables.css')?>" rel="stylesheet">
 
@@ -163,7 +163,7 @@
         <ul class="dropdown-menu" role="menu">
           <!--<li><a href="<?=base_url('member/top_up')?>">Top Up</a></li> -->
           <li><a href="<?=base_url('admin/credit_history')?>">Credit History</a></li>
-          <!--<li><a href="<?=base_url('member/top_up_history')?>">Top Up History</a></li> -->
+          <li><a href="<?=base_url('admin/top_up_history')?>">Top Up History</a></li>
         </ul>
       </li>
      <li class="site-nav-item dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span>Costing <span class="caret"></span></span> <span class="side-menu-box"><i class="far fa-money-bill-alt"></i></span></a>
@@ -383,7 +383,7 @@
 				<div class="collapse dropdown" id="credit">
 					<ul class="list-group">
 						<a href="<?=base_url('admin/credit_history')?>" class="list-group-item" id="credit_history">Credit History</a>
-						
+						<a href="<?=base_url('admin/top_up_history')?>" class="list-group-item" id="credit_history">Top Up History</a>
 					</ul>
 				</div>
 			</div>

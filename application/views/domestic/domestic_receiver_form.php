@@ -93,6 +93,7 @@
 				<input type="hidden" name="pickup_required" value="<?=$pickup_required?>"/>
 				<input type="hidden" name="parcel_content" value="<?=$parcel_content?>"/>
 				<input type="hidden" name="value_of_content" value="<?=$value_of_content?>"/>
+				<input type="hidden" name="collectionDate" value="<?=$collectionDate?>">
 				
 			</div>
 			
@@ -162,10 +163,9 @@
 								Weight: <?=$weight?>kg<br>
 								<hr>
 								Parcel Content: <?=$parcel_content?><br>
-								Value of content: <?=$value_of_content?>
+								Value of content: <?=$value_of_content?><br>
+								Collection Date: <?=$collectionDate?>
 							
-								<hr>
-								Required pickup: <?=$pickup_required?>
 								
 							</p>
 						</div>

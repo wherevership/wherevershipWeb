@@ -4,10 +4,35 @@
 	$("#Credit_History").addClass('active selected');
 
 </script>
+	<style>
+.table>thead:first-child>tr:first-child>th {
+	text-align: center;
+	border-right: 1px solid;
+	border-color: #fff;
+}
+
+.table>tbody>tr>td {
+	text-align: center;
+	border-right: 1px solid #ddd;
+}
+</style>
  <div class="col-md-10 col-xs-12 dashboard-wrapped padding-right-off">
     <div class="row credits-available hidden-xs">
-      <h4><i class="epi-money173" style="font-size:48px; vertical-align: middle;"></i> My credits : RM 25.00
-        <div class="btn-group pull-right" style="margin-top: 10px;"> <a href="./?pg=MyAccount&amp;tab=Profile&amp;do=Topup" class="btn btn-topup"><i class="epi-up-circled"></i> Top Up</a> </div>
+					<?php 
+						
+						if (!empty($creditHistoryList)) {
+							$bal = 0;
+							foreach ($creditHistoryList as $v) {
+								if ($v['amount_type']=='dt') {
+									$bal += $v['amount'];
+								} else {
+									$bal -= $v['amount'];
+								}
+							}
+						}
+					?>
+      <h4><i class="fas fa-coins" style="font-size:48px; vertical-align: middle;"></i> My credits : RM <?=sprintf('%0.2f', $bal);?>
+        <div class="btn-group pull-right" style="margin-top: 10px;"> <a href="<?=base_url('member/top_up')?>" class="btn btn-topup"><i class="fas fa-angle-double-up"></i> Top Up</a> </div>
       </h4>
     </div>
     
@@ -24,7 +49,7 @@
               <div class="input-group-addon" style="min-width: 60px;">From </div>
               <div class="has-feedback">
                 <input data-date-format="yyyy-mm-dd" readonly type="text" class="form-control" name="fromDate" value="" id="fromDate" size="16">
-					<span class="epi-info-circled form-control-feedback hide"  aria-hidden="true"></span> </div>
+					<span class="fas fa-info-circled form-control-feedback hide"  aria-hidden="true"></span> </div>
             </div>
           </div>
         </div>
@@ -34,7 +59,7 @@
               <div class="input-group-addon" style="min-width: 60px;">To </div>
               <div class="has-feedback">
                 <input data-date-format="yyyy-mm-dd" readonly type="text" class="form-control" name="toDate" value="" id="toDate" size="16">
-						<span class="epi-info-circled form-control-feedback hide"  aria-hidden="true"></span> </div>
+						<span class="fas fa-info-circled  form-control-feedback hide"  aria-hidden="true"></span> </div>
             </div>
           </div>
         </div>
@@ -48,49 +73,55 @@
           </ul>
         </div>
          
-        <div class="form-inline pull-left hidden-xs" style="margin: 20px 0px;"> Listing Per Page :
-			<select class="form-control" name="resultLimit" onchange="resultLimit(this.value)">        
-				<option value='10' Selected>10</option><option value='50' >50</option><option value='100' >100</option><option value='150' >150</option>
-			</select>
+        <div class="form-inline pull-left hidden-xs" style="margin: 20px 0px;"> 
+			
         </div>
         <div class="visible-xs">&nbsp;</div>
         <table id="myTable" class="table table-striped hidden-xs">
           <thead>
             <tr>
               <th class="hidden-xs text-center" width="20%">Date/Time</th>
-              <th class="hidden-xs text-center" width="20%">Description</th>
-              <th class="hidden-xs text-center" width="15%">Credit </th>
-              <th class="hidden-xs text-center" width="15%">Debit</th>
+              <th class="hidden-xs text-center" width="30%">Description</th>
+              <th class="hidden-xs text-center" width="15%">Debit </th>
+              <th class="hidden-xs text-center" width="15%">Credit</th>
               <th class="hidden-xs text-center" width="20%">Balance</th>
-              <th class="hidden-xs text-center" width="10%">Statement</th>
               <th class="visible-xs" width="60%">Statement Summary</th>
 	      <th class="visible-xs" width="35%">Balance (RM)</th>
 			  <th class="visible-xs" width="5%"></th>
             </tr>
           </thead>
-          <tbody>
+          <tbody id="table1">
+			<?php 
+						
+						if (!empty($creditHistoryList)) {
+							$balance = 0;
+							foreach ($creditHistoryList as $v) {
+								if ($v['amount_type']=='dt') {
+									$balance += $v['amount'];
+								} else {
+									$balance -= $v['amount'];
+								}
+					?>
+			<tr>
+				<td class="hidden-xs" width="20%"><?=$v['created_date']?></td>
+				<td class="hidden-xs" width="30%"><?=$v['description']?></td>
+				<td class="hidden-xs" width="15%"><?=($v['amount_type']=='dt')?$v['amount']:''?></td>
+				<td class="hidden-xs" width="15%"><?=($v['amount_type']=='kt')?$v['amount']:''?></td>
+				<td class="hidden-xs" width="20%"><?=sprintf('%0.2f', $balance);?></td>
+				
 			
-            
-            <tr>
-              <td class="hidden-xs text-center">2017-10-31<br />16:24:57</td>
-              <td class="hidden-xs text-center">
-			  
-			  Early Bird Registration (RM 25.00)
-			   
-			  </td>
-              <td class="hidden-xs text-center">25.00</td>
-              <td class="hidden-xs text-center">0.00</td>
-              <td class="hidden-xs text-center">25.00</td>
-			  <td class="hidden-xs text-center">
-			   
-			  <td class="visible-xs">Date/Time : 2017-10-31 16:24:57</br> Early Bird Registration (RM 25.00)</br><label style="color:#ff6699">Credit : 25.00 <br>Debit : 0.00</label></td>
-              <td class="visible-xs">
-                Balance : 25.00 </td>
-			  <td class="visible-xs text-center">
-			   
-			  </td>
             </tr>
-            
+            <?php
+						}}
+						else {
+		  
+					?>
+					<tr><td colspan='5'>No Record Found.</td></tr>
+	
+					<?php
+						}
+	
+					?>
           </tbody>
         </table>
 		
@@ -101,23 +132,42 @@
 				  <th width="5%"></th>
 				</tr>
 			  </thead>
-			  <tbody>
-				  
+			  <tbody id="table2">
+				  <?php 
+						
+						if (!empty($creditHistoryList)) {
+							$balance1 = 0;
+							foreach ($creditHistoryList as $v) {
+								if ($v['amount_type']=='dt') {
+									$balance1 += $v['amount'];
+								} else {
+									$balance1 -= $v['amount'];
+								}
+					?>
 				
 				<tr>
-					<td>Date/Time : 2017-10-31 16:24:57</br> Early Bird Registration (RM 25.00)</br><span style="color:#ff6699">Credit : 25.00 <br>Debit : 0.00</span><br>Balance (RM) : 25.00</td>
+					<td class="text-center">Date/Time : <?=$v['created_date']?></br><?=$v['description']?></br><span style="color:#00a9b0"><?=$v['amount']?>(<?=($v['amount_type']=='dt')?'Debit':'Credit'?>)</span><br>Balance (RM) : <?=sprintf('%0.2f', $balance1);?></td>
 					<td class="text-center">
 					 
 					</td>
+					
 				</tr>
+				<?php
+						}}
+						else {
+		  
+					?>
+					<tr><td colspan='4'>No Record Found.</td></tr>
+	
+					<?php
+						}
+	
+					?>
 				
 			  </tbody>
 		</table>
 		<div class="row"> 
-			<div class="form-inline text-center visible-xs"> Listing Per Page :
-			  <select class="list_option" name="resultLimit" onchange="resultLimit(this.value)">
-				<option value='10' Selected>10</option><option value='50' >50</option><option value='100' >100</option><option value='150' >150</option>
-			  </select>
+			<div class="form-inline text-center visible-xs"> 
 			</div>
 		</div>
 		<div class="row">
@@ -128,10 +178,7 @@
           </ul>
         </div>
          
-        <div class="form-inline pull-left hidden-xs" style="margin: 20px 0px;"> Listing Per Page :
-          <select class="form-control" name="resultLimit" onchange="resultLimit(this.value)">
-			<option value='10' Selected>10</option><option value='50' >50</option><option value='100' >100</option><option value='150' >150</option>
-          </select>
+        <div class="form-inline pull-left hidden-xs" style="margin: 20px 0px;"> 
         </div>
 		</div>
       </div>
@@ -140,7 +187,92 @@
 </div>
 <div id="dialog"></div>
 <script>
-function StatementCategory(key){
+
+		$(function(){
+			$( "#fromDate" ).datepicker({dateFormat: 'yy-mm-dd', maxDate: '+0d'});
+			$( "#toDate" ).datepicker({dateFormat: 'yy-mm-dd', maxDate: '+0d'});
+
+		});
+		
+		
+		function searchByDate() {
+			url = "<?=base_url('credit/search_by_dateMember')?>";
+			var dateFrom = ($("[name=fromDate]").val().trim());
+			var dateTo = ($("[name=toDate]").val().trim());
+			var user_id = '<?=$id?>';
+			console.log(user_id);
+			$.ajax({
+				url: url,
+				type: "POST",
+				dataType: "text",
+				async: true,
+				data: {
+					dateFrom: dateFrom, 
+					dateTo: dateTo,
+					user_id: user_id
+				},
+				
+				success: function(result) {
+					console.log(result);
+					var json = JSON.parse(result);
+					var x = 0;
+					$("#table1").html("");
+					$("#table2").html("");
+					console.log(json.length);
+					var balance = 0;
+					if (json.length > 0) {
+						for (var i=0; i < json.length; i++) {
+							if (json[i].result != 'empty') { 
+									var debit = '';
+									var kredit = '';
+									
+									var type = '';
+									var amount = parseFloat(parseFloat(json[i].amount).toFixed(2));
+									console.log(typeof(amount));
+									if (json[i].amount_type == 'dt') {
+										debit = amount.toFixed(2);
+										kredit = '';
+										balance += amount;
+										type = 'Debit';
+									} else {
+										debit = '';
+										kredit = amount.toFixed(2);
+										balance -= amount;
+										type = 'Credit';
+									}
+									console.log(balance);
+									var fixedBal = parseFloat(balance).toFixed(2);
+									var tr = $("<tr>").html('<td class="hidden-xs" width="20%">'+json[i].created_date+'</td><td class="hidden-xs" width="30%">'+json[i].description+'</td><td class="hidden-xs" width="15%">'+debit+'</td><td class="hidden-xs" width="15%">'+kredit+'</td><td class="hidden-xs" width="20%">'+fixedBal+'</td></td>');
+									
+									var tr2 = $("<tr>").html('<td class="text-center">Date/Time : '+json[i].created_date+'</br>'+json[i].description+'</br><span style="color:#00a9b0">'+json[i].amount+'('+type+')</span><br>Balance (RM) : '+fixedBal+'</td><td class="text-center"></td>');
+									
+									$("#table1").append(tr);
+									$("#table2").append(tr2);
+								
+					
+								
+							} else {
+								var tr = $("<tr>").html('<td colspan=\'7\'>No Record Found.</td>');
+								
+								var tr2 = $("<tr2>").html('<td colspan=\'4\'>No Record Found.</td>')
+								$("#table1").append(tr);
+								
+								$("#table2").append(tr2);
+								
+							}
+						}
+						
+					} else {
+						
+							var tr = $("<tr>").html('<tr><td colspan=\'7\'>No Record Found.</td></tr>');
+							var tr2 = $("<tr2>").html('<td colspan=\'4\'>No Record Found.</td>')
+							$("#table1").append(tr);
+							$("#table2").append(tr2);
+						}	
+				}
+			});
+			}
+	function StatementCategory(key){
 	if(key == ''){
 		key = $('#SSSelect').val();
 	}
@@ -169,35 +301,6 @@ function resultLimit(limit){
 	window.location.href = url.link + "?" + qs + (rl.length > 0 ? "&rl=" + rl : "");
 }
 
-function searchByDate(){
-	message = "";
-	var url = QueryString(window.location.href);
-	if($("[name=fromDate]").val().trim() != "" && $("[name=toDate]").val().trim() != ""){
-		sc = 'From-'+($("[name=fromDate]").val().trim())+'To-'+($("[name=toDate]").val().trim());
-	}else{
-		message+="Please Select The From & To Date.";
-	}
-	
-	if(message != ""){
-		CheckNull($("[name=fromDate]"),$("[name=toDate]"));
-		swal({
-			title: 'Oops',
-			type: 'error',
-			html: '' + message,
-			confirmButtonColor: '#4e97d8'
-			})
-		return false;
-	}else{
-		var qs = "";
-		for(p in url.qs){
-			if(p != "sc" && p != "lpg"){
-				if(qs.length > 0) qs += "&";
-				qs += p + "=" + url.qs[p]
-			}
-		}
-		window.location.href = url.link + "?" + qs + (sc.length > 0 ? "&sc=" + sc : "");
-	}
-}
 
 function CheckNull(obj,obj1){
 	var from  = $("[name=dateFrom]");
@@ -243,10 +346,7 @@ function QueryString(url){
 	return url;
 }
 
-$(function(){
-	$( "#fromDate" ).datepicker({dateFormat: 'yy-mm-dd', maxDate: '+0d'});
-    $( "#toDate" ).datepicker({dateFormat: 'yy-mm-dd', maxDate: '+0d'});
-});
+
 </script>
 
 </div>

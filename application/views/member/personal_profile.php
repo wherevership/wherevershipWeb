@@ -59,14 +59,14 @@
               <label>First Name <span style="color:red;">*</span></label>
                 <div class="has-feedback">
                   <input class="form-control required" type="text" name="txt_first" id="txt_first" value="<?=!empty($userData['firstname'])?$userData['firstname']:''?>" required placeholder="First Name"/>
-                  <span class="epi-info-circled form-control-feedback hide"  aria-hidden="true"></span> 
+                  <span class="fas fa-info-circle form-control-feedback hide"  aria-hidden="true"></span> 
                 </div>
             </div>
             <div class="col-sm-6 col-xs-12 form-group">
               <label>Last Name <span style="color:red;">*</span></label>
               <div class="has-feedback">
                 <input class="form-control required" type="text" name="txt_last" id="txt_last" value="<?=!empty($userData['lastname'])?$userData['lastname']:''?>" required placeholder="Last Name"/>
-                <span class="epi-info-circled form-control-feedback hide"  aria-hidden="true"></span>
+                <span class="fas fa-info-circle form-control-feedback hide"  aria-hidden="true"></span>
               </div> 
             </div>
             <div class="col-md-12 col-sm-6 col-xs-12 form-group">
@@ -75,7 +75,7 @@
             </div>
             <div class="col-md-12 col-sm-6 col-xs-12 form-group">
               <label>Password</label>
-                <small class="pull-right"><a href="./?pg=MyAccount&tab=Profile&do=ChangePassword"> Change</a></small>
+                <small class="pull-right"><a href=""> Change</a></small>
                 <div>
                   <input disabled class="form-control required" type="password" name="txt_password" id="number" value="<?=!empty($userData['password'])?$userData['password']:''?>">
                  </div>
@@ -92,7 +92,7 @@
               <label>Address <span style="color:red;">*</span></label>
               <div class="has-feedback">
                 <input class="form-control required" type="text" name="txt_unit" value="<?=!empty($userData['address1'])?$userData['address1']:''?>"  id="txt_unit" maxlength="40" required placeholder="Address Line 1">
-                <span class="epi-info-circled form-control-feedback hide"  aria-hidden="true"></span>
+                <span class="fas fa-info-circle form-control-feedback hide"  aria-hidden="true"></span>
               </div>
             </div>
             <div class="col-xs-12 form-group">
@@ -108,14 +108,14 @@
               <label>Town/City<span style="color:red;">*</span></label>
               <div class="has-feedback">
                 <input class="form-control required" type="text" name="txt_city"  id="txt_city" value="<?=!empty($userData['city'])?$userData['city']:''?>" required placeholder="Town / City"/>
-                <span class="epi-info-circled form-control-feedback hide"  aria-hidden="true"></span>
+                <span class="fas fa-info-circle form-control-feedback hide"  aria-hidden="true"></span>
               </div>
             </div>
             <div class="col-md-12 col-sm-6 col-xs-12 form-group">
               <label>Zip/Postal Code<span style="color:red;">*</span></label>
               <div class="has-feedback">
                 <input class="form-control required" type="text" name="txt_postcode" id="txt_postcode"  onChange="postGetState(this)" required placeholder="Zip / Postal code" value="<?=!empty($userData['postcode'])?$userData['postcode']:''?>"/>
-                <span class="epi-info-circled form-control-feedback hide"  aria-hidden="true"></span>
+                <span class="fas fa-info-circle form-control-feedback hide"  aria-hidden="true"></span>
               </div>
             </div>
             <div class="col-md-12 col-sm-6 col-xs-12 form-group">
@@ -281,52 +281,6 @@ function updateProfile() {
 
 
 
-
-firebase.auth().onAuthStateChanged( firebaseUser => {
-				if(firebaseUser) {
-					$("#userId").val(firebaseUser.uid);
-					const database2 = firebase.database().ref('User').child(firebaseUser.uid);
-					database2.on('value', snap => {
-						console.log(snap.val());
-						$("#welcome").text("Hi " + snap.val().firstName + " " + snap.val().lastName);
-						$("#name-title").text(snap.val().firstName + " " + snap.val().lastName);
-						$("#txt_first").val(snap.val().firstName);
-						$("#txt_last").val(snap.val().lastName);
-						$("#txt_unit").val(snap.val().profileAddress1);
-						$("#txt_building").val(snap.val().profileAddress2);
-						$("#txt_street").val(snap.val().profileAddress3);
-						$("#txt_taman").val(snap.val().profileAddress4);
-						$("#txt_city").val(snap.val().profileCity);
-						$("#txt_postcode").val(snap.val().profilePostcode);
-						$("#txt_country").val(snap.val().profileCountry);
-						$("#txt_mobile").val(snap.val().mobileNumber);
-					});
-					$(".login_top").hide();
-					$(".signUp_top").hide();
-					$(".logout_top").show();
-					$("#welcome").attr("href","<?=base_url("member/user_panel")?>");
-					$("#log_in_f").text("LogOut").attr("href","javascript:logout()");
-					$("#log_in_mobile").attr("href","<?=base_url("member/user_panel")?>");
-					$("#dashboard_f").attr("href","<?=base_url("member/user_panel")?>");
-					$("#edit_profile_f").attr("href","<?=base_url("member/personal_profile")?>");
-					$("#my_cart_f").attr("href","<?=base_url("member/actions_required")?>");
-					
-				
-				} else {
-					$(".login_top").show();
-					$(".signUp_top").show();
-					$(".logout_top").hide();
-					$("#welcome").text("Hi, Welcome");
-					$("#welcome").attr("href","<?=base_url("userLogin")?>");
-					$("#log_in_mobile").attr("href","<?=base_url("userLogin")?>");
-					$("#log_in_f").text("LogIn").attr("href","<?=base_url("userLogin")?>");
-					$("#dashboard_f").attr("href","<?=base_url("userLogin")?>");
-					$("#edit_profile_f").attr("href","<?=base_url("userLogin")?>");
-					$("#my_cart_f").attr("href","<?=base_url("userLogin")?>");
-					console.log('not logged in');
-				}
-			
-			});
 
 function DeleteImage(obj){
   $("[for="+$(obj).attr("for")+"]").parent().parent().append(

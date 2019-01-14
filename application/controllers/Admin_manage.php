@@ -6,6 +6,7 @@
 		$this->load->model('Admin_Model');
 		$this->load->model('Shipment_Model');
 		$this->load->model('User_Model');
+		$this->load->model('Order_Table_Model');
 		$this->load->model('International_Zone_Model');
 		$this->load->model('Domestic_Zone_Model');
 		$this->load->model('Config_Model');
@@ -29,42 +30,119 @@
 			$this->data['title'] = "Welcome to wherevership admin";
 			$this->data['id'] = ($this->session->userdata['admin_logged_in']['id']);
 			$this->data['username'] = ($this->session->userdata['admin_logged_in']['firstname']) .' '. ($this->session->userdata['admin_logged_in']['lastname']);
-			$docPrepareNumber = $this->Shipment_Model->record_count(array(
+			$fuelCharge = $this->Config_Model->getOne(array(
+				'description' => 'Fuel Charge',
 				'is_deleted' => 0,
-				'status' => 'Prepare_to_ship',
+			));
+			$docScheduleNumber = $this->Shipment_Model->record_count(array(
+				'is_deleted' => 0,
+				'status' => 'Sehedule In Arrangment',
 				'type' => 'Domestic',
 			));
-			$docShippingNumber = $this->Shipment_Model->record_count(array(
+			$docPendingNumber = $this->Shipment_Model->record_count(array(
 				'is_deleted' => 0,
-				'status' => 'Shipping',
+				'status' => 'Pending For Collection',
 				'type' => 'Domestic',
 			));
-			$docShippedNumber = $this->Shipment_Model->record_count(array(
+			$docOnHoldNumber = $this->Shipment_Model->record_count(array(
 				'is_deleted' => 0,
-				'status' => 'Shipped',
+				'status' => 'On Hold',
 				'type' => 'Domestic',
 			));
-			$intPrepareNumber = $this->Shipment_Model->record_count(array(
+			$docCollectedNumber = $this->Shipment_Model->record_count(array(
 				'is_deleted' => 0,
-				'status' => 'Prepare_to_ship',
+				'status' => 'Collcted',
+				'type' => 'Domestic',
+			));
+			$docDropOffNumber = $this->Shipment_Model->record_count(array(
+				'is_deleted' => 0,
+				'status' => 'Drop Off',
+				'type' => 'Domestic',
+			));
+			$docDeliveringNumber = $this->Shipment_Model->record_count(array(
+				'is_deleted' => 0,
+				'status' => 'Delivering',
+				'type' => 'Domestic',
+			));
+			$docSuccessfulDeliveredNumber = $this->Shipment_Model->record_count(array(
+				'is_deleted' => 0,
+				'status' => 'Successful Delivered',
+				'type' => 'Domestic',
+			));
+			$docReturnedNumber = $this->Shipment_Model->record_count(array(
+				'is_deleted' => 0,
+				'status' => 'Returned',
+				'type' => 'Domestic',
+			));
+			$docCancelledNumber = $this->Shipment_Model->record_count(array(
+				'is_deleted' => 0,
+				'status' => 'Cancelled By Admin',
+				'type' => 'Domestic',
+			));
+			$intScheduleNumber = $this->Shipment_Model->record_count(array(
+				'is_deleted' => 0,
+				'status' => 'Sehedule In Arrangment',
 				'type' => 'International',
 			));
-			$intShippingNumber = $this->Shipment_Model->record_count(array(
+			$intPendingNumber = $this->Shipment_Model->record_count(array(
 				'is_deleted' => 0,
-				'status' => 'Shipping',
+				'status' => 'Pending For Collection',
 				'type' => 'International',
 			));
-			$intShippedNumber = $this->Shipment_Model->record_count(array(
+			$intOnHoldNumber = $this->Shipment_Model->record_count(array(
 				'is_deleted' => 0,
-				'status' => 'Shipped',
+				'status' => 'On Hold',
 				'type' => 'International',
 			));
-			$this->data['docPrepareNum'] = $docPrepareNumber;
-			$this->data['docShippingNum'] = $docShippingNumber;
-			$this->data['docShippedNum'] = $docShippedNumber;
-			$this->data['intPrepareNum'] = $intPrepareNumber;
-			$this->data['intShippingNum'] = $intShippingNumber;
-			$this->data['intShippedNum'] = $intShippedNumber;
+			$intCollectedNumber = $this->Shipment_Model->record_count(array(
+				'is_deleted' => 0,
+				'status' => 'Collected',
+				'type' => 'International',
+			));
+			$intDropOffNumber = $this->Shipment_Model->record_count(array(
+				'is_deleted' => 0,
+				'status' => 'Drop Off',
+				'type' => 'International',
+			));
+			$intDeliveringNumber = $this->Shipment_Model->record_count(array(
+				'is_deleted' => 0,
+				'status' => 'Delivering',
+				'type' => 'International',
+			));
+			$intSuccessfulDeliveredNumber = $this->Shipment_Model->record_count(array(
+				'is_deleted' => 0,
+				'status' => 'Successful Delivered',
+				'type' => 'International',
+			));
+			$intReturnedNumber = $this->Shipment_Model->record_count(array(
+				'is_deleted' => 0,
+				'status' => 'Returned',
+				'type' => 'International',
+			));
+			$intCancelledNumber = $this->Shipment_Model->record_count(array(
+				'is_deleted' => 0,
+				'status' => 'Cancelled By Admin',
+				'type' => 'International',
+			));
+			$this->data['fuelCharge'] = $fuelCharge;
+			$this->data['docScheduleNumber'] = $docScheduleNumber;
+			$this->data['docPendingNumber'] = $docPendingNumber;
+			$this->data['docOnHoldNumber'] = $docOnHoldNumber;
+			$this->data['docCollectedNumber'] = $docCollectedNumber;
+			$this->data['docDropOffNumber'] = $docDropOffNumber;
+			$this->data['docDeliveringNumber'] = $docDeliveringNumber;
+			$this->data['docSuccessfulDeliveredNumber'] = $docSuccessfulDeliveredNumber;
+			$this->data['docReturnedNumber'] = $docReturnedNumber;
+			$this->data['docCancelledNumber'] = $docCancelledNumber;
+			$this->data['intScheduleNumber'] = $intScheduleNumber;
+			$this->data['intPendingNumber'] = $intPendingNumber;
+			$this->data['intOnHoldNumber'] = $intOnHoldNumber;
+			$this->data['intCollectedNumber'] = $intCollectedNumber;
+			$this->data['intDropOffNumber'] = $intDropOffNumber;
+			$this->data['intDeliveringNumber'] = $intDeliveringNumber;
+			$this->data['intSuccessfulDeliveredNumber'] = $intSuccessfulDeliveredNumber;
+			$this->data['intReturnedNumber'] = $intReturnedNumber;
+			$this->data['intCancelledNumber'] = $intCancelledNumber;
 			$this->load->view("admin/header", $this->data);
 			$this->load->view("admin/dashboard",$this->data);
 			$this->load->view("admin/footer");
@@ -261,6 +339,24 @@
 			} else {
 				redirect(base_url('admin/login'));
 			}
+		}
+		
+		public function top_up_history() {
+			if (isset($this->session->userdata['admin_logged_in'])) {
+			$this->data['title'] = "Top Up History";
+			$this->data['id'] = ($this->session->userdata['admin_logged_in']['id']);
+			$this->data['username'] = ($this->session->userdata['admin_logged_in']['firstname']) .' '. ($this->session->userdata['admin_logged_in']['lastname']);
+			$top_up_history = $this->Order_Table_Model->get(array(
+				'is_deleted' => 0,
+			));
+			$this->data['topUpHistory'] = $top_up_history;
+			$this->load->view("admin/header", $this->data);
+			$this->load->view("admin/top_up_history",$this->data);
+			$this->load->view("admin/footer");
+			} else {
+				redirect(base_url('admin/login'));
+			}
+			
 		}
 		
 		public function domestic_cost() {

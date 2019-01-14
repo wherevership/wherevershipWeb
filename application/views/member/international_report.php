@@ -90,20 +90,21 @@ z-index:10001;}
   
   <div class="well col-xs-12 col-sm-8" onkeypress="return checkEnter(event)">
     <div class="hidden-xs">
-      <div class="col-xs-5 padding-left-off">
+      <div class="col-xs-3 padding-left-off">
         <select class="form-control" id="category" name="category" onchange="changeCategory()">
-      <option value='0' >All Category</option><option value='1' >Tracking No</option><option value='2' >Parcel No</option><option value='3' >Order No</option><option value='4' >Receiver Name</option><option value='5' >Receiver Mobile No</option><option class='hidden-xs' value='6' >Collection Date</option><option class='hidden-xs' value='7' >Courier Company</option><option value='8' >Sender Name</option><option value='9' >Sender Mobile No</option>
+			<option value='collection_date' class='hidden-xs' >Collection Date</option>
+			<option value='tracking_number' >Tracking Number</option>
         </select>
       </div>
-      <div id="searchfield_normal" class="input-group col-xs-7">
+      <div id="searchfield_normal" class="input-group col-xs-9">
     <div class="has-feedback">
-        <input class="form-control" type="text" name="search" placeholder=""/>
-    <span class="epi-info-circled form-control-feedback hide"  aria-hidden="true"></span>
+        <input class="form-control" type="text" name="search2" placeholder="search"/>
+    <span class="fas fa-info-circle form-control-feedback hide"  aria-hidden="true"></span>
     </div>
         <span class="input-group-btn">
-        <button class="btn btn-primary" type="button" onclick="shipmentlist.search()">Search</button>
+        <button class="btn btn-primary" type="button" onclick="shipmentlist.searchbyother()">Search</button>
         </span> </div>
-      <div id="searchfield_calendar" class="input-group col-xs-7" style="display:none">
+      <div id="searchfield_calendar" class="input-group col-xs-9" style="display:none">
         <div class="row">
           <div class="col-xs-6">
             <div class="form-group" style="margin-bottom:0px">
@@ -111,7 +112,7 @@ z-index:10001;}
                 <div class="input-group-addon">From </div>
         <div class="has-feedback">
                 <input data-date-format="yyyy-mm-dd" readonly type="text" class="form-control" id="fromDate" size="16" name="dateFrom"/>
-        <span class="epi-info-circled form-control-feedback hide"  aria-hidden="true"></span>
+        <span class="fas fa-info-circle form-control-feedback hide"  aria-hidden="true"></span>
         </div>
               </div>
             </div>
@@ -122,69 +123,28 @@ z-index:10001;}
                 <div class="input-group-addon">To </div>
           <div class="has-feedback">
                     <input data-date-format="yyyy-mm-dd" readonly type="text" class="form-control" id="toDate" size="16" name="dateTo"/>
-            <span class="epi-info-circled form-control-feedback hide"  aria-hidden="true"></span>
+            <span class="fas fa-info-circle form-control-feedback hide"  aria-hidden="true"></span>
           </div>
               </div>
             </div>
           </div>
         </div>
         <span class="input-group-btn">
-        <button class="btn btn-primary" type="button" onclick="shipmentlist.search()">Search</button>
+        <button class="btn btn-primary" type="button" onclick="shipmentlist.searchbydate()">Search</button>
         </span> </div>
-      <div id="searchfield_drop" class="input-group col-xs-7" style="display: none">
-        <select class="form-control" style="width:100%" name="courier" id="courier">
-          
-          <option value="1">POSLAJU NATIONAL COURIER</option>
-          
-          <option value="2">AIRPAK EXPRESS</option>
-          
-          <option value="5">DHL Express</option>
-          
-          <option value="6">Skynet Express (M) Sdn. Bhd.</option>
-          
-          <option value="8">Nationwide Express Courier Services Berhad</option>
-          
-          <option value="10">DeliverLAH</option>
-          
-          <option value="12">SnT Global</option>
-          
-          <option value="14">Zepto Express</option>
-          
-          <option value="17">SF Global Express</option>
-          
-          <option value="18">Clement Express</option>
-          
-          <option value="19">Pos Malaysia Berhad</option>
-          
-          <option value="20">TNT Express Worldwide (M) Sdn Bhd</option>
-          
-          <option value="21">TNT Economy Express Worldwide (M) Sdn Bhd</option>
-          
-          <option value="22">DHL eCommerce</option>
-          
-          <option value="23">Aramex</option>
-          
-          <option value="24">Aramex International</option>
-          
-          <option value="25">Pgeon</option>
-          
-          <option value="26">ABX Express (M) Sdn Bhd</option>
-          
-        </select>
-        <span class="input-group-btn">
-        <button class="btn btn-primary" type="button" onclick="shipmentlist.search()">Search</button>
-        </span> </div>
+      
     </div>
     <div class="visible-xs">
       <div class="col-xs-12 padding-off">
       <select class="form-control" id="category" name="category" onchange="changeCategory()">
-    <option value='0' >All Category</option><option value='1' >Tracking No</option><option value='2' >Parcel No</option><option value='3' >Order No</option><option value='4' >Receiver Name</option><option value='5' >Receiver Mobile No</option><option class='hidden-xs' value='6' >Collection Date</option><option class='hidden-xs' value='7' >Courier Company</option><option value='8' >Sender Name</option><option value='9' >Sender Mobile No</option>
+			<option value='-1' selected>Bluk Action</option>
+			<option value='tracking_number' >Tracking Number</option>
       </select>
       </div>
       <div class="input-group col-xs-12">
         <input class="form-control" type="text" name="search2" placeholder=""/>
         <span class="input-group-btn ">
-        <button class="btn btn-primary" type="button" onclick="shipmentlist.search()">Search</button>
+        <button class="btn btn-primary" type="button" onclick="shipmentlist.searchbyother()">Search</button>
         </span> </div>
     </div>
     <!-- /input-group --> 
@@ -193,8 +153,8 @@ z-index:10001;}
   
   
   <div class="well col-xs-12 col-sm-4">
-    <select class="form-control" id="SSSelect" name="SSSelect" onchange="shipmentlist.statussort('')">
-    <option value=''>Filter By Status</option><option value='7' >Schedule In Arrangement (0)</option><option value='2' >Pending For Collection (0)</option><option value='8' >On Hold (0)</option><option value='3' >Collected (0)</option><option value='11' >Drop Off (0)</option><option value='4' >Delivering ( In Transit ) (0)</option><option value='5' >Successful Delivered (0)</option><option value='6' >Returned (0)</option><option value='0' >Cancelled (0)</option><option value='10' >Cancelled By Admin(0)</option>
+    <select class="form-control" id="SSSelect" name="SSSelect" onchange="shipmentlist.statussort(this.value)">
+    <option value=''>Filter By Status</option><option value='Schedule In Arrangement' >Schedule In Arrangement</option><option value='Pending For Collection' >Pending For Collection</option><option value='On Hold' >On Hold</option><option value='Collected' >Collected</option><option value='Drop Off' >Drop Off</option><option value='Delivering' >Delivering</option><option value='Successful Delivered' >Successful Delivered</option><option value='Returned' >Returned</option><option value='Cancelled By Admin' >Cancelled By Admin</option>
     </select>
   </div>
    
@@ -216,16 +176,13 @@ z-index:10001;}
   </div>
   <div class="form-inline pull-left hidden-xs" style="margin: 20px 0px;">
     <select class="form-control dashboard-bulk-action" id="bulkAction" name="bulkAction" style="width: 180px;">
-    <option value='AwbMultiDownload'>Download AWB</option><option value='ShipmentDownload'>Download Shipment Detail</option><option value='RequestMultiCancel'>Request Cancel</option><option value='ReportMultiLate'>Report Late</option><option value='ReportMultiMiss'>Report Miss</option>
+		<option value='-1' selected>Bluk Action</option>
     </select>
     <button onclick='performBulkAction(bulkAction.value)' class="btn btn-default">Apply</button>
   </div>
   
   
-  <div class="form-inline pull-right hidden-xs" style="margin: 20px 20px;"> Listing Per Page :
-    <select class="form-control" id="resultLimit" name="resultLimit" onchange="shipmentlist.resultLimit(this.value)">
-    <option value='10' Selected>10</option><option value='50' >50</option><option value='100' >100</option><option value='150' >150</option>
-    </select>
+  <div class="form-inline pull-right hidden-xs" style="margin: 20px 20px;"> 
   </div>
   
   
@@ -248,15 +205,16 @@ z-index:10001;}
 		foreach ($shipmentList as $v) {
    ?>
 	<tr>
-		<td width="2%" class="hidden-xs"><input type='checkbox'></td>
+		<td width="2%" class="hidden-xs"><input type='checkbox' name="checkBluckAction" id="checkBluck-<?=$v['id']?>" onclick="checknow();" value="<?=$v['id']?>" /></td>
 		<td class="hidden-xs" width="15%"><?=$v['tracking_number']?></td>
 		<td class="hidden-xs" width="25%"><?=$v['recevier_postcode'].'<br/>'.$v['receiver_state'].'<br/>'.$v['receiver_country']?></td>
 		<td class="hidden-xs" width="16%"><?=$v['collection_date']?></td>
 		<td class="hidden-xs" width="20%"><?=$v['status']?></td>
 		
 		<td width="22%">
-			<a href="javascript:showDetail('<?=$v['id']?>');" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-expand"></i></a>
-			<a href="javascript:toDelete('<?=base_url('member/shipment_delete/'.$v['id'])?>');" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i></a>
+			<a href="javascript:showDetail('<?=$v['id']?>');" class="btn btn-success btn-xs">See More</a>
+			<a href="javascript:shipmentlist.Custom('<?=$v['id']?>');" class="btn btn-warning btn-xs">Custom Detail</a>
+			
 		</td>
 	</tr>
   
@@ -277,17 +235,13 @@ z-index:10001;}
   
   <div class="form-inline pull-left" style="margin: 20px 0px;">
     <select class="form-control dashboard-bulk-action" id="bulkAction2" name="bulkAction2" style="width: 180px;">
-    <option value='AwbMultiDownload'>Download AWB</option><option value='ShipmentDownload'>Download Shipment Detail</option><option value='RequestMultiCancel'>Request Cancel</option><option value='ReportMultiLate'>Report Late</option><option value='ReportMultiMiss'>Report Miss</option>
+	<option value='-1' selected>Bluk Action</option>
+   
     </select>
     <button onclick='performBulkAction(bulkAction2.value)' class="btn btn-default">Apply</button>
   </div>
   
-  <div class="form-inline visible-xs pull-right"> Listing :
-    <select class="form-control" id="resultLimit" name="resultLimit" onchange="shipmentlist.resultLimit(this.value)">
-      
-      <option value='10' Selected>10</option><option value='50' >50</option><option value='100' >100</option><option value='150' >150</option>
-    
-    </select>
+  <div class="form-inline visible-xs pull-right"> 
   </div>
   
   
@@ -299,10 +253,7 @@ z-index:10001;}
     </ul>
   </div>
   
-  <div class="form-inline pull-right hidden-xs" style="margin: 20px 20px;"> Listing Per Page :
-    <select class="form-control" id="resultLimit" name="resultLimit" onchange="shipmentlist.resultLimit(this.value)">
-    <option value='10' Selected>10</option><option value='50' >50</option><option value='100' >100</option><option value='150' >150</option>
-    </select>
+  <div class="form-inline pull-right hidden-xs" style="margin: 20px 20px;"> 
   </div>
   
   <div class="clearfix"></div>
@@ -310,34 +261,135 @@ z-index:10001;}
   
   
   <div id="dialog"></div>
-  <div class="requestremark" style="display:none;margin-top:10%;">
-    <div class="body">
-      <div class='row'>
-        <div class='col-md-12 col-xs-12'>
-          <h5 style="margin-top:0px;"><span style='color:#FF6699'>*message*</span></h5>
-          *textinputreasons* </div>
-      </div>
-    </div>
-  </div>
-  <div class="requestchangeaddress" style="display:none;margin-top:10%;">
-    <div class="body">
-      <div class='row'>
-        <div class='col-md-12 col-xs-12'>
-          <h5 style="margin-top:0px;"><span style='color:#FF6699'>Request for Change of Address for Parcel *parcelno*</span></h5>
-          *theinternal* 
-    </div>
-    </div>
-    </div>
-  </div>
-  <div class="reportparcel" style="display:none;margin-top:10%;">
-    <div class="body">
-      <div class='row'>
-        <div class='col-md-12 col-xs-12'>
-          <h5 style="margin-top:0px;"><span style='color:#FF6699'>Report for Parcel AWB : *awb*</span></h5>
-          *theinternal* </div>
-      </div>
-    </div>
-  </div>
+  
+</div>
+
+<div class="modal fade modal-fullscreen" id="shipmentDetail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			
+	<div class="modal-dialog" role="document" id="services1">
+		<div class="modal-content">
+				<div class="modal-header">
+					<h2 class="modal-title" id="tracking_number"></h2>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="col-md-6 col-md-12 padding-off">
+						<h3><b><span id="status"></span></b></h3>
+					</div>
+					
+					<div class="clearfix"></div>
+					<hr/>
+					<div class="col-md-6 col-xs-12 padding-off">
+						<h3>From</h3>
+						<p>
+						 <span id="shipper_company_name"></span>
+						 <span id="shipper_name"></span><br/>
+						 <span id="shipper_address"></span>
+						 <span id="shipper_city"></span>
+						 <span id="shipper_postcode"></span>
+						 <span id="shipper_state"></span>
+						 <span id="shipper_country"></span> <br/>
+						 <span id="shipper_phone_number"></span> <br/>
+						 <span id="shipper_email"></span>
+						</p>
+					  </div>  
+					
+					  <div class="col-md-6 col-xs-12 padding-off">
+						<h3>To</h3>	
+						<p>
+						 <span id="recevier_company_name"></span>
+						 <span id="recevier_name"></span><br/>
+						 <span id="recevier_address"></span>
+						 <span id="recevier_city"></span>
+						 <span id="recevier_postcode"></span>
+						 <span id="recevier_state"></span>
+						 <span id="recevier_country"></span> <br/>
+						 <span id="recevier_phone_number"></span> <br/>
+						 <span id="recevier_email"></span>
+						</p>
+					  </div>
+       
+					   <div class="clearfix"></div>
+						<hr />
+						<div>
+							<div class="col-md-6 col-xs-12 padding-off">
+								<h3>Parcel Detail</h3>
+								<p>Parcel Content: <span id="parcel_content"></span></p>
+								<p>Value of Content: <span id="value_of_content"></span></p>
+								<p>Pickup Required: <span id="pickup_required"></span></p>
+								<p>Collection Date: <span id="collection_date"></span></p>
+								
+							</div>
+							<div class="col-md-6  col-xs-12 padding-off">
+								<h3>Parcel Demension</h3>
+								<p>Weight: <span id="weight"></span></p>
+								<p>length: <span id="length"></span></p>
+								<p>Width: <span id="width"></span></p>
+								<p>Height: <span id="height"></span></p>
+							</div>
+								
+					
+        
+					</div>
+					<div class="clearfix"></div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+       
+					</div>
+				</div>
+			</div>
+			</div>
+			
+		<div class="modal fade modal-fullscreen" id="custom-detail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document" id="services1">
+		<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h2 class="modal-title" id="shipment_id"></h2>
+				</div>
+				<div class="modal-body">
+					<div class="col-md-6 col-md-12 padding-off">
+						<p>Shippers VAT/GST : <span id="shippers_vat_gst"></span></p>
+					</div>
+					<div class="col-md-6 col-md-12 padding-off">
+						<p>Receivers VAT/GST : <span id="receiver_vat_gst"></span></p>
+					</div>
+					<div class="clearfix"></div>
+					<div class="col-md-6 col-md-12 padding-off">
+						<p>Declared Value : <span id="declared_value"></span><span id="declared_value_currency"></p>
+					</div>
+					<div class="col-md-6 col-md-12 padding-off">
+						<p>Hormonised Commodity Code : <span id="harmonised_commodity_code"></span></p>
+					</div>
+					<div class="clearfix"></div>
+					<div class="col-md-6 col-md-12 padding-off">
+						<p>Exemtion : <span id="exemtion"></span></p>
+					</div>
+					<div class="col-md-6 col-md-12 padding-off">
+						<p>Type of Export : <span id="type_of_export"></span></p>
+					</div>
+					<div class="clearfix"></div>
+					<div class="col-md-6 col-md-12 padding-off">
+						<p>Itn : <span id="itn"></span></p>
+					</div>
+					<div class="col-md-6 col-md-12 padding-off">
+						<p>Destination Duties Taxes : <span id="destination_duties_taxes"></span></p>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+				
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				</div>
+		</div>
+	
+	</div>
+
 </div>
 
 <div id="myModal" class="modal fade in">
@@ -356,101 +408,74 @@ z-index:10001;}
 </div>
 
 <script>
-firebase.auth().onAuthStateChanged( firebaseUser => {
-	if(firebaseUser) {
-					
-					const userDatebase = firebase.database().ref('User/' + firebaseUser.uid);
-					
-					userDatebase.on('value', snap => {
-						
-						$("#welcome").text("Hi " + snap.val().firstName + " " + snap.val().lastName);
-						
-					
-					
-					if (snap.hasChild('order')) {
-					const userShipDatebase = firebase.database().ref('User/' + firebaseUser.uid + '/order');
-					userShipDatebase.once('value', snap=> {
-							var object1 = snap.val();
-							var keys = Object.keys(object1);
-						
-								
-							
-								for (var i=0; i<keys.length; i++) {
-										var k= keys[i];
-										const shipmentdata = firebase.database().ref('Order/' + k + '/shipment');
-										$("#table1").empty();
-										shipmentdata.once('value', snap=>{
-											
-											var object2 = snap.val();
-											var shipKey = Object.keys(object2);
-											
-												console.log(object2[shipKey]);
-												if (object2[shipKey] == 'International') {
-												
-													const shipmentInfo = firebase.database().ref('Shipment/' + shipKey);
-													shipmentInfo.once('value', snap=>{
-													
-													var object3 = snap.val();
-													var shipKey1 = snap.key;
-												
 
-													var tr = $("<tr>").html('<td width="2%"><input type=\'checkbox\' name=\'checkawbdownload\' id=\'checkawbdownload\' onclick="checknow(\''+shipKey1+'\')"></td><td width="15%" class="hidden-xs">'+object3.trackingNo+'</td><td width="15%" class="hidden-xs">'+shipKey1+'</td><td width="26%" class="hidden-xs">'+object3.receiverState+'</td><td width="16%" class="hidden-xs">'+object3.pickupDate+'</td><td width="20%" class="hidden-xs">'+object3.status+'</td><td width="6%" class="hidden-xs"><a class="btn btn-info btn-xs" href="javascript:showDetail(\''+shipKey1+'\')"><i class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></i></td>');
-
-													$("#table1").append(tr);
-												
-												
-													});
-											
-												} 
-											});
-									
-									
-								}
-					}); 	
-					} else {
-						$("#table1").empty();
-						var tr= $("<tr>").html('<td colspan=\'9\'>No Record Found.</td>');
-						$("#table1").append(tr);
-					}
-					
-					});
-					$(".login_top").hide();
-					$(".signUp_top").hide();
-					$(".logout_top").show();
-					$("#welcome").attr("href","<?=base_url("member/user_panel")?>");
-					$("#log_in_f").text("LogOut").attr("href","javascript:logout()");
-					$("#log_in_mobile").attr("href","<?=base_url("member/user_panel")?>");
-					$("#dashboard_f").attr("href","<?=base_url("member/user_panel")?>");
-					$("#edit_profile_f").attr("href","<?=base_url("member/personal_profile")?>");
-					$("#my_cart_f").attr("href","<?=base_url("member/actions_required")?>");
-				} else {
-					$(".login_top").show();
-					$(".signUp_top").show();
-					$(".logout_top").hide();
-					$("#welcome").text("Hi, Welcome");
-					$("#welcome").attr("href","<?=base_url("userLogin")?>");
-					$("#log_in_mobile").attr("href","<?=base_url("userLogin")?>");
-					$("#log_in_f").text("LogIn").attr("href","<?=base_url("userLogin")?>");
-					$("#dashboard_f").attr("href","<?=base_url("userLogin")?>");
-					$("#edit_profile_f").attr("href","<?=base_url("userLogin")?>");
-					$("#my_cart_f").attr("href","<?=base_url("userLogin")?>");
-					console.log('not logged in');
-				}
-			
-			});
-			
 		function showDetail(id) {
-			
+	url = "<?=base_url('admin/shipmentDetail/')?>" + id;
+	console.log(url);
+	
+	$.ajax({
+		method: "GET",
+		url: url,
+		dataType: "json"
+	}).done(function(response){
+		console.log(response);
+		setTimeout(function(){ 
 				
-				window.location.href = '<?=base_url('int_shipment/')?>' + id;
-					
-		}	
+			$("#shipper_company_name").text(response.shipper_company_name);
+			$("#shipper_address").text(response.shipper_address);
+			$("#shipper_city").text(response.shipper_city);
+			$("#shipper_postcode").text(response.shipper_postcode);
+			$("#shipper_state").text(response.shipper_state);
+			$("#shipper_country").text(response.shipper_country);
+			$("#shipper_contact_person").text(response.shipper_contact_person);
+			$("#shipper_phone_number").text(response.shipper_phone_number);
+			$("#shipper_email").text(response.shipper_email);
+			$("#recevier_company_name").text(response.recevier_company_name);
+			$("#recevier_address").text(response.recevier_address);
+			$("#recevier_city").text(response.recevier_city);
+			$("#recevier_postcode").text(response.recevier_postcode);
+			$("#recevier_state").text(response.recevier_state);
+			$("#recevier_country").text(response.recevier_country);
+			$("#recevier_contact_person").text(response.recevier_contact_person);
+			$("#recevier_phone_number").text(response.recevier_phone_number);
+			$("#recevier_email").text(response.recevier_email);
+			$("#weight").text(response.weight);
+			$("#length").text(response.length);
+			$("#width").text(response.width);
+			$("#height").text(response.height);
+			$("#volumentric_weight").text(response.volumentric_weight);
+			$("#price").text(response.price);
+			$("#parcel_content").text(response.parcel_content);
+			$("#value_of_content").text(response.value_of_content);
+			$("#pickup_required").text(response.pickup_required);
+			$("#tracking_number").text(response.tracking_number);
+			$("#status").text(response.status);
+			$("#collection_date").text(response.collection_date);
+			$("#user").text(response.userid +" "+ response.user_name);
+			
+			$("#shipmentDetail").modal();
+		
+		},2000);
+		
+	}).fail(function(XMLHttpRequest,textStatus,textStatus){
+				console.log(XMLHttpRequest.responseText);
+				console.log(XMLHttpRequest.status);
+				console.log(XMLHttpRequest.readyState);
+				console.log(textStatus);
+				alert("something wrong");
+	
+	});
+	
+	//$("#name").text(id);
+	
+	
+}
 		
 <!-- checkbox usage START-->
 var lastChecked = null;
     
 $(document).ready(function() {
-  var $checkbox = $('input[name=checkawbdownload]');
+  var $checkbox = $('input[name=checkBluckAction]');
   $checkbox.click(function(e) {
     if(!lastChecked) {
       lastChecked = this;
@@ -544,71 +569,234 @@ var shipmentlist = {
     $('.action .mini').attr("src","https://secure.easyparcel.my/pass/application/source/Malaysia/img/detail-icon-new.png");
   },
   
-  search : function(){
-    message = "";
-    var url = QueryString(window.location.href);
-    var sc = ($("[name=search]").val().trim());
-    if(sc == ""){
-      sc = ($("[name=search2]").val().trim());
-    }
-    var sf = ($("[name=category]").val().trim());
-    if (sf == '6'){
-      if($("[name=dateFrom]").val().trim() != "" && $("[name=dateTo]").val().trim() != ""){
-        sc = 'From-'+($("[name=dateFrom]").val().trim())+'To-'+($("[name=dateTo]").val().trim());
-      }else{
-        message+="Please Select The From & To Date.";
-        sc = "fail";
-        swal({
-          title: 'Oops',
-          type: 'error',
-          html: '' + message,
-          confirmButtonColor: '#4e97d8'
-        })
-      }
-    }else if (sf == '7'){
-      var sc = ($("[name=courier]").val().trim());
-    }
-    
-    if(sc == ""){
-      message = "Please key in value.";
-      swal({
-        title: 'Oops',
-        type: 'error',
-        html: '' + message,
-        confirmButtonColor: '#4e97d8'
-      })
-      CheckNull($("[name=search]"));
-    }
-    
-    if(message != ""){
-      return false;
-    }else{
-      CheckNull($("[name=search]"));
-      var qs = "";
-      for(p in url.qs){
-        if(p != "sc" && p != "ss" && p != "sf" && p != "lpg"){
-          if(qs.length > 0) qs += "&";
-          qs += p + "=" + url.qs[p]
-        };
-      }
-      window.location.href = url.link + "?" + qs + (sc.length > 0 ? "&sc=" + sc : "")+ (sf.length > 0 ? "&sf=" + sf : "");
-    }
-  },
+  searchbyother : function(){
+		url = "<?=base_url('member/searchShipmentByOther/int')?>";
+		var category = ($("[name=category]").val().trim());
+		var search = ($("[name=search2]").val().trim());
+		var userid = <?=$id?>;
+			$.ajax({
+				url: url,
+				type: "POST",
+				dataType: "text",
+				async: true,
+				data: {
+					category: category, 
+					search: search,
+					userid: userid
+				},
+				
+				success: function(result) {
+					console.log(result);
+					var json = JSON.parse(result);
+					var x = 0;
+					$("#table1").html("");
+					console.log(json.length);
+					if (json.length > 0) {
+						for (var i=0; i < json.length; i++) {
+							if (json[i].result != 'empty') { 
+									
+								
+										var tr = $("<tr>").html('<td width="2%" class="hidden-xs"><input type=\'checkbox\' name="checkBluckAction" id="checkBluck-'+json[i].id+'" onclick="checknow();" value="'+json[i].id+'"></td><td class="hidden-xs" width="15%">'+json[i].tracking_number+'</td><td class="hidden-xs" width="25%">'+json[i].recevier_postcode+'<br/>'+json[i].recevier_state+'<br/>'+json[i].recevier_country+'</td><td class="hidden-xs" width="16%">'+json[i].collection_date+'</td><td class="hidden-xs" width="24%" id="status-'+json[i].id+'">'+json[i].status+'</td><td class="visible-xs"><p>'+json[i].tracking_number+'</p><p>'+json[i].recevier_postcode+'<br/>'+json[i].recevier_state+'<br/>'+json[i].recevier_country+'</p><p>'+json[i].collection_date+'</p><p>'+json[i].status+'</p></td><td width="22%"><a href="javascript:showDetail(\''+json[i].id+'\');" class="btn btn-success btn-xs">See More</a><a href="javascript:shipmentList.Custom(\''+json[i].id+'\');" class="btn btn-warning btn-xs">Custom Detail</a></td>');
+									
+									$("#table1").append(tr);
+								
+								
+							} else {
+								var tr = $("<tr>").html('<td colspan=\'6\'>No Record Found.</td>');
+								$("#table1").append(tr);
+							}
+						}
+						
+					} else {
+						
+							var tr = $("<tr>").html('<tr><td colspan=\'6\'>No Record Found.</td></tr>');
+							$("#table1").append(tr);
+					}
+					//console.log(result);
+					
+					
+				},
+				error: function(XMLHttpRequest,textStatus,textStatus){
+					console.log(XMLHttpRequest.responseText);
+					console.log(XMLHttpRequest.status);
+					console.log(XMLHttpRequest.readyState);
+					console.log(textStatus);
+					alert(XMLHttpRequest.responseText);
+			
+				} 
+			
+			});
+	},
+	
+	searchbydate :function() {
+		url = "<?=base_url('member/searchShipmentByDate/int')?>";
+		var dateFrom = ($("[name=dateFrom]").val().trim());
+		var dateTo = ($("[name=dateTo]").val().trim());
+		var userid = <?=$id?>;
+			$.ajax({
+				url: url,
+				type: "POST",
+				dataType: "text",
+				async: true,
+				data: {
+					dateFrom: dateFrom, 
+					dateTo: dateTo,
+					userid: userid
+				},
+				
+				success: function(result) {
+					console.log(result);
+					var json = JSON.parse(result);
+					var x = 0;
+					$("#table1").html("");
+					console.log(json.length);
+					if (json.length > 0) {
+						for (var i=0; i < json.length; i++) {
+							if (json[i].result != 'empty') { 
+							
+									
+								
+									var tr = $("<tr>").html('<td width="2%" class="hidden-xs"><input type=\'checkbox\' name="checkBluckAction" id="checkBluck-'+json[i].id+'" onclick="checknow();" value="'+json[i].id+'"></td><td class="hidden-xs" width="15%">'+json[i].tracking_number+'</td><td class="hidden-xs" width="25%">'+json[i].recevier_postcode+'<br/>'+json[i].recevier_state+'<br/>'+json[i].recevier_country+'</td><td class="hidden-xs" width="16%">'+json[i].collection_date+'</td><td class="hidden-xs" width="24%" id="status-'+json[i].id+'">'+json[i].status+'</td><td class="visible-xs"><p>'+json[i].tracking_number+'</p><p>'+json[i].recevier_postcode+'<br/>'+json[i].recevier_state+'<br/>'+json[i].recevier_country+'</p><p>'+json[i].collection_date+'</p><p>'+json[i].status+'</p></td><td width="22%"><a href="javascript:showDetail(\''+json[i].id+'\');" class="btn btn-success btn-xs">See More</a><a href="javascript:shipmentList.Custom(\''+json[i].id+'\');" class="btn btn-warning btn-xs">Custom Detail</a></td>');
+									
+									
+		
+									$("#table1").append(tr);
+								
+								
+							} else {
+								var tr = $("<tr>").html('<td colspan=\'6\'>No Record Found.</td>');
+								$("#table1").append(tr);
+							}
+						}
+						
+					} else {
+						
+							var tr = $("<tr>").html('<tr><td colspan=\'6\'>No Record Found.</td></tr>');
+							$("#table1").append(tr);
+					}
+					//console.log(result);
+					
+					
+				},
+				error: function(XMLHttpRequest,textStatus,textStatus){
+					console.log(XMLHttpRequest.responseText);
+					console.log(XMLHttpRequest.status);
+					console.log(XMLHttpRequest.readyState);
+					console.log(textStatus);
+					alert(XMLHttpRequest.responseText);
+			
+				} 
+			
+			});
+	},
+	
+	Custom : function(id) {
+		url = "<?=base_url('internatinal/cleareanceDetail')?>";
+		
+		
+			$.ajax({
+				url: url,
+				type: "POST",
+				dataType: "JSON",
+				async: true,
+				data: {
+					id : id
+				},
+				
+				success: function(result) {
+					setTimeout(function(){ 
+						$("#shipment_id").text(result.shipment_id);
+						$("#shippers_vat_gst").text(result.shippers_vat_gst);
+						$("#receiver_vat_gst").text(result.receivers_vat_gst);
+						$("#declared_value").text(result.declared_value);
+						$("#declared_value_currency").text(result.declared_value_currency);
+						$("#harmonised_commodity_code").text(result.harmonised_commodity_code);
+						$("#exemtion").text(result.exemtion);
+						$("#type_of_export").text(result.type_of_export);
+						$("#itn").text(result.itn);
+						$("#destination_duties_taxes").text(result.destination_duties_taxes);
+						
+						$("#custom-detail").modal();
+					},2000);
+					console.log(result);	
+						
+					
+				},
+				error: function(XMLHttpRequest,textStatus,textStatus){
+					console.log(XMLHttpRequest.responseText);
+					console.log(XMLHttpRequest.status);
+					console.log(XMLHttpRequest.readyState);
+					console.log(textStatus);
+					alert(XMLHttpRequest.responseText);
+			
+				} 
+			
+			});
+		
+	},
   
-  statussort : function(key){
-    if(key == ''){
-      key = $('#SSSelect').val();
-    }
-    var url = QueryString(window.location.href);
-    var ss = key;
-    var qs = "";
-    for(p in url.qs){
-      if(p != "sc" && p != "ss" && p != "sf" && p != "lpg"){
-        if(qs.length > 0) qs += "&";
-        qs += p + "=" + url.qs[p]
-      };
-    }
-    window.location.href = url.link + "?" + qs + (ss.length > 0 ? "&ss=" + ss : "");
+  statussort : function(status){
+   if(status == ''){
+			alert("Please select a valid action.");
+		} else {
+			url = "<?=base_url('member/searchShipmentByOther/int')?>";
+			var category = 'status';
+			var search = status;
+			var userid = <?=$id?>;
+			$.ajax({
+				url: url,
+				type: "POST",
+				dataType: "text",
+				async: true,
+				data: {
+					category: category, 
+					search: search,
+					userid: userid
+				},
+				
+				success: function(result) {
+					console.log(result);
+					var json = JSON.parse(result);
+					var x = 0;
+					$("#table1").html("");
+					console.log(json.length);
+					if (json.length > 0) {
+						for (var i=0; i < json.length; i++) {
+							if (json[i].result != 'empty') { 
+									
+								
+								var tr = $("<tr>").html('<td width="2%" class="hidden-xs"><input type=\'checkbox\' name="checkBluckAction" id="checkBluck-'+json[i].id+'" onclick="checknow();" value="'+json[i].id+'"></td><td class="hidden-xs" width="15%">'+json[i].tracking_number+'</td><td class="hidden-xs" width="25%">'+json[i].recevier_postcode+'<br/>'+json[i].recevier_state+'<br/>'+json[i].recevier_country+'</td><td class="hidden-xs" width="16%">'+json[i].collection_date+'</td><td class="hidden-xs" width="24%" id="status-'+json[i].id+'">'+json[i].status+'</td><td class="visible-xs"><p>'+json[i].tracking_number+'</p><p>'+json[i].recevier_postcode+'<br/>'+json[i].recevier_state+'<br/>'+json[i].recevier_country+'</p><p>'+json[i].collection_date+'</p><p>'+json[i].status+'</p></td><td width="22%"><a href="javascript:showDetail(\''+json[i].id+'\');" class="btn btn-success btn-xs">See More</a><a href="javascript:shipmentList.Custom(\''+json[i].id+'\');" class="btn btn-warning btn-xs">Custom Detail</a></td>');
+									
+									$("#table1").append(tr);
+								
+								
+							} else {
+								var tr = $("<tr>").html('<td colspan=\'6\'>No Record Found.</td>');
+								$("#table1").append(tr);
+							}
+						}
+						
+					} else {
+						
+							var tr = $("<tr>").html('<tr><td colspan=\'6\'>No Record Found.</td></tr>');
+							$("#table1").append(tr);
+					}
+					//console.log(result);
+					
+					
+				},
+				error: function(XMLHttpRequest,textStatus,textStatus){
+					console.log(XMLHttpRequest.responseText);
+					console.log(XMLHttpRequest.status);
+					console.log(XMLHttpRequest.readyState);
+					console.log(textStatus);
+					alert(XMLHttpRequest.responseText);
+			
+				} 
+			
+			});
+			
+		}
   },
   
   resultLimit : function(limit){
@@ -697,7 +885,7 @@ function RemoveDetail(){
 }
 
 function AwbMultiDownload(){
-  var checkboxes = document.getElementsByName('checkawbdownload');
+  var checkboxes = document.getElementsByName('checkBluckAction');
   id="";
   count=0;
 
@@ -884,7 +1072,7 @@ function reportlate(id){
 }
 
 function AwbCheckAll(){
-  var checkboxes = document.getElementsByName('checkawbdownload');
+  var checkboxes = document.getElementsByName('checkBluckAction');
   if(document.getElementById('checkall').checked){
     for(var i = 0; i < checkboxes.length; i++){
       if(checkboxes[i].type == 'checkbox'){
@@ -1241,7 +1429,7 @@ function checknow(id){
   if(document.getElementById('checkall').checked){
     document.getElementById('checkall').checked=false;
   }else{
-    var checkboxes = document.getElementsByName('checkawbdownload');
+    var checkboxes = document.getElementsByName('checkBluckAction');
     var allchecked=0;
     for(var i = 0; i < checkboxes.length; i++){
       if(checkboxes[i].type == 'checkbox'){
@@ -1260,18 +1448,14 @@ function checknow(id){
 function changeCategory(){
   var sf = $("[name=category]").val();
   sf = $.trim(sf);
-  if(sf == 6){
+  if(sf == 'collection_date'){
     $('#searchfield_normal').attr('style','display: none');
     $('#searchfield_calendar').attr('style','display: ""');
-    $('#searchfield_drop').attr('style','display: none');
-  }else if(sf == 7){
-    $('#searchfield_normal').attr('style','display: none');
-    $('#searchfield_calendar').attr('style','display: none');
-    $('#searchfield_drop').attr('style','display: ""');
-  }else{
+    
+  }else if(sf == 'tracking_number'){
     $('#searchfield_normal').attr('style','display: ""');
     $('#searchfield_calendar').attr('style','display: none');
-    $('#searchfield_drop').attr('style','display: none');
+    
   }
 }
 
@@ -1333,11 +1517,7 @@ function checkEnter(e) {
 
 function performBulkAction(value){
   switch(value){
-    case "AwbMultiDownload" : AwbMultiDownload(); break;
-    case "ShipmentDownload" : ShipmentDownload(); break;
     case "RequestMultiCancel" : RequestMultiCancel(); break;
-    case "ReportMultiLate" : ReportMultiLate(); break;
-    case "ReportMultiMiss" : ReportMultiMiss(); break;
     default : alert("Please select a valid action."); break;
   }
 }

@@ -93,6 +93,7 @@
 				<input type="hidden" name="pickup_required" value="<?=$pickup_required?>"/>
 				<input type="hidden" name="parcel_content" value="<?=$parcel_content?>"/>
 				<input type="hidden" name="value_of_content" value="<?=$value_of_content?>"/>
+				<input type="hidden" name="collectionDate" value="<?=$collectionDate?>">
 			
 			</div>
 			
@@ -184,9 +185,9 @@
 										<div class="col-sm-8">
 											<select name="type_of_export" class="form-control">
 												<option value="0">Please Select</option>
-												<option value="1">Permanent</option>
-												<option value="2">Temporary</option>
-												<option value="3">Repair/Return</option>
+												<option value="Permanent">Permanent</option>
+												<option value="Temporary">Temporary</option>
+												<option value="Repair/Return">Repair/Return</option>
 											</select>
 										</div>
 									</div>
@@ -198,9 +199,9 @@
 											<div class="has-feedback">
 												<select name="destination_duties" class="form-control" onchange="var optionVal=$(this).find(':selected').val(); checkselect(optionVal)">
 													<option value="0">Please Select</option>
-													<option value="1">Receiver</option>
-													<option value="2">Shipper</option>
-													<option value="3">Other</option>
+													<option value="Receiver">Receiver</option>
+													<option value="Shipper">Shipper</option>
+													<option value="Other">Other</option>
 												</select>
 												<input type="hidden" name="approved_account_number" id="approved_account_number" class="form-control" placeholder="specify approved account number"/>
 											</div>

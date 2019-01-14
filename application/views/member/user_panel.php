@@ -23,6 +23,10 @@
 			.profile-bg.bindCard_successful {
 				background-color: #666;
 			}
+			
+			.showDetail {
+				color: #fff;!important
+			}
 		</style>
 
 		<script>
@@ -73,12 +77,25 @@
 					<br>
 				</div>
 				<br />
+				<?php 
+						
+						if (!empty($creditHistoryList)) {
+							$bal = 0;
+							foreach ($creditHistoryList as $v) {
+								if ($v['amount_type']=='dt') {
+									$bal += $v['amount'];
+								} else {
+									$bal -= $v['amount'];
+								}
+							}
+						}
+					?>
 				<table width="100%">
 					<tbody>
 
 						<tr>
 							<td class="labels">My Credits:</td>
-						<td class="values"><strong><a href="">RM 0.00 </a> <div class="pull-right" style="position: relative;"><a href="<?=base_url('member/top_up')?>" class="btn btn-primary hidden-xs"><i class="epi-up-circled"></i> Top Up</a></div></strong></td> 
+						<td class="values"><strong><a href="<?=base_url('member/credit_history')?>" data-toggle="tooltip" data-placement="top" title="Click To See Credit History">RM <?=sprintf('%0.2f', $bal);?> </a> <div class="pull-right" style="position: relative;"><a href="<?=base_url('member/top_up')?>" class="btn btn-primary hidden-xs" data-toggle="tooltip" data-placement="top" title="Click To Top Up"><i class="epi-up-circled"></i> Top Up</a></div></strong></td> 
 						</tr>
 					</tbody>
 				</table>
@@ -103,10 +120,17 @@
 			</div>
 		</div>
 		<div class="row">
+			<div class="alert alert-danger">
+				<h3><span><strong>Fuel Charge : </strong><?=!empty($fuelCharge['value'])?$fuelCharge['value']:'0'?> % </span><a data-toggle="tooltip" data-placement="top" title="Fuel Charge is addtional charge for international courier"><span class="fas fa-info-circle"></span></a></h3>
+			</div>
+		</div>
+		
+		<div class="row">
 			<div class="container-fluid total-summary">
 				<div class="panel panel-default">
 					<div class="panel-body padding-off total-summary_wrap">
 						<div class="col-xs-4 padding-off total-saving">
+							<a href="<?=base_url('member/domestic_report')?>"  class="showDetail" data-toggle="tooltip" data-placement="top" title="Click To See Domestic Shipment Detail">
 							<div class="col-sm-4 col-xs-12">
 								<h1 class="total-icon-size"><i class="fas fa-truck-pickup"></i></h1>
 							</div>
@@ -116,22 +140,48 @@
 									<tbody>
 
 										<tr>
-											<td class="labels">Prepare to ship</td>
-											<td class="values"> <div class="pull-right" style="position: relative;"><?=!empty($docPrepareNum)?$docPrepareNum:"0"?></div></strong></td> 
+											<td class="labels">Schedule In Arrangement</td>
+											<td class="values"> <div class="pull-right" style="position: relative;"><?=!empty($docScheduleNumber)?$docScheduleNumber:"0"?></div></strong></td> 
 										</tr>
 										<tr>
-											<td class="labels">Shiping</td>
-											<td class="values"> <div class="pull-right" style="position: relative;"><?=!empty($docShippingNum)?$docShippingNum:"0"?></div></strong></td> 
+											<td class="labels">Pending For Collection</td>
+											<td class="values"> <div class="pull-right" style="position: relative;"><?=!empty($docPendingNumber)?$docPendingNumber:"0"?></div></strong></td> 
 										</tr>
 										<tr>
-											<td class="labels">Shipped</td>
-											<td class="values"> <div class="pull-right" style="position: relative;"><?=!empty($docShippedNum)?$docShippedNum:"0"?></div></strong></td> 
+											<td class="labels">On Hold</td>
+											<td class="values"> <div class="pull-right" style="position: relative;"><?=!empty($docOnHoldNumber)?$docOnHoldNumber:"0"?></div></strong></td> 
+										</tr>
+										<tr>
+											<td class="labels">Collected</td>
+											<td class="values"> <div class="pull-right" style="position: relative;"><?=!empty($docCollectedNumber)?$docCollectedNumber:"0"?></div></strong></td> 
+										</tr>
+										<tr>
+											<td class="labels">Drop Off</td>
+											<td class="values"> <div class="pull-right" style="position: relative;"><?=!empty($docDropOffNumber)?$docDropOffNumber:"0"?></div></strong></td> 
+										</tr>
+										<tr>
+											<td class="labels">Delivering</td>
+											<td class="values"> <div class="pull-right" style="position: relative;"><?=!empty($docDeliveringNumber)?$docDeliveringNumber:"0"?></div></strong></td> 
+										</tr>
+										<tr>
+											<td class="labels">Successful Delivered</td>
+											<td class="values"> <div class="pull-right" style="position: relative;"><?=!empty($docSuccessfulDeliveredNumber)?$docSuccessfulDeliveredNumber:"0"?></div></strong></td> 
+										</tr>
+										<tr>
+											<td class="labels">Returned</td>
+											<td class="values"> <div class="pull-right" style="position: relative;"><?=!empty($docReturnedNumber)?$docReturnedNumber:"0"?></div></strong></td> 
+										</tr>
+										<tr>
+											<td class="labels">Cancelled By Admin</td>
+											<td class="values"> <div class="pull-right" style="position: relative;"><?=!empty($docCancelledNumber)?$docCancelledNumber:"0"?></div></strong></td> 
 										</tr>
 									</tbody>
 								</table>
 							</div>
+							</a>
 						</div>
 						<div class="col-xs-4 padding-off total-delivered">
+							<a href="<?=base_url('member/international_report')?>" class="showDetail" data-toggle="tooltip" data-placement="top" title="Click To See Internatinal Shipment Detail">
 							<div class="col-sm-4 col-xs-12">
 								<h1 class="total-icon-size"><i class="fas fa-truck-moving"></i></h1>
 							</div>
@@ -140,22 +190,47 @@
 								<table width="100%">
 									<tbody>
 
+										
 										<tr>
-											<td class="labels">Prepare to ship</td>
-											<td class="values"> <div class="pull-right" style="position: relative;"><?=!empty($intPrepareNum)?$intPrepareNum:"0"?></div></strong></td> 
+											<td class="labels">Schedule In Arrangement</td>
+											<td class="values"> <div class="pull-right" style="position: relative;"><?=!empty($intScheduleNumber)?$intScheduleNumber:"0"?></div></strong></td> 
 										</tr>
 										<tr>
-											<td class="labels">Shiping</td>
-											<td class="values"> <div class="pull-right" style="position: relative;"><?=!empty($intShippingNum)?$intShippingNum:"0"?></div></strong></td> 
+											<td class="labels">Pending For Collection</td>
+											<td class="values"> <div class="pull-right" style="position: relative;"><?=!empty($intPendingNumber)?$intPendingNumber:"0"?></div></strong></td> 
 										</tr>
 										<tr>
-											<td class="labels">Shipped</td>
-											<td class="values"> <div class="pull-right" style="position: relative;"><?=!empty($intShippedNum)?$intShippedNum:"0"?></div></strong></td> 
+											<td class="labels">On Hold</td>
+											<td class="values"> <div class="pull-right" style="position: relative;"><?=!empty($intOnHoldNumber)?$intOnHoldNumber:"0"?></div></strong></td> 
+										</tr>
+										<tr>
+											<td class="labels">Collected</td>
+											<td class="values"> <div class="pull-right" style="position: relative;"><?=!empty($intCollectedNumber)?$intCollectedNumber:"0"?></div></strong></td> 
+										</tr>
+										<tr>
+											<td class="labels">Drop Off</td>
+											<td class="values"> <div class="pull-right" style="position: relative;"><?=!empty($intDropOffNumber)?$intDropOffNumber:"0"?></div></strong></td> 
+										</tr>
+										<tr>
+											<td class="labels">Delivering</td>
+											<td class="values"> <div class="pull-right" style="position: relative;"><?=!empty($intDeliveringNumber)?$intDeliveringNumber:"0"?></div></strong></td> 
+										</tr>
+										<tr>
+											<td class="labels">Successful Delivered</td>
+											<td class="values"> <div class="pull-right" style="position: relative;"><?=!empty($intSuccessfulDeliveredNumber)?$intSuccessfulDeliveredNumber:"0"?></div></strong></td> 
+										</tr>
+										<tr>
+											<td class="labels">Returned</td>
+											<td class="values"> <div class="pull-right" style="position: relative;"><?=!empty($intReturnedNumber)?$intReturnedNumber:"0"?></div></strong></td> 
+										</tr>
+										<tr>
+											<td class="labels">Cancelled By Admin</td>
+											<td class="values"> <div class="pull-right" style="position: relative;"><?=!empty($intCancelledNumber)?$intCancelledNumber:"0"?></div></strong></td> 
 										</tr>
 									</tbody>
 								</table>
 							</div>
-							
+							</a>
 						</div>
 						<div class="col-xs-4 padding-off total-referral">
 							<div class="col-sm-4 col-xs-12">
@@ -167,15 +242,39 @@
 									<tbody>
 
 										<tr>
-											<td class="labels">Prepare to ship</td>
+											<td class="labels">Schedule In Arrangement</td>
 											<td class="values"> <div class="pull-right" style="position: relative;">0</div></strong></td> 
 										</tr>
 										<tr>
-											<td class="labels">Shiping</td>
+											<td class="labels">Pending For Collection</td>
 											<td class="values"> <div class="pull-right" style="position: relative;">0</div></strong></td> 
 										</tr>
 										<tr>
-											<td class="labels">Shipped</td>
+											<td class="labels">On Hold</td>
+											<td class="values"> <div class="pull-right" style="position: relative;">0</div></strong></td> 
+										</tr>
+										<tr>
+											<td class="labels">Collected</td>
+											<td class="values"> <div class="pull-right" style="position: relative;">0</div></strong></td> 
+										</tr>
+										<tr>
+											<td class="labels">Drop Off</td>
+											<td class="values"> <div class="pull-right" style="position: relative;">0</div></strong></td> 
+										</tr>
+										<tr>
+											<td class="labels">Delivering</td>
+											<td class="values"> <div class="pull-right" style="position: relative;">0</div></strong></td> 
+										</tr>
+										<tr>
+											<td class="labels">Successful Delivered</td>
+											<td class="values"> <div class="pull-right" style="position: relative;">0</div></strong></td> 
+										</tr>
+										<tr>
+											<td class="labels">Returned</td>
+											<td class="values"> <div class="pull-right" style="position: relative;">0</div></strong></td> 
+										</tr>
+										<tr>
+											<td class="labels">Cancelled By Admin</td>
 											<td class="values"> <div class="pull-right" style="position: relative;">0</div></strong></td> 
 										</tr>
 									</tbody>

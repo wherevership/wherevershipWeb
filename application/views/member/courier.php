@@ -17,14 +17,14 @@ Place A Courier Serive
     margin-right: 5px;
 }
 .qnb-wrapped .nav-tabs>li>a.domestic-tab, .qnb-wrapped .nav-tabs>li.active>a.domestic-tab, .qnb-wrapped .nav-tabs>li.active>a:focus.domestic-tab, .qnb-wrapped .nav-tabs>li.active>a.domestic-tab:hover {
-	background-color: #00878c !important;
-    border: 1px solid #00878c !important;
+	background-color: #80d8d4 !important;
+    border: 1px solid #80d8d4 !important;
 	border-bottom-color: transparent;
     color: #fff;
 }
 .qnb-wrapped .nav-tabs>li>a.international-tab, .qnb-wrapped .nav-tabs>li.active>a.international-tab, .qnb-wrapped .nav-tabs>li.active>a:focus.international-tab, .qnb-wrapped .nav-tabs>li.active>a.international-tab:hover {
-	background-color: #5cb85c;
-    border: 1px solid #5cb85c;
+	background-color: #00878c;
+    border: 1px solid #00878c;
 	border-bottom-color: transparent; 
     color: #fff;
 }
@@ -42,7 +42,7 @@ Place A Courier Serive
 }
 .qnb-wrapped .nav-tabs {border-bottom: 1px solid #FFF;}
 .quote-book.international-body {
-	background-color: #5cb85c;
+	background-color: #00878c;
 }
 span.tip {
 	position: absolute;

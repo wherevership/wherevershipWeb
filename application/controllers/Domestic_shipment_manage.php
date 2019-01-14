@@ -5,6 +5,7 @@ class Domestic_shipment_manage extends CI_Controller {
 		parent::__construct();
 		$this->load->library('session');
 		$this->load->model('Domestic_Price_Model');
+		$this->load->model('Shipment_Model');
 		
 	}
 	
@@ -87,6 +88,8 @@ class Domestic_shipment_manage extends CI_Controller {
 				
 				
 			}
+			
+		print_r($this->session->userdata['domesticOverview']);
 		$this->data['weight'] = ($this->session->userdata['domesticOverview']['weight']);;
 		$this->data['height'] = ($this->session->userdata['domesticOverview']['height']);;
 		$this->data['width'] = ($this->session->userdata['domesticOverview']['width']);;
@@ -121,6 +124,7 @@ class Domestic_shipment_manage extends CI_Controller {
 		$this->data['pickup_required'] = ($this->session->userdata['domesticOverview']['pickup_required']);
 		$this->data['parcel_content'] = ($this->session->userdata['domesticOverview']['parcel_content']);
 		$this->data['value_of_content'] = ($this->session->userdata['domesticOverview']['value_of_content']);
+		$this->data['collectionDate'] = ($this->session->userdata['domesticOverview']['collectionDate']);
 		
 		$this->load->view("domestic/header", $this->data);
 		$this->load->view("domestic/domestic_receiver_form",$this->data);
@@ -168,6 +172,9 @@ class Domestic_shipment_manage extends CI_Controller {
 		$pickup_required = $this->input->post("pickup_required", true);
 		$parcel_content = $this->input->post("parcel_content", true);
 		$value_of_content = $this->input->post("value_of_content", true);
+		$collectionDate = $this->input->post("collectionDate", true);
+		
+		
 		
 		$saveData = array(
 				"weight" => $weight,
@@ -175,8 +182,6 @@ class Domestic_shipment_manage extends CI_Controller {
 				"width" => $width,
 				"length" => $length,
 				"v_weight" => $v_weight,
-				"fromPostcode" => $fromPostcode,
-				"toPostcode" => $toPostcode,
 				"fromState" => $fromState,
 				"toState" => $toState,
 				"cost" => $cost,
@@ -206,8 +211,11 @@ class Domestic_shipment_manage extends CI_Controller {
 				"pickup_required" => $pickup_required,
 				"parcel_content" => $parcel_content,
 				"value_of_content" => $value_of_content,
+				"collectionDate" => $collectionDate,
 				
 		);
+		
+		//print_r($saveData);
 		
 		$this->session->set_userdata('domesticOverview', $saveData);
 		redirect(base_url('dtc_shipment_overview'));
@@ -244,6 +252,7 @@ class Domestic_shipment_manage extends CI_Controller {
 		$this->data['shipper_address1'] = ($this->session->userdata['dtcPayment']['shipper_address1']);
 		$this->data['shipper_address2'] = ($this->session->userdata['dtcPayment']['shipper_address2']);
 		$this->data['shipper_address3'] = ($this->session->userdata['dtcPayment']['shipper_address3']);
+		$shipper_address = $this->data['shipper_address1'].'<br/>'.$this->data['shipper_address2'].'<br/>'.$this->data['shipper_address3'];
 		$this->data['shipper_city'] = ($this->session->userdata['dtcPayment']['shipper_city']);
 		$this->data['shipper_postcode'] = ($this->session->userdata['dtcPayment']['shipper_postcode']);
 		$this->data['shipper_state'] = ($this->session->userdata['dtcPayment']['shipper_state']);
@@ -255,6 +264,7 @@ class Domestic_shipment_manage extends CI_Controller {
 		$this->data['receiver_address1'] = ($this->session->userdata['dtcPayment']['receiver_address1']);
 		$this->data['receiver_address2'] = ($this->session->userdata['dtcPayment']['receiver_address2']);
 		$this->data['receiver_address3'] = ($this->session->userdata['dtcPayment']['receiver_address3']);
+		$receiver_address = $this->data['receiver_address1'].'<br/>'.$this->data['receiver_address2'].'<br/>'.$this->data['receiver_address3'];
 		$this->data['receiver_city'] = ($this->session->userdata['dtcPayment']['receiver_city']);
 		$this->data['receiver_postcode'] = ($this->session->userdata['dtcPayment']['receiver_postcode']);
 		$this->data['receiver_state'] = ($this->session->userdata['dtcPayment']['receiver_state']);
@@ -264,7 +274,46 @@ class Domestic_shipment_manage extends CI_Controller {
 		$this->data['pickup_required'] = ($this->session->userdata['dtcPayment']['pickup_required']);
 		$this->data['parcel_content'] = ($this->session->userdata['dtcPayment']['parcel_content']);
 		$this->data['value_of_content'] = ($this->session->userdata['dtcPayment']['value_of_content']);
+		$this->data['collection_date'] = ($this->session->userdata['dtcPayment']['collection_date']);
 		
+		$Shipment_id = $this->getId();
+		$this->data['Shipment_id'] = $Shipment_id;
+		$shipment = array(
+			'id' => $Shipment_id,
+			'shipper_company_name' => $this->data['shipper_company_name'],
+			'shipper_address' => $shipper_address,
+			'shipper_city' => $this->data['shipper_city'],
+			'shipper_postcode' => $this->data['shipper_postcode'],
+			'shipper_state' => $this->data['shipper_state'],
+			'shipper_country' => $this->data['shipper_country'],
+			'shipper_contact_person' => $this->data['shipper_contact_person'],
+			'shipper_phone_number' => $this->data['shipper_phone_number'],
+			'shipper_email' => $this->data['shipper_email'],
+			'recevier_company_name' => $this->data['receiver_company_name'],
+			'recevier_address' => $receiver_address,
+			'receiver_city' => $this->data['receiver_city'],
+			'recevier_postcode' => $this->data['receiver_postcode'],
+			'receiver_state' => $this->data['receiver_state'],
+			'receiver_country' => $this->data['receiver_country'],
+			'receiver_contact_person' => $this->data['receiver_contact_person'],
+			'receiver_phone_number' => $this->data['receiver_phone_number'],
+			'receiver_email' => $this->data['receiver_email'],
+			'weight' => $this->data['weight'],
+			'length' => $this->data['length'],
+			'width' => $this->data['width'],
+			'height' => $this->data['height'],
+			'volumetric_weight' => $this->data['v_weight'],
+			'price' => $this->data['cost'],
+			'parcel_content' => $this->data['parcel_content'],
+			'value_of_content' => $this->data['value_of_content'],
+			'pickup_required' => $this->data['pickup_required'],
+			'type' => 'Domestic',
+			'userid' => $this->data['id'],
+			'status' => 'Pending Payment',
+			'collection_date' => $this->data['collection_date'],
+			'created_date' => date("Y-m-d H:i:S"),
+		);
+		$this->Shipment_Model->insert($shipment);
 		$this->load->view("domestic/header", $this->data);
 		$this->load->view("domestic/domestic_product_detail", $this->data);
 		$this->load->view("frontEnd/footer3");
@@ -288,7 +337,7 @@ class Domestic_shipment_manage extends CI_Controller {
 		$shipper_postcode = $this->input->post("shipper_postcode", true);
 		$shipper_state = $this->input->post("shipper_state", true);
 		$shipper_contact_person = $this->input->post("shipperContactPerson", true);
-		$shipper_phone_number = $this->input->post("shipper_phone_number", true);
+		$shipper_phone_number = $this->input->post("shipperPhoneNumber", true);
 		$shipper_email = $this->input->post("shipper_email", true);
 		
 		$receiver_company_name = $this->input->post("receiver_company_name", true);
@@ -308,6 +357,7 @@ class Domestic_shipment_manage extends CI_Controller {
 		$pickup_required = $this->input->post("pickup_required", true);
 		$parcel_content = $this->input->post("parcel_content", true);
 		$value_of_content = $this->input->post("value_of_content", true);
+		$collectionDate = $this->input->post("collectionDate", true);
 		
 		$saveData = array(
 				"weight" => $weight,
@@ -342,6 +392,7 @@ class Domestic_shipment_manage extends CI_Controller {
 				"pickup_required" => $pickup_required,
 				"parcel_content" => $parcel_content,
 				"value_of_content" => $value_of_content,
+				"collection_date" => $collectionDate
 				
 		);
 		
@@ -524,6 +575,45 @@ class Domestic_shipment_manage extends CI_Controller {
 			
 		}
 	
+	public function getId() {
+			$shipment = $this->Shipment_Model->getLastId();
+			if (!empty($shipment)) {
+				
+			//	echo($shipment.id);
+				
+				foreach ($shipment as $v) {
+					var_dump($v);
+					//echo(json_decode($v['id']));
+			
+						$id =$v->id;
+				
+				}
+				$prefix = substr($id, 0 ,2);
+				$number = substr($id, -5);
+				
+				if ($prefix=='SH') {
+					$f_number = (int)$number;
+					$f_number = $f_number + 1;
+					$numlength = mb_strlen($f_number);
+					
+					if ($numlength == 1) {
+						$final_id = $prefix."0000".$f_number;
+						
+					} else if ($numlength == 2) {
+						$final_id = $prefix."000".$f_number;
+					} else if ($numlength == 3) {
+						$final_id = $prefix."00".$f_number;
+					} else if ($numlength == 4) {
+						$final_id = $prefix."0".$f_number;
+					} else if ($numlength == 5) {
+						$final_id = $prefix.$f_number;
+					} 	
+				}
+				return($final_id);
+				
+			}
+			
+		}
 	
 	
 }

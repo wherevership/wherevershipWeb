@@ -30,7 +30,7 @@ li.pagi_Input a {
 	text-align: center;
 }
 .arrow2 {
-	background: #FF6699 url(../../../../../Source/img/arrow-2.gif) right center no-repeat !important;
+	background: #80d8d4 url(../../../../../Source/img/arrow-2.gif) right center no-repeat !important;
 	text-align: center;
 }
 .outer-grid-wrapper {
@@ -168,7 +168,7 @@ li.pagi_Input a {
 	background-color: #FFFCF5;
 }
 .quote-book {
-	background-color: #00878c;
+	background-color: #80d8d4;
 	padding: 20px 5px 10px;
 	min-height: 350px;
 }
@@ -741,7 +741,7 @@ header.page-header nav.navigation-list.login-menu a:hover {
 	background-color: #31708f;
 }
 header.page-header nav .login a, header.page-header nav .login a:visited {
-	color: #ff6699;
+	color: #80d8d4;
 }
 header.page-header nav .login a:hover, header.page-header nav .login a:visited:hover {
 	color: #cc3366
@@ -1807,7 +1807,7 @@ footer .links li {
 	vertical-align: middle
 }
 footer .products li a {
-	color: #FF6699;
+	color: #80d8d4;
 }
 footer .products li a:hover {
 	color: #cc3366;
@@ -1823,7 +1823,7 @@ footer nav:after {
 	clear: both
 }
 footer a:hover {
-	color: #FF6699;
+	color: #80d8d4;
 	cursor: pointer;
 	text-decoration: none;
 }
@@ -1831,7 +1831,7 @@ footer a, footer a:visited {
 	color: #bbb;
 }
 footer a:visited:hover {
-	color: #FF6699;
+	color: #80d8d4;
 }
 footer .copyright-info {
 	display: inline-block;
@@ -2736,8 +2736,8 @@ i.chevron.link {
 }
 
 .ui-widget-header {
-	background-color: #FE6699 !important;
-	border-color : Pink !important;
+	background-color: #80d8d4 !important;
+	border-color : #80d8d4 !important;
 }
 .dropdown-menu {
 	padding: 0px 0;
@@ -2802,15 +2802,15 @@ i.chevron.link {
 	margin: 60px 0px;
 }
 .title-hr .hr-home {
-	background-color: #ff6699;
+	background-color: #80d8d4;
 	margin: 10px 0px 20px;
 
 }
 .title-hr-left .hr-home {
 	width: 25%;
-	background-color: #ff6699;
+	background-color: #80d8d4;
 	margin: 20px 0px 30px;
-	border: 3px solid #ff6699;
+	border: 3px solid #80d8d4;
 }
 .navigation-list {
 	float: none;
@@ -4163,7 +4163,7 @@ a.social-connect-button:hover {
 .subsection-title {
 	margin-bottom: .25em;
 	font-weight: bold;
-	color: #ff6699;
+	color: #80d8d4;
 	text-transform: uppercase;
 }
 .subsection-description {
@@ -5214,22 +5214,22 @@ form .rating span {
 .my-details a.top_up.btn {
     color: #fff;
     background: #00a9b0;
-    background-image: -webkit-gradient(linear,left top,left bottom,from(#ff6699),color-stop(50%,#ca0044),to(#00878c));
-    background-image: -webkit-linear-gradient(top,#ff6699 0,#ca0044 50%,#00878c 100%);
-    background-image: linear-gradient(to bottom,#ff6699 0,#ca0044 50%,#00878c 100%)
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#80d8d4),color-stop(50%,#00a9b0),to(#00878c));
+    background-image: -webkit-linear-gradient(top,#80d8d4 0,#00a9b0 50%,#00878c 100%);
+    background-image: linear-gradient(to bottom,#80d8d4 0,#00a9b0 50%,#00878c 100%)
     border-color: #00a9b0;
 	-webkit-transition: background-position .2s ease,background-color,opacity;
     transition: background-position .2s ease,background-color,opacity;
 }
 .my-details a.top_up.btn:hover {
-    background-image: -webkit-gradient(linear,left top,left bottom,from(#00878c),color-stop(50%,#ca0044),to(#ff6699));
-    background-image: -webkit-linear-gradient(top,#00878c 0,#ca0044 50%,#ff6699 100%);
-    background-image: linear-gradient(to bottom,#00878c 0,#ca0044 50%,#ff6699 100%)
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#00878c),color-stop(50%,#00a9b0),to(#80d8d4));
+    background-image: -webkit-linear-gradient(top,#00878c 0,#00a9b0 50%,#80d8d4 100%);
+    background-image: linear-gradient(to bottom,#00878c 0,#00a9b0 50%,#80d8d4 100%)
 }
 .my-package a {
 	color: #fff;
-}
 .my-details .labels {
+}
 	color: #666;
 	padding: 5px 0px;
 }
@@ -5289,7 +5289,7 @@ form .rating span {
 	border-right: 1px solid #ddd;
 }
 .booking-summary a>span.badge {
-	color: #FF6699;
+	color: #80d8d4;
 	background-color: transparent;
 }
 .total-delivered {
@@ -5323,7 +5323,7 @@ form .rating span {
 .credits-available {
 	font-size: 16px;
 	border: 1px solid #d8d8d8;
-	border-top: 3px solid #FF6699;
+	border-top: 3px solid #80d8d4;
 	padding: 10px 20px;
 	background-color: #F9F9F9;
 }

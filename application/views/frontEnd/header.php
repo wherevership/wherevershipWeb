@@ -26,7 +26,7 @@
 
 <link href="<?=base_url('assets2/css/sweetalert2.min.css')?>" rel="stylesheet">
 
-<link href="<?=base_url('assets2/css/style.css?v=1.1')?>" rel="stylesheet">
+<link href="<?=base_url('assets2/css/style.css?v=1.3')?>" rel="stylesheet">
 
 <link href="<?=base_url('assets2/css/jquery.dataTables.css')?>" rel="stylesheet">
 

@@ -58,7 +58,7 @@ button.close {
 </div>
 <div class="clearfix"> 
   
-  <div class="well col-xs-12 col-sm-12" onkeypress="return checkEnter(event)">
+  <div class="well col-xs-12 col-sm-8" onkeypress="return checkEnter(event)">
     <div class="hidden-xs">
       <div class="col-xs-3 padding-left-off">
         <select class="form-control" id="category" name="category" onchange="changeCategory()">    
@@ -115,7 +115,11 @@ button.close {
         </span> </div>
     </div>
   </div>
-  
+   <div class="well col-xs-12 col-sm-4">
+    <select class="form-control" id="SSSelect" name="SSSelect" onchange="shipmentList.statussort(this.value)">
+    <option value=''>Filter By Status</option><option value='Schedule In Arrangement' >Schedule In Arrangement</option><option value='Pending For Collection' >Pending For Collection</option><option value='On Hold' >On Hold</option><option value='Collected' >Collected</option><option value='Drop Off' >Drop Off</option><option value='Delivering' >Delivering</option><option value='Successful Delivered' >Successful Delivered</option><option value='Returned' >Returned</option><option value='Cancelled By Admin' >Cancelled By Admin</option>
+    </select>
+  </div>
   
  
    
@@ -126,9 +130,15 @@ button.close {
 <div class="form-inline pull-left hidden-xs" style="margin: 20px 0px;">
     <select class="form-control dashboard-bulk-action" id="bulkAction" name="bulkAction" style="width: 150px;">
 		<option value='-1' selected>Bluk Action</option>
-		<option value='Prepare_to_ship'>Prepare To Ship</option>
-		<option value='Shipping'>Shipping</option>
-		<option value='Shipped'>Shipped</option>
+		<option value='Schedule In Arrangement'>Schedule In Arrangement</option>
+		<option value='Pending For Collection'>Pending For Collection</option>
+		<option value='On Hold'>On Hold</option>
+		<option value='Collected'>Collected</option>
+		<option value='Drop Off'>Drop Off</option>
+		<option value='Delivering' >Delivering</option>
+		<option value='Successful Delivered' >Successful Delivered</option>
+		<option value='Returned'>Returned</option>
+		<option value='Cancelled By Admin'>Cancelled By Admin</option>
     </select>
     <button onclick='performBulkAction(bulkAction.value)' class="btn btn-default">Apply</button>
   </div>
@@ -140,10 +150,7 @@ button.close {
 </div>
 
 
-<div class="form-inline pull-right hidden-xs" style="margin: 20px 20px;"> Listing Per Page :
-  <select class="form-control" id="resultLimit" name="resultLimit" onchange="orderlist.resultLimit(this.value)">
-	<option value='10' Selected>10</option><option value='50' >50</option><option value='100' >100</option><option value='150' >150</option>
-  </select>
+<div class="form-inline pull-right hidden-xs" style="margin: 20px 20px;"> 
 </div>
 <table id="myTable" class="table table-striped" width="100%">
   <thead>
@@ -170,7 +177,7 @@ button.close {
 		<td class="hidden-xs" width="15%"><?=$v['tracking_number']?></td>
 		<td class="hidden-xs" width="25%"><?=$v['recevier_postcode'].'<br/>'.$v['receiver_state'].'<br/>'.$v['receiver_country']?></td>
 		<td class="hidden-xs" width="16%"><?=$v['collection_date']?></td>
-		<td class="hidden-xs" width="20%"><?=$v['status']?></td>
+		<td class="hidden-xs" width="24%" id="status-<?=$v['id']?>"><span><?=$v['status']?><a href="javascript:shipmentList.wantUpdateStatus('<?=$v['status']?>','<?=$v['id']?>')" class="btn btn-primary btn-xs">update</a></span></td>
 		<td class="visible-xs">
 		<p><?=$v['tracking_number']?></p>
 		<p><?=$v['recevier_postcode'].'<br/>'.$v['receiver_state'].'<br/>'.$v['receiver_country']?></p>
@@ -178,12 +185,10 @@ button.close {
 		<p><?=$v['status']?></p>
 		</td>
 		
-		<td width="22%">
+		<td width="18%">
 			<a href="javascript:shipmentList.Detail('<?=$v['id']?>');" class="btn btn-info btn-xs">See More</a>
 			<a href="javascript:shipmentList.Custom('<?=$v['id']?>');" class="btn btn-warning btn-xs">Custom Detail</a>
-			<a href="javascript:shipmentList.ChangeStatus('<?=base_url('admin/updateStatus/'.$v['id'].'/Prepare_to_ship')?>','Prepare To Ship');" class="btn btn-primary btn-xs <?php if ($v['status']=='Prepare_to_ship') {?>disabled<?php }?>">Prepare to ship</a>
-			<a href="javascript:shipmentList.ChangeStatus('<?=base_url('admin/updateStatus/'.$v['id'].'/Shipping')?>','Shipping');" class="btn btn-success btn-xs <?php if ($v['status']=='Shipping') {?>disabled<?php }?>">Shipping</a>
-			<a href="javascript:shipmentList.ChangeStatus('<?=base_url('admin/updateStatus/'.$v['id'].'/Shipped')?>','Shipped');" class="btn btn-success btn-xs <?php if ($v['status']=='Shipped') {?>disabled<?php }?>">Shipped</a>
+			
 		</td>
 	</tr>
   
@@ -204,9 +209,15 @@ button.close {
 <div class="form-inline pull-left" style="margin: 20px 0px;">
     <select class="form-control dashboard-bulk-action" id="bulkAction2" name="bulkAction2" onchange="" style="width: 150px;">
 		<option value='-1' selected>Bluk Action</option>
-		<option value='Prepare_to_ship'>Prepare To Ship</option>
-		<option value='Shipping'>Shipping</option>
-		<option value='Shipped'>Shipped</option>
+		<option value='Schedule In Arrangement'>Schedule In Arrangement</option>
+		<option value='Pending For Collection'>Pending For Collection</option>
+		<option value='On Hold'>On Hold</option>
+		<option value='Collected'>Collected</option>
+		<option value='Drop Off'>Drop Off</option>
+		<option value='Delivering' >Delivering</option>
+		<option value='Successful Delivered' >Successful Delivered</option>
+		<option value='Returned'>Returned</option>
+		<option value='Cancelled By Admin'>Cancelled By Admin</option>
     </select>
     <button onclick='performBulkAction(bulkAction2.value)' class="btn btn-default">Apply</button>
   </div>
@@ -489,20 +500,68 @@ var shipmentList = {
 		
 	},
 	
-	statussort : function(key){
-		if(key == ''){
-			key = $('#OSSelect').val();
+	statussort : function(status){
+		if(status == ''){
+			alert("Please select a valid action.");
+		} else {
+			url = "<?=base_url('admin/searchShipmentByOther/Int')?>";
+			var category = 'status';
+			var search = status;
+			$.ajax({
+				url: url,
+				type: "POST",
+				dataType: "text",
+				async: true,
+				data: {
+					category: category, 
+					search: search
+				},
+				
+				success: function(result) {
+					console.log(result);
+					var json = JSON.parse(result);
+					var x = 0;
+					$("#table1").html("");
+					console.log(json.length);
+					if (json.length > 0) {
+						for (var i=0; i < json.length; i++) {
+							if (json[i].result != 'empty') { 
+									
+								
+								
+								var tr = $("<tr>").html('<td width="2%" class="hidden-xs"><input type=\'checkbox\' name="checkBluckAction" id="checkBluck-'+json[i].id+'" onclick="checknow();" value="'+json[i].id+'"></td><td class="hidden-xs" width="15%">'+json[i].tracking_number+'</td><td class="hidden-xs" width="25%">'+json[i].recevier_postcode+'<br/>'+json[i].recevier_state+'<br/>'+json[i].recevier_country+'</td><td class="hidden-xs" width="16%">'+json[i].collection_date+'</td><td class="hidden-xs" width="24%" id="status-'+json[i].id+'"><span>'+json[i].status+'<a href="javascript:shipmentList.wantUpdateStatus(\''+json[i].status+'\',\''+json[i].id+'\')" class="btn btn-primary btn-xs">update</a></span></td><td class="visible-xs"><p>'+json[i].tracking_number+'</p><p>'+json[i].recevier_postcode+'<br/>'+json[i].recevier_state+'<br/>'+json[i].recevier_country+'</p><p>'+json[i].collection_date+'</p><p>'+json[i].status+'</p></td><td width="22%"><a href="javascript:showDetail(\''+json[i].id+'\');" class="btn btn-info btn-xs">See More</a><a href="javascript:shipmentList.Custom(\''+json[i].id+'\');" class="btn btn-warning btn-xs">Custom Detail</a></td></td>');
+									
+									$("#table1").append(tr);
+								
+								
+							} else {
+								var tr = $("<tr>").html('<td colspan=\'6\'>No Record Found.</td>');
+								$("#table1").append(tr);
+							}
+						}
+						
+					} else {
+						
+							var tr = $("<tr>").html('<tr><td colspan=\'6\'>No Record Found.</td></tr>');
+							$("#table1").append(tr);
+					}
+					//console.log(result);
+					
+					
+				},
+				error: function(XMLHttpRequest,textStatus,textStatus){
+					console.log(XMLHttpRequest.responseText);
+					console.log(XMLHttpRequest.status);
+					console.log(XMLHttpRequest.readyState);
+					console.log(textStatus);
+					alert(XMLHttpRequest.responseText);
+			
+				} 
+			
+			});
+			
 		}
-		var url = QueryString(window.location.href);
-		var os = key;
-		var qs = "";
-		for(p in url.qs){
-			if(p != "sc" && p != "os" && p != "sf" && p != "lpg"){
-				if(qs.length > 0) qs += "&";
-				qs += p + "=" + url.qs[p]
-			};
-		}
-		window.location.href = url.link + "?" + qs + (os.length > 0 ? "&os=" + os : "");
+		
 	},
 	
 	resultLimit : function(limit){
@@ -546,7 +605,7 @@ var shipmentList = {
 									var checkShipped = ((json[i].status == 'Shipped') ? 'disabled' : '');
 								
 								
-									var tr = $("<tr>").html('<td width="2%" class="hidden-xs"><input type=\'checkbox\' name="checkBluckAction" id="checkBluck-'+json[i].id+'" onclick="checknow();" value="'+json[i].id+'"></td><td class="hidden-xs" width="15%">'+json[i].tracking_number+'</td><td class="hidden-xs" width="25%">'+json[i].recevier_postcode+'<br/>'+json[i].recevier_state+'<br/>'+json[i].recevier_country+'</td><td class="hidden-xs" width="16%">'+json[i].collection_date+'</td><td class="hidden-xs" width="20%">'+json[i].status+'</td><td class="visible-xs"><p>'+json[i].tracking_number+'</p><p>'+json[i].recevier_postcode+'<br/>'+json[i].recevier_state+'<br/>'+json[i].recevier_country+'</p><p>'+json[i].collection_date+'</p><p>'+json[i].status+'</p></td><td width="22%"><a href="javascript:shipmentList.Detail(\''+json[i].id+'\');" class="btn btn-info btn-xs">See More</a><a href="javascript:shipmentList.Custom(\''+json[i].id+'\');" class="btn btn-warning btn-xs">Custom Detail</a><a href="javascript:shipmentList.ChangeStatus(\'<?=base_url('admin/updateStatus/')?>'+json[i].id+'/Prepare_to_ship\',\'Prepare To Ship\');" class="btn btn-primary btn-xs '+checkPrepare+'">Prepare to ship</i></a><a href="javascript:shipmentList.ChangeStatus(\'<?=base_url('admin/updateStatus/')?>'+json[i].id+'/Shipping\',\'Shipping\');" class="btn btn-success btn-xs '+checkShipping+'">Shipping</i></a><a href="javascript:shipmentList.ChangeStatus(\'<?=base_url('admin/updateStatus/')?>'+json[i].id+'/Shipped\',\'Shipped\');" class="btn btn-success btn-xs '+checkShipped+'">Shipped</i></a></td>');
+									var tr = $("<tr>").html('<td width="2%" class="hidden-xs"><input type=\'checkbox\' name="checkBluckAction" id="checkBluck-'+json[i].id+'" onclick="checknow();" value="'+json[i].id+'"></td><td class="hidden-xs" width="15%">'+json[i].tracking_number+'</td><td class="hidden-xs" width="25%">'+json[i].recevier_postcode+'<br/>'+json[i].recevier_state+'<br/>'+json[i].recevier_country+'</td><td class="hidden-xs" width="16%">'+json[i].collection_date+'</td><td class="hidden-xs" width="24%" id="status-'+json[i].id+'"><span>'+json[i].status+'<a href="javascript:shipmentList.wantUpdateStatus(\''+json[i].status+'\',\''+json[i].id+'\')" class="btn btn-primary btn-xs">update</a></span></td><td class="visible-xs"><p>'+json[i].tracking_number+'</p><p>'+json[i].recevier_postcode+'<br/>'+json[i].recevier_state+'<br/>'+json[i].recevier_country+'</p><p>'+json[i].collection_date+'</p><p>'+json[i].status+'</p></td><td width="22%"><a href="javascript:shipmentList.Detail(\''+json[i].id+'\');" class="btn btn-info btn-xs">See More</a><a href="javascript:shipmentList.Custom(\''+json[i].id+'\');" class="btn btn-warning btn-xs">Custom Detail</a></td>');
 									
 									$("#table1").append(tr);
 								
@@ -606,8 +665,7 @@ var shipmentList = {
 									var checkShipping = ((json[i].status == 'Shipping') ? 'disabled' : '');
 									var checkShipped = ((json[i].status == 'Shipped') ? 'disabled' : '');
 								
-									var tr = $("<tr>").html('<td width="2%" class="hidden-xs"><input type=\'checkbox\' name="checkBluckAction" id="checkBluck-'+json[i].id+'" onclick="checknow();" value="'+json[i].id+'"></td><td class="hidden-xs" width="15%">'+json[i].tracking_number+'</td><td class="hidden-xs" width="25%">'+json[i].recevier_postcode+'<br/>'+json[i].recevier_state+'<br/>'+json[i].recevier_country+'</td><td class="hidden-xs" width="16%">'+json[i].collection_date+'</td><td class="hidden-xs" width="20%">'+json[i].status+'</td><td class="visible-xs"><p>'+json[i].tracking_number+'</p><p>'+json[i].recevier_postcode+'<br/>'+json[i].recevier_state+'<br/>'+json[i].recevier_country+'</p><p>'+json[i].collection_date+'</p><p>'+json[i].status+'</p></td><td width="22%"><a href="javascript:shipmentList.Detail(\''+json[i].id+'\');" class="btn btn-info btn-xs">See More</a><a href="javascript:shipmentList.Custom(\''+json[i].id+'\');" class="btn btn-warning btn-xs">Custom Detail</a><a href="javascript:shipmentList.ChangeStatus(\'<?=base_url('admin/updateStatus/')?>'+json[i].id+'/Prepare_to_ship\',\'Prepare To Ship\');" class="btn btn-primary btn-xs '+checkPrepare+'">Prepare to ship</i></a><a href="javascript:shipmentList.ChangeStatus(\'<?=base_url('admin/updateStatus/')?>'+json[i].id+'/Shipping\',\'Shipping\');" class="btn btn-success btn-xs '+checkShipping+'">Shipping</i></a><a href="javascript:shipmentList.ChangeStatus(\'<?=base_url('admin/updateStatus/')?>'+json[i].id+'/Shipped\',\'Shipped\');" class="btn btn-success btn-xs '+checkShipped+'">Shipped</i></a></td>');
-									
+									var tr = $("<tr>").html('<td width="2%" class="hidden-xs"><input type=\'checkbox\' name="checkBluckAction" id="checkBluck-'+json[i].id+'" onclick="checknow();" value="'+json[i].id+'"></td><td class="hidden-xs" width="15%">'+json[i].tracking_number+'</td><td class="hidden-xs" width="25%">'+json[i].recevier_postcode+'<br/>'+json[i].recevier_state+'<br/>'+json[i].recevier_country+'</td><td class="hidden-xs" width="16%">'+json[i].collection_date+'</td><td class="hidden-xs" width="24%" id="status-'+json[i].id+'"><span>'+json[i].status+'<a href="javascript:shipmentList.wantUpdateStatus(\''+json[i].status+'\',\''+json[i].id+'\')" class="btn btn-primary btn-xs">update</a></span></td><td class="visible-xs"><p>'+json[i].tracking_number+'</p><p>'+json[i].recevier_postcode+'<br/>'+json[i].recevier_state+'<br/>'+json[i].recevier_country+'</p><p>'+json[i].collection_date+'</p><p>'+json[i].status+'</p></td><td width="22%"><a href="javascript:shipmentList.Detail(\''+json[i].id+'\');" class="btn btn-info btn-xs">See More</a><a href="javascript:shipmentList.Custom(\''+json[i].id+'\');" class="btn btn-warning btn-xs">Custom Detail</a></td>');
 									
 		
 									$("#table1").append(tr);
@@ -638,6 +696,27 @@ var shipmentList = {
 				} 
 			
 			});
+	},
+	
+	wantUpdateStatus : function(status, id) {
+		var statusid = '#status-' + id;
+		var checkSchedule = ((status == 'Schedule In Arrangement') ? 'selected' : '');
+		var checkPending = ((status == 'Pending For Collection') ? 'selected' : '');
+		var checkOnHold = ((status == 'On Hold') ? 'selected' : '');
+		var checkCollected = ((status == 'Collected') ? 'selected' : '');
+		var checkDropOff = ((status == 'Drop Off') ? 'selected' : '');
+		var checkDelivering = ((status == 'Delivering') ? 'selected' : '');
+		var checkSuccessfulDelivered = ((status == 'Successful Delivered') ? 'selected' : '');
+		var checkReturn = ((status == 'Returned') ? 'selected' : '');
+		var checkCancel = ((status == 'Cancel By Admin') ? 'selected' : '');
+		var sstatus = 'sstatus-' + id;
+		
+		$(statusid).html("");
+		var span = $("<span>").html('<select class="form-control" id="'+sstatus+'" name="'+sstatus+'" onchange="updateStatus(this.value,\''+id+'\')"><option value=\'Schedule In Arrangement\' '+checkSchedule+'>Schedule In Arrangement</option><option value=\'Pending For Collection\' '+checkPending+'>Pending For Collection</option><option value=\'On Hold\' '+checkOnHold+'>On Hold</option><option value=\'Collected\' '+checkCollected+'>Collected</option><option value=\'Drop Off\' '+checkDropOff+'>Drop Off</option><option value=\'Delivering\' '+checkDelivering+'>Delivering</option><option value=\'Successful Delivered\' '+checkSuccessfulDelivered+'>Successful Delivered</option><option value=\'Returned\' '+checkReturn+'>Returned</option><option value=\'Cancelled By Admin\' '+checkCancel+'>Cancelled By Admin</option></select>');
+		
+		$(statusid).append(span);
+		
+	
 	},
 	ChangeStatus : function(url,status) {
 		swal({
@@ -807,6 +886,55 @@ var ordershipmentlist = {
 			});
 		}
 };
+
+function updateStatus(status, id) {
+		console.log(id);
+		console.log(status);
+		
+		url = "<?=base_url('admin/updateStatus')?>";
+		
+			$.ajax({
+				url: url,
+				type: "POST",
+				dataType: "JSON",
+				async: true,
+				data: {
+					id: id,
+					status: status
+					
+				},
+				
+				success: function(result) {
+				
+					//var json = JSON.parse(result);
+					//console.log(result);
+					
+						if (result.length > 0) {
+						var statusid = '#status-' + id;
+						$(statusid).html('');
+						for (var i=0; i < result.length; i++) {
+							console.log(result[i].status);
+							var span = $("<span>").html(result[i].status +'<a href="javascript:shipmentList.wantUpdateStatus(\''+result[i].status+'\',\''+id+'\')" class="btn btn-primary btn-xs">update</a>');
+					
+						}
+						$(statusid).append(span);
+					}
+					
+				
+					  
+				},
+				error: function(XMLHttpRequest,textStatus,textStatus){
+					console.log(XMLHttpRequest.responseText);
+					console.log(XMLHttpRequest.status);
+					console.log(XMLHttpRequest.readyState);
+					console.log(textStatus);
+					alert(XMLHttpRequest.responseText);
+			
+				}	
+			
+			});
+
+}
 
 function CheckNull(obj,obj1,obj2){
 	var from  = $("[name=dateFrom]");
@@ -1011,9 +1139,14 @@ function checkEnter(e) {
 
 function performBulkAction(value){
 	switch(value){
-		case "Prepare_to_ship" : BulkUpdateStatus("Prepare_to_ship"); break;
-		case "Shipping" : BulkUpdateStatus("Shipping"); break; 
-		case "Shipped" : BulkUpdateStatus("Shipped"); break;
+		case "Schedule In Arrangement" : BulkUpdateStatus("Schedule In Arrangement"); break;
+		case "Pending For Collection" : BulkUpdateStatus("Pending For Collection"); break; 
+		case "On Hold" : BulkUpdateStatus("On Hold"); break;
+		case "Collected" : BulkUpdateStatus("Collected"); break;
+		case "Drop Off" : BulkUpdateStatus("Drop Off"); break;
+		case "Delivering" : BulkUpdateStatus("Delivering"); break;
+		case "Successful Delivered" : BulkUpdateStatus("Successful Delivered"); break;
+		case "Cancelled By Admin" : BulkUpdateStatus("Cancelled By Admin"); break;
 		default : alert("Please select a valid action."); break;
 	}
 }

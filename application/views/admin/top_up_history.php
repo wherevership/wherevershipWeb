@@ -56,8 +56,8 @@ button.close {
             <div class="input-group date">
               <div class="input-group-addon" style="min-width: 60px;">From </div>
               <div class="has-feedback">
-	          	<input data-date-format="yyyy-mm-dd" readonly type="text" class="form-control" value="2018-03-01" name="dateFrom" value="" id="dateFrom" size="16">
-			  	<span class="epi-info-circled form-control-feedback hide"  aria-hidden="true"></span> </div>
+	          	<input data-date-format="yyyy-mm-dd" readonly type="text" class="form-control" name="dateFrom" value="" id="dateFrom" size="16">
+			  	<span class="form-control-feedback hide"  aria-hidden="true"><i class="fas fa-info-circle"></i></span> </div>
             </div>
 			</div>
           </div>
@@ -66,8 +66,8 @@ button.close {
             <div class="input-group date">
               <div class="input-group-addon" style="min-width: 60px;">To </div>
               <div class="has-feedback">
-                <input data-date-format="yyyy-mm-dd" readonly type="text" class="form-control" value="2018-03-30" name="dateTo" value="" id="dateTo" size="16">
-                <span class="epi-info-circled form-control-feedback hide"  aria-hidden="true"></span> </div>
+                <input data-date-format="yyyy-mm-dd" readonly type="text" class="form-control" name="dateTo" value="" id="dateTo" size="16">
+                <span class="form-control-feedback hide"  aria-hidden="true"><i class="fas fa-info-circle"></i></span> </div>
             </div>
           </div>
         </div>
@@ -82,22 +82,28 @@ button.close {
             
           </ul>
         </div>
-		
+		<div class="form-inline pull-left hidden-xs" style="margin: 20px 0px;"></div>
+
+
+
 		</div>
-        
-			<table id="myTable" class="table table-striped">
+        <form method="post">
+			<table id="myTable" class="table table-striped" width="100%">
 
 				<thead>
 					<tr>
-					<th width="16%" class="text-center hidden-xs">Date/Time</th>
+					<th width="12%" class="text-center hidden-xs">Date/Time</th>
 					<th width="20%" class="hidden-xs">Package Description</th>
+					<th width="14%" class="text-center hidden-xs">User Id</th>
 					
 
-					<th width="16%" class="text-center hidden-xs">Transaction No</th>
-					<th width="16%" class="text-center hidden-xs">Status</th>
-					<th width="16%" class="text-center hidden-xs">Amount</th>
-					<th class="visible-xs" width="84%"></th>
-					<th width="16%"></th>
+
+					<th width="14%" class="text-center hidden-xs">Transaction No</th>
+					<th width="14%" class="text-center hidden-xs">Status</th>
+					<th width="12%" class="text-center hidden-xs">Amount (RM)</th>
+					<th class="visible-xs" width="88%"></th>
+					
+					<th width="14%" style="padding:4px;"></th>
 					</tr>
 				</thead>
 				<tbody id="table1">
@@ -105,48 +111,57 @@ button.close {
 						if (!empty($topUpHistory)) {
 							foreach ($topUpHistory as $v) {
 								
-								
+								if ($v['status'] == 'Approved' || $v['status'] == 'Rejected' ) {
+										$disabled = 'style= "display: none;"';
+								} else {
+										$disabled = '';
+								}
 					?>
 					<tr>
 		
-						<td class="hidden-xs" width="16%"><?=$v['created_date']?></td>
-						<td class="hidden-xs" width="20%"><?=$v['package']?></td>
-						<td class="hidden-xs" width="16%"><?=$v['id']?></td>
-						<td class="hidden-xs" width="16%"><?=$v['status']?></td>
-						<td class="hidden-xs" width="16%"><?=$v['total_price']?></td>
-						<td class="visible-xs" width="84"><?=$v['created_date']?><br/><?=$v['package']?><br/><?=$v['status']?><br/><?=$v['total_price']?></td>
+		<td class="hidden-xs" width="12%"><?=$v['created_date']?></td>
+		<td class="hidden-xs" width="20%"><?=$v['package']?></td>
+		<td class="hidden-xs" width="14%"><?=$v['user_id']?></td>
+		<td class="hidden-xs" width="14%"><?=$v['id']?></td>
+		<td class="hidden-xs" width="14%"><?=$v['status']?></td>
+		<td class="hidden-xs" width="12%"><?=$v['total_price']?></td>
+		<td class="visible-xs" width="88"><?=$v['created_date']?><br/><?=$v['package']?><br/><?=$v['user_id']?><br/><?=$v['status']?><br/><?=$v['total_price']?></td>
 		
-						<td width="16%" style="padding:4px;">
-			
-						</td>
-					</tr>
-					<?php
-						}}
-					else {
+		<td width="14%" style="padding:4px;">
+			<a href="javascript:approveTopUp('<?=$v['id']?>','<?=$v['package']?>','<?=$v['total_price']?>','<?=$v['user_id']?>');" class="btn btn-success btn-xs" <?=$disabled?>>Approve</a>
+			<a href="javascript:rejectTopUp('<?=$v['id']?>');" class="btn btn-danger btn-xs" <?=$disabled?>>Reject</a>
+		</td>
+	</tr>
+  
+	<?php
+	}}
+	  else {
 		  
-						?>
-						<tr><td colspan='6'>No Record Found.</td></tr>
+    ?>
+	  <tr><td colspan='7'>No Record Found.</td></tr>
 	
-					<?php
-						}
+	<?php
+	  }
 	
-						?>
+	?>
+					
 				</tbody>
 			</table>
-			<table class="visible-xs table mobile_table table-striped" width="100%;">
-				<th class="text-center">Topup History Summary</th>
-				<th></th>
-				<tr><td colspan='4'>No Record Found.</td></tr>
+			
+        </form>
+		<div class="row">
+			<div class="form-inline visible-xs text-center"> 
 				
-			</table>
-        
-		
+			</div>
+
+		</div>
 		<div class="row">
 		<div class="dashboard-pagination">
           <ul class="pagination">
             
           </ul>
         </div>
+        <div class="form-inline pull-left hidden-xs" style="margin: 20px 0px;"> 
         </div>
       </div>
     </div>
@@ -164,7 +179,6 @@ function gettopup(){
 	url = "<?=base_url('order/search_by_date')?>";
 		var dateFrom = ($("[name=dateFrom]").val().trim());
 		var dateTo = ($("[name=dateTo]").val().trim());
-		var userid = <?=$id?>;
 		if(dateFrom!="" && dateTo!=""){ 
 			$.ajax({
 				url: url,
@@ -174,8 +188,7 @@ function gettopup(){
 				data: {
 					dateFrom: dateFrom, 
 					dateTo: dateTo,
-					type: 'member',
-					user_id: userid
+					type: 'admin'
 				},
 				
 				success: function(result) {
@@ -183,15 +196,21 @@ function gettopup(){
 					var json = JSON.parse(result);
 					var x = 0;
 					$("#table1").html("");
-					var trSpinning = $("<tr>").html('<i class="fa fa-spinner fa-spin" style="font-size:24px"></i>');
-					$("#table1").append(trSpinning);
 					console.log(json.length);
 					if (json.length > 0) {
 						for (var i=0; i < json.length; i++) {
 							if (json[i].result != 'empty') { 
+									var ckDisabled = '';
+									if (json[i].status == 'Approved' || json[i].status == 'Rejected') {
+										ckDisabled = 'style= "display: none;"';
+									} else {
+										ckDisabled = '';
+										
+									}
+								
+								
+									var tr = $("<tr>").html('<td class="hidden-xs" width="12%">'+json[i].created_date+'</td><td class="hidden-xs" width="20%">'+json[i].dest+'</td><td class="hidden-xs" width="14%">'+json[i].user_id+'</td><td class="hidden-xs" width="14%">'+json[i].id+'</td><td class="hidden-xs" width="14%">'+json[i].status+'</td><td class="hidden-xs" width="12%">'+json[i].total_price+'</td><td class="visible-xs" width="88">'+json[i].created_date+'<br/>'+json[i].dest+'<br/>'+json[i].user_id+'<br/>'+json[i].status+'<br/>'+json[i].total_price+'</td><td width="14%"><a href="javascript:approveTopUp(\''+json[i].id+'\',\''+json[i].dest+'\',\''+json[i].total_price+'\',\''+json[i].user_id+'\');" class="btn btn-success btn-xs" '+ckDisabled+'>Approve</a>><a href="javascript:rejectTopUp(\''+json[i].id+'\');" class="btn btn-danger btn-xs" '+ckDisabled+'>Reject</a></td>');
 									
-								var tr = $("<tr>").html('<td class="hidden-xs" width="16%">'+json[i].created_date+'</td><td class="hidden-xs" width="20%">'+json[i].dest+'</td><td class="hidden-xs" width="16%">'+json[i].id+'</td><td class="hidden-xs" width="16%">'+json[i].status+'</td><td class="hidden-xs" width="16%">'+json[i].total_price+'</td><td class="visible-xs" width="84">'+json[i].created_date+'<br/>'+json[i].dest+'<br/>'+json[i].user_id+'<br/>'+json[i].status+'<br/>'+json[i].total_price+'</td><td width="16%"></td>');
-									$("#table1").html("");
 									$("#table1").append(tr);
 								
 								
@@ -199,16 +218,14 @@ function gettopup(){
 								
 								
 							} else {
-								var tr = $("<tr>").html('<td colspan=\'6\'>No Record Found.</td>');
-								$("#table1").html("");
+								var tr = $("<tr>").html('<td colspan=\'7\'>No Record Found.</td>');
 								$("#table1").append(tr);
 							}
 						}
 						
 					} else {
 						
-								var tr = $("<tr>").html('<tr><td colspan=\'6\'>No Record Found.</td></tr>');
-								$("#table1").html("");
+								var tr = $("<tr>").html('<tr><td colspan=\'7\'>No Record Found.</td></tr>');
 								$("#table1").append(tr);
 							}
 									
@@ -242,6 +259,76 @@ function gettopup(){
 		}
 }
 
+function approveTopUp(id,dest,total_price,user_id) {
+	url = "<?=base_url('order/approveTopUp')?>";
+	
+		 
+		$.ajax({
+			url: url,
+			type: "POST",
+			dataType: "text",
+			async: true,
+			data: {
+				id: id,
+				dest: dest,
+				total_price: total_price,
+				user_id: user_id,
+				status: status
+			},
+				
+			success: function(result) {
+				if (result=="pass") {
+					location.reload(true);
+					}
+					
+				},
+			error: function(XMLHttpRequest,textStatus,textStatus){
+				console.log(XMLHttpRequest.responseText);
+				console.log(XMLHttpRequest.status);
+				console.log(XMLHttpRequest.readyState);
+				console.log(textStatus);
+				alert(XMLHttpRequest.responseText);
+			
+			} 
+			
+		});
+}
+
+function rejectTopUp(id) {
+	url = "<?=base_url('order/updateStatus')?>";
+	
+	var id = id;
+	var status = "Rejected";
+		 
+		$.ajax({
+			url: url,
+			type: "POST",
+			dataType: "text",
+			async: true,
+			data: {
+				id: id,
+				status: status
+			},
+				
+			success: function(result) {
+				if (result=="pass") {
+					location.reload(true);
+					}
+					
+				},
+			error: function(XMLHttpRequest,textStatus,textStatus){
+				console.log(XMLHttpRequest.responseText);
+				console.log(XMLHttpRequest.status);
+				console.log(XMLHttpRequest.readyState);
+				console.log(textStatus);
+				alert(XMLHttpRequest.responseText);
+			
+			} 
+			
+		});
+}
+
+/**
 function CheckNull(obj,obj1){
 	var from  = $("[name=dateFrom]");
 	var to  = $("[name=dateTo]");
@@ -273,7 +360,7 @@ function clearNull(obj){
 	$(obj).css("border-color","");
 	$(obj).parent().children().eq(1).addClass("hide");
 }
-
+**/
 function resultLimit(limit){
 	var url = QueryString(window.location.href);
 		var rl = limit;

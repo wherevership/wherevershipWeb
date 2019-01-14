@@ -106,6 +106,7 @@
 				<input type="hidden" name="pickup_required" value="<?=$pickup_required?>"/>
 				<input type="hidden" name="parcel_content" value="<?=$parcel_content?>"/>
 				<input type="hidden" name="value_of_content" value="<?=$value_of_content?>"/>
+				<input type="hidden" name="collection_date" value="<?=$collection_date?>"/>
 			
 				<input type="hidden" name="shipper_GST" value="<?=$shipper_GST?>"/>
 				<input type="hidden" name="receiver_GST" value="<?=$receiver_GST?>"/>
@@ -186,6 +187,7 @@
 							
 								<hr>
 								Required pickup: <?=$pickup_required?>
+								Collection Date: <?=$collection_date?>
 								
 							</p>
 						</div>
@@ -221,16 +223,25 @@
 					
 					<div class="col-md-3">
 						<h3>Declared Value for Customs</h3>
-						<p><?=$declared_value + $currecy?></p>
-					<h3>1</h3>
+						<p><?=$declared_value?><?=$currecy?></p>
+						<hr>
+						<h3>Exemtion</h3>
+						<p><?=$exemtion?></p>
 					</div>
 					<div class="col-md-3">
-					<h3>1</h3>
-					
+						<h3>Type of Export</h3>
+						<p><?=$type_of_export?></p>
+						<hr>
+						<h3>itn</h3>
+						<p><?=$itn?></p>
 					</div>
 					<div class="col-md-3">
 					
-					<h3>1</h3>
+						<h3>Destination Duties Taxes</h3>
+						<p><?=$destination_duties?></p>
+						<hr>
+						<h3>Approved Account Number<h3>
+						<p><?=$approved_account_number?></p>
 					</div>
 				</div>
 				</div>

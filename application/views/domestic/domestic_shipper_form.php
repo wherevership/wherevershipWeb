@@ -64,6 +64,7 @@
 					<input type="hidden" name="shipper_postcode" value="<?=$fromPostcode?>"/>
 					<input type="hidden" name="receiver_postcode" value="<?=$toPostcode?>"/>
 					<input type="hidden" id="userId"  name="userId" value="<?=$id?>" />
+					<input type="hidden" name="collectionDate" id="collectionDate" />
 					
 				<div class="row">
 					<div class="col-md-9  col-xs-12">
@@ -342,19 +343,32 @@
 											<label class="col-sm-4">Pickup Required</label>
 												<div class="col-sm-8">
 													<div class="has-feedback">
-														<select name="pickup_required" class="form-control">
-															<option value="yes">Yes</option>
-															<option value="no">No</option>
+														<select name="pickup_required" class="form-control" onchange="showDate()">
+															<option value="-1">Please Select</option>
+															<option value="1">Yes</option>
+															<option value="0">No</option>
 														</select>
 													</div>
 												</div>
 										</div>
 									</div>
+									<div class="col-md-6" style="display:none" id="calendar">
+										 <div class="form-group">
+											<div class="input-group date">
+												<div class="input-group-addon">Collection Date</div>
+													<div class="has-feedback">
+														<input data-date-format="yyyy-mm-dd" readonly type="text" class="form-control" name="dateFrom" id="collectionDate1" size="16" name="collectionDate1" onchange="dispalyDate(this.value)"/> 
+														
+													</div>
+											</div>
+										</div>
 									
-								</div>
+									
+									</div>
 								
+								</div>
 							</div>
-						</div>
+						</div>	
 						<div class="row">
 							<div class="col-md-12">
 								<label><input type="checkbox" name="acceptNotice" style="margin-top:11px;" id="acceptCheck"/> &nbsp; I agree & have acknowledged on the <a href="<?=base_url('term_and_condition')?>" target="_blank">Terms & Conditions </a> . </label>
@@ -507,10 +521,21 @@
 		var term=$("#acceptCheck");
 		
 		if (term.is(':checked')) {
-			var id = createId();
-			console.log(id);
+			var sf = ($("[name=pickup_required]").val().trim());
+			if (sf == '-1') {
+				swal({
+					title: 'Oops',
+					type: 'error',
+					html: 'Please please pickup Required',
+					confirmButtonColor: '#4e97d8'
+					})
+				return false;
+			} else {
+				return true;
+			
+			}
 		 	
-		  return true;	
+				
 		} else {
 			swal({
 				title: 'Oops',
@@ -524,7 +549,12 @@
 		
 	}
 	
+	function dispalyDate(collectionDate) {
 	
+		console.log(collectionDate);
+		$('#collectionDate').val(collectionDate);
+		
+	}
 	
 	function Signin(){
 		 buttonInProcess();
@@ -651,6 +681,39 @@
 		$("#loginPay").prop('disabled', false);
 		$("#loginPay").html('Log In and Continue');
 		
+	}
+	
+	function showDate(){
+	var sf = ($("[name=pickup_required]").val().trim());
+	if(sf == '1'){
+		$('#calendar').attr('style','display: ""');
+	}else{
+		$('#calendar').attr('style','display: none');
+	}
+	}
+	
+	
+	$(function(){
+		$( "#collectionDate1" ).datepicker({dateFormat: 'yy-mm-dd', maxDate: '+0d'});
+		var collectionDate = $("#collectionDate1").val().trim();
+		$('#collectionDate').val(collectionDate);
+		showDate();
+	});
+	
+	function checkPickupRequired() {
+		var sf = ($("[name=pickup_required]").val().trim());
+		if (sf == '-1') {
+			swal({
+				title: 'Oops',
+				type: 'error',
+				html: 'Please please pickup Required',
+				confirmButtonColor: '#4e97d8'
+				})
+			return false;
+		} else {
+			return true;
+			
+		}
 	}
 
 	</script>

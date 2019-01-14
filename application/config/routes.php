@@ -121,6 +121,8 @@ $route['member/login_process'] = 'User_manage/login_process';
 $route['member/logOut'] = 'User_manage/logout';
 $route['member/signUp'] = 'User_manage/signUpProcess';
 $route['member/updateMemberProfile/(:num)'] = 'User_manage/updateMemberProfile/$1';
+$route['member/searchShipmentByOther/(:any)'] = 'Shipment_api_manage/member_search_shipment/$1';
+$route['member/searchShipmentByDate/(:any)'] = 'Shipment_api_manage/member_search_shipment_by_date/$1';
 
 
 $route['order/(:any)/(:num)'] = 'Order_manage/detail/$1/$2';
@@ -147,6 +149,7 @@ $route['admin/trucking_cost'] = 'Admin_manage/trucking_cost';
 $route['admin/profile_setting'] = 'Admin_manage/profile_setting';
 $route['admin/login_process'] = 'Admin_manage/login_process';
 $route['admin/credit_history'] = 'Admin_manage/credit_history';
+$route['admin/top_up_history'] = 'Admin_manage/top_up_history';
 $route['admin/LogOut'] = 'Admin_manage/logout';
 $route['admin/admin_delete/(:num)'] = 'Admin_process_manage/admin_delete/$1';
 $route['admin/requester_delete/(:num)'] = 'Admin_process_manage/requester_delete/$1';
@@ -162,13 +165,14 @@ $route['admin/userBulkDelete'] = 'Admin_process_manage/userBulkDelete';
 $route['admin/shipmentDetail/(:any)'] = 'Shipment_api_manage/shipmentDetail/$1';
 $route['admin/searchShipmentByOther/(:any)'] = 'Shipment_api_manage/search_shipment/$1';
 $route['admin/searchShipmentByDate/(:any)'] = 'Shipment_api_manage/search_shipment_by_date/$1';
-$route['admin/updateStatus/(:any)/(:any)'] = 'Shipment_api_manage/updateStatus/$1/$2';
-$route['admin/updateDomesticStatus/(:any)/(:any)'] = 'Shipment_api_manage/updateDomesticStatus/$1/$2';
+$route['admin/updateStatus'] = 'Shipment_api_manage/updateStatus';
+$route['admin/updateDomesticStatus'] = 'Shipment_api_manage/updateDomesticStatus';
 $route['admin/bulkUpdateStatus'] = 'Shipment_api_manage/bulkUpdateStatus';
 $route['admin/updateAdminStatus'] = 'User_api_manage/updateAdmin';
 $route['admin/bulkUpdateAdminStatus'] = 'User_api_manage/bulkUpdateAdmin';
 $route['admin/UpdateUserStatus'] = 'User_api_manage/updateUser';
 $route['admin/bulkUpdateUserStatus'] = 'User_api_manage/bulkUpdateUser';
+
 
 $route['internatinal/fuel_charge_update'] = 'International_shipment_manage/fuel_charge_update';
 $route['internatinal/internatinal_price/(:any)'] = 'International_shipment_manage/internatinal_price/$1';
@@ -183,6 +187,10 @@ $route['domestic/search_price'] = 'Domestic_shipment_manage/search_shipment_pric
 $route['domestic/bulk_domestic_price_update'] = 'Domestic_shipment_manage/bulk_domestic_price_update';
 
 $route['credit/search_by_date'] = 'Credit_api_manage/creditSearchByDate';
+$route['credit/search_by_dateMember'] = 'Credit_api_manage/creditSearchByDateMember';
+$route['order/search_by_date'] = 'Order_manage/search_top_up';
+$route['order/updateStatus'] = 'Order_manage/updateTopUpStatus';
+$route['order/approveTopUp'] = 'Order_manage/topUpApprove';
 
 $route['admin/testOne'] = 'Admin_testing/test_get_one';
 $route['admin/testAll'] = 'Admin_testing/test_get_all';
@@ -191,7 +199,8 @@ $route['admin/testSession'] = 'Admin_manage/test_session';
 $route['admin/testLogOut'] = 'Admin_testing/test_logout';
 
 
-
+$route['testPosLaju'] = 'Testing_controller/testing_poslaju';
+$route['testId'] = 'Testing_controller/getId';
 $route['testEmail'] = 'Email_manage/testEmail';
 $route['contactSend'] = 'Email_manage/sendContactUs';
 

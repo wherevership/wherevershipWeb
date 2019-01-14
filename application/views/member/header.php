@@ -26,7 +26,7 @@
 
 <link href="<?=base_url('assets2/css/sweetalert2.min.css')?>" rel="stylesheet">
 
-<link href="<?=base_url('assets2/css/style.css')?>" rel="stylesheet">
+<link href="<?=base_url('assets2/css/style.css?v=1.2')?>" rel="stylesheet">
 
 <link href="<?=base_url('assets2/css/jquery.dataTables.css')?>" rel="stylesheet">
 
@@ -305,7 +305,7 @@ function logout() {
       <li class="site-nav-item dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span> My Credit <span class="caret"></span></span> <span class="side-menu-box"><i class="fas fa-shopping-basket"></i></span></a>
         <ul class="dropdown-menu" role="menu">
         	<li><a href="<?=base_url('member/credit_history')?>">Credit History</a></li>
-        	<li><a href="<?=base_url('member/invoice')?>">Invoices</a></li>
+        	<li><a href="<?=base_url('member/top_up_history')?>">Top Up History</a></li>
         </ul>
       </li>
       <li class="site-nav-item dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span> All Shipments <span class="caret"></span></span> <span class="side-menu-box"><i class="fas fa-truck"></i></span></a>
@@ -699,7 +699,7 @@ span.tip {
 				<div class="collapse dropdown" id="MyOrders">
 					<ul class="list-group">
 					<a href="<?=base_url('member/credit_history')?>" class="list-group-item" id="Credit_History" >Credit History</a>
-					<a href="<?=base_url('member/invoice')?>" class=" list-group-item" id="Order_Invoices">Invoices</a>
+					<a href="<?=base_url('member/top_up_history')?>" class="list-group-item" id="Top_Up_History">Top Up History</a>
 				</ul>
 				</div>
 			</div>

@@ -43,6 +43,46 @@
 			
 			
 		}
+		
+		public function creditSearchByDateMember() {
+			$dateFrom = $this->input->post("dateFrom", true);
+			$dateTo = $this->input->post("dateTo", true);
+			$user_id = $this->input->post("user_id");
+		
+			$shipment = $this->Credit_History_Model->get(array(
+				'is_deleted' => 0,
+				'created_date >=' => $dateFrom,
+				'created_date <=' => $dateTo,
+				'user_id' => $user_id,
+			));
+			if (!empty($shipment)) {
+				foreach ($shipment as $v) {
+					
+					
+					$json[] = array(
+					
+						'id' => $v['id'],
+						'description' => $v['description'],
+						'amount' => $v['amount'],
+						'amount_type' => $v['amount_type'],
+						'user_id' => $v['user_id'],
+						'created_date' => $v['created_date'],
+						'modified_date' => $v['modified_date'],
+						
+					);
+					
+				}
+				
+			} else {
+				$json[] = array(
+					'result' => 'empty',
+				);
+			
+			} 
+			echo json_encode($json);
+			
+			
+		}
 	}
 
 

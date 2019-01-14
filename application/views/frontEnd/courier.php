@@ -9,32 +9,32 @@
     margin-right: 5px;
 }
 .qnb-wrapped .nav-tabs>li>a.domestic-tab, .qnb-wrapped .nav-tabs>li.active>a.domestic-tab, .qnb-wrapped .nav-tabs>li.active>a:focus.domestic-tab, .qnb-wrapped .nav-tabs>li.active>a.domestic-tab:hover {
-	background-color: #00878c !important;
-    border: 1px solid #00878c !important;
+	background-color: #80d8d4 !important;
+    border: 1px solid #80d8d4 !important;
 	border-bottom-color: transparent;
     color: #fff;
 }
 .qnb-wrapped .nav-tabs>li>a.international-tab, .qnb-wrapped .nav-tabs>li.active>a.international-tab, .qnb-wrapped .nav-tabs>li.active>a:focus.international-tab, .qnb-wrapped .nav-tabs>li.active>a.international-tab:hover {
-	background-color: #5cb85c;
-    border: 1px solid #5cb85c;
+	background-color: #00a9b0;
+    border: 1px solid #00a9b0;
 	border-bottom-color: transparent; 
     color: #fff;
 }
 .qnb-wrapped .nav > li > a.domestic-tab:hover, .qnb-wrapped .nav .open>a.domestic-tab:hover {
-    background-color: #00878c !important;
+    background-color: #80d8d4 !important;
     color: #fff;
-    border-color: #00878c !important;
+    border-color: #80d8d4 !important;
 	border-bottom: 1px solid #FFF;
 }
 .qnb-wrapped .nav > li > a.international-tab:hover, .qnb-wrapped .nav .open>a.international-tab:hover {
-    background-color: #5cb85c;
+    background-color: #00a9b0;
     color: #fff;
-    border-color: #5cb85c;
+    border-color: #00a9b0;
 	border-bottom: 1px solid #FFF;
 }
 .qnb-wrapped .nav-tabs {border-bottom: 1px solid #FFF;}
 .quote-book.international-body {
-	background-color: #5cb85c;
+	background-color: #00a9b0;
 }
 span.tip {
 	position: absolute;
@@ -42,7 +42,7 @@ span.tip {
     left: 32px;
     font-size: 10px;
     color: #fff;
-    background-color: #5cb85c;
+    background-color: #80d8d4;
     padding: 2px 5px;
 }
 .Pgeon_hr {border-color: rgba(255, 255, 255, 0.3); margin: 10px auto;}
@@ -897,7 +897,7 @@ function isNumberKey(evt){
 </section>
 
 
-
+<!--
 <style>
 .qnb-wrapped .nav-tabs>li.active>a, .qnb-wrapped .nav-tabs>li.active>a:focus, .qnb-wrapped .nav-tabs>li.active>a:hover {
 	background-color: #f69;
@@ -958,7 +958,7 @@ function isNumberKey(evt){
 	text-decoration: line-through;"
 }
 </style>
-
+-->
 <script>
  
 </script>

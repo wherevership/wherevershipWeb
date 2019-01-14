@@ -25,7 +25,7 @@ class International_shipment_manage extends CI_Controller {
 				
 				
 			}
-		//print_r($this->session->userdata['IntShipment1']);
+		print_r($this->session->userdata['IntShipment1']);
 		$this->data['weight'] = ($this->session->userdata['IntShipment1']['weight']);
 		$this->data['height'] = ($this->session->userdata['IntShipment1']['height']);
 		$this->data['width'] = ($this->session->userdata['IntShipment1']['width']);
@@ -88,7 +88,7 @@ class International_shipment_manage extends CI_Controller {
 				
 				
 			}
-		//print_r($this->session->userdata['IntProductDetail']);
+		print_r($this->session->userdata['IntProductDetail']);
 		$this->data['weight'] = ($this->session->userdata['IntProductDetail']['weight']);
 		$this->data['height'] = ($this->session->userdata['IntProductDetail']['height']);
 		$this->data['width'] = ($this->session->userdata['IntProductDetail']['width']);
@@ -127,14 +127,15 @@ class International_shipment_manage extends CI_Controller {
 		$this->data['receiver_phone_number'] = ($this->session->userdata['IntProductDetail']['receiver_phone_number']);
 		$this->data['receiver_email'] = ($this->session->userdata['IntProductDetail']['receiver_email']);
 		
-		$this->data['pickup_required'] = ($this->session->userdata['IntProductDetail']['weight']);
-		$this->data['parcel_content'] = ($this->session->userdata['IntProductDetail']['weight']);
-		$this->data['value_of_content'] = ($this->session->userdata['IntProductDetail']['weight']);
+		$this->data['pickup_required'] = ($this->session->userdata['IntProductDetail']['pickup_required']);
+		$this->data['parcel_content'] = ($this->session->userdata['IntProductDetail']['parcel_content']);
+		$this->data['value_of_content'] = ($this->session->userdata['IntProductDetail']['value_of_content']);
+		$this->data['collection_date'] = ($this->session->userdata['IntProductDetail']['collection_date']);
 		
 		$this->data['shipper_GST'] = ($this->session->userdata['IntProductDetail']['shipper_GST']);
 		$this->data['receiver_GST'] = ($this->session->userdata['IntProductDetail']['receiver_GST']);
 		$this->data['declared_value'] = ($this->session->userdata['IntProductDetail']['declared_value']);
-		$this->data['currecy'] = ($this->session->userdata['IntProductDetail']['weight']);
+		$this->data['currecy'] = ($this->session->userdata['IntProductDetail']['currecy']);
 		$this->data['commodity_code'] = ($this->session->userdata['IntProductDetail']['commodity_code']);
 		$this->data['exemtion'] = ($this->session->userdata['IntProductDetail']['exemtion']);
 		$this->data['itn'] = ($this->session->userdata['IntProductDetail']['itn']);
@@ -196,6 +197,7 @@ class International_shipment_manage extends CI_Controller {
 		$pickup_required = $this->input->post("pickup_required", true);
 		$parcel_content = $this->input->post("parcel_content", true);
 		$value_of_content = $this->input->post("value_of_content", true);
+		$collectionDate = $this->input->post("collectionDate", true);
 		
 		$shipper_GST = $this->input->post("shipper_GST", true);
 		$receiver_GST = $this->input->post("receiver_GST", true);
@@ -244,6 +246,7 @@ class International_shipment_manage extends CI_Controller {
 				"receiver_phone_number" => $receiver_phone_number,
 				"receiver_email" => $receiver_email,
 				"pickup_required" => $pickup_required,
+				"collection_date" => $collectionDate,
 				"parcel_content" => $parcel_content,
 				"value_of_content" => $value_of_content,
 				"shipper_GST" => $shipper_GST, 
@@ -284,7 +287,7 @@ class International_shipment_manage extends CI_Controller {
 			}
 			
 	
-	//	print_r($this->session->userdata['IntCustom1']);
+		print_r($this->session->userdata['IntCustom1']);
 		$this->data['title'] = "International Custom Cleaner Form";
 		$this->data['weight'] = ($this->session->userdata['IntCustom1']['weight']);
 		$this->data['height'] = ($this->session->userdata['IntCustom1']['height']);
@@ -327,6 +330,7 @@ class International_shipment_manage extends CI_Controller {
 		$this->data['pickup_required'] = ($this->session->userdata['IntCustom1']['pickup_required']);
 		$this->data['parcel_content'] = ($this->session->userdata['IntCustom1']['parcel_content']);
 		$this->data['value_of_content'] = ($this->session->userdata['IntCustom1']['value_of_content']);
+		$this->data['collectionDate'] = ($this->session->userdata['IntCustom1']['collectionDate']);
 		
 		$this->load->view("international/header", $this->data);
 		$this->load->view("international/ReceiverForm",$this->data);
@@ -374,6 +378,7 @@ class International_shipment_manage extends CI_Controller {
 		$pickup_required = $this->input->post("pickup_required", true);
 		$parcel_content = $this->input->post("parcel_content", true);
 		$value_of_content = $this->input->post("value_of_content", true);
+		$collectionDate = $this->input->post("collectionDate", true);
 		
 		$saveData = array(
 				"weight" => $weight, 
@@ -413,6 +418,7 @@ class International_shipment_manage extends CI_Controller {
 				"pickup_required" => $pickup_required,
 				"parcel_content" => $parcel_content,
 				"value_of_content" => $value_of_content,
+				"collectionDate" => $collectionDate,
 		);
 		
 		$this->session->set_userdata('IntCustom1', $saveData);
@@ -551,7 +557,7 @@ class International_shipment_manage extends CI_Controller {
 			}
 		
 		
-		//print_r($this->session->userdata['IntProductDetail']);
+		print_r($this->session->userdata['IntProductDetail']);
 		$this->data['weight'] = ($this->session->userdata['ToIntPayment']['weight']);
 		$this->data['height'] = ($this->session->userdata['ToIntPayment']['height']);
 		$this->data['width'] = ($this->session->userdata['ToIntPayment']['width']);
